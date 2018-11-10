@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'syllabusManager';
+  title = 'Universidad Rafael Urdaneta';
+
+  getUrl(){
+    return "url('/src/assets/imgs/aulamagna.jpg')"
+  }
 }
