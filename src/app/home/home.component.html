@@ -1,0 +1,269 @@
+<div class="container-all">
+  <div class="row">
+    <div class="col col-sm-3">
+      <mat-card class="side-nav side-nav-container menu">
+        <mat-card-content class="card-container">
+          <mat-card class="img">
+            <img src="file:///C:/Users/administrador/val/syllabusManager/src/assets/imgs/close-up-of-employee-with-computer-keyboard_1098-2019.jpg" alt="">
+          </mat-card>
+            <div class="row">
+              <div class="col col-sm-12 container">
+                <mat-list>
+                 <!-- <mat-action-list  *ngFor="let list of menu">
+                    <button mat-list-item (click)="openPage(list)"> <h6>{{list.name}}</h6></button>
+                    <hr>
+                  </mat-action-list> -->
+                  <mat-action-list>
+                    <button mat-list-item >Inicio</button>
+                    <hr>
+                    <button mat-list-item (click)="open(content)"><h6>Crear Carrera</h6></button>
+                    <hr>
+                    <button mat-list-item ><h6>Crear Pensum</h6></button>
+                    <hr>
+                    <button mat-list-item (click)="openSubject(content3)" ><h6>Crear Materia</h6></button>
+                    <hr>
+                    <button mat-list-item (click)="openCollage(content2)" ><h6>Crear Escuela</h6></button>
+                    <hr>
+                  </mat-action-list>
+                </mat-list>
+              </div>
+            <div class="col col-sm-12">
+              <button mat-button class="btn-danger btn-logout" (click)="logout();">Cerrar Sesion</button>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col col-md-9">
+      <div class="col col-md-12 offset-md-1 header">
+        <h2 class="title">Universidad Rafael Urdaneta</h2>
+        <hr>
+      </div>
+      <div class="col" *ngIf="!showCareer">
+        <mat-card class="career">
+          <mat-card-content>
+            <div class="row">
+              <div class="col col-md-4">
+                <mat-card class="example-card">
+                  <mat-card class="img-career">
+                    <img mat-card-image src="https://3.bp.blogspot.com/-kAxdOyNd0l8/WT9k-WocHbI/AAAAAAAAE38/23-tfdtimw8N1cdofUwA8SZb2kU8KDUVgCLcB/s1600/cuanto%2Bgana%2Bun%2Bingeniero%2Ben%2Bcomputacion.jpeg" alt="Photo of a Shiba Inu">
+                  </mat-card>
+                  <mat-card-content>
+                    <h4 class="career-title">Ingenieria en Computacion</h4>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <div class="col col-md-4">
+                <mat-card class="example-card">
+                  <mat-card class="img-career">
+                    <img mat-card-image src="https://definicionyque.es/wp-content/uploads/2017/03/Ingenier%C3%ADa_de_Telecomunicaciones.jpg" alt="Photo of a Shiba Inu">
+                  </mat-card>
+                  <mat-card-content>
+                    <h4 class="career-title">Ingenieria en Telecomunicaciones</h4>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <div class="col col-md-4">
+                <mat-card class="example-card">
+                  <mat-card class="img-career">
+                    <img mat-card-image src="https://definicionyque.es/wp-content/uploads/2017/03/Ingenier%C3%ADa_de_Telecomunicaciones.jpg" alt="Photo of a Shiba Inu">
+                  </mat-card>
+                  <mat-card-content>
+                    <h4 class="career-title">Ingenieria Electrica</h4>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <div class="col col-md-4">
+                <mat-card class="example-card">
+                  <mat-card class="img-career">
+                    <img mat-card-image src="https://2.bp.blogspot.com/-BPUa8clDls4/WJ3E7U91rRI/AAAAAAAAAbU/fUDgtY_gzeoNQwopbd55hKDwsguQmpdfQCLcB/s750/Ingenier%25C3%25ADa_quimica.jpg" alt="Photo of a Shiba Inu">
+                  </mat-card>
+                  <mat-card-content>
+                    <h4 class="career-title">Ingenieria Quimica </h4>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <div class="col col-md-4">
+                <mat-card class="example-card">            
+                  <mat-card-content>              
+                    <button type="button" class="btn btn-lg btn-addCareer" (click)="open(content)">
+                      <fa style="color: rgb(47, 61, 85); font-size: 4rem;" name="plus"></fa>
+                    </button>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <!--Career-->
+      <div class="col">
+       <!-- <app-career *ngIf="showCareer; else notShowCareer"></app-career> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Create career-->
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Crear Carrera</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <div class="row">
+            <div class="col col-3">
+              <label for="career-name">Nombre de la Carrera:</label>              
+            </div>
+            <div class="col col-8">
+              <div class="md-form">
+                <input type="text" class="form-control career-name" placeholder="Ej. Ingenieria en Computacion">
+              </div>
+            </div>         
+            <div class="col-3">
+              <label for="number-terms">Numero de Trimestre:</label>
+            </div>
+            <div class="col col-8">
+              <div class="md-form">
+                <input type="number" class="form-control" placeholder="10">            
+              </div>
+            </div>
+            <div class="col col-3">
+                <label for="collage-type">Seleccionar escuela:</label>
+            </div>
+            <div class="col col-8">
+              <mat-form-field>
+                <select matNativeControl required>
+                  <option value="0">Escuela de Ingenieria</option>
+                  <option value="1">Escuela de Derecho</option>
+                  <option value="2">Escuela de Arquitectura</option>
+                  <option value="3">Escuela de Produccion Animal</option>
+                </select>
+              </mat-form-field>
+            </div>
+            <div class="col-3">
+              <label for="number-terms">Seleccione una imagen:</label>
+            </div>
+              <div class="col col-8">
+                <div class="md-form">
+                  <input type="file" class="form-control input-file">          
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="modal.close('Save click')">Crear</button>
+    </div>
+  </ng-template>
+
+<!--Create Collage-->
+
+<ng-template #content2 let-modal class="create-collage">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title-2">Crear Escuela</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <div class="row">
+            <div class="col col-3">
+              <label for="career-name">Nombre de la Escuela:</label>              
+            </div>
+            <div class="col col-8">
+              <div class="md-form">
+                <input type="text" class="form-control career-name" placeholder="Ej. Escuela de Ingenieria">
+              </div>
+            </div>         
+            <div class="col-3">
+              <label for="number-terms">Descripcion:</label>
+            </div>
+            <div class="col col-8">
+              <div class="md-form">
+                <input type="text" class="form-control career-name" placeholder="Descripcion">          
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="modal.close('Save click')">Crear</button>
+    </div>
+  </ng-template>
+
+  <!--Create Subject -->
+
+  <ng-template #content3 let-modal class="create-collage">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title-3">Crear Materia</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <div class="row">
+              <div class="col col-3">
+                <label for="career-name">Nombre de la Materia:</label>              
+              </div>
+              <div class="col col-8">
+                <div class="md-form">
+                  <input type="text" class="form-control career-name" placeholder="Ej. Programacion II">
+                </div>
+              </div> 
+              <div class="col col-3">
+                <label for="career-name">Restricciones de la Materia:</label>              
+              </div>
+              <div class="col col-8">
+                <div class="md-form">
+                  <input type="text" class="form-control career-name" placeholder="Ej. Programacion I">
+                </div>
+              </div>
+              <div class="col col-12">
+                <label for="info"><h6>Si posee Laboratiorio ingrese el nombre:</h6></label>
+              </div>
+              <div class="col col-3">                 
+                <label for="career-name">Nombre de la Materia:</label>              
+                </div>
+                <div class="col col-8">
+                  <div class="md-form">
+                    <input type="text" class="form-control career-name" placeholder="Ej. Lab de Programacion II">
+                </div>
+              </div>          
+              <div class="col-3">
+                <label for="number-terms">HC:</label>
+              </div>
+              <div class="col col-8">
+                <div class="md-form">
+                  <input type="number" class="form-control" placeholder="2">          
+                </div>
+              </div>
+              <div class="col-3">
+                <label for="number-terms">Seleccione el Programa de Estudio:</label>
+              </div>
+                <div class="col col-8">
+                  <div class="md-form">
+                    <input type="file" class="form-control input-file">          
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="modal.close('Save click')">Crear</button>
+      </div>
+    </ng-template>
+
+ 
