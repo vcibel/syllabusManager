@@ -1,0 +1,125 @@
+.side-nav-container{
+    height: 100%;
+    box-shadow: 0 1px 8px 5px rgba(187, 187, 187, 0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    transform: translate(-2%,-2%);
+}
+
+.menu { 
+    position: fixed;
+}
+
+.img-career {
+    margin-top: 0px;
+    padding: 0px;
+    height: 203px;
+}
+
+.career-title{
+    position: relative;
+    left: -15px;
+}
+
+img.mat-card-image {
+    height: 175px;
+}
+
+select.mat-input-element {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+    background-color: transparent;
+    display: inline-flex;
+    box-sizing: border-box;
+    padding-top: 1em;
+    top: -1em;
+    margin-bottom: -1em;
+    border-bottom: 1px solid #ced4da;
+}
+
+.btn.btn-lg .fa {
+    font-size: 4rem;
+}
+
+.mat-input-element {
+    padding: 5px;
+}
+
+button.btn.btn-lg.btn-addCareer {
+    /* border-color: transparent; */
+    /* border: none; */
+    position: relative;
+    left: 75px;
+    top: 110px;
+}
+
+.mat-form-field-infix {
+    width: 303px;
+}
+
+.btn-addCareer{
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.container-all, {
+    max-height: 100%;
+}
+
+.input-file {
+    border-color: transparent;
+}
+
+.btn-logout{
+    position: relative;
+    top: 65px;
+}
+
+.side-nav-container{
+    width: 326px;
+}
+
+.mat-drawer-content {
+    position: relative;
+    z-index: 1;
+    display: inline; 
+    overflow: auto;
+}
+
+mat-card.img.mat-card {
+    background-color: rgb(230, 230, 255);
+    height: 170px;
+    width: 313px;
+}
+
+.header{
+    position: relative;
+    top: 30px;
+    left: -126px;
+}
+
+mat-card.career.mat-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    left: -33px;
+    top: 30px;
+    box-shadow: 0 1px 8px 5px rgba(187, 187, 187, 0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.example-card{
+    max-width: 300px;
+    height: 337px;
+    box-shadow: 0 0px 8px 0px rgba(80, 80, 80, 0.2);
+    border-radius: 5px;
+    margin-top: 17px;
+    padding: 25px;
+}
+
+app-career {
+    position: relative;
+    top: 30px;
+}
