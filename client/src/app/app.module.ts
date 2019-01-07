@@ -1,9 +1,10 @@
-import { MatSidenavModule, MatListModule, MatButtonModule, MatCheckboxModule, 
-  MatFormFieldModule, MatInputModule, MatIconModule, MatCardModule, MatDividerModule, 
+import { HttpService } from './service/http.service';
+import { MatSidenavModule, MatListModule, MatButtonModule, MatCheckboxModule,
+  MatFormFieldModule, MatInputModule, MatIconModule, MatCardModule, MatDividerModule,
   MatGridListModule, MatSelectModule, MatOptionModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from "@angular/router";
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { CareerComponent } from './career/career.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -24,9 +26,10 @@ import { CareerComponent } from './career/career.component';
     LoginComponent,
     SignupComponent,
     HomeComponent,
-    CareerComponent
+    CareerComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     MatDividerModule,
@@ -63,7 +66,9 @@ import { CareerComponent } from './career/career.component';
       }
     ])
   ],
-  providers: [],
+  providers: [
+    HttpService
+  ],
   bootstrap: [
     AppComponent,
     LoginComponent,

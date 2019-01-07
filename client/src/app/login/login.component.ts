@@ -1,3 +1,5 @@
+import { HttpService } from '../service/http.service';
+import { User } from './../models/user';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -9,16 +11,32 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   title = 'Universidad Rafael Urdaneta';
+  user: User = {
+    user_id: null,
+    name: '',
+    lastname: '',
+    username: '',
+    password: '',
+    type_user_id: null,
+    created_at: '',
+};
 
-  constructor(private router: Router) { 
+  constructor(private router: Router, private httpService: HttpService) {
 
   }
 
-  login() {
-    this.router.navigateByUrl('/home');
-  };
-
   ngOnInit() {
+  }
+
+  login() {
+    this.httpService.post(this.user, '/Login').subscribe((res: any) => {
+      if (res.status === 200) {
+          console.log(res);
+          this.router.navigateByUrl('/home');
+      } else {
+        console.log(res.message);
+      }
+    });
   }
 
 }
