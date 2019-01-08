@@ -22,7 +22,7 @@
                 </div>
                 <div class="col col-8">
                   <div class="md-form">
-                    <input type="text" class="form-control username">
+                    <input type="text" class="form-control username" [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}">
                   </div>
                 </div>         
                 <div class="col-3">
@@ -30,7 +30,7 @@
                 </div>
                 <div class="col col-8">
                   <div class="md-form">
-                    <input type="password" class="form-control password">          
+                    <input type="password" class="form-control password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}">          
                   </div>
                 </div>
               </div>
