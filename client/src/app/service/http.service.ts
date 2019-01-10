@@ -7,6 +7,11 @@ const httpOptions = {
   withCredentials: true
 };
 
+const httpOptionsFile = {
+  contentType: false,
+  withCredentials: true
+};
+
 @Injectable()
 export class HttpService {
 
@@ -24,6 +29,10 @@ export class HttpService {
 
   public post(data, url) {
     return this.http.post(this.baseUrl + url, data, httpOptions);
+  }
+
+  public postFile(data, url) {
+    return this.http.post(this.baseUrl + url, data, httpOptionsFile);
   }
 
 }
