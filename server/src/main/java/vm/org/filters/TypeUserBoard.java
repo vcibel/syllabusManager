@@ -24,7 +24,7 @@ import vm.org.utilities.PropertiesReader;
  */
 
 
-@WebFilter(servletNames= {"Column", "Card", "UserBoard", "Comment", "Files"})
+@WebFilter(servletNames= {"Column", "Card", "UserBoard", "Comment"})
 		   //urlPatterns= "/boards.html*")
 
 public class TypeUserBoard implements Filter {

@@ -28,9 +28,17 @@ public class Subjects extends HttpServlet {
 		DB db = new DB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 
-		Integer id = Integer.parseInt(request.getParameter("id"));
+		JSONArray result;
 
-		json.put("cards", db.executeQuery(prop.getValue("query_getSubjectByCareer"),id)).put("status", 200).put("response", prop.getValue("mssg_success"));
+		if(request.getParameterMap().containsKey("id")){
+			Integer id = Integer.parseInt(request.getParameter("id"));
+			result = db.executeQuery(prop.getValue("query_getSubjectByDepartment"),id);
+        } else {
+		    result = db.executeQuery(prop.getValue("query_getSubjects"));
+        }
+
+		json.put("subjects", result).put("typesSubject", db.executeQuery(prop.getValue("query_getTypeSubject")))
+                .put("status", 200).put("response", prop.getValue("mssg_success"));
 
 		out.print(json.toString());
 
@@ -40,47 +48,31 @@ public class Subjects extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
 		JSONObject reqBody = new JSONObject(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
-		Part file = request.getPart("file");
-		InputStream filecontent = file.getInputStream();
-		OutputStream os = null;
 		DB db = new DB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		try {
 			String subject_code = reqBody.getString("subject_code");
 			String name = reqBody.getString("name");
-			Integer hour_restriction = reqBody.getInt("hour_restriction");
-			String subject_restriction = reqBody.getString("subject_restriction");
 			Integer hc = reqBody.getInt("hc");
 			Integer type_subject_id = reqBody.getInt("type_subject_id");
-			Integer college_code = reqBody.getInt("college_code");
-			Integer department_code = reqBody.getInt("department_code");
-			Integer career_code = reqBody.getInt("career_code");
+            Integer department_id = reqBody.getInt("department_id");
+            Integer code_consecutive = reqBody.getInt("code_consecutive");
 
-			String file_name = getFileName(file);
-			String file_url = prop.getValue("baseDir") + "/" + file_name;
-			System.out.println("Archivo-> " + file_name + "" + file_url);
+			if (subject_code.length() < 6) {
+				// arreglar para cuando no hay ninguno
+			    subject_code = subject_code + String.format("%02d", db.executeQuery(prop.getValue("query_getSubjectByDepartment"), department_id).getJSONObject(0).getInt("code_consecutive")+1);
+            }
 
-			os = new FileOutputStream(file_url);
-			int read = 0;
-			byte[] bytes = new byte[1024];
-			while ((read = filecontent.read(bytes)) != -1) {
-				os.write(bytes, 0, read);
-			}
-
-
-			//Integer consecutive = db.executeQuery(prop.getValue("query_query_getCountSubjectByDepartment"), department_code).length()+1;
-
-			//String subject_code = college_code+career_code+department_code+type_subject+consecutive;
-
-			//if (column_id==0) { ---------- Falta chekear type_subject ------ ////
-				Integer subject_id = db.executeUpdate(prop.getValue("query_addSubject"), subject_code, name, hour_restriction, subject_restriction, hc, type_subject_id);
+			if (db.executeQuery(prop.getValue("query_checkSubject"), subject_code, name).length()==0) {
+				Integer subject_id = db.executeUpdate(prop.getValue("query_addSubject"), subject_code, name, hc, type_subject_id);
+                db.executeUpdate(prop.getValue("query_addSubjectDepartment"), subject_id, department_id, code_consecutive);
 				json.put("status", 200).put("response", prop.getValue("mssg_subjectCreated")).put("subject_id", subject_id);
 				System.out.println(prop.getValue("mssg_subjectCreated"));
-			/*}else {
-				json.put("response", pr.getValue("mssg_columnUsed")).put("status", 400);
- 		    	System.out.println(pr.getValue("mssg_creationFail"));
-			}*/
+			}else {
+				json.put("response", prop.getValue("mssg_subjectExist")).put("status", 400);
+ 		    	System.out.println(prop.getValue("mssg_subjectExist"));
+			}
 		
 		}catch (Exception e) {
 			System.out.println("error");

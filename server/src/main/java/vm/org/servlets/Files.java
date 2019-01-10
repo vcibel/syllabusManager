@@ -55,33 +55,36 @@ public class Files extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
-		Part file = request.getPart("file");
-		InputStream filecontent = file.getInputStream();
+		Collection<Part> files = request.getParts();
+		InputStream filecontent = null;
 		OutputStream os = null;
 		DB db = new DB();
 		PropertiesReader prop = PropertiesReader.getInstance();
+		ArrayList<String> files_name= new ArrayList<String>();
 		
 		try {
 
 			Integer subject_id = Integer.parseInt(request.getParameter("subject_id"));
-			Integer career_id = Integer.parseInt(request.getParameter("career_id"));
 
-            String file_name = getFileName(file);
-            String file_url = prop.getValue("baseDir") + "/" + file_name;
+			for (Part file : files) {
+				String file_name = getFileName(file);
+				String file_url = prop.getValue("baseDir") + "/" + file_name;
 
-            db.executeUpdate(prop.getValue("query_updateSubject"), file_name, file_url, subject_id);
-            System.out.println("Archivo-> " + file_name + "" + file_url);
+				filecontent = file.getInputStream();
 
-            os = new FileOutputStream(file_url);
-			int read = 0;
-			byte[] bytes = new byte[1024];
-			while ((read = filecontent.read(bytes)) != -1) {
-				os.write(bytes, 0, read);
+				db.executeUpdate(prop.getValue("query_updateSubject"), file_name, file_url, subject_id);
+
+				System.out.println("Archivo-> " + file_name + "" + file_url);
+				os = new FileOutputStream(file_url);
+				int read = 0;
+				byte[] bytes = new byte[1024];
+				while ((read = filecontent.read(bytes)) != -1) {
+					os.write(bytes, 0, read);
+				}
+				files_name.add(file_name);
+				json.put("status", 200).put("response", prop.getValue("mssg_fileUploaded")).put("files_name", files_name);
+				System.out.println(prop.getValue("mssg_fileUploaded"));
 			}
-
-			json.put("status", 200).put("response", prop.getValue("mssg_fileUploaded")).put("files_name", file_name);
-			System.out.println(prop.getValue("mssg_fileUploaded"));
-
 			out.print(json.toString());
 		} catch (Exception e) {
 			System.out.println("error");

@@ -16,7 +16,7 @@
                   <mat-action-list>
                     <button mat-list-item >Inicio</button>
                     <hr>
-                    <button mat-list-item (click)="open(content)"><h6>Crear Carrera</h6></button>
+                    <button mat-list-item (click)="open(content)"><h6>Crear Escuela</h6></button>
                     <hr>
                     <button mat-list-item ><h6>Crear Pensum</h6></button>
                     <hr>
@@ -39,17 +39,17 @@
         <h2 class="title">Universidad Rafael Urdaneta</h2>
         <hr>
       </div>
-      <div class="col" *ngIf="showCareer">
-        <mat-card class="career">
+      <div class="col" *ngIf="showCollege">
+        <mat-card class="college">
           <mat-card-content>
             <div class="row">
-              <div class="col col-md-4" *ngFor="let career of careers" >
+              <div class="col col-md-4" *ngFor="let college of colleges" >
                 <mat-card class="example-card">
-                  <mat-card class="img-career">
-                    <img mat-card-image [src]=career.career_image>
+                  <mat-card class="img-college">
+                    <img mat-card-image [src]=college.college_image>
                   </mat-card>
                   <mat-card-content>
-                    <h4 class="career-title">{{career.name}}</h4>
+                    <h4 class="college-title">{{college.name}}</h4>
                   </mat-card-content>
                 </mat-card>
               </div>              
@@ -59,17 +59,17 @@
       </div>
       <!--Career-->
       <div class="col">
-       <!-- <app-career *ngIf="showCareer; else notShowCareer"></app-career> -->
+       <!-- <app-college *ngIf="showCareer; else notShowCareer"></app-college> -->
       </div>
     </div>
   </div>
 </div>
 
-<!--Create career-->
+<!--Create college-->
 
 <ng-template #content let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Crear Carrera</h4>
+      <h4 class="modal-title" id="modal-basic-title">Crear Escuela</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -79,27 +79,19 @@
         <div class="form-group">
           <div class="row">
             <div class="col col-3">
-              <label for="career-name">Nombre de la Carrera:</label>              
+              <label for="college-name">Nombre de la Escuela:</label>              
             </div>
             <div class="col col-8">
               <div class="md-form">
-                <input type="text" class="form-control career-name" placeholder="Ej. Ingenieria de Computacion" [(ngModel)]="career.name" [ngModelOptions]="{standalone: true}">
+                <input type="text" class="form-control college-name" placeholder="Ej. Ingenieria de Computacion" [(ngModel)]="college.name" [ngModelOptions]="{standalone: true}">
               </div>
             </div>      
             <div class="col col-3">
-              <label for="career-name">Código de la Carrera:</label>              
+              <label for="college-name">Código de la Escuela:</label>              
             </div>
             <div class="col col-8">
               <div class="md-form">
-                <input type="number" class="form-control career-name" placeholder="0" [(ngModel)]="career.career_code" [ngModelOptions]="{standalone: true}">
-              </div>
-            </div>      
-            <div class="col-3">
-              <label for="number-terms">Numero de Trimestres:</label>
-            </div>
-            <div class="col col-8">
-              <div class="md-form">
-                <input type="number" class="form-control" placeholder="10" [(ngModel)]="career.number_of_terms" [ngModelOptions]="{standalone: true}">            
+                <input type="number" class="form-control college-name" placeholder="0" [(ngModel)]="college.college_code" [ngModelOptions]="{standalone: true}">
               </div>
             </div>
             <div class="col col-3">
@@ -107,8 +99,8 @@
             </div>
             <div class="col col-8">
               <mat-form-field>
-                <select matNativeControl required [(ngModel)]="career.college_id" [ngModelOptions]="{standalone: true}">
-                  <option *ngFor="let college of colleges" [value]=college.college_id>{{college.description}}</option>
+                <select matNativeControl required [(ngModel)]="college.faculty_id" [ngModelOptions]="{standalone: true}">
+                  <option *ngFor="let faculty of faculties" [value]=faculty.faculty_id>{{faculty.description}}</option>
                 </select>
               </mat-form-field>
             </div>
@@ -117,7 +109,7 @@
             </div>
               <div class="col col-8">
                 <div class="md-form">
-                  <input type="file" class="form-control input-file" [(ngModel)]="career.career_image" [ngModelOptions]="{standalone: true}">          
+                  <input type="file" class="form-control input-file" [(ngModel)]="college.college_image" [ngModelOptions]="{standalone: true}">          
               </div>
             </div>
           </div>
@@ -125,11 +117,11 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createCarrer(modal)">Crear</button>
+      <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createCollege(modal)">Crear</button>
     </div>
   </ng-template>
 
-<!--Create Collage-->
+<!--Create Faculty-->
 
 <ng-template #content2 let-modal class="create-collage">
     <div class="modal-header">
@@ -143,11 +135,11 @@
         <div class="form-group">
           <div class="row">
             <div class="col col-3">
-              <label for="career-name">Nombre de la Facultad:</label>              
+              <label for="college-name">Nombre de la Facultad:</label>              
             </div>
             <div class="col col-8">
               <div class="md-form">
-                <input type="text" class="form-control career-name" placeholder="Ej. Facultad de Ingenieria" [(ngModel)]="college.description" [ngModelOptions]="{standalone: true}">
+                <input type="text" class="form-control college-name" placeholder="Ej. Facultad de Ingenieria" [(ngModel)]="faculty.description" [ngModelOptions]="{standalone: true}">
               </div>
             </div>         
             <div class="col-3">
@@ -155,7 +147,7 @@
             </div>
             <div class="col col-8">
               <div class="md-form">
-                <input type="number" class="form-control career-name" placeholder="Código" [(ngModel)]="college.college_code" [ngModelOptions]="{standalone: true}">          
+                <input type="number" class="form-control college-name" placeholder="Código" [(ngModel)]="faculty.faculty_code" [ngModelOptions]="{standalone: true}">          
               </div>
             </div>
           </div>
@@ -163,7 +155,7 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createCollege(modal)">Crear</button>
+      <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createFaculty(modal)">Crear</button>
     </div>
   </ng-template>
 
@@ -181,23 +173,48 @@
           <div class="form-group">
             <div class="row">
               <div class="col col-3">
-                <label for="career-name">Nombre de la Materia:</label>              
+                <label for="college-name">Nombre de la Materia:</label>              
               </div>
               <div class="col col-8">
                 <div class="md-form">
-                  <input type="text" class="form-control career-name" placeholder="Ej. Programacion II" [(ngModel)]="subject.name" [ngModelOptions]="{standalone: true}">
+                  <input type="text" class="form-control college-name" placeholder="Ej. Programacion II" [(ngModel)]="subject.name" [ngModelOptions]="{standalone: true}">
                 </div>
               </div> 
               <div class="col col-3">
-                <label for="career-name">Tipo de materia:</label>              
+                <label for="college-name">Código de la Materia:</label>              
+              </div>
+              <div class="col col-8">
+                <div class="md-form">
+                  <input type="text" class="form-control college-name" placeholder="" [(ngModel)]="subject.subject_code" [ngModelOptions]="{standalone: true}">
+                </div>
+              </div> 
+              <div class="col col-3">
+                <label for="collage-type">Seleccione escuela a la que pertenece:</label>
               </div>
               <div class="col col-8">
                 <mat-form-field>
-                  <select matNativeControl required [(ngModel)]="subject.type_subject_id" [ngModelOptions]="{standalone: true}">
-                    <option value="0">Práctica</option>
-                    <option value="1">Teórica</option>
-                    <option value="2">Escuela de Arquitectura</option>
-                    <option value="3">Escuela de Produccion Animal</option>
+                  <select matNativeControl required [(ngModel)]="college_selected" [ngModelOptions]="{standalone: true}" (change)="getCollegeDepartments(college_selected)">
+                    <option *ngFor="let college of colleges" [ngValue]=college>{{college.name}}</option>
+                  </select>
+                </mat-form-field>
+              </div>
+              <div class="col col-3">
+                <label for="collage-type">Seleccione departamento al que pertenece:</label>
+              </div>
+              <div class="col col-8">
+                <mat-form-field>
+                  <select matNativeControl required [(ngModel)]="department_selected" [ngModelOptions]="{standalone: true}">
+                    <option *ngFor="let collegeDepartment of collegeDepartments" [ngValue]=collegeDepartment>{{collegeDepartment.description}}</option>
+                  </select>
+                </mat-form-field>
+              </div>
+              <div class="col col-3">
+                <label for="college-name">Tipo de materia:</label>              
+              </div>
+              <div class="col col-8">
+                <mat-form-field>
+                  <select matNativeControl required [(ngModel)]="type_subject_selected" [ngModelOptions]="{standalone: true}">
+                    <option *ngFor="let type_subject of typesSubject" [ngValue]=type_subject>{{type_subject.description}}</option>
                   </select>
                 </mat-form-field>
               </div>       
@@ -214,7 +231,7 @@
               </div>
                 <div class="col col-8">
                   <div class="md-form">
-                    <input type="file" class="form-control input-file" [(ngModel)]="subject.syllabus_url" [ngModelOptions]="{standalone: true}">          
+                    <input type="file" class="form-control input-file file" #file (change)="onFilesAdded(this)">          
                 </div>
               </div>
             </div>

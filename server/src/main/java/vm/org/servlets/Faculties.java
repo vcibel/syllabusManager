@@ -1,29 +1,26 @@
 package vm.org.servlets;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.stream.Collectors;
+import org.json.JSONObject;
+import vm.org.DB;
+import vm.org.utilities.PropertiesReader;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import vm.org.DB;
-import vm.org.utilities.PropertiesReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.stream.Collectors;
 
 @WebServlet(
-		name="Departments",
-		urlPatterns="/Departments")
+		name="Faculties",
+		urlPatterns="/Faculties")
 
-public class Departments extends HttpServlet {
+public class Faculties extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public Departments() { super(); }
+    public Faculties() { super(); }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
@@ -31,16 +28,7 @@ public class Departments extends HttpServlet {
 		DB db = new DB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 
-		JSONArray result;
-
-		if(request.getParameterMap().containsKey("id")){
-			Integer id = Integer.parseInt(request.getParameter("id"));
-			result = db.executeQuery(prop.getValue("query_getDepartmentsByCollege"),id);
-		} else {
-			result = db.executeQuery(prop.getValue("query_getDepartments"));
-		}
-
-		json.put("departments",result).put("status", 200).put("response", prop.getValue("mssg_success"));
+		json.put("faculties", db.executeQuery(prop.getValue("query_getFaculties"))).put("status", 200).put("response", prop.getValue("mssg_success"));
 		
 		out.print(json.toString());
 	}
@@ -53,17 +41,16 @@ public class Departments extends HttpServlet {
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		try {
-            String department_code = reqBody.getString("department_code");
-			Integer career_id = reqBody.getInt("career_id");
+			Integer faculty_code = reqBody.getInt("faculty_code");
 			String description = reqBody.getString("description");
 
-			if (db.executeQuery(prop.getValue("query_checkDepartment"), department_code, description, career_id).length() ==0) {
-				Integer department_id = db. executeUpdate(prop.getValue("query_addDepartment"), career_id, description) ;
-				json.put("status", 200).put("response", prop.getValue("mssg_departmentCreated")).put("department_id", department_id);
-				System.out.println(prop.getValue("mssg_departmentCreated"));
+			if (db.executeQuery(prop.getValue("query_checkFaculty"), description, faculty_code).length() ==0) {
+				Integer faculty_id = db. executeUpdate(prop.getValue("query_addFaculty"), faculty_code, description) ;
+				json.put("status", 200).put("response", prop.getValue("mssg_facultyCreated")).put("faculty_id", faculty_id);
+				System.out.println(prop.getValue("mssg_facultyCreated"));
 			}else {
-				json.put("response", prop.getValue("mssg_departmentExist")).put("status", 400);
- 		    	System.out.println(prop.getValue("mssg_departmentExist"));
+				json.put("response", prop.getValue("mssg_facultyExist")).put("status", 400);
+ 		    	System.out.println(prop.getValue("mssg_facultyExist"));
 			}
 
 		}catch (Exception e) {
@@ -84,11 +71,11 @@ public class Departments extends HttpServlet {
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		try {
-			Integer department_id = reqBody.getInt("department_id");
+			Integer faculty_id = reqBody.getInt("faculty_id");
 
-			db.executeUpdate(prop.getValue("query_deleteDepartment"), department_id);
-			json.put("status", 200).put("response", prop.getValue("mssg_departmentDeleted"));
-			System.out.println(prop.getValue("mssg_departmentDeleted"));
+			db.executeUpdate(prop.getValue("query_deleteFaculty"), faculty_id);
+			json.put("status", 200).put("response", prop.getValue("mssg_facultyDeleted"));
+			System.out.println(prop.getValue("mssg_facultyDeleted"));
 
 		}catch (Exception e) {
 			System.out.println("error");
@@ -109,19 +96,12 @@ public class Departments extends HttpServlet {
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		try {
-            String department_code = reqBody.getString("department_code");
-            Integer department_id = reqBody.getInt("department_id");
-			Integer career_id = reqBody.getInt("career_id");
-			String description = reqBody.getString("description");
+			Integer faculty_id = reqBody.getInt("faculty_id");
+			String new_description = reqBody.getString("description");
 
-			if (db.executeQuery(prop.getValue("query_checkDepartment"), department_code, description, career_id).length() ==0) {
-				db.executeUpdate(prop.getValue("query_updateDepartment"), description, career_id, department_id);
-				json.put("status", 200).put("response", prop.getValue("mssg_departmentUpdated"));
-				System.out.println(prop.getValue("mssg_departmentUpdated"));
-			}else {
-				json.put("response", prop.getValue("mssg_departmentExist")).put("status", 400);
-				System.out.println(prop.getValue("mssg_departmentExist"));
-			}
+			db.executeUpdate(prop.getValue("query_updateFaculty"), new_description, faculty_id);
+			json.put("status", 200).put("response", prop.getValue("mssg_facultyUpdated"));
+			System.out.println(prop.getValue("mssg_facultyUpdated"));
 		
 		}catch (Exception e) {
 			System.out.println("error");
