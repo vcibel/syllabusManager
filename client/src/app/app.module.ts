@@ -1,10 +1,9 @@
 import { HttpService } from './service/http.service';
 import { MatSidenavModule, MatListModule, MatButtonModule, MatCheckboxModule,
-  MatFormFieldModule, MatInputModule, MatIconModule, MatCardModule, MatDividerModule,
-  MatGridListModule, MatSelectModule, MatOptionModule } from '@angular/material';
+  MatInputModule, MatIconModule, MatCardModule, MatDividerModule,
+  MatGridListModule, MatMenuModule, MatExpansionModule, MatSelectModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,7 +17,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { CareerComponent } from './career/career.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ModalsComponent } from './modals/modals.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     SignupComponent,
     HomeComponent,
     CareerComponent,
+    ModalsComponent
   ],
   imports: [
     HttpClientModule,
@@ -36,9 +36,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     MatGridListModule,
     MatListModule,
+    MatSelectModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatFormFieldModule,
     MatDividerModule,
     MatInputModule,
     BrowserAnimationsModule,
@@ -46,25 +46,29 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatIconModule,
     MatCardModule,
-    MatSelectModule,
-    MatOptionModule,
+    MatMenuModule,
+    MatExpansionModule,
     AngularFontAwesomeModule,
     MDBBootstrapModule.forRoot(),
     NgbModule.forRoot(),
-    RouterModule.forRoot([
-      {
-        path: '',
-        component: LoginComponent
-      },
-      {
-        path: 'home',
-        component: HomeComponent
-      },
-      {
-        path: 'signup',
-        component: SignupComponent
-      }
-    ])
+    // RouterModule.forRoot(
+    //   appRoutes,
+    //   { enableTracing: true } // <-- debugging purposes only
+    // )
+  //   RouterModule.forRoot([
+  //     {
+  //       path: '',
+  //       component: LoginComponent
+  //     },
+  //     {
+  //       path: 'home',
+  //       component: HomeComponent
+  //     },
+  //     {
+  //       path: 'signup',
+  //       component: SignupComponent
+  //     }
+  //   ])
   ],
   providers: [
     HttpService
