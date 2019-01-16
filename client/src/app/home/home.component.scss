@@ -123,3 +123,49 @@ app-career {
     position: relative;
     top: 30px;
 }
+
+.des {
+    position: relative;
+    top: -23px;
+}
+
+input.form-control.cod-deparment {
+    position: relative;
+    top: -36px;
+}
+
+.cod, .cod-deparment{
+    width: 90px;
+    text-align: center;
+}
+
+.select-career{
+    width: 300px
+}
+
+.img-career{
+    position: relative;
+    left: 113px;
+}
+
+.img-ccarrer{
+    height: 149px;
+    position: relative;
+    top: -17px;
+}
+
+.modal.modal-body, .modal-body-2{
+    position: relative;
+    flex: 1 1 auto;
+    padding: 1rem;
+    overflow-y: scroll !important;
+}
+
+.modal-content {
+    height: 690px !important;
+}
+
+label.faculties {
+    position: relative;
+    top: 18px;
+}

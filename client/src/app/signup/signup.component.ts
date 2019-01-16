@@ -1,5 +1,5 @@
 import { HttpService } from '../service/http.service';
-import { User } from './../models/user';
+import { User } from '../models/user';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  title = 'Universidad Rafael Urdaneta';
+  // title = 'Universidad Rafael Urdaneta';
   user: User = {
     user_id: null,
     name: '',

@@ -9,13 +9,11 @@ import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TypeSubject } from '../models/type_subjet';
 import * as $ from 'jquery';
+import { FormControl } from '@angular/forms';
 
 export interface Section {
   name: string;
-  component: string;
-  func: any;
 }
-
 
 @Component({
   selector: 'app-home',
@@ -23,6 +21,9 @@ export interface Section {
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+ 
+  panelOpenState = false;
+  isViewable: boolean; 
 
   showCollege: boolean = true;
   closeResult: string;
@@ -99,12 +100,14 @@ formData: FormData = new FormData();
 
   constructor(private router: Router, private modalService: NgbModal, private httpService: HttpService) { }
 
-  menu: Section[] = [
-    {name: 'Inicio', component: '/home', func: 'open(content)'},
-    {name: 'Crear Carrera', component: '/signup', func: 'logout()' },
-    {name: 'Crear Pensum', component: 'LoginComponent', func: 'logout()'},
-    {name: 'Crear Materia', component: 'LoginComponent', func: 'logout()'},
-  ];
+    menu: Section[] = [ 
+      { name: 'Career'},
+      { name: 'Subject'},
+      { name: 'Deparment'},
+      { name: 'Faculties'},
+      { name: 'Pensum'},
+      { name: 'Register'},
+    ];
 
   ngOnInit() {
     // LISTAR FACULTADES
@@ -296,14 +299,25 @@ formData: FormData = new FormData();
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
-
-  openSubject(content3) {
-    this.modalService.open(content3, {ariaLabelledBy: 'modal-basic-title-3'}).result.then((result) => {
+  openDeparment(content4) {
+    this.modalService.open(content4, {ariaLabelledBy: 'modal-basic-title-4'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
+
+  openSubject(content3) {
+    this.modalService.open(content3, {ariaLabelledBy: 'modal-basic-title-3', backdrop: true}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  // toggle() { this.isViewable = !this.isViewable; }
+
+  toggle() { this.isViewable = true; }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
