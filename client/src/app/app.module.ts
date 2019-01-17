@@ -1,7 +1,7 @@
 import { HttpService } from './service/http.service';
 import { MatSidenavModule, MatListModule, MatButtonModule, MatCheckboxModule,
   MatInputModule, MatIconModule, MatCardModule, MatDividerModule,
-  MatGridListModule, MatMenuModule, MatExpansionModule, MatSelectModule } from '@angular/material';
+  MatGridListModule, MatMenuModule, MatExpansionModule, MatSelectModule, MatDialogModule, MatFormFieldModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -18,6 +18,9 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { CareerComponent } from './career/career.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalsComponent } from './modals/modals.component';
+import { SubjectComponent } from './subject/subject.component';
+import { DeparmentComponent } from './deparment/deparment.component';
+import { FacultiesComponent } from './faculties/faculties.component';
 
 @NgModule({
   declarations: [
@@ -26,10 +29,14 @@ import { ModalsComponent } from './modals/modals.component';
     SignupComponent,
     HomeComponent,
     CareerComponent,
-    ModalsComponent
+    ModalsComponent,
+    SubjectComponent,
+    DeparmentComponent,
+    FacultiesComponent
   ],
   imports: [
     HttpClientModule,
+    MatFormFieldModule,
     BrowserModule,
     FormsModule,
     MatDividerModule,
@@ -47,29 +54,13 @@ import { ModalsComponent } from './modals/modals.component';
     MatIconModule,
     MatCardModule,
     MatMenuModule,
+    MatDialogModule,
     MatExpansionModule,
     AngularFontAwesomeModule,
     MDBBootstrapModule.forRoot(),
     NgbModule.forRoot(),
-    // RouterModule.forRoot(
-    //   appRoutes,
-    //   { enableTracing: true } // <-- debugging purposes only
-    // )
-  //   RouterModule.forRoot([
-  //     {
-  //       path: '',
-  //       component: LoginComponent
-  //     },
-  //     {
-  //       path: 'home',
-  //       component: HomeComponent
-  //     },
-  //     {
-  //       path: 'signup',
-  //       component: SignupComponent
-  //     }
-  //   ])
   ],
+  entryComponents: [ ModalsComponent, SubjectComponent ],
   providers: [
     HttpService
   ],

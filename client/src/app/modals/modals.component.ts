@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { MDBModalService, MDBModalRef, ModalDirective } from 'angular-bootstrap-md';
+import { NgbModal, ModalDismissReasons, NgbModalRef, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogRef } from '@angular/material';
+import { HttpService } from '../service/http.service';
+import { College } from '../models/college';
 
 @Component({
   selector: 'app-modals',
@@ -8,54 +12,46 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalsComponent implements OnInit {
 
-  showCollege: boolean = true;
-  closeResult: string;
+  college: College = {
+    college_id: null,
+    college_code: null,
+    name: '',
+    faculty_id: null,
+    faculty_code: null,
+    created_at: '',
+    updated_at: '',
+    college_image: ''
+  };
 
-  constructor(private modalService: NgbModal) { }
+  constructor(public dialogRef: MatDialogRef<ModalsComponent>, private httpService: HttpService) { }
+
+  createCollege() {
+    console.log(this.college);
+    this.httpService.post(this.college, '/Colleges').subscribe((res: any) => {
+        if (res.status === 200) {
+          this.onClose();
+          console.log(res);
+          this.college = {
+            college_id: null,
+            college_code: null,
+            name: '',
+            faculty_id: null,
+            faculty_code: null,
+            created_at: '',
+            updated_at: '',
+            college_image: ''
+          };
+        } else {
+          alert(res.response);
+        }
+    });
+  }
+
+  onClose(){
+    this.dialogRef.close();
+  }
 
   ngOnInit() {
   }
-
-  open(content: any) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-
-  openCollage(content2) {
-    this.modalService.open(content2, {ariaLabelledBy: 'modal-basic-title-2'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-  openDeparment(content4) {
-    this.modalService.open(content4, {ariaLabelledBy: 'modal-basic-title-4'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-
-  openSubject(content3) {
-    this.modalService.open(content3, {ariaLabelledBy: 'modal-basic-title-3', backdrop: true}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
-  }
-
 
 }

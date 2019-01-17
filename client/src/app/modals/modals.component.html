@@ -1,251 +1,60 @@
-<!-- --------------------------------------MODALS-------------------------------------------- -->
 
-  <!--Create Career-->
-
-  <ng-template #content let-modal class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Crear Carrera</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
+<div class="dialog-career">
+  <div class="dialog-conten">
+    <div class="career-header">
+        <mat-grid-list cols="10" rowHeight="100px">
+            <mat-grid-tile [colspan]="5" [rowspan]="1">
+                <h4>Crear Carrera</h4>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="5" [rowspan]="1">
+                <button type="button" class="close" aria-label="Close" (click)="onClose()">
+                  <span aria-hidden="true">×</span> 
+                </button>
+              </mat-grid-tile>
+        </mat-grid-list>
     </div>
-    <div class="modal-body modal-body-2">
-      <!-- <mat-card class="img-ccareer">
-        <img class="img-career" src="https://images.vexels.com/media/users/3/131734/isolated/preview/05d86a9b63d1930d6298b27081ddc345-foto-icono-del-marco-de-previsualizaci-n-by-vexels.png" alt="">
-      </mat-card> -->
-      <form>
-        <div class="form-group">
-          <div class="row">
-            <div class="col col-3">
-              <label for="college-name">Nombre de la Carrera:</label>              
-            </div>
-            <div class="col col-8">
-              <div class="md-form">
-                <input type="text" class="form-control college-name" placeholder="Ej. Ingenieria de Computacion" [(ngModel)]="college.name" [ngModelOptions]="{standalone: true}">
-              </div>
-            </div>      
-            <div class="col col-3">
-              <label for="college-name">Código de la Carrera:</label>              
-            </div>
-            <div class="col col-8">
-              <div class="md-form">
-                <input type="number" class="form-control cod" placeholder="0" [(ngModel)]="college.college_code" [ngModelOptions]="{standalone: true}">
-              </div>
-            </div>
-            <div class="col col-3">
+      <mat-grid-list cols="10" rowHeight="100px">
+            <mat-grid-tile [colspan]="4" [rowspan]="1"> 
+            <label for="college-name">Nombre de la Carrera:</label>
+            <mat-form-field>
+              <mat-label>Ej. Ingenieria de Computacion</mat-label>
+              <input matInput type="text" class="form-control college-name" [(ngModel)]="college.name" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="3" [rowspan]="3">
+              <mat-card class="img-ccareer">
+                <img class="img-career" src="https://images.vexels.com/media/users/3/131734/isolated/preview/05d86a9b63d1930d6298b27081ddc345-foto-icono-del-marco-de-previsualizaci-n-by-vexels.png" alt="">
+              </mat-card>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="3" [rowspan]="3">
+              <input type="file" class="form-control input-file" [(ngModel)]="college.college_image" [ngModelOptions]="{standalone: true}">
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="4" [rowspan]="1"> 
+              <label for="college-name">Código de la Carrera:</label> 
+                <mat-form-field>
+                  <input matInput type="number" class="form-control cod" [(ngModel)]="college.college_code" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="4" [rowspan]="1"> 
                 <label for="collage-type">Seleccionar Facultad:</label>
-            </div>
-            <div class="col col-8">
-              <mat-form-field class="select-career">
-                <select matNativeControl required [(ngModel)]="college.faculty_id" [ngModelOptions]="{standalone: true}">
-                  <option *ngFor="let faculty of faculties" [value]=faculty.faculty_id>{{faculty.description}}</option>
-                </select>
-              </mat-form-field>
-            </div>
-            <div class="col-3">
-              <label for="number-terms">Seleccione una imagen:</label>
-            </div>
-              <div class="col col-8">
-                <div class="md-form">
-                  <input type="file" class="form-control input-file" [(ngModel)]="college.college_image" [ngModelOptions]="{standalone: true}">          
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createCollege(modal)">Crear</button>
-    </div>
-  </ng-template>
-
-  
-
-<!--Create Faculty-->
-
-<ng-template #content2 let-modal class="create-collage">
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title-2">Crear Facultad</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <form>
-        <div class="form-group">
-          <div class="row">
-            <div class="col col-3">
-              <label for="college-name" class="faculties">Nombre de la Facultad:</label>              
-            </div>
-            <div class="col col-8">
-              <div class="md-form">
-                <input type="text" class="form-control college-name" placeholder="Ej. Facultad de Ingenieria" [(ngModel)]="faculty.description" [ngModelOptions]="{standalone: true}">
-              </div>
-            </div> 
-            <div class="col col-3">
-                <label for="deparment-name" class="faculties">Descripción:</label>             
-              </div>
-              <div class="col col-8">
-                <div class="md-form">
-                  <textarea type="text" class="md-textarea form-control des" rows="1"></textarea>
-                </div>
-              </div>        
-            <div class="col-3">
-              <label for="number-terms" class="faculties">Código:</label>
-            </div>
-            <div class="col col-8">
-              <div class="md-form">
-                <input type="number" class="form-control college-name" placeholder="Código" [(ngModel)]="faculty.faculty_code" [ngModelOptions]="{standalone: true}">          
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createFaculty(modal)">Crear</button>
-    </div>
-  </ng-template>
-
-  <!--Create Subject -->
-
-  <ng-template #content3 let-modal class="create-collage modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title-3">Crear Materia</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body modal-body-2">
-        <form>
-          <div class="form-group">
-            <div class="row">
-              <div class="col col-3">
-                <label for="college-name">Nombre de la Materia:</label>              
-              </div>
-              <div class="col col-8">
-                <div class="md-form">
-                  <input type="text" class="form-control college-name" placeholder="Ej. Programacion II" [(ngModel)]="subject.name" [ngModelOptions]="{standalone: true}">
-                </div>
-              </div>            
-              <div class="col col-3">
-                <label for="collage-type">Seleccione escuela a la que pertenece:</label>
-              </div>
-              <div class="col col-8">
-                <mat-form-field class="select-career">
-                  <select matNativeControl required [(ngModel)]="college_selected" [ngModelOptions]="{standalone: true}" (change)="getCollegeDepartments(college_selected)">
-                    <option *ngFor="let college of colleges" [ngValue]=college>{{college.name}}</option>
-                  </select>
-                </mat-form-field>
-              </div>
-              <div class="col col-3">
-                <label for="collage-type">Seleccione departamento al que pertenece:</label>
-              </div>
-              <div class="col col-8">
-                <mat-form-field class="select-career">
-                  <select matNativeControl required [(ngModel)]="department_selected" [ngModelOptions]="{standalone: true}">
-                    <option *ngFor="let collegeDepartment of collegeDepartments" [ngValue]=collegeDepartment>{{collegeDepartment.description}}</option>
-                  </select>
-                </mat-form-field>
-              </div>
-              <div class="col col-3">
-                <label for="college-name">Tipo de materia:</label>              
-              </div>
-              <div class="col col-8">
-                <mat-form-field class="select-career">
-                  <select matNativeControl required [(ngModel)]="type_subject_selected" [ngModelOptions]="{standalone: true}">
-                    <option *ngFor="let type_subject of typesSubject" [ngValue]=type_subject>{{type_subject.description}}</option>
-                  </select>
-                </mat-form-field>
-              </div>
-              <div class="col col-3">
-                  <label for="college-name">Código de la Materia:</label>              
-                </div>
-                <div class="col col-8">
-                  <div class="md-form">
-                    <input type="text" class="form-control college-name cod"  disabled placeholder="" [(ngModel)]="subject.subject_code" [ngModelOptions]="{standalone: true}">
-                  </div>
-                </div>        
-              <div class="col-3">
-                <label for="number-terms">HC:</label>
-              </div>
-              <div class="col col-8">
-                <div class="md-form">
-                  <input type="number" class="form-control" placeholder="2" [(ngModel)]="subject.hc" [ngModelOptions]="{standalone: true}">          
-                </div>
-              </div>
-              <div class="col-3">
-                <label for="number-terms">Seleccione el Programa de Estudio:</label>
-              </div>
-                <div class="col col-8">
-                  <div class="md-form">
-                    <input type="file" class="form-control input-file file" #file (change)="onFilesAdded(this)">          
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createSubject(modal)">Crear</button>
-      </div>
-    </ng-template>
-
-      <!--Create Deparment -->
-
-  <ng-template #content4 let-modal class="create-deparment">
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title-4">Crear Departamento</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <div class="row">
-              <div class="col col-3">
-                <label for="deparment-name">Nombre del Departamento:</label>             
-              </div>
-              <div class="col col-8">
-                <div class="md-form">
-                  <input type="text" class="form-control" >
-                </div>
-              </div>
-              <div class="col col-3">
-                <label for="deparment-name">Descripción:</label>             
-              </div>
-              <div class="col col-8">
-                <div class="md-form">
-                  <textarea type="text" class="md-textarea form-control des" rows="1"></textarea>
-                </div>
-              </div>
-              <div class="col-3">
-                  <label for="number-terms">Seleccione a que carrera pertenece:</label>
-                </div>
-                <div class="col col-8">
-                  <div class="md-form">
-                    <mat-form-field class="select-career">
-                      <select matNativeControl required  class="select-career">
-                        <option>Ingenieria en Computacion</option>
-                        <option>Ingenieria Electrica</option>
+                  <mat-form-field class="select-career">
+                    <mat-select [(ngModel)]="college.faculty_id" [ngModelOptions]="{standalone: true}">
+                      <mat-option *ngFor="let faculty of faculties" [value]=faculty.faculty_id>{{faculty.description}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                <!--  <label for="collage-type">Seleccionar Facultad:</label>
+                   <mat-form-field class="select-career">
+                      <select matNativeControl required [(ngModel)]="college.faculty_id" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let faculty of faculties" [value]=faculty.faculty_id>{{faculty.description}}</option>
                       </select>
-                    </mat-form-field>          
+                    </mat-form-field> -->
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="10" [rowspan]="1"> 
+                  <div class="btn-crearCarrera">
+                    <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createCollege()">Crear Carrera</button>
                   </div>
-                </div>
-              <div class="col-3">
-                <label for="number-terms">Código:</label>
-              </div>
-              <div class="col col-8">
-                <div class="md-form">
-                  <input type="number" class="form-control cod-deparment" placeholder="0" >          
-                </div>
-              </div>    
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect >Crear</button>
-      </div>
-    </ng-template>
+                </mat-grid-tile>
+            </mat-grid-list>
+  </div>
+</div>
+        

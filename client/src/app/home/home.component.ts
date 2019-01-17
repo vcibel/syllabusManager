@@ -3,13 +3,17 @@ import { College } from '../models/college';
 import { Department } from './../models/department';
 import { Faculty } from '../models/faculty';
 import { HttpService } from '../service/http.service';
-import { Component, OnInit, ViewChildren } from '@angular/core';
+import { Component, OnInit, ViewChildren, ViewChild } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TypeSubject } from '../models/type_subjet';
 import * as $ from 'jquery';
-import { FormControl } from '@angular/forms';
+import { ModalsComponent } from '../modals/modals.component';
+import { MDBModalService, ModalDirective } from 'angular-bootstrap-md';
+import { MatDialog, MatDialogConfig} from '@angular/material';
+import { SubjectComponent } from '../subject/subject.component';
+
 
 export interface Section {
   name: string;
@@ -20,6 +24,7 @@ export interface Section {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit {
  
   panelOpenState = false;
@@ -98,8 +103,9 @@ departmentSubjects: Subject[];
 files: Set<File> = new Set ;
 formData: FormData = new FormData();
 
-  constructor(private router: Router, private modalService: NgbModal, private httpService: HttpService) { }
-
+  constructor(private router: Router, private modalService: NgbModal, private httpService: HttpService,
+    private dialog: MatDialog ) { }
+//private modalComponent: ModalsComponent
     menu: Section[] = [ 
       { name: 'Career'},
       { name: 'Subject'},
@@ -284,6 +290,29 @@ formData: FormData = new FormData();
     console.log('do iit');
   }
 
+
+  @ViewChild('demoBasic') demoBasic: ModalDirective;
+
+  openModal(){
+    this.modalService.open(ModalsComponent);
+  }
+
+  openSubject(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "40%";
+    this.dialog.open(SubjectComponent, dialogConfig);
+  }
+
+  openDialog(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    this.dialog.open(ModalsComponent, dialogConfig);
+  }
+
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -307,7 +336,7 @@ formData: FormData = new FormData();
     });
   }
 
-  openSubject(content3) {
+  openSubject_(content3) {
     this.modalService.open(content3, {ariaLabelledBy: 'modal-basic-title-3', backdrop: true}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
