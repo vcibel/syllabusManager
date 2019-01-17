@@ -14,13 +14,15 @@
                       <mat-panel-title>{{ items.name }}</mat-panel-title>
                     </mat-expansion-panel-header>          
                     <div [ngSwitch]="items.name">
-                      <button *ngSwitchCase="'Career'" (click)="open(content)"><h6> Crear Career</h6></button>
-                      <button *ngSwitchCase="'Career'" (click)="open(content)"><h6> Ver Carrer</h6></button>
-                      <button *ngSwitchCase="'Subject'" (click)="openSubject(content3)"><h6> Crear Subject</h6></button>
+                      <!-- <button *ngSwitchCase="'Career'" (click)="open(content)"><h6> Crear Carreras</h6></button>
+                      <button *ngSwitchCase="'Career'" (click)="openModal()" ><h6>Ver Carreras</h6></button> -->
+                      <!-- <button *ngSwitchCase="'Subject'" (click)="openSubject(content3)"><h6> Crear Subject</h6></button>
                       <button *ngSwitchCase="'Deparment'" (click)="openDeparment(content4)"><h6> Crear Deparment</h6></button>
                       <button *ngSwitchCase="'Faculties'" (click)="openCollage(content2)"><h6> Crear Faculties</h6></button>
                       <button *ngSwitchCase="'Register'" (click)="toggle()"><h6> Crear Register</h6></button>
-                      <button *ngSwitchCase="'Pensum'"><h6> Crear Pensum</h6></button>
+                      <button *ngSwitchCase="'Pensum'"><h6> Crear Pensum</h6></button> -->
+                      <button *ngSwitchCase="'Career'" (click)="openDialog()"><h6>Crear Carreras</h6></button>
+                      <button *ngSwitchCase="'Subject'" (click)="openSubject()"><h6>Crear Materia</h6></button>
                     </div>    
                   </mat-expansion-panel>
                 </mat-accordion>   
@@ -68,65 +70,63 @@
 <!-- --------------------------------------MODALS-------------------------------------------- -->
 
   <!--Create Career-->
-
+<!-- 
   <ng-template #content let-modal class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Crear Carrera</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body modal-body-2">
-        <mat-card class="img-ccareer">
-          <img class="img-career" src="https://images.vexels.com/media/users/3/131734/isolated/preview/05d86a9b63d1930d6298b27081ddc345-foto-icono-del-marco-de-previsualizaci-n-by-vexels.png" alt="">
-        </mat-card>
-        <form>
-          <div class="form-group">
-            <div class="row">
-              <div class="col col-3">
-                <label for="college-name">Nombre de la Carrera:</label>              
-              </div>
-              <div class="col col-8">
-                <div class="md-form">
-                  <input type="text" class="form-control college-name" placeholder="Ej. Ingenieria de Computacion" [(ngModel)]="college.name" [ngModelOptions]="{standalone: true}">
-                </div>
-              </div>      
-              <div class="col col-3">
-                <label for="college-name">Código de la Carrera:</label>              
-              </div>
-              <div class="col col-8">
-                <div class="md-form">
-                  <input type="number" class="form-control cod" placeholder="0" [(ngModel)]="college.college_code" [ngModelOptions]="{standalone: true}">
-                </div>
-              </div>
-              <div class="col col-3">
-                  <label for="collage-type">Seleccionar Facultad:</label>
-              </div>
-              <div class="col col-8">
-                <mat-form-field class="select-career">
-                  <select matNativeControl required [(ngModel)]="college.faculty_id" [ngModelOptions]="{standalone: true}">
-                    <option *ngFor="let faculty of faculties" [value]=faculty.faculty_id>{{faculty.description}}</option>
-                  </select>
-                </mat-form-field>
-              </div>
-              <div class="col-3">
-                <label for="number-terms">Seleccione una imagen:</label>
-              </div>
-                <div class="col col-8">
-                  <div class="md-form">
-                    <input type="file" class="form-control input-file" [(ngModel)]="college.college_image" [ngModelOptions]="{standalone: true}">          
-                </div>
-              </div>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Crear Carrera</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body modal-body-2">
+    <mat-card class="img-ccareer">
+      <img class="img-career" src="https://images.vexels.com/media/users/3/131734/isolated/preview/05d86a9b63d1930d6298b27081ddc345-foto-icono-del-marco-de-previsualizaci-n-by-vexels.png" alt="">
+    </mat-card>
+    <form>
+      <div class="form-group">
+        <div class="row">
+          <div class="col col-3">
+            <label for="college-name">Nombre de la Carrera:</label>              
+          </div>
+          <div class="col col-8">
+            <div class="md-form">
+              <input type="text" class="form-control college-name" placeholder="Ej. Ingenieria de Computacion" [(ngModel)]="college.name" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>      
+          <div class="col col-3">
+            <label for="college-name">Código de la Carrera:</label>              
+          </div>
+          <div class="col col-8">
+            <div class="md-form">
+              <input type="number" class="form-control cod" placeholder="0" [(ngModel)]="college.college_code" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
-        </form>
+          <div class="col col-3">
+              <label for="collage-type">Seleccionar Facultad:</label>
+          </div>
+          <div class="col col-8">
+            <mat-form-field class="select-career">
+              <select matNativeControl required [(ngModel)]="college.faculty_id" [ngModelOptions]="{standalone: true}">
+                <option *ngFor="let faculty of faculties" [value]=faculty.faculty_id>{{faculty.description}}</option>
+              </select>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <label for="number-terms">Seleccione una imagen:</label>
+          </div>
+            <div class="col col-8">
+              <div class="md-form">
+                <input type="file" class="form-control input-file" [(ngModel)]="college.college_image" [ngModelOptions]="{standalone: true}">          
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createCollege(modal)">Crear</button>
-      </div>
-    </ng-template>
-
-    
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createCollege(modal)">Crear</button>
+  </div>
+</ng-template> -->
 
   <!--Create Faculty-->
 
