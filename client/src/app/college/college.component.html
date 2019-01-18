@@ -4,7 +4,7 @@
     <div class="career-header">
         <mat-grid-list cols="10" rowHeight="100px">
             <mat-grid-tile [colspan]="5" [rowspan]="1">
-                <h4>Crear Carrera</h4>
+                <h4>Crear Escuela</h4>
               </mat-grid-tile>
               <mat-grid-tile [colspan]="5" [rowspan]="1">
                 <button type="button" class="close" aria-label="Close" (click)="onClose()">
@@ -15,7 +15,7 @@
     </div>
       <mat-grid-list cols="10" rowHeight="100px">
             <mat-grid-tile [colspan]="4" [rowspan]="1"> 
-            <label for="college-name">Nombre de la Carrera:</label>
+            <label for="college-name">Nombre de la Escuela:</label>
             <mat-form-field>
               <mat-label>Ej. Ingenieria de Computacion</mat-label>
               <input matInput type="text" class="form-control college-name" [(ngModel)]="college.name" [ngModelOptions]="{standalone: true}">
@@ -30,7 +30,7 @@
               <input type="file" class="form-control input-file" [(ngModel)]="college.college_image" [ngModelOptions]="{standalone: true}">
             </mat-grid-tile>
             <mat-grid-tile [colspan]="4" [rowspan]="1"> 
-              <label for="college-name">Código de la Carrera:</label> 
+              <label for="college-name">Código de la Escuela:</label> 
                 <mat-form-field>
                   <input matInput type="number" class="form-control cod" [(ngModel)]="college.college_code" [ngModelOptions]="{standalone: true}">
                 </mat-form-field>
@@ -51,7 +51,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="10" [rowspan]="1"> 
                   <div class="btn-crearCarrera">
-                    <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createCollege()">Crear Carrera</button>
+                    <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createCollege()">Crear Escuela</button>
                   </div>
                 </mat-grid-tile>
             </mat-grid-list>

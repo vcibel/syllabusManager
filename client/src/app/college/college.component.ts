@@ -6,11 +6,11 @@ import { HttpService } from '../service/http.service';
 import { College } from '../models/college';
 
 @Component({
-  selector: 'app-modals',
-  templateUrl: './modals.component.html',
-  styleUrls: ['./modals.component.scss']
+  selector: 'app-college',
+  templateUrl: './college.component.html',
+  styleUrls: ['./college.component.scss']
 })
-export class ModalsComponent implements OnInit {
+export class CollegeComponent implements OnInit {
 
   college: College = {
     college_id: null,
@@ -23,7 +23,7 @@ export class ModalsComponent implements OnInit {
     college_image: ''
   };
 
-  constructor(public dialogRef: MatDialogRef<ModalsComponent>, private httpService: HttpService) { }
+  constructor(public dialogRef: MatDialogRef<CollegeComponent>, private httpService: HttpService) { }
 
   createCollege() {
     console.log(this.college);

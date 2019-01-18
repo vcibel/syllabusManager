@@ -1,4 +1,4 @@
-.container.faculties {
+.container.subjects {
     position: relative;
     top: 20px;
     right: 45px;
@@ -17,10 +17,10 @@
     position: relative;
 }
 
-.card-faculty {
+.card-subject{
     width: 100%;
 }
 
-mat-list-item.list-faculty.mat-list-item {
+mat-list-item.list-subject.mat-list-item {
     height: 300px;
 }
