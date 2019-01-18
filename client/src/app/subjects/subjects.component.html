@@ -1,28 +1,29 @@
-<div class="container faculties" >
+<div class="container subjects" >
     <mat-toolbar color="primary">
-      <span>Faculties</span>
+      <span>Subjects</span>
       <span class="example-spacer"></span>
-      <button mat-icon-button (click)="openFaculty()">
+      <button mat-icon-button (click)="openSubject()">
         <mat-icon class="example-icon">add_box</mat-icon>
       </button>
     </mat-toolbar>
-    <div class="faculties-created">
+    <div class="subjects-created">
       <mat-list>
-        <mat-list-item class="list-faculty">
-          <mat-card class="card-faculty">
+        <mat-list-item class="list-subject">
+          <mat-card class="card-subject">
             <mat-card-header>
               <mat-card-title>
-                Faculty Name 1
+                Subject Name 1
               </mat-card-title>
             </mat-card-header>
             <mat-card-content>
                 <mat-grid-list cols="3" rowHeight="150px">
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
-                      <img class="img-faculty" src="https://1.bp.blogspot.com/-CPY0iSr-jlU/Wh4VH0J9lhI/AAAAAAAABIA/h_ILn0EdN-QpVg9ZVBzs67BoupyZ2pKOQCLcBGAs/s750/Ingenieria_electrica_principios.jpg" alt="">
+                      <img class="img-subject" src="https://1.bp.blogspot.com/-CPY0iSr-jlU/Wh4VH0J9lhI/AAAAAAAABIA/h_ILn0EdN-QpVg9ZVBzs67BoupyZ2pKOQCLcBGAs/s750/Ingenieria_electrica_principios.jpg" alt="">
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="2" [rowspan]="1">
-                      Faculty Name 
-                      Faculty Code
+                      Subject Name 
+                      Subject Code
+                      Faculty
                     </mat-grid-tile>
                   </mat-grid-list>
             </mat-card-content>
@@ -33,21 +34,22 @@
           </mat-card>
         </mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item class="list-faculty">
-          <mat-card class="card-faculty">
+        <mat-list-item class="list-subject">
+          <mat-card class="card-subject">
             <mat-card-header>
               <mat-card-title>
-                Faculty Name 2
+                Subject Name 2
               </mat-card-title>
             </mat-card-header>
             <mat-card-content>
               <mat-grid-list cols="3" rowHeight="150px">
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
-                  <img class="img-faculty" src="https://3.bp.blogspot.com/-kAxdOyNd0l8/WT9k-WocHbI/AAAAAAAAE38/23-tfdtimw8N1cdofUwA8SZb2kU8KDUVgCLcB/s1600/cuanto%2Bgana%2Bun%2Bingeniero%2Ben%2Bcomputacion.jpeg" alt="">
+                  <img class="img-subject" src="https://3.bp.blogspot.com/-kAxdOyNd0l8/WT9k-WocHbI/AAAAAAAAE38/23-tfdtimw8N1cdofUwA8SZb2kU8KDUVgCLcB/s1600/cuanto%2Bgana%2Bun%2Bingeniero%2Ben%2Bcomputacion.jpeg" alt="">
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
-                  Faculty Name 
-                  Faculty Code
+                  Subject Name 
+                  Subject Code
+                  Faculty
                 </mat-grid-tile>
               </mat-grid-list>
               </mat-card-content>

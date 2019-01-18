@@ -1,7 +1,7 @@
 import { HttpService } from './service/http.service';
 import { MatSidenavModule, MatListModule, MatButtonModule, MatCheckboxModule,
   MatInputModule, MatIconModule, MatCardModule, MatDividerModule,
-  MatGridListModule, MatMenuModule, MatExpansionModule, MatSelectModule, MatDialogModule, MatFormFieldModule } from '@angular/material';
+  MatGridListModule, MatMenuModule, MatExpansionModule, MatSelectModule, MatDialogModule, MatFormFieldModule, MatToolbarModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -17,10 +17,14 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { CareerComponent } from './career/career.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ModalsComponent } from './modals/modals.component';
 import { SubjectComponent } from './subject/subject.component';
 import { DeparmentComponent } from './deparment/deparment.component';
 import { FacultiesComponent } from './faculties/faculties.component';
+import { CollegesComponent } from './colleges/colleges.component';
+import { CollegeComponent } from './college/college.component';
+import { FacultyComponent } from './faculty/faculty.component';
+import { SubjectsComponent } from './subjects/subjects.component';
+
 
 @NgModule({
   declarations: [
@@ -29,10 +33,13 @@ import { FacultiesComponent } from './faculties/faculties.component';
     SignupComponent,
     HomeComponent,
     CareerComponent,
-    ModalsComponent,
+    CollegeComponent,
     SubjectComponent,
     DeparmentComponent,
-    FacultiesComponent
+    FacultiesComponent,
+    CollegesComponent,
+    FacultyComponent,
+    SubjectsComponent
   ],
   imports: [
     HttpClientModule,
@@ -48,6 +55,7 @@ import { FacultiesComponent } from './faculties/faculties.component';
     MatCheckboxModule,
     MatDividerModule,
     MatInputModule,
+    MatToolbarModule,
     BrowserAnimationsModule,
     MatSidenavModule,
     MatButtonModule,
@@ -60,7 +68,7 @@ import { FacultiesComponent } from './faculties/faculties.component';
     MDBBootstrapModule.forRoot(),
     NgbModule.forRoot(),
   ],
-  entryComponents: [ ModalsComponent, SubjectComponent ],
+  entryComponents: [ CollegeComponent, SubjectComponent, FacultyComponent ],
   providers: [
     HttpService
   ],

@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TypeSubject } from '../models/type_subjet';
 import * as $ from 'jquery';
-import { ModalsComponent } from '../modals/modals.component';
 import { MDBModalService, ModalDirective } from 'angular-bootstrap-md';
 import { MatDialog, MatDialogConfig} from '@angular/material';
 import { SubjectComponent } from '../subject/subject.component';
+import { CollegeComponent } from '../college/college.component';
 
 
 export interface Section {
@@ -28,7 +28,11 @@ export interface Section {
 export class HomeComponent implements OnInit {
  
   panelOpenState = false;
-  isViewable: boolean; 
+  isRegister: boolean  = false; 
+  isCollege: boolean  = false;
+  isFaculty: boolean  = false;
+  isSubject: boolean  = false;
+  Show: boolean = false;  
 
   showCollege: boolean = true;
   closeResult: string;
@@ -105,9 +109,9 @@ formData: FormData = new FormData();
 
   constructor(private router: Router, private modalService: NgbModal, private httpService: HttpService,
     private dialog: MatDialog ) { }
-//private modalComponent: ModalsComponent
+
     menu: Section[] = [ 
-      { name: 'Career'},
+      { name: 'College'},
       { name: 'Subject'},
       { name: 'Deparment'},
       { name: 'Faculties'},
@@ -290,11 +294,8 @@ formData: FormData = new FormData();
     console.log('do iit');
   }
 
-
-  @ViewChild('demoBasic') demoBasic: ModalDirective;
-
   openModal(){
-    this.modalService.open(ModalsComponent);
+    this.modalService.open(CollegeComponent);
   }
 
   openSubject(){
@@ -303,14 +304,6 @@ formData: FormData = new FormData();
     dialogConfig.autoFocus = true;
     dialogConfig.width = "40%";
     this.dialog.open(SubjectComponent, dialogConfig);
-  }
-
-  openDialog(){
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
-    this.dialog.open(ModalsComponent, dialogConfig);
   }
 
   open(content) {
@@ -346,7 +339,39 @@ formData: FormData = new FormData();
 
   // toggle() { this.isViewable = !this.isViewable; }
 
-  toggle() { this.isViewable = true; }
+  toggleRegister() { 
+    if(this.isRegister)
+      this.isRegister = false;
+    else{
+      this.isRegister = true;
+    }  
+  }
+
+  toggleColleges() { 
+    if(this.isCollege)
+      this.isCollege = false;
+    else{
+      this.isCollege = true;
+    }  
+  }
+
+  toggleFaculties() { 
+    if(this.isFaculty)
+      this.isFaculty = false;
+    else{
+      this.isFaculty= true;
+    }  
+  }
+
+  toggleSubjects() { 
+    if(this.isSubject)
+      this.isSubject = false;
+    else{
+      this.isSubject = true;
+    }  
+  }
+
+
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {

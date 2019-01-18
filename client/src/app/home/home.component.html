@@ -17,13 +17,14 @@
                       <!-- <button *ngSwitchCase="'Career'" (click)="open(content)"><h6> Crear Carreras</h6></button>
                       <button *ngSwitchCase="'Career'" (click)="openModal()" ><h6>Ver Carreras</h6></button> -->
                       <!-- <button *ngSwitchCase="'Subject'" (click)="openSubject(content3)"><h6> Crear Subject</h6></button>
-                      <button *ngSwitchCase="'Deparment'" (click)="openDeparment(content4)"><h6> Crear Deparment</h6></button>
-                      <button *ngSwitchCase="'Faculties'" (click)="openCollage(content2)"><h6> Crear Faculties</h6></button>
-                      <button *ngSwitchCase="'Register'" (click)="toggle()"><h6> Crear Register</h6></button>
-                      <button *ngSwitchCase="'Pensum'"><h6> Crear Pensum</h6></button> -->
-                      <button *ngSwitchCase="'Career'" (click)="openDialog()"><h6>Crear Carreras</h6></button>
-                      <button *ngSwitchCase="'Subject'" (click)="openSubject()"><h6>Crear Materia</h6></button>
+                      <button *ngSwitchCase="'Deparment'" (click)="openDeparment(content4)"><h6> Crear Deparment</h6></button>-->
+                      <button *ngSwitchCase="'Faculties'" (click)="toggleFaculties()"><h6> Faculties</h6></button> 
+                      <button *ngSwitchCase="'Register'" (click)="toggleRegister()"><h6> Register</h6></button>
+                      <button *ngSwitchCase="'Pensum'"><h6> Crear Pensum</h6></button>
+                      <button *ngSwitchCase="'College'" (click)="toggleColleges()"><h6>Colleges</h6></button>
+                      <button *ngSwitchCase="'Subject'" (click)=" toggleSubjects()"><h6>Crear Materia</h6></button>
                     </div>    
+
                   </mat-expansion-panel>
                 </mat-accordion>   
               </div>
@@ -39,7 +40,7 @@
           <h2 class="title">Universidad Rafael Urdaneta</h2>
           <hr>
         </div>
-        <div class="col" *ngIf="showCollege">
+        <!-- <div class="col" *ngIf="showCollege">
           <mat-card class="college">
             <mat-card-content>
               <div class="row">
@@ -56,13 +57,16 @@
               </div>
             </mat-card-content>
           </mat-card>
-        </div>
+        </div> -->
         <!--Career-->
         <div class="col">
         <!-- <app-college *ngIf="showCareer; else notShowCareer"></app-college> -->
         </div>
         <div class="col">
-          <app-signup *ngIf="isViewable" ></app-signup>
+          <app-signup *ngIf="Show || isRegister" ></app-signup>
+          <app-colleges *ngIf="Show || isCollege"></app-colleges>
+          <app-faculties *ngIf="Show || isFaculty"></app-faculties>
+          <app-subjects *ngIf="Show || isSubject"></app-subjects>
         </div>
       </div>
     </div>
