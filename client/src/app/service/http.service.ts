@@ -23,12 +23,16 @@ export class HttpService {
     return this.http.get(this.baseUrl + url, httpOptions);
   }
 
-  public delete(data, url) {
-    return this.http.delete(this.baseUrl + url + '/' + data.id);
+  public delete(id, url) {
+    return this.http.delete(this.baseUrl + url + '?id=' + id, httpOptions);
   }
 
   public post(data, url) {
     return this.http.post(this.baseUrl + url, data, httpOptions);
+  }
+
+  public put(data, url) {
+    return this.http.put(this.baseUrl + url, data, httpOptions);
   }
 
   public postFile(data, url) {

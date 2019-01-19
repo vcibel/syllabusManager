@@ -72,21 +72,15 @@ public class Colleges extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
-		JSONObject reqBody = new JSONObject(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
 		DB db = new DB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		try {
-			Integer id = reqBody.getInt("college_id");
-			
-			if (id!=0) {
-				db.executeUpdate(prop.getValue("query_deleteCollege"), id);
-				json.put("status", 200).put("response", prop.getValue("mssg_collegeDeleted"));
-				System.out.println(prop.getValue("mssg_collegeDeleted"));
-			}else {
-				json.put("response", prop.getValue("mssg_deleteFail")).put("status", 400);
- 		    	System.out.println(prop.getValue("mssg_deleteFail"));
-			}		
+			Integer id = Integer.parseInt(request.getParameter("id"));
+
+			db.executeUpdate(prop.getValue("query_deleteCollege"), id);
+			json.put("status", 200).put("response", prop.getValue("mssg_collegeDeleted"));
+			System.out.println(prop.getValue("mssg_collegeDeleted"));
 		
 		}catch (Exception e) {
 			System.out.println("error");
@@ -107,18 +101,15 @@ public class Colleges extends HttpServlet {
 		
 		try {
 			Integer college_id = reqBody.getInt("college_id");
-			Integer old_college_code = reqBody.getInt("old_college_code");
-			String old_name = reqBody.getString("old_name");
 			Integer new_college_code = reqBody.getInt("college_code");
 			String new_name = reqBody.getString("name");
-			Integer new_number_of_terms = reqBody.getInt("number_of_terms");
 			Integer new_faculty_id = reqBody.getInt("faculty_id");
 
 			JSONArray table = db.executeQuery(prop.getValue("query_checkCollege"), new_college_code, new_name);
 			System.out.println(table.toString());
 
 			if (table.length()==0 || (table.length()==1 && table.getJSONObject(0).getInt("college_id")==college_id)) {
-				db.executeUpdate(prop.getValue("query_updateCollege"), new_college_code,  new_name, new_number_of_terms, new_faculty_id, college_id);
+				db.executeUpdate(prop.getValue("query_updateCollege"), new_college_code,  new_name, new_faculty_id, college_id);
 				json.put("status", 200).put("response", prop.getValue("mssg_collegeUpdated"));
 				System.out.println(prop.getValue("mssg_collegeUpdated"));
 			}else {

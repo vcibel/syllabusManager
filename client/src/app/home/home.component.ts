@@ -97,7 +97,6 @@ department_selected: Department = {
   updated_at: null
 };
 typesSubject: TypeSubject[];
-faculties: Faculty[];
 colleges: College[];
 subjects: Subject[];
 departments: Department[];
@@ -120,24 +119,6 @@ formData: FormData = new FormData();
     ];
 
   ngOnInit() {
-    // LISTAR FACULTADES
-    this.httpService.get('/Faculties').subscribe((res: any) => {
-      if (res.status === 200) {
-        this.faculties = res.faculties;
-        console.log(this.faculties);
-      } else {
-        alert(res.response);
-      }
-    });
-    // LISTAR ESCUELAS
-    this.httpService.get('/Colleges').subscribe((res: any) => {
-      if (res.status === 200) {
-        this.colleges = res.colleges;
-        console.log(this.colleges);
-      } else {
-        alert(res.response);
-      }
-    });
     // LISTAR MATERIAS
     this.httpService.get('/Subjects').subscribe((res: any) => {
       if (res.status === 200) {

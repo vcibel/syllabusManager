@@ -7,18 +7,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3596c7e-1748-45ca-b3c8-c8e1e3745f09" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../client/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/college/college.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/college/college.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/college/college.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/college/college.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/colleges/colleges.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/colleges/colleges.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/colleges/colleges.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/colleges/colleges.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/app/faculties/faculties.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/faculties/faculties.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/faculties/faculties.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/faculties/faculties.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/app/faculties/faculties.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/faculties/faculties.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/faculty/faculty.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/faculty/faculty.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/faculty/faculty.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/faculty/faculty.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/home/home.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/modals/modals.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/modals/modals.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/modals/modals.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/modals/modals.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/service/http.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/service/http.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/DB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/DB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/DataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/DataBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/filters/CORSFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/filters/CORSFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/filters/SessionFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/filters/SessionFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Colleges.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Colleges.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Comment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Comment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Faculties.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Faculties.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Files.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Files.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Pensum.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Pensum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/SubjectPensum.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/SubjectPensum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Users.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Users.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/utilities/Conn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/utilities/Conn.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/utilities/PropertiesReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/utilities/PropertiesReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Colleges.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Colleges.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Faculties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Faculties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/DB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/DB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/DataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/DataBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/filters/CORSFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/filters/CORSFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/filters/SessionFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/filters/SessionFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/filters/TypeUserBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/filters/TypeUserBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Colleges.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Colleges.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Comment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Comment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Faculties.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Faculties.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Files.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Files.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Pensum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Pensum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/SubjectPensum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/SubjectPensum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Users.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Users.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/utilities/Conn.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/utilities/Conn.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/utilities/PropertiesReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/utilities/PropertiesReader.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -43,7 +74,53 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Faculties.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="77" column="32" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Colleges.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="82" column="12" selection-start-line="82" selection-start-column="12" selection-end-line="82" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Departments.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1819">
+              <caret line="121" column="60" selection-start-line="121" selection-start-column="60" selection-end-line="121" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Users.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="46" column="59" selection-start-line="46" selection-start-column="59" selection-end-line="46" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Subjects.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1054">
+              <caret line="73" column="71" selection-start-line="73" selection-start-column="71" selection-end-line="73" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -121,14 +198,14 @@
         <option value="$PROJECT_DIR$/src/main/java/vm/org/servlets/Users.java" />
         <option value="$PROJECT_DIR$/src/main/java/vm/org/servlets/Login.java" />
         <option value="$PROJECT_DIR$/src/main/java/vm/org/filters/SessionFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/vm/org/servlets/Faculties.java" />
         <option value="$PROJECT_DIR$/src/main/java/vm/org/servlets/Careers.java" />
         <option value="$PROJECT_DIR$/src/main/java/vm/org/servlets/Departments.java" />
-        <option value="$PROJECT_DIR$/src/main/java/vm/org/servlets/Colleges.java" />
         <option value="$PROJECT_DIR$/src/main/java/vm/org/servlets/Subjects.java" />
         <option value="$PROJECT_DIR$/src/main/java/vm/org/filters/TypeUserBoard.java" />
         <option value="$PROJECT_DIR$/src/main/java/vm/org/servlets/Files.java" />
         <option value="$PROJECT_DIR$/props/conn.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/vm/org/servlets/Faculties.java" />
+        <option value="$PROJECT_DIR$/src/main/java/vm/org/servlets/Colleges.java" />
       </list>
     </option>
   </component>
@@ -149,7 +226,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-12" />
     <option name="width" value="1300" />
     <option name="height" value="688" />
@@ -160,7 +237,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -213,6 +289,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -367,11 +444,14 @@
       <workItem from="1547499927533" duration="2674000" />
       <workItem from="1547763987259" duration="938000" />
       <workItem from="1547804448189" duration="1017000" />
+      <workItem from="1547847529462" duration="4578000" />
+      <workItem from="1547922618408" duration="999000" />
+      <workItem from="1547929744316" duration="2308000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144671000" />
+    <option name="totallyTimeSpent" value="152556000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -383,9 +463,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-12" y="0" width="1300" height="688" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.31774193" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.204236" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -395,7 +475,7 @@
       <window_info id="Web" order="7" sideWeight="0.5021008" side_tool="true" weight="0.25340393" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4975728" weight="0.9459459" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4975728" weight="0.40261865" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -449,7 +529,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/User.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Card.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Comment.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/DataBase.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/GetFile.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/utilities/Conn.java">
@@ -473,24 +552,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Faculties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="104" column="8" lean-forward="true" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Pensum.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1177">
           <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Users.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="46" column="59" selection-start-line="46" selection-start-column="59" selection-end-line="46" selection-end-column="59" />
         </state>
       </provider>
     </entry>
@@ -512,27 +577,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="24" selection-start-column="24" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Departments.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="35" column="54" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Colleges.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="53" column="108" selection-start-line="53" selection-start-column="108" selection-end-line="53" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Subjects.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="73" column="71" selection-start-line="73" selection-start-column="71" selection-end-line="73" selection-end-column="71" />
         </state>
       </provider>
     </entry>
@@ -601,10 +645,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/props/conn.properties">
+    <entry file="file://$PROJECT_DIR$/bin/props/conn.properties" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Comment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        <state relative-caret-position="123">
+          <caret line="44" column="21" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Departments.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1819">
+          <caret line="121" column="60" selection-start-line="121" selection-start-column="60" selection-end-line="121" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Users.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="46" column="59" selection-start-line="46" selection-start-column="59" selection-end-line="46" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Subjects.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="73" column="71" selection-start-line="73" selection-start-column="71" selection-end-line="73" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Faculties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="77" column="32" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Colleges.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="82" column="12" selection-start-line="82" selection-start-column="12" selection-end-line="82" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -650,7 +730,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.8</last-edited>
+          <last-edited>11</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -667,7 +747,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

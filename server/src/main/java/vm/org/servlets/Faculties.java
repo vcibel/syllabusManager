@@ -1,5 +1,6 @@
 package vm.org.servlets;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import vm.org.DB;
 import vm.org.utilities.PropertiesReader;
@@ -66,12 +67,11 @@ public class Faculties extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
-		JSONObject reqBody = new JSONObject(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
 		DB db = new DB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		try {
-			Integer faculty_id = reqBody.getInt("faculty_id");
+			Integer faculty_id = Integer.parseInt(request.getParameter("id"));
 
 			db.executeUpdate(prop.getValue("query_deleteFaculty"), faculty_id);
 			json.put("status", 200).put("response", prop.getValue("mssg_facultyDeleted"));
@@ -97,12 +97,18 @@ public class Faculties extends HttpServlet {
 		
 		try {
 			Integer faculty_id = reqBody.getInt("faculty_id");
+			Integer faculty_code = reqBody.getInt("faculty_code");
 			String new_description = reqBody.getString("description");
+			JSONArray table = db.executeQuery(prop.getValue("query_checkFaculty"), new_description, faculty_code);
 
-			db.executeUpdate(prop.getValue("query_updateFaculty"), new_description, faculty_id);
-			json.put("status", 200).put("response", prop.getValue("mssg_facultyUpdated"));
-			System.out.println(prop.getValue("mssg_facultyUpdated"));
-		
+			if (table.length()==0 || (table.length()==1 && table.getJSONObject(0).getInt("faculty_id") == faculty_id)){
+				db.executeUpdate(prop.getValue("query_updateFaculty"), faculty_code, new_description, faculty_id);
+				json.put("status", 200).put("response", prop.getValue("mssg_facultyUpdated"));
+				System.out.println(prop.getValue("mssg_facultyUpdated"));
+			}else {
+				json.put("response", prop.getValue("mssg_facultyExist")).put("status", 400);
+				System.out.println(prop.getValue("mssg_facultyExist"));
+			}
 		}catch (Exception e) {
 			System.out.println("error");
 			System.out.println(e. getMessage());

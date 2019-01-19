@@ -17,8 +17,16 @@ export class FacultyComponent implements OnInit {
     created_at: '',
     updated_at: ''
   };
+  new: boolean = true;
 
-  constructor(public dialogRef: MatDialogRef<FacultyComponent>, private httpService: HttpService) { }
+  constructor(public dialogRef: MatDialogRef<FacultyComponent>, private httpService: HttpService) {
+    if (this.dialogRef._containerInstance._config.data !== undefined) {
+      this.faculty = this.dialogRef._containerInstance._config.data;
+      this.new = false;
+    }
+    console.log(this.faculty);
+    console.log(this.new);
+  }
 
   createFaculty() {
     console.log(this.faculty);
@@ -39,13 +47,28 @@ export class FacultyComponent implements OnInit {
       });
   }
 
-  onClose(){
+  updateFaculty() {
+    this.httpService.put(this.faculty, '/Faculties').subscribe((res: any) => {
+      if (res.status === 200) {
+        console.log(res.response);
+        this.onClose();
+        this.faculty = {
+              faculty_id: null,
+              faculty_code: null,
+              description: '',
+              created_at: '',
+              updated_at: ''
+        };
+      } else {
+        alert(res.response);
+      }
+    });
+  }
+
+  onClose() {
     this.dialogRef.close();
   }
 
   ngOnInit() {
   }
-
-  
-
 }
