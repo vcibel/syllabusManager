@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
   isCollege: boolean  = false;
   isFaculty: boolean  = false;
   isSubject: boolean  = false;
+  isDepartment: boolean  = false;
   Show: boolean = false;  
 
   showCollege: boolean = true;
@@ -289,56 +290,6 @@ formData: FormData = new FormData();
     console.log(this.departmentSubjects);
   }
 
-  openPage(page) {
-    this.router.navigateByUrl(page.component);
-    console.log('do iit');
-  }
-
-  openModal(){
-    this.modalService.open(CollegeComponent);
-  }
-
-  openSubject(){
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "40%";
-    this.dialog.open(SubjectComponent, dialogConfig);
-  }
-
-  open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-
-  openCollage(content2) {
-    this.modalService.open(content2, {ariaLabelledBy: 'modal-basic-title-2'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-  openDeparment(content4) {
-    this.modalService.open(content4, {ariaLabelledBy: 'modal-basic-title-4'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-
-  openSubject_(content3) {
-    this.modalService.open(content3, {ariaLabelledBy: 'modal-basic-title-3', backdrop: true}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-
-  // toggle() { this.isViewable = !this.isViewable; }
-
   toggleRegister() { 
     if(this.isRegister)
       this.isRegister = false;
@@ -371,17 +322,12 @@ formData: FormData = new FormData();
     }  
   }
 
-
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
+  toggleDepartments() { 
+    if(this.isDepartment)
+      this.isDepartment = false;
+    else{
+      this.isDepartment = true;
+    }  
   }
-
 
 }

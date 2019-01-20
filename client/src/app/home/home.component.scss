@@ -88,9 +88,11 @@ button.btn.btn-lg.btn-addCareer {
 }
 
 mat-card.img.mat-card {
-    background-color: rgb(230, 230, 255);
+    background-color: #e6e6ff;
     height: 170px;
-    width: 313px;
+    width: 310px;
+    border-radius: 0px;
+    box-shadow: 0 0px 0px 0px rgba(0,0,0,.2)
 }
 
 .header{
