@@ -1,0 +1,45 @@
+<div class="dialog-depart">
+    <div class="dialog-content">
+      <div class="depart-header">
+        <mat-grid-list cols="10" rowHeight="100px">
+          <mat-grid-tile [colspan]="5" [rowspan]="1">
+            <h4>Crear Departamento</h4>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="5" [rowspan]="1">
+            <button type="button" class="close" aria-label="Close" (click)="onClose()">
+              <span aria-hidden="true">×</span> 
+            </button>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+      <mat-grid-list cols="8" rowHeight="100px">
+        <mat-grid-tile [colspan]="6" [rowspan]="1"> 
+          <label for="depart-name">Nombre del Departamento:</label>
+        <mat-form-field>
+          <input matInput type="text" class="form-control depart-name">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="6" [rowspan]="1"> 
+          <label for="depart-type">Seleccione a que carrera pertenece:</label>
+          <mat-form-field class="select-career">
+            <mat-select>
+              <mat-option>facultad 1</mat-option>
+              <mat-option>facultad 2</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="6" [rowspan]="1"> 
+          <label for="depart-name">Código del Departamento:</label> 
+          <mat-form-field>
+            <input matInput type="number" class="form-control cod">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="8" [rowspan]="1"> 
+          <div class="btn-crearDepart">
+            <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createDepartment()">Crear Departamento</button>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+            

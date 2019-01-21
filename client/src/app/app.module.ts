@@ -18,12 +18,13 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { CareerComponent } from './career/career.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SubjectComponent } from './subject/subject.component';
-import { DeparmentComponent } from './deparment/deparment.component';
 import { FacultiesComponent } from './faculties/faculties.component';
 import { CollegesComponent } from './colleges/colleges.component';
 import { CollegeComponent } from './college/college.component';
 import { FacultyComponent } from './faculty/faculty.component';
 import { SubjectsComponent } from './subjects/subjects.component';
+import { DepartmentComponent } from './department/department.component';
+import { DepartmentsComponent } from './departments/departments.component';
 
 
 @NgModule({
@@ -35,11 +36,12 @@ import { SubjectsComponent } from './subjects/subjects.component';
     CareerComponent,
     CollegeComponent,
     SubjectComponent,
-    DeparmentComponent,
     FacultiesComponent,
     CollegesComponent,
     FacultyComponent,
-    SubjectsComponent
+    SubjectsComponent,
+    DepartmentComponent,
+    DepartmentsComponent
   ],
   imports: [
     HttpClientModule,
@@ -68,7 +70,7 @@ import { SubjectsComponent } from './subjects/subjects.component';
     MDBBootstrapModule.forRoot(),
     NgbModule.forRoot(),
   ],
-  entryComponents: [ CollegeComponent, SubjectComponent, FacultyComponent ],
+  entryComponents: [ CollegeComponent, SubjectComponent, FacultyComponent, DepartmentComponent ],
   providers: [
     HttpService
   ],
