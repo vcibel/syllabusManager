@@ -5,6 +5,7 @@ import { Subject } from '../models/subject';
 import { TypeSubject } from '../models/type_subjet';
 import { Department } from '../models/department';
 import { College } from '../models/college';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-subject',
@@ -25,14 +26,6 @@ export class SubjectComponent implements OnInit {
     syllabus_url: '',
     created_at: '',
   };
-  department: Department = {
-    department_id: null,
-    department_code: null,
-    description: '',
-    college_id: null,
-    created_at: null,
-    updated_at: null
-};
 college_selected: College = {
   college_id: null,
   college_code: null,
@@ -58,16 +51,26 @@ type_subject_selected: TypeSubject = {
 };
 
 departmentSubjects: Subject[];
+collegeDepartments: Department[];
 departments: Department[];
 typesSubject: TypeSubject[];
 @ViewChildren('file') file;
 files: Set<File> = new Set ;
 formData: FormData = new FormData();
+new: boolean = true;
+colleges: College[];
 
-  constructor(public dialogRef: MatDialogRef<SubjectComponent>, private httpService: HttpService) { }
+  constructor(public dialogRef: MatDialogRef<SubjectComponent>, private httpService: HttpService) {
+    this.typesSubject = this.dialogRef._containerInstance._config.data.typesSubject;
+    if (this.dialogRef._containerInstance._config.data.subject !== undefined) {
+      this.subject = this.dialogRef._containerInstance._config.data.subject;
+      this.new = false;
+  }
+  console.log(this.subject, this.typesSubject);
+  console.log(this.new);
+  }
 
-  
-  createSubject(modal) {
+  createSubject() {
     if (this.subject.subject_code === '') {
       this.subject.department_id = this.department_selected.department_id;
       this.subject.type_subject_id = this.type_subject_selected.type_subject_id;
@@ -77,7 +80,10 @@ formData: FormData = new FormData();
                                   // + this.subject.code_consecutive;
     } else {
       const subject_code = this.subject.subject_code;
-      console.log(subject_code, subject_code.slice(2, 3), subject_code.slice(3, 4));
+      console.log(subject_code, subject_code.slice(1, 2), subject_code.slice(2, 3), subject_code.slice(3, 4));
+      this.college_selected = this.colleges.filter(function(college: College) {
+        return college.college_code === parseInt(subject_code.slice(1, 2), 10);
+      })[0];
       this.department_selected = this.departments.filter(function(department: Department) {
                                       return department.department_code === parseInt(subject_code.slice(2, 3), 10);
                                     })[0];
@@ -95,30 +101,86 @@ formData: FormData = new FormData();
         if (res.status === 200) {
           console.log(res);
           console.log(this.files);
-          this.files.forEach(file => {
-            if (file != null) {
-              this.formData.append('file', file, file.name);
-            }
-          });
-          this.httpService.postFile(this.formData, `/Files?subject_id=${this.subject.subject_id}`).subscribe((response: any) => {
-            if (response.status === 200) {
-              modal.close('Save click');
-              console.log(response);
-            } else {
-              alert(response.response);
-            }
-        });
+          this.uploadFile();
         } else {
           alert(res.response);
         }
     });
   }
 
-  onClose(){
+  uploadFile () {
+    this.files.forEach(file => {
+      if (file != null) {
+        this.formData.append('file', file, file.name);
+      }
+    });
+    this.httpService.postFile(this.formData, `/Files?subject_id=${this.subject.subject_id}
+                                                    &faculty_code=${this.college_selected.faculty_code}
+                                                    &college_code=${this.college_selected.college_code}
+                                                    &department_code=${this.department_selected.department_code}`)
+                              .subscribe((response: any) => {
+      if (response.status === 200) {
+        this.onClose();
+        console.log(response);
+      } else {
+        alert(response.response);
+      }
+  });
+  }
+
+  updateSubject() {
+    this.httpService.put(this.subject, '/Subjects').subscribe((res: any) => {
+      if (res.status === 200) {
+        console.log(res.response);
+        this.onClose();
+        this.subject = {
+          subject_id: null,
+          subject_code: '',
+          name: '',
+          hc: null,
+          type_subject_id: null,
+          department_id: null,
+          code_consecutive: null,
+          syllabus_name: '',
+          syllabus_url: '',
+          created_at: '',
+        };
+      } else {
+        alert(res.response);
+      }
+    });
+  }
+
+  onClose() {
     this.dialogRef.close();
   }
 
   ngOnInit() {
+    // LISTAR ESCUELAS
+    this.httpService.get('/Colleges').subscribe((res: any) => {
+      if (res.status === 200) {
+        this.colleges = res.colleges;
+        console.log(this.colleges);
+      } else {
+        alert(res.response);
+      }
+    });
+  }
+
+  onFilesAdded(element) {
+    console.log($('.file'));
+    console.log($('.file')[0].files[0]);
+    console.log(element);
+    console.log(element.files);
+    this.files.add($('.file')[0].files[0]);
+  }
+
+  getCollegeDepartments(college_selected) {
+    console.log(college_selected);
+    this.collegeDepartments = this.departments.filter(function(department: Department) {
+                                                        return department.college_id === college_selected.college_id;
+                                                      });
+    console.log(this.collegeDepartments);
   }
 
 }

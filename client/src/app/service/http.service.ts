@@ -39,4 +39,8 @@ export class HttpService {
     return this.http.post(this.baseUrl + url, data, httpOptionsFile);
   }
 
+  public deleteFile(url) {
+    return this.http.delete(this.baseUrl + url, httpOptionsFile);
+  }
+
 }

@@ -80,7 +80,8 @@
     </mat-grid-tile>
     <mat-grid-tile [colspan]="4" [rowspan]="1"> 
       <div class="btn-crearCarrera">
-        <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createCollege()">Crear Materia</button>
+        <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createSubject()" *ngIf="new" >Crear Materia</button>
+        <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="updateSubject()" *ngIf="!new">Modificar Materia</button>
       </div>
     </mat-grid-tile>
   </mat-grid-list>

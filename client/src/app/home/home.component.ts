@@ -119,16 +119,6 @@ formData: FormData = new FormData();
     ];
 
   ngOnInit() {
-    // LISTAR MATERIAS
-    this.httpService.get('/Subjects').subscribe((res: any) => {
-      if (res.status === 200) {
-        this.subjects = res.subjects;
-        this.typesSubject = res.typesSubject;
-        console.log(this.subjects, this.typesSubject);
-      } else {
-        alert(res.response);
-      }
-    });
     // LISTAR DEPARTAMENTOS
     this.httpService.get('/Departments').subscribe((res: any) => {
       if (res.status === 200) {
@@ -148,52 +138,11 @@ formData: FormData = new FormData();
     });
   }
 
-  createFaculty(modal) {
-    console.log(this.faculty);
-      this.httpService.post(this.faculty, '/Faculties').subscribe((res: any) => {
-          if (res.status === 200) {
-            modal.close('Save click');
-            console.log(res);
-            this.faculty = {
-              faculty_id: null,
-              faculty_code: null,
-              description: '',
-              created_at: '',
-              updated_at: ''
-            };
-          } else {
-            alert(res.response);
-          }
-      });
-  }
-
   createDepartment(modal) {
     this.httpService.post(this.department, '/Departments').subscribe((res: any) => {
         if (res.status === 200) {
           modal.close('Save click');
           console.log(res);
-        } else {
-          alert(res.response);
-        }
-    });
-  }
-
-  createCollege(modal) {
-    console.log(this.college);
-    this.httpService.post(this.college, '/Colleges').subscribe((res: any) => {
-        if (res.status === 200) {
-          modal.close('Save click');
-          console.log(res);
-          this.college = {
-            college_id: null,
-            college_code: null,
-            name: '',
-            faculty_id: null,
-            faculty_code: null,
-            created_at: '',
-            updated_at: '',
-            college_image: ''
-          };
         } else {
           alert(res.response);
         }

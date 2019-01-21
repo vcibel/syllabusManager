@@ -40,6 +40,7 @@ export class CollegesComponent implements OnInit {
     this.httpService.delete(college.college_id, '/Colleges').subscribe((res: any) => {
       if (res.status === 200) {
         console.log(res.response);
+        this.colleges.splice(this.colleges.indexOf(college), 1);
       } else {
         alert(res.response);
       }
