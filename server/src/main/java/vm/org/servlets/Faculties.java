@@ -43,10 +43,10 @@ public class Faculties extends HttpServlet {
 		
 		try {
 			Integer faculty_code = reqBody.getInt("faculty_code");
-			String description = reqBody.getString("description");
+			String faculty_name = reqBody.getString("faculty_name");
 
-			if (db.executeQuery(prop.getValue("query_checkFaculty"), description, faculty_code).length() ==0) {
-				Integer faculty_id = db. executeUpdate(prop.getValue("query_addFaculty"), faculty_code, description) ;
+			if (db.executeQuery(prop.getValue("query_checkFaculty"), faculty_name, faculty_code).length() ==0) {
+				Integer faculty_id = db. executeUpdate(prop.getValue("query_addFaculty"), faculty_code, faculty_name) ;
 				json.put("status", 200).put("response", prop.getValue("mssg_facultyCreated")).put("faculty_id", faculty_id);
 				System.out.println(prop.getValue("mssg_facultyCreated"));
 			}else {
@@ -98,11 +98,12 @@ public class Faculties extends HttpServlet {
 		try {
 			Integer faculty_id = reqBody.getInt("faculty_id");
 			Integer faculty_code = reqBody.getInt("faculty_code");
-			String new_description = reqBody.getString("description");
-			JSONArray table = db.executeQuery(prop.getValue("query_checkFaculty"), new_description, faculty_code);
+			String new_faculty_name = reqBody.getString("faculty_name");
+			JSONArray table = db.executeQuery(prop.getValue("query_checkFaculty"), new_faculty_name, faculty_code);
+            System.out.println(table.toString());
 
 			if (table.length()==0 || (table.length()==1 && table.getJSONObject(0).getInt("faculty_id") == faculty_id)){
-				db.executeUpdate(prop.getValue("query_updateFaculty"), faculty_code, new_description, faculty_id);
+				db.executeUpdate(prop.getValue("query_updateFaculty"), faculty_code, new_faculty_name, faculty_id);
 				json.put("status", 200).put("response", prop.getValue("mssg_facultyUpdated"));
 				System.out.println(prop.getValue("mssg_facultyUpdated"));
 			}else {

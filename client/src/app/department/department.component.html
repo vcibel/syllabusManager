@@ -16,27 +16,27 @@
         <mat-grid-tile [colspan]="6" [rowspan]="1"> 
           <label for="depart-name">Nombre del Departamento:</label>
         <mat-form-field>
-          <input matInput type="text" class="form-control depart-name">
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="6" [rowspan]="1"> 
-          <label for="depart-type">Seleccione a que carrera pertenece:</label>
-          <mat-form-field class="select-career">
-            <mat-select>
-              <mat-option>facultad 1</mat-option>
-              <mat-option>facultad 2</mat-option>
-            </mat-select>
+          <input matInput type="text" class="form-control depart-name" [(ngModel)]="department.department_name" [ngModelOptions]="{standalone: true}">
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="6" [rowspan]="1"> 
           <label for="depart-name">Código del Departamento:</label> 
           <mat-form-field>
-            <input matInput type="number" class="form-control cod">
+            <input matInput type="number" class="form-control cod" [(ngModel)]="department.department_code" [ngModelOptions]="{standalone: true}">
           </mat-form-field>
         </mat-grid-tile>
+        <mat-grid-tile [colspan]="6" [rowspan]="1"> 
+          <label for="depart-type">Seleccione a que escuela pertenece:</label>
+          <mat-form-field class="select-career">
+            <mat-select [(ngModel)]="department.college_id" [ngModelOptions]="{standalone: true}">
+              <mat-option *ngFor="let college of colleges" [value]=college.college_id>{{college.college_name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>        
         <mat-grid-tile [colspan]="8" [rowspan]="1"> 
           <div class="btn-crearDepart">
-            <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createDepartment()">Crear Departamento</button>
+            <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createDepartment()" *ngIf="new">Crear Departamento</button>
+            <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="updateDepartment()" *ngIf="!new">Modificar Departamento</button>
           </div>
         </mat-grid-tile>
       </mat-grid-list>

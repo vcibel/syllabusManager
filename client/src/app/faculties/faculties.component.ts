@@ -19,7 +19,7 @@ export class FacultiesComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "50%";
+    dialogConfig.width = '50%';
     dialogConfig.data = faculty;
     this.dialog.open(FacultyComponent, dialogConfig);
   }

@@ -17,12 +17,12 @@ export class SubjectsComponent implements OnInit {
 
   constructor(private dialog: MatDialog, private httpService: HttpService) { }
 
-  openSubject(subject) {
+  openSubject() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '50%';
-    dialogConfig.data = {subject: subject, typesSubject: this.typesSubject};
+    dialogConfig.data = this.typesSubject;
     this.dialog.open(SubjectComponent, dialogConfig);
   }
 
@@ -42,6 +42,7 @@ export class SubjectsComponent implements OnInit {
   deleteSubject(subject) {
     this.httpService.delete(subject.subject_id, '/Subjects').subscribe((res: any) => {
       if (res.status === 200) {
+        console.log(res);
         console.log(res.response);
         this.subjects.splice(this.subjects.indexOf(subject), 1);
         this.deleteFile(subject);
@@ -52,11 +53,18 @@ export class SubjectsComponent implements OnInit {
   }
 
   deleteFile(subject) {
-    this.httpService.deleteFile(`/Files?subject_id=${subject.subject_id}
-                                        &faculty_code=${subject.faculty_code}
-                                        &college_code=${subject.college_code}
-                                        &department_code=${subject.department_code}`
-                                ).subscribe((res: any) => {
+    console.log(subject);
+    this.httpService.deleteFile(`/Files?syllabus_url=${subject.syllabus_url}`).subscribe((res: any) => {
+      if (res.status === 200) {
+        console.log(res.response);
+      } else {
+        alert(res.response);
+      }
+    });
+  }
+
+  getSyllabus(subject) {
+    this.httpService.getFile(`/Files?syllabus_url=${subject.syllabus_url}&syllabus_name=${subject.syllabus_name}`).subscribe((res: any) => {
       if (res.status === 200) {
         console.log(res.response);
       } else {

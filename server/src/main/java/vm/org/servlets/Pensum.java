@@ -43,11 +43,11 @@ public class Pensum extends HttpServlet {
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		try {
-			Integer career_id = reqBody.getInt("career_id");
+			Integer college_id = reqBody.getInt("college_id");
 
-			if (db.executeQuery(prop.getValue("query_checkPensum"), career_id).length() ==0) {
-				Integer pensum_id = db. executeUpdate(prop.getValue("query_addPensum"), career_id);
-				json.put("status", 200).put("response", prop.getValue("mssg_pensumCreated")).put("college_id", career_id);
+			if (db.executeQuery(prop.getValue("query_checkPensum"), college_id).length() ==0) {
+				Integer pensum_id = db. executeUpdate(prop.getValue("query_addPensum"), college_id);
+				json.put("status", 200).put("response", prop.getValue("mssg_pensumCreated")).put("college_id", college_id);
 				System.out.println(prop.getValue("mssg_pensumCreated"));
 			}else {
 				json.put("response", prop.getValue("mssg_pensumExist")).put("status", 400);

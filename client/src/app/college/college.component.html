@@ -18,7 +18,7 @@
             <label for="college-name">Nombre de la Escuela:</label>
             <mat-form-field>
               <mat-label>Ej. Ingenieria de Computacion</mat-label>
-              <input matInput type="text" class="form-control college-name" [(ngModel)]="college.name" [ngModelOptions]="{standalone: true}">
+              <input matInput type="text" class="form-control college-name" [(ngModel)]="college.college_name" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="3" [rowspan]="3">
@@ -36,7 +36,7 @@
                 <label for="collage-type">Seleccionar Facultad:</label>
                   <mat-form-field class="select-career">
                     <mat-select [(ngModel)]="college.faculty_id" [ngModelOptions]="{standalone: true}">
-                      <mat-option *ngFor="let faculty of faculties" [value]=faculty.faculty_id>{{faculty.description}}</mat-option>
+                      <mat-option *ngFor="let faculty of faculties" [value]=faculty.faculty_id>{{faculty.faculty_name}}</mat-option>
                     </mat-select>
                   </mat-form-field>
                 <!--  <label for="collage-type">Seleccionar Facultad:</label>

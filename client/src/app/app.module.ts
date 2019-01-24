@@ -15,7 +15,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { CareerComponent } from './career/career.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SubjectComponent } from './subject/subject.component';
 import { FacultiesComponent } from './faculties/faculties.component';
@@ -33,7 +32,6 @@ import { DepartmentsComponent } from './departments/departments.component';
     LoginComponent,
     SignupComponent,
     HomeComponent,
-    CareerComponent,
     CollegeComponent,
     SubjectComponent,
     FacultiesComponent,

@@ -12,12 +12,12 @@ export class SignupComponent implements OnInit {
   // title = 'Universidad Rafael Urdaneta';
   user: User = {
     user_id: null,
-    name: '',
-    lastname: '',
-    username: '',
-    password: '',
+    user_name: '',
+    user_lastname: '',
+    user_username: '',
+    user_password: '',
     type_user_id: null,
-    created_at: '',
+    user_created_at: '',
 };
 
   constructor(private httpService: HttpService) { }

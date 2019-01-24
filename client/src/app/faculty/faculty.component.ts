@@ -13,9 +13,9 @@ export class FacultyComponent implements OnInit {
   faculty: Faculty = {
     faculty_id: null,
     faculty_code: null,
-    description: '',
-    created_at: '',
-    updated_at: ''
+    faculty_name: '',
+    faculty_created_at: '',
+    faculty_updated_at: ''
   };
   new: boolean = true;
 
@@ -37,9 +37,9 @@ export class FacultyComponent implements OnInit {
             this.faculty = {
               faculty_id: null,
               faculty_code: null,
-              description: '',
-              created_at: '',
-              updated_at: ''
+              faculty_name: '',
+              faculty_created_at: '',
+              faculty_updated_at: ''
             };
           } else {
             alert(res.response);
@@ -55,9 +55,9 @@ export class FacultyComponent implements OnInit {
         this.faculty = {
               faculty_id: null,
               faculty_code: null,
-              description: '',
-              created_at: '',
-              updated_at: ''
+              faculty_name: '',
+              faculty_created_at: '',
+              faculty_updated_at: ''
         };
       } else {
         alert(res.response);

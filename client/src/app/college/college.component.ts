@@ -16,12 +16,11 @@ export class CollegeComponent implements OnInit {
   college: College = {
     college_id: null,
     college_code: null,
-    name: '',
+    college_name: '',
     faculty_id: null,
     faculty_code: null,
-    created_at: '',
-    updated_at: '',
-    college_image: ''
+    college_created_at: '',
+    college_updated_at: ''
   };
   new: boolean = true;
   faculties: Faculty[];
@@ -44,12 +43,11 @@ export class CollegeComponent implements OnInit {
           this.college = {
             college_id: null,
             college_code: null,
-            name: '',
+            college_name: '',
             faculty_id: null,
             faculty_code: null,
-            created_at: '',
-            updated_at: '',
-            college_image: ''
+            college_created_at: '',
+            college_updated_at: ''
           };
         } else {
           alert(res.response);
@@ -65,12 +63,11 @@ export class CollegeComponent implements OnInit {
         this.college = {
           college_id: null,
           college_code: null,
-          name: '',
+          college_name: '',
           faculty_id: null,
           faculty_code: null,
-          created_at: '',
-          updated_at: '',
-          college_image: ''
+          college_created_at: '',
+          college_updated_at: ''
         };
       } else {
         alert(res.response);
@@ -78,7 +75,7 @@ export class CollegeComponent implements OnInit {
     });
   }
 
-  onClose(){
+  onClose() {
     this.dialogRef.close();
   }
 

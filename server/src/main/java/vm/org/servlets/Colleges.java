@@ -46,12 +46,11 @@ public class Colleges extends HttpServlet {
 		
 		try {
 			Integer college_code = reqBody.getInt("college_code");
-			String name = reqBody.getString("name");
+			String college_name = reqBody.getString("college_name");
 			Integer faculty_id = reqBody.getInt("faculty_id");
-			String college_image = reqBody.getString("college_image");
 
-			if (db.executeQuery(prop.getValue("query_checkCollege"), college_code, name).length()==0) {
-				Integer college_id = db.executeUpdate(prop.getValue("query_addCollege"), college_code,  name, faculty_id, college_image);
+			if (db.executeQuery(prop.getValue("query_checkCollege"), college_code, college_name).length()==0) {
+				Integer college_id = db.executeUpdate(prop.getValue("query_addCollege"), college_code,  college_name, faculty_id);
 				json.put("status", 200).put("response", prop.getValue("mssg_collegeCreated")).put("college_id",college_id);
 				System.out.println(prop.getValue("mssg_collegeCreated"));
 			}else {
@@ -102,14 +101,14 @@ public class Colleges extends HttpServlet {
 		try {
 			Integer college_id = reqBody.getInt("college_id");
 			Integer new_college_code = reqBody.getInt("college_code");
-			String new_name = reqBody.getString("name");
+			String new_college_name = reqBody.getString("college_name");
 			Integer new_faculty_id = reqBody.getInt("faculty_id");
 
-			JSONArray table = db.executeQuery(prop.getValue("query_checkCollege"), new_college_code, new_name);
+			JSONArray table = db.executeQuery(prop.getValue("query_checkCollege"), new_college_code, new_college_name);
 			System.out.println(table.toString());
 
 			if (table.length()==0 || (table.length()==1 && table.getJSONObject(0).getInt("college_id")==college_id)) {
-				db.executeUpdate(prop.getValue("query_updateCollege"), new_college_code,  new_name, new_faculty_id, college_id);
+				db.executeUpdate(prop.getValue("query_updateCollege"), new_college_code,  new_college_name, new_faculty_id, college_id);
 				json.put("status", 200).put("response", prop.getValue("mssg_collegeUpdated"));
 				System.out.println(prop.getValue("mssg_collegeUpdated"));
 			}else {
