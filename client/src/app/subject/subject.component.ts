@@ -67,7 +67,7 @@ formData: FormData = new FormData();
   constructor(public dialogRef: MatDialogRef<SubjectComponent>, private httpService: HttpService) { }
 
   
-  createSubject(modal) {
+  createSubject() {
     if (this.subject.subject_code === '') {
       this.subject.department_id = this.department_selected.department_id;
       this.subject.type_subject_id = this.type_subject_selected.type_subject_id;
@@ -102,7 +102,7 @@ formData: FormData = new FormData();
           });
           this.httpService.postFile(this.formData, `/Files?subject_id=${this.subject.subject_id}`).subscribe((response: any) => {
             if (response.status === 200) {
-              modal.close('Save click');
+             this.onClose();
               console.log(response);
             } else {
               alert(response.response);

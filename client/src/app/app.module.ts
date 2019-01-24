@@ -25,6 +25,7 @@ import { FacultyComponent } from './faculty/faculty.component';
 import { SubjectsComponent } from './subjects/subjects.component';
 import { DepartmentComponent } from './department/department.component';
 import { DepartmentsComponent } from './departments/departments.component';
+import { UsersComponent } from './users/users.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { DepartmentsComponent } from './departments/departments.component';
     FacultyComponent,
     SubjectsComponent,
     DepartmentComponent,
-    DepartmentsComponent
+    DepartmentsComponent,
+    UsersComponent
   ],
   imports: [
     HttpClientModule,
@@ -70,7 +72,7 @@ import { DepartmentsComponent } from './departments/departments.component';
     MDBBootstrapModule.forRoot(),
     NgbModule.forRoot(),
   ],
-  entryComponents: [ CollegeComponent, SubjectComponent, FacultyComponent, DepartmentComponent ],
+  entryComponents: [ CollegeComponent, SubjectComponent, FacultyComponent, DepartmentComponent, SignupComponent ],
   providers: [
     HttpService
   ],

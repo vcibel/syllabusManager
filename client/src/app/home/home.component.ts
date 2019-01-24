@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
   isFaculty: boolean  = false;
   isSubject: boolean  = false;
   isDepartment: boolean  = false;
+  isUser: boolean  = false;
   Show: boolean = false;  
 
   showCollege: boolean = true;
@@ -290,13 +291,13 @@ formData: FormData = new FormData();
     console.log(this.departmentSubjects);
   }
 
-  toggleRegister() { 
-    if(this.isRegister)
-      this.isRegister = false;
-    else{
-      this.isRegister = true;
-    }  
-  }
+  // toggleRegister() { 
+  //   if(this.isRegister)
+  //     this.isRegister = false;
+  //   else{
+  //     this.isRegister = true;
+  //   }  
+  // }
 
   toggleColleges() { 
     if(this.isCollege)
@@ -327,6 +328,14 @@ formData: FormData = new FormData();
       this.isDepartment = false;
     else{
       this.isDepartment = true;
+    }  
+  }
+
+  toggleUser() { 
+    if(this.isUser)
+      this.isUser = false;
+    else{
+      this.isUser = true;
     }  
   }
 

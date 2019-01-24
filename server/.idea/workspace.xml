@@ -7,7 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3596c7e-1748-45ca-b3c8-c8e1e3745f09" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../client/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/colleges/colleges.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/colleges/colleges.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/departments/departments.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/departments/departments.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/faculties/faculties.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/faculties/faculties.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/home/home.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/home/home.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/subjects/subjects.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/subjects/subjects.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -356,12 +362,13 @@
       <workItem from="1547499927533" duration="2674000" />
       <workItem from="1547763987259" duration="938000" />
       <workItem from="1547804448189" duration="1017000" />
-      <workItem from="1548016749851" duration="597000" />
+      <workItem from="1548016749851" duration="615000" />
+      <workItem from="1548288496205" duration="693000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="145268000" />
+    <option name="totallyTimeSpent" value="145979000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -375,7 +382,7 @@
   <component name="ToolWindowManager">
     <frame x="-12" y="0" width="1300" height="688" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.32258064" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.32822582" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -385,7 +392,7 @@
       <window_info id="Web" order="7" sideWeight="0.5021008" side_tool="true" weight="0.25340393" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4975728" visible="true" weight="0.9459459" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4975728" weight="0.9459459" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />

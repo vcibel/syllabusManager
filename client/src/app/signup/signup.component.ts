@@ -1,6 +1,7 @@
 import { HttpService } from '../service/http.service';
 import { User } from '../models/user';
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-signup',
@@ -20,7 +21,7 @@ export class SignupComponent implements OnInit {
     created_at: '',
 };
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, public dialogRef: MatDialogRef<SignupComponent>) { }
 
   ngOnInit() {
   }
@@ -29,10 +30,16 @@ export class SignupComponent implements OnInit {
       this.httpService.post(this.user, '/Users').subscribe((res: any) => {
         if (res.status === 200) {
             console.log(res);
+            this.onClose();
             alert(res.response);
         } else {
           console.log(res.message);
         }
       });
     }
+
+    onClose(){
+      this.dialogRef.close();
+    }
+  
 }
