@@ -63,6 +63,10 @@ colleges: College[];
     console.log(this.typesSubject);
   }
 
+<<<<<<< HEAD
+=======
+  
+>>>>>>> front
   createSubject() {
     if (this.subject.subject_code === '') {
       this.subject.department_id = this.department_selected.department_id;

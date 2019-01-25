@@ -1,138 +1,61 @@
-<div class="container-all">
-  <div class="row">
-    <div class="col col-sm-3">
-      <mat-card class="side-nav side-nav-container menu">
-        <mat-card-content class="card-container">
-          <mat-card class="img">
-            <img src="file:///C:/Users/administrador/val/syllabusManager/src/assets/imgs/close-up-of-employee-with-computer-keyboard_1098-2019.jpg" alt="">
-          </mat-card>
-            <div class="row">
-              <div class="col col-sm-12 container">
-                <!-- <mat-accordion>
-                  <mat-expansion-panel *ngFor="let items of menu">
-                    <mat-expansion-panel-header>
-                      <mat-panel-title>{{ items.name }}</mat-panel-title>
-                    </mat-expansion-panel-header>          
-                    <div [ngSwitch]="items.name">-->
-                      <!-- <button *ngSwitchCase="'Career'" (click)="open(content)"><h6> Crear Carreras</h6></button>
-                      <button *ngSwitchCase="'Career'" (click)="openModal()" ><h6>Ver Carreras</h6></button> -->
-                      <!-- <button *ngSwitchCase="'Subject'" (click)="openSubject(content3)"><h6> Crear Subject</h6></button>
-                      <button *ngSwitchCase="'Deparment'" (click)="openDeparment(content4)"><h6> Crear Deparment</h6></button>
-                      <button *ngSwitchCase="'Faculties'" (click)="toggleFaculties()"><h6> Faculties</h6></button> 
-                      <button *ngSwitchCase="'Register'" (click)="toggleRegister()"><h6> Register</h6></button>
-                      <button *ngSwitchCase="'Pensum'"><h6> Crear Pensum</h6></button>
-                      <button *ngSwitchCase="'College'" (click)="toggleColleges()"><h6>Colleges</h6></button>
-                      <button *ngSwitchCase="'Subject'" (click)=" toggleSubjects()"><h6>Crear Materia</h6></button>
-                    </div>     -->
-                  <!-- </mat-expansion-panel> 
-                </mat-accordion>  -->
-                <!-- <mat-list *ngFor="let items of menu">
-                  <mat-divider></mat-divider>
-                  <mat-list-item>{{ items.name }}</mat-list-item>
-                </mat-list>
-                <mat-divider></mat-divider> -->
-                <mat-nav-list>
-                  <mat-divider></mat-divider>
-                  <mat-action-list>
-                    <button mat-list-item  (click)="toggleColleges()">Escuela</button>
-                  </mat-action-list>
-                  <mat-action-list>
-                    <button mat-list-item  (click)="toggleSubjects()">Materia</button>
-                  </mat-action-list>
-                  <mat-action-list>
-                    <button mat-list-item  (click)="toggleFaculties()">Facultad</button>
-                  </mat-action-list>
-                  <mat-action-list>
-                    <button mat-list-item (click)="toggleDepartments()" >Departamento</button>
-                  </mat-action-list>
-                  <mat-action-list>
-                    <button mat-list-item >Pensum</button>
-                  </mat-action-list>
-                  <mat-action-list>
-                    <button mat-list-item  (click)="toggleRegister()">Registrar Usuario</button>
-                  </mat-action-list>
-                  <mat-action-list>
-                    <button mat-list-item class="btn-danger" (click)="logout();">Cerrar Sesion</button>
-                  </mat-action-list>
-                </mat-nav-list>  
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+      <mat-card class="side-card">
+          <mat-card-content>
+            <mat-card class="img">
+              <img src="file:///C:/Users/administrador/val/syllabusManager/src/assets/imgs/close-up-of-employee-with-computer-keyboard_1098-2019.jpg" alt="">
+            </mat-card>
+              <div class="row">
+                <div class="col col-sm-12">
+                  <mat-nav-list>
+                    <mat-divider></mat-divider>
+                    <mat-action-list>
+                      <button mat-list-item  (click)="toggleColleges()">Escuela</button>
+                    </mat-action-list>
+                    <mat-action-list>
+                      <button mat-list-item  (click)="toggleSubjects()">Materia</button>
+                    </mat-action-list>
+                    <mat-action-list>
+                      <button mat-list-item  (click)="toggleFaculties()">Facultad</button>
+                    </mat-action-list>
+                    <mat-action-list>
+                      <button mat-list-item (click)="toggleDepartments()" >Departamento</button>
+                    </mat-action-list>
+                    <mat-action-list>
+                      <button mat-list-item >Pensum</button>
+                    </mat-action-list>
+                    <mat-action-list>
+                      <button mat-list-item  (click)="toggleUser()">Usuarios</button>
+                    </mat-action-list>
+                    <mat-action-list>
+                      <button mat-list-item class="btn-danger" (click)="logout();">Cerrar Sesion</button>
+                    </mat-action-list>
+                  </mat-nav-list>  
+                </div>
               </div>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </div>
-      <div class="col col-md-9">
-        <div class="col col-md-12 offset-md-1 header">
-          <h2 class="title">Universidad Rafael Urdaneta</h2>
-          <hr>
-        </div>
+            </mat-card-content>
+          </mat-card>
+  </mat-drawer>
+  <mat-drawer-content>
+    <br>
+    <mat-grid-list cols="1" rowHeight="50px">
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <!-- <mat-toolbar>My App</mat-toolbar> -->
+        <h2 class="title">Universidad Rafael Urdaneta</h2>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="50" rowHeight="400px">
+      <div class="row">
         <div class="col">
-          <app-signup *ngIf="Show || isRegister" ></app-signup>
+          <!-- <app-signup *ngIf="Show || isRegister" ></app-signup> -->
           <app-colleges *ngIf="Show || isCollege"></app-colleges>
           <app-faculties *ngIf="Show || isFaculty"></app-faculties>
           <app-subjects *ngIf="Show || isSubject"></app-subjects>
           <app-departments *ngIf="Show || isDepartment"></app-departments>
+          <app-users *ngIf="Show || isUser"></app-users>
         </div>
       </div>
-    </div>
-  </div>
-
-        <!--Create Deparment -->
-
-    <ng-template #content4 let-modal class="create-deparment">
-        <div class="modal-header">
-          <h4 class="modal-title" id="modal-basic-title-4">Crear Departamento</h4>
-          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <div class="row">
-                <div class="col col-3">
-                  <label for="deparment-name">Nombre del Departamento:</label>             
-                </div>
-                <div class="col col-8">
-                  <div class="md-form">
-                    <input type="text" class="form-control" >
-                  </div>
-                </div>
-                <div class="col col-3">
-                  <label for="deparment-name">Descripción:</label>             
-                </div>
-                <div class="col col-8">
-                  <div class="md-form">
-                    <textarea type="text" class="md-textarea form-control des" rows="1"></textarea>
-                  </div>
-                </div>
-                <div class="col-3">
-                    <label for="number-terms">Seleccione a que carrera pertenece:</label>
-                  </div>
-                  <div class="col col-8">
-                    <div class="md-form">
-                      <mat-form-field class="select-career">
-                        <select matNativeControl required  class="select-career">
-                          <option>Ingenieria en Computacion</option>
-                          <option>Ingenieria Electrica</option>
-                        </select>
-                      </mat-form-field>          
-                    </div>
-                  </div>
-                <div class="col-3">
-                  <label for="number-terms">Código:</label>
-                </div>
-                <div class="col col-8">
-                  <div class="md-form">
-                    <input type="number" class="form-control cod-deparment" placeholder="0" >          
-                  </div>
-                </div>    
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect >Crear</button>
-        </div>
-      </ng-template>
-
-      <router-outlet></router-outlet>
+    </mat-grid-list>
+  </mat-drawer-content>
+</mat-drawer-container>
+  

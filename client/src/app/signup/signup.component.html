@@ -1,53 +1,54 @@
-<div class="container">
-  <mat-card class="card">
-    <mat-card-content>
-      <div class="row">
-        <div class="col-12">
-          <form>
-            <div class="form-group">
-              <div class="row">
-                <div class="col col-3">
-                  <label for="username">Nombre:</label>              
-                </div>
-                <div class="col col-8">
-                  <div class="md-form">
-                    <input type="text" class="form-control name" [(ngModel)]="user.user_name" [ngModelOptions]="{standalone: true}">
-                  </div>
-                </div>
-                <div class="col col-3">
-                  <label for="username">Apellido:</label>              
-                </div>
-                <div class="col col-8">
-                  <div class="md-form">
-                    <input type="text" class="form-control lastname" [(ngModel)]="user.user_lastname" [ngModelOptions]="{standalone: true}">
-                  </div>
-                </div>
-                <div class="col col-3">
-                  <label for="username">Username:</label>              
-                </div>
-                <div class="col col-8">
-                  <div class="md-form">
-                    <input type="text" class="form-control username" [(ngModel)]="user.user_username" [ngModelOptions]="{standalone: true}">
-                  </div>
-                </div>           
-                <div class="col-3">
-                  <label for="password">Contraseña:</label>
-                </div>
-                <div class="col col-8">
-                  <div class="md-form">
-                    <input type="password" class="form-control password" [(ngModel)]="user.user_password" [ngModelOptions]="{standalone: true}">          
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="col-12">
-          <div>
-            <button type="button" mat-button class="btn-primary btn-block" (click)="signUp()">ACEPTAR</button>
-          </div>
-        </div>
+<div class="register-header">
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <h4>Crear Usuario</h4>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <button type="button" class="close" aria-label="Close" (click)="onClose()">
+        <span aria-hidden="true">×</span> 
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<div class="register-body">
+  <mat-grid-list cols="5" rowHeight="80px">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <label for="college-name">Nombre:</label>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="4" [rowspan]="1"> 
+    <mat-form-field>
+        <input matInput type="text"  class="form-control user-name" [(ngModel)]="user.user_name" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <label for="college-name">Apellido:</label>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="4" [rowspan]="1"> 
+    <mat-form-field>
+        <input matInput type="text"  class="form-control user-lastname" [(ngModel)]="user.user_lastname" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <label for="college-name">Username:</label>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="4" [rowspan]="1"> 
+    <mat-form-field>
+        <input matInput type="text"  class="form-control user-username" [(ngModel)]="user.user_username" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <label for="college-name">Contraseña:</label>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="4" [rowspan]="1"> 
+    <mat-form-field>
+        <input matInput type="password"  class="form-control user-password" [(ngModel)]="user.user_password" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="4" [rowspan]="1"> 
+      <div class="btn-createUser">
+        <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="signUp()">Crear Usuario</button>
       </div>
-    </mat-card-content>
-  </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

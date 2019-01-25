@@ -80,12 +80,16 @@ button.btn.btn-lg.btn-addCareer {
     width: 326px;
 }
 
-.mat-drawer-content {
-    position: relative;
-    z-index: 1;
-    display: inline; 
-    overflow: auto;
+mat-card.mat-card.side-card {
+    height: 100%;
 }
+
+// .mat-drawer-content {
+//     position: relative;
+//     z-index: 1;
+//     display: inline; 
+//     overflow: auto;
+// }
 
 mat-card.img.mat-card {
     background-color: #e6e6ff;
@@ -170,4 +174,8 @@ input.form-control.cod-deparment {
 label.faculties {
     position: relative;
     top: 18px;
+}
+
+mat-drawer-container.example-container.mat-drawer-container {
+    height: 657px;
 }
