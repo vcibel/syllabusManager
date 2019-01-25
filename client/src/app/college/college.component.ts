@@ -3,7 +3,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { MDBModalService, MDBModalRef, ModalDirective } from 'angular-bootstrap-md';
 import { NgbModal, ModalDismissReasons, NgbModalRef, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { MatDialogRef } from '@angular/material';
-import { HttpService } from '../service/http.service';
+import { HttpService } from '../service/http/http.service';
 import { College } from '../models/college';
 
 @Component({

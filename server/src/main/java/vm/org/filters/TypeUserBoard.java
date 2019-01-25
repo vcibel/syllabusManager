@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 
-import vm.org.DataBase;
 import vm.org.User;
 import vm.org.utilities.PropertiesReader;
 
@@ -54,7 +53,7 @@ public class TypeUserBoard implements Filter {
 		
 		HttpSession session = request.getSession();
 		
-		DataBase db = new DataBase();
+		/*DataBase db = new DataBase();
 		User user = (User) session.getAttribute("user");
 		String requestURI = request.getRequestURI();
 		System.out.println(requestURI+" "+ session.isNew());
@@ -62,7 +61,7 @@ public class TypeUserBoard implements Filter {
 		
 		Integer user_id = user.getId();
 		
-		
+
 		if(request.getMethod().equalsIgnoreCase(method.GET.name())){
 			System.out.println("Filterget");
 			chain.doFilter(request, response);
@@ -77,7 +76,7 @@ public class TypeUserBoard implements Filter {
 				if(request.getMethod().equalsIgnoreCase(method.POST.name())){
 					System.out.println("Filtercase2post");
 					chain.doFilter(request, response);
-			    }else {
+			    }else {*/
 				/*switch (requestURI) {
 				case "/TrelloOrg/Column":
 					Integer column_id = Integer.parseInt(request.getParameter("column_id"));
@@ -124,13 +123,13 @@ public class TypeUserBoard implements Filter {
 					}
 					break;
 				}*/
-			    }
+			/*    }
 			}else {
 				System.out.println(pr.getValue("mssg_notAllowed"));			
 				json.put("response", pr.getValue("mssg_notAllowed")).put("status", 403);
 				out.println(json.toString());
 			}
-			}
+			}*/
 				
 	    }
 

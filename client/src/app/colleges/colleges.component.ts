@@ -1,4 +1,4 @@
-import { HttpService } from './../service/http.service';
+import { HttpService } from '../service/http/http.service';
 import { College } from './../models/college';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material';

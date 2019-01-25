@@ -1,4 +1,5 @@
-import { HttpService } from './service/http.service';
+import { HttpService } from './service/http/http.service';
+import { FilesService } from './service/files/files.service';
 import { MatSidenavModule, MatListModule, MatButtonModule, MatCheckboxModule,
   MatInputModule, MatIconModule, MatCardModule, MatDividerModule,
   MatGridListModule, MatMenuModule, MatExpansionModule, MatSelectModule, MatDialogModule, MatFormFieldModule, MatToolbarModule } from '@angular/material';
@@ -72,7 +73,8 @@ import { UsersComponent } from './users/users.component';
   ],
   entryComponents: [ CollegeComponent, SubjectComponent, FacultyComponent, DepartmentComponent, SignupComponent ],
   providers: [
-    HttpService
+    HttpService,
+    FilesService
   ],
   bootstrap: [
     AppComponent,

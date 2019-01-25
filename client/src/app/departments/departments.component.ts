@@ -1,5 +1,5 @@
 import { Department } from './../models/department';
-import { HttpService } from './../service/http.service';
+import { HttpService } from '../service/http/http.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { DepartmentComponent } from '../department/department.component';

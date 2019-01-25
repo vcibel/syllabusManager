@@ -1,4 +1,5 @@
-import { HttpService } from './../service/http.service';
+import { FilesService } from './../service/files/files.service';
+import { HttpService } from '../service/http/http.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { SubjectComponent } from '../subject/subject.component';
@@ -15,7 +16,7 @@ export class SubjectsComponent implements OnInit {
   subjects: Subject[];
   typesSubject: TypeSubject[];
 
-  constructor(private dialog: MatDialog, private httpService: HttpService) { }
+  constructor(private dialog: MatDialog, private httpService: HttpService, private filesService: FilesService) { }
 
   openSubject() {
     const dialogConfig = new MatDialogConfig();
@@ -54,7 +55,7 @@ export class SubjectsComponent implements OnInit {
 
   deleteFile(subject) {
     console.log(subject);
-    this.httpService.deleteFile(`/Files?syllabus_url=${subject.syllabus_url}`).subscribe((res: any) => {
+    this.filesService.deleteFile(`/Files?syllabus_url=${subject.syllabus_url}`).subscribe((res: any) => {
       if (res.status === 200) {
         console.log(res.response);
       } else {
@@ -64,7 +65,7 @@ export class SubjectsComponent implements OnInit {
   }
 
   getSyllabus(subject) {
-    this.httpService.getFile(`/Files?syllabus_url=${subject.syllabus_url}&syllabus_name=${subject.syllabus_name}`).subscribe((res: any) => {
+    this.filesService.getFile(`/Files?syllabus_url=${subject.syllabus_url}&syllabus_name=${subject.syllabus_name}`).subscribe((res: any) => {
       if (res.status === 200) {
         console.log(res.response);
       } else {

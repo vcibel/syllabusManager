@@ -1,14 +1,8 @@
 import {Injectable} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  withCredentials: true
-};
-
-const httpOptionsFile = {
-  contentType: false,
   withCredentials: true
 };
 
@@ -33,18 +27,6 @@ export class HttpService {
 
   public put(data, url) {
     return this.http.put(this.baseUrl + url, data, httpOptions);
-  }
-
-  public postFile(data, url) {
-    return this.http.post(this.baseUrl + url, data, httpOptionsFile);
-  }
-
-  public deleteFile(url) {
-    return this.http.delete(this.baseUrl + url, httpOptionsFile);
-  }
-
-  public getFile(url) {
-    return this.http.delete(this.baseUrl + url, httpOptionsFile);
   }
 
 }

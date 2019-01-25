@@ -1,5 +1,5 @@
 import { Faculty } from './../models/faculty';
-import { HttpService } from './../service/http.service';
+import { HttpService } from '../service/http/http.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { FacultyComponent } from '../faculty/faculty.component';

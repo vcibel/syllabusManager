@@ -1,5 +1,5 @@
 import { Subject } from './../models/subject';
-import { HttpService } from '../service/http.service';
+import { HttpService } from '../service/http/http.service';
 import { Component, OnInit, ViewChildren, ViewChild } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { Router } from '@angular/router';
@@ -21,7 +21,7 @@ export interface Section {
 })
 
 export class HomeComponent implements OnInit {
- 
+
   panelOpenState = false;
   isRegister: boolean  = false;
   isCollege: boolean  = false;
@@ -67,12 +67,12 @@ export class HomeComponent implements OnInit {
     console.log(this.departmentSubjects);
   }
 
-  // toggleRegister() { 
+  // toggleRegister() {
   //   if(this.isRegister)
   //     this.isRegister = false;
   //   else{
   //     this.isRegister = true;
-  //   }  
+  //   }
   // }
 
   toggleColleges() {
@@ -107,12 +107,12 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  toggleUser() { 
-    if(this.isUser)
+  toggleUser() {
+    if (this.isUser) {
       this.isUser = false;
-    else{
+    } else {
       this.isUser = true;
-    }  
+    }
   }
 
 }

@@ -1,6 +1,7 @@
+import { FilesService } from './../service/files/files.service';
 import { Component, OnInit, ViewChildren } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
-import { HttpService } from '../service/http.service';
+import { HttpService } from '../service/http/http.service';
 import { Subject } from '../models/subject';
 import { TypeSubject } from '../models/type_subjet';
 import { Department } from '../models/department';
@@ -58,15 +59,11 @@ files: Set<File> = new Set ;
 formData: FormData = new FormData();
 colleges: College[];
 
-  constructor(public dialogRef: MatDialogRef<SubjectComponent>, private httpService: HttpService) {
+  constructor(public dialogRef: MatDialogRef<SubjectComponent>, private httpService: HttpService, private filesService: FilesService) {
     this.typesSubject = this.dialogRef._containerInstance._config.data;
     console.log(this.typesSubject);
   }
 
-<<<<<<< HEAD
-=======
-  
->>>>>>> front
   createSubject() {
     if (this.subject.subject_code === '') {
       this.subject.department_id = this.department_selected.department_id;
@@ -113,7 +110,7 @@ colleges: College[];
         this.formData.append('file', file, file.name);
       }
     });
-    this.httpService.postFile(this.formData, `/Files?subject_id=${this.subject.subject_id}&faculty_code=${this.college_selected.faculty_code}&college_code=${this.college_selected.college_code}&department_code=${this.department_selected.department_code}`)
+    this.filesService.postFile(this.formData, `/Files?subject_id=${this.subject.subject_id}&faculty_code=${this.college_selected.faculty_code}&college_code=${this.college_selected.college_code}&department_code=${this.department_selected.department_code}`)
                               .subscribe((response: any) => {
       if (response.status === 200) {
         this.onClose();

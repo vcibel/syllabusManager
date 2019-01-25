@@ -47,7 +47,8 @@
     </mat-grid-tile>
     <mat-grid-tile [colspan]="4" [rowspan]="1"> 
       <div class="btn-createUser">
-        <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="signUp()">Crear Usuario</button>
+        <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="signUp()" *ngIf="new">Crear Usuario</button>
+        <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="updateUser()" *ngIf="!new">Modificar Usuario</button>        
       </div>
     </mat-grid-tile>
   </mat-grid-list>

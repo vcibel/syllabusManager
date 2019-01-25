@@ -1,6 +1,6 @@
 import { College } from './../models/college';
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../service/http.service';
+import { HttpService } from '../service/http/http.service';
 import { Department } from '../models/department';
 import { MatDialogRef } from '@angular/material';
 

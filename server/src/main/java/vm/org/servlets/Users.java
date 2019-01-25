@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import vm.org.DB;
@@ -77,23 +78,16 @@ public class Users extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
-		JSONObject reqBody = new JSONObject(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
 		DB db = new DB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 
 		try {
 
-			Integer user_id = reqBody.getInt("user_id");
-			System.out.println(user_id);
+			Integer user_id = Integer.parseInt(request.getParameter("id"));
 
-			if (user_id!=0) {
-				db.executeUpdate(prop.getValue("query_deleteUser"), user_id);
-				json.put("status", 200).put("response", prop.getValue("mssg_userDeleted"));
-				System.out.println(prop.getValue("mssg_userDeleted"));
-			}else {
-				json.put("response", prop.getValue("mssg_deleteFail")).put("status", 400);
-				System.out.println(prop.getValue("mssg_deleteFail"));
-			}
+			db.executeUpdate(prop.getValue("query_deleteUser"), user_id);
+			json.put("status", 200).put("response", prop.getValue("mssg_userDeleted"));
+			System.out.println(prop.getValue("mssg_userDeleted"));
 
 		}catch (Exception e) {
 			System.out.println("error");
@@ -114,7 +108,6 @@ public class Users extends HttpServlet {
 
 		try {
 			Integer user_id = reqBody.getInt("user_id");
-			String old_username = reqBody.getString("old_user_username");
 			String new_user_name = reqBody.getString("user_name");
 			String new_user_lastname = reqBody.getString("user_lastname");
 			String new_user_username = reqBody.getString("user_username");
@@ -123,15 +116,17 @@ public class Users extends HttpServlet {
 
 			System.out.println("User requesting update: " +
 					"Id: "       + user_id +
-                    "Username: " + old_username +
 					"New Username: " + new_user_username +
 					"New Name: "     + new_user_name +
 					"New Lastname: " + new_user_lastname +
 					"New Password: " + new_user_password +
                     "New Type User: " + new_type_user_id);
 
-			if(old_username.equalsIgnoreCase(new_user_username) || db.executeQuery(prop.getValue("query_checkSignup"),new_user_username).length() == 0) {
-                db.executeUpdate(prop.getValue("query_updateUser"), new_user_name, new_user_lastname, new_user_username, new_user_password, new_type_user_id);
+			JSONArray table = db.executeQuery(prop.getValue("query_checkSignup"), new_user_username);
+			System.out.println(table.toString());
+
+			if(table.length()==0 || (table.length()==1 && table.getJSONObject(0).getInt("user_id") == user_id)) {
+                db.executeUpdate(prop.getValue("query_updateUser"), new_user_name, new_user_lastname, new_user_username, new_user_password, new_type_user_id, user_id);
                 json.put("status", 200).put("response", prop.getValue("mssg_userUpdate"));
                 System.out.println(prop.getValue("mssg_userUpdate"));
             }else {

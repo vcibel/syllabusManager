@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { Faculty } from '../models/faculty';
-import { HttpService } from '../service/http.service';
+import { HttpService } from '../service/http/http.service';
 
 @Component({
   selector: 'app-faculty',
