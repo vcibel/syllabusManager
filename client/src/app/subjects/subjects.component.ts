@@ -23,8 +23,14 @@ export class SubjectsComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '50%';
-    dialogConfig.data = this.typesSubject;
-    this.dialog.open(SubjectComponent, dialogConfig);
+    dialogConfig.data = {typesSubject: this.typesSubject, subjects: this.subjects};
+    const dialogRef = this.dialog.open(SubjectComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(result);
+      if (result !== undefined) {
+        this.subjects.push(result);
+      }
+  });
   }
 
   ngOnInit() {
@@ -65,13 +71,15 @@ export class SubjectsComponent implements OnInit {
   }
 
   getSyllabus(subject) {
-    this.filesService.getFile(`/Files?syllabus_url=${subject.syllabus_url}&syllabus_name=${subject.syllabus_name}`).subscribe((res: any) => {
-      if (res.status === 200) {
-        console.log(res.response);
-      } else {
-        alert(res.response);
-      }
-    });
+    this.filesService.getFile(`/Files?syllabus_url=${subject.syllabus_url}&syllabus_name=${subject.syllabus_name}`);
+    // .subscribe((res: any) => {
+    //  console.log(res);
+    //  if (res.status === 200) {
+        // console.log(res.response);
+    //  } else {
+    //    alert(res.response);
+    //  }
+    // });
   }
 
 }

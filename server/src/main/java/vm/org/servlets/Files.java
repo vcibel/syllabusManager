@@ -24,7 +24,6 @@ import vm.org.utilities.PropertiesReader;
 
 public class Files extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static PropertiesReader prop = PropertiesReader.getInstance();
 
     public Files() {
         super();
@@ -35,25 +34,25 @@ public class Files extends HttpServlet {
 		String syllabus_url = request.getParameter("syllabus_url");
 		String syllabus_name = request.getParameter("syllabus_name");
 
-		response.setContentType("file");
+        response.setContentType("file");
 
-		response.setHeader("Content-disposition","attachment; filename="+syllabus_name);
+        response.setHeader("Content-disposition","attachment; filename="+syllabus_name);
 
 		File my_file = new File(syllabus_url);
 		System.out.println(syllabus_url);
 		System.out.println(syllabus_name);
 
-		OutputStream out = response.getOutputStream();
-		FileInputStream in = new FileInputStream(my_file);
-		byte[] buffer = new byte[4096];
-		int length;
-		while ((length = in.read(buffer)) > 0){
-			out.write(buffer, 0, length);
-		}
-		in.close();
-		out.flush();
+        OutputStream out = response.getOutputStream();
+        FileInputStream in = new FileInputStream(my_file);
+        byte[] buffer = new byte[4096];
+        int length;
+        while ((length = in.read(buffer)) > 0){
+            out.write(buffer, 0, length);
+        }
+        in.close();
+        out.flush();
 
-	}
+    }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();

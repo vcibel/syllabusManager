@@ -38,7 +38,7 @@ new: boolean = true;
       this.httpService.post(this.user, '/Users').subscribe((res: any) => {
         if (res.status === 200) {
             console.log(res);
-            this.onClose();
+            this.onClose(this.user);
             this.user = {
               user_id: null,
               user_name: '',
@@ -59,7 +59,7 @@ new: boolean = true;
       this.httpService.put(this.user, '/Users').subscribe((res: any) => {
         if (res.status === 200) {
           console.log(res.response);
-          this.onClose();
+          this.onClose(undefined);
           this.user = {
             user_id: null,
             user_name: '',
@@ -75,7 +75,7 @@ new: boolean = true;
       });
     }
 
-    onClose() {
-      this.dialogRef.close();
+    onClose(user) {
+      this.dialogRef.close(user);
     }
 }

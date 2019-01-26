@@ -24,7 +24,11 @@ export class FilesService {
   }
 
   public getFile(url) {
-    return this.http.get(this.baseUrl + url, httpOptions);
+    //return this.http.get(this.baseUrl + url, httpOptions);
+    url = this.baseUrl + url;
+    console.log(url);
+    window.open(url, '_blank');
+
   }
 
 }

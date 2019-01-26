@@ -21,7 +21,7 @@ import vm.org.utilities.PropertiesReader;
 /**"/signin.html"
  * Servlet Filter implementation class SessionFilter
  */
-@WebFilter(servletNames= {"Login", "Board", "Column", "Card", "Logout", "Signup", "UserBoard", "Comment", "Files"})
+@WebFilter(servletNames= {"Login","Logout", "Signup", "UserBoard"})
 //@WebFilter(value={"/*"})
 public class SessionFilter implements Filter {
 

@@ -38,7 +38,7 @@ export class CollegeComponent implements OnInit {
     console.log(this.college);
     this.httpService.post(this.college, '/Colleges').subscribe((res: any) => {
         if (res.status === 200) {
-          this.onClose();
+          this.onClose(this.college);
           console.log(res);
           this.college = {
             college_id: null,
@@ -59,7 +59,7 @@ export class CollegeComponent implements OnInit {
     this.httpService.put(this.college, '/Colleges').subscribe((res: any) => {
       if (res.status === 200) {
         console.log(res.response);
-        this.onClose();
+        this.onClose(undefined);
         this.college = {
           college_id: null,
           college_code: null,
@@ -75,8 +75,8 @@ export class CollegeComponent implements OnInit {
     });
   }
 
-  onClose() {
-    this.dialogRef.close();
+  onClose(college) {
+    this.dialogRef.close(college);
   }
 
   ngOnInit() {

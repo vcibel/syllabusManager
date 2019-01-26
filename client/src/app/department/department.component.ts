@@ -34,7 +34,7 @@ colleges: College[];
   createDepartment() {
     this.httpService.post(this.department, '/Departments').subscribe((res: any) => {
         if (res.status === 200) {
-         this.onClose();
+         this.onClose(this.department);
           console.log(res);
         } else {
           alert(res.response);
@@ -42,15 +42,15 @@ colleges: College[];
     });
   }
 
-  onClose() {
-    this.dialogRef.close();
+  onClose(department) {
+    this.dialogRef.close(department);
   }
 
   updateDepartment() {
     this.httpService.put(this.department, '/Departments').subscribe((res: any) => {
       if (res.status === 200) {
         console.log(res.response);
-        this.onClose();
+        this.onClose(undefined);
         this.department = {
           department_id: null,
           department_code: null,

@@ -21,7 +21,13 @@ export class DepartmentsComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = '50%';
     dialogConfig.data = department;
-    this.dialog.open(DepartmentComponent, dialogConfig);
+    const dialogRef = this.dialog.open(DepartmentComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(result);
+      if (result !== undefined) {
+        this.departments.push(result);
+      }
+    });
   }
 
 

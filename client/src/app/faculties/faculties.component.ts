@@ -21,7 +21,13 @@ export class FacultiesComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = '50%';
     dialogConfig.data = faculty;
-    this.dialog.open(FacultyComponent, dialogConfig);
+    const dialogRef = this.dialog.open(FacultyComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe((result: any) => {
+        console.log(result);
+        if (result !== undefined) {
+          this.faculties.push(result);
+        }
+    });
   }
 
 

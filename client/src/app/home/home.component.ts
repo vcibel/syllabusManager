@@ -60,13 +60,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getDepartmentSubjects() {
-    this.departmentSubjects = this.subjects.filter(function(subject: Subject) {
-                                                        return subject.department_id === this.department_selected.department_id;
-                                                      });
-    console.log(this.departmentSubjects);
-  }
-
   // toggleRegister() {
   //   if(this.isRegister)
   //     this.isRegister = false;

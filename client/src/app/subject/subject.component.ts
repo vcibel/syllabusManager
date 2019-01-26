@@ -27,50 +27,54 @@ export class SubjectComponent implements OnInit {
     syllabus_url: '',
     subject_created_at: '',
   };
-college_selected: College = {
-  college_id: null,
-  college_code: null,
-  college_name: '',
-  faculty_id: null,
-  faculty_code: null,
-  college_created_at: '',
-  college_updated_at: ''
-};
-department_selected: Department = {
-  department_id: null,
-  department_code: null,
-  department_name: '',
-  college_id: null,
-  department_created_at: null,
-  department_updated_at: null
-};
-type_subject_selected: TypeSubject = {
-  type_subject_id: null,
-  type_subject_description: '',
-  type_subject_code: '',
-};
-
-departmentSubjects: Subject[];
-collegeDepartments: Department[];
-departments: Department[];
-typesSubject: TypeSubject[];
-@ViewChildren('file') file;
-files: Set<File> = new Set ;
-formData: FormData = new FormData();
-colleges: College[];
+  college_selected: College = {
+    college_id: null,
+    college_code: null,
+    college_name: '',
+    faculty_id: null,
+    faculty_code: null,
+    college_created_at: '',
+    college_updated_at: ''
+  };
+  department_selected: Department = {
+    department_id: null,
+    department_code: null,
+    department_name: '',
+    college_id: null,
+    department_created_at: null,
+    department_updated_at: null
+  };
+  type_subject_selected: TypeSubject = {
+    type_subject_id: null,
+    type_subject_description: '',
+    type_subject_code: '',
+  };
+  subjects: Subject[];
+  departmentSubjects: Subject[];
+  collegeDepartments: Department[];
+  departments: Department[];
+  typesSubject: TypeSubject[];
+  @ViewChildren('file') file;
+  files: Set<File> = new Set ;
+  formData: FormData = new FormData();
+  colleges: College[];
 
   constructor(public dialogRef: MatDialogRef<SubjectComponent>, private httpService: HttpService, private filesService: FilesService) {
-    this.typesSubject = this.dialogRef._containerInstance._config.data;
-    console.log(this.typesSubject);
+    this.typesSubject = this.dialogRef._containerInstance._config.data.typesSubject;
+    if (this.dialogRef._containerInstance._config.data !== undefined) {
+      this.subjects = this.dialogRef._containerInstance._config.data.subjects;
+    }
+    console.log(this.typesSubject, this.subjects);
   }
 
   createSubject() {
     if (this.subject.subject_code === '') {
+      this.getDepartmentSubjects();
       this.subject.department_id = this.department_selected.department_id;
       this.subject.type_subject_id = this.type_subject_selected.type_subject_id;
       this.subject.code_consecutive = this.departmentSubjects[this.departmentSubjects.length - 1].code_consecutive + 1;
-      this.subject.subject_code = this.college_selected.faculty_code + this.college_selected.college_code +
-                                  this.department_selected.department_code + this.type_subject_selected.type_subject_code;
+      this.subject.subject_code = this.college_selected.faculty_code.toString() + this.college_selected.college_code.toString() +
+                                  this.department_selected.department_code.toString() + this.type_subject_selected.type_subject_code;
                                   // + this.subject.code_consecutive;
     } else {
       const subject_code = this.subject.subject_code;
@@ -113,7 +117,7 @@ colleges: College[];
     this.filesService.postFile(this.formData, `/Files?subject_id=${this.subject.subject_id}&faculty_code=${this.college_selected.faculty_code}&college_code=${this.college_selected.college_code}&department_code=${this.department_selected.department_code}`)
                               .subscribe((response: any) => {
       if (response.status === 200) {
-        this.onClose();
+        this.onClose(this.subject);
         console.log(response);
       } else {
         alert(response.response);
@@ -121,8 +125,8 @@ colleges: College[];
   });
   }
 
-  onClose() {
-    this.dialogRef.close();
+  onClose(subject) {
+    this.dialogRef.close(subject);
   }
 
   ngOnInit() {
@@ -160,6 +164,14 @@ colleges: College[];
                                                         return department.college_id === college_selected.college_id;
                                                       });
     console.log(this.collegeDepartments);
+  }
+
+  getDepartmentSubjects() {
+    const department_id = this.department_selected.department_id;
+    this.departmentSubjects = this.subjects.filter(function(subject: Subject) {
+                                                        return subject.department_id === department_id;
+                                                      });
+    console.log(this.departmentSubjects);
   }
 
 }

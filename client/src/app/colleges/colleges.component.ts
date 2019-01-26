@@ -21,7 +21,13 @@ export class CollegesComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = '60%';
     dialogConfig.data = college;
-    this.dialog.open(CollegeComponent, dialogConfig);
+    const dialogRef = this.dialog.open(CollegeComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(result);
+      if (result !== undefined) {
+        this.colleges.push(result);
+      }
+  });
   }
 
   ngOnInit() {

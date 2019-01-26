@@ -21,7 +21,13 @@ export class UsersComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = '50%';
     dialogConfig.data = user;
-    this.dialog.open(SignupComponent, dialogConfig);
+    const dialogRef = this.dialog.open(SignupComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(result);
+      if (result !== undefined) {
+        this.users.push(result);
+      }
+    });
   }
 
   ngOnInit() {
