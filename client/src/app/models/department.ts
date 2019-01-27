@@ -1,8 +1,8 @@
 export interface Department {
     department_id: number;
     department_code: number;
-    description: string;
+    department_name: string;
     college_id: number;
-    created_at: any;
-    updated_at: any;
+    department_created_at: any;
+    department_updated_at: any;
 }

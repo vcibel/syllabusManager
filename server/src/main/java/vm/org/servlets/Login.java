@@ -28,49 +28,40 @@ import vm.org.User;
 		urlPatterns="/Login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public Login() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
 		HttpSession session = request.getSession();
-		
 		JSONObject reqBody = new JSONObject(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
-		//DataBase db = new DataBase();
         DB db = new DB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 
 		System.out.println(reqBody.toString());
 
-		String username = reqBody.getString("username");
-		String password = reqBody.getString("password");
+		String user_username = reqBody.getString("user_username");
+		String user_password = reqBody.getString("user_password");
 
 		System.out.println("User requesting login: " +
-				"Username: " + username +
-				"Password: " + password +
-				"Hash Password" + DigestUtils.sha512Hex(password));
+				"Username: " + user_username +
+				"Password: " + user_password +
+				"Hash Password" + DigestUtils.sha512Hex(user_password));
 			
-		JSONArray table = db.executeQuery(prop.getValue("query_getUser"),username, DigestUtils.sha512Hex(password));
+		JSONArray table = db.executeQuery(prop.getValue("query_getUser"),user_username, DigestUtils.sha512Hex(user_password));
         System.out.println(table.toString());
         System.out.println(table.getJSONObject(0));
 
         if(table.length() != 0) {
-					User user = new User(table.getJSONObject(0).getInt("user_id"), username);
+					User user = new User(table.getJSONObject(0).getInt("user_id"), user_username);
 					storeValue(user, session);
 					System.out.println(prop.getValue("mssg_loginSuccess"));
 					json.put("status", 200).put("response", prop.getValue("mssg_loginSuccess"));
-					System.out.println("Succesful login: User ID:"+table.getJSONObject(0).getInt("user_id")+ " Username: "+username);
+					System.out.println("Succesful login: User ID:"+table.getJSONObject(0).getInt("user_id")+ " Username: "+ user_username);
 			}else {
 				System.out.println(prop.getValue("mssg_loginFail"));
 				json.put("response", prop.getValue("mssg_loginFail")).put("status", 400);

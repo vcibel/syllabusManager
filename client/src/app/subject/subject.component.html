@@ -19,16 +19,24 @@
     <mat-grid-tile [colspan]="3" [rowspan]="1"> 
     <mat-form-field>
       <mat-label>Ej. Ingenieria de Computacion</mat-label>
-        <input matInput type="text"  class="form-control college-name" placeholder="Ej. Programacion II" [(ngModel)]="subject.name" [ngModelOptions]="{standalone: true}">
+        <input matInput type="text"  class="form-control college-name" placeholder="Ej. Programacion II" [(ngModel)]="subject.subject_name" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="2" [rowspan]="1"> 
-      <label for="collage-type">Seleccione la carrera a la cual pertenece:</label>
+      <label for="college-name">Código de la Materia:</label>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="1" [rowspan]="1"> 
+    <mat-form-field class="select-career">
+      <input matInput type="text" class="form-control college-name cod"  placeholder="" [(ngModel)]="subject.subject_code" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+  </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1"> 
+      <label for="collage-type">Seleccione la escuela a la cual pertenece:</label>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="3" [rowspan]="1"> 
       <mat-form-field class="select-career">
         <select matNativeControl required [(ngModel)]="college_selected" [ngModelOptions]="{standalone: true}" (change)="getCollegeDepartments(college_selected)">
-          <option *ngFor="let college of colleges" [ngValue]=college>{{college.name}}</option>
+          <option *ngFor="let college of colleges" [ngValue]=college>{{college.college_name}}</option>
         </select>
       </mat-form-field>
     </mat-grid-tile>
@@ -38,7 +46,7 @@
     <mat-grid-tile [colspan]="3" [rowspan]="1"> 
       <mat-form-field class="select-career">
         <select matNativeControl required [(ngModel)]="department_selected" [ngModelOptions]="{standalone: true}">
-          <option *ngFor="let collegeDepartment of collegeDepartments" [ngValue]=collegeDepartment>{{collegeDepartment.description}}</option>
+          <option *ngFor="let collegeDepartment of collegeDepartments" [ngValue]=collegeDepartment>{{collegeDepartment.department_name}}</option>
         </select>
       </mat-form-field>
     </mat-grid-tile>
@@ -54,7 +62,7 @@
     <mat-grid-tile [colspan]="3" [rowspan]="1"> 
       <mat-form-field>
         <select matNativeControl required [(ngModel)]="type_subject_selected" [ngModelOptions]="{standalone: true}">
-          <option *ngFor="let type_subject of typesSubject" [ngValue]=type_subject>{{type_subject.description}}</option>
+          <option *ngFor="let type_subject of typesSubject" [ngValue]=type_subject>{{type_subject.type_subject_description}}</option>
         </select>
       </mat-form-field>
     </mat-grid-tile>
@@ -67,21 +75,13 @@
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1"> 
       <mat-form-field>
-        <input matInput type="number" class="form-control cod" placeholder="2" [(ngModel)]="subject.hc" [ngModelOptions]="{standalone: true}">
-      </mat-form-field>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="2" [rowspan]="1"> 
-        <label for="college-name">Código de la Materia:</label>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1"> 
-      <mat-form-field class="select-career">
-        <input matInput type="text" class="form-control college-name cod"  placeholder="" [(ngModel)]="subject.subject_code" [ngModelOptions]="{standalone: true}">
+        <input matInput type="number" class="form-control cod" placeholder="2" [(ngModel)]="subject.subject_hc" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="4" [rowspan]="1"> 
       <div class="btn-crearCarrera">
-        <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createCollege()">Crear Materia</button>
-      </div>
+        <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createSubject()">Crear Materia</button>
+       </div>
     </mat-grid-tile>
   </mat-grid-list>
 </div>

@@ -8,53 +8,29 @@
     </mat-toolbar>
     <div class="departments-created">
       <mat-list>
-        <mat-list-item class="list-depart">
+        <mat-list-item class="list-depart" *ngFor="let department of departments" >
           <mat-card class="card-depart">
             <mat-card-header>
               <mat-card-title>
-                Department Name 1
+                {{department.department_name}}
               </mat-card-title>
             </mat-card-header>
             <mat-card-content>
                 <mat-grid-list cols="3" rowHeight="150px">
                     <mat-grid-tile [colspan]="2" [rowspan]="1">
-                      Department Name ,
-                      Department Description,
+                      {{department.department_name}}
                       Department Belong to ,
                       Department Code,
                     </mat-grid-tile>
                   </mat-grid-list>
             </mat-card-content>
             <mat-card-actions>
-              <mat-icon mat-icon-button class="example-icon">delete</mat-icon>
-              <mat-icon mat-icon-button class="example-icon">create</mat-icon>
+              <mat-icon mat-icon-button class="example-icon" (click)="deleteDepartment(department)">delete</mat-icon>
+              <mat-icon mat-icon-button class="example-icon" (click)="openDepartment(department)">create</mat-icon>
             </mat-card-actions>
           </mat-card>
         </mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item class="list-depart">
-          <mat-card class="card-depart">
-            <mat-card-header>
-              <mat-card-title>
-                Department Name 2
-              </mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <mat-grid-list cols="3" rowHeight="150px">
-                <mat-grid-tile [colspan]="2" [rowspan]="1">
-                  Department Name ,
-                  Department Description,
-                  Department Belong to ,
-                  Department Code,
-                </mat-grid-tile>
-              </mat-grid-list>
-              </mat-card-content>
-              <mat-card-actions>
-                <mat-icon mat-icon-button class="example-icon">delete</mat-icon>
-                <mat-icon mat-icon-button class="example-icon">create</mat-icon>
-              </mat-card-actions>
-            </mat-card>
-          </mat-list-item>
         </mat-list>
       </div>
   </div>

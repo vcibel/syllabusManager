@@ -17,7 +17,7 @@
         <label for="faculty-name">Nombre de la Facultad:</label>
       <mat-form-field>
         <mat-label>Ej. Ingenieria de Computacion</mat-label>
-        <input matInput type="text" class="form-control faculty-name" [(ngModel)]="faculty.description" [ngModelOptions]="{standalone: true}" >
+        <input matInput type="text" class="form-control faculty-name" [(ngModel)]="faculty.faculty_name" [ngModelOptions]="{standalone: true}" >
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="6" [rowspan]="1"> 
@@ -28,7 +28,8 @@
       </mat-grid-tile>
       <mat-grid-tile [colspan]="8" [rowspan]="1"> 
         <div class="btn-crearCarrera">
-          <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createFaculty()">Crear Facultad</button>
+          <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createFaculty()" *ngIf="new" >Crear Facultad</button>
+          <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="updateFaculty()" *ngIf="!new">Modificar Facultad</button>        
         </div>
       </mat-grid-tile>
     </mat-grid-list>

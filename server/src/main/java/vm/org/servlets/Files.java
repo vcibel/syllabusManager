@@ -24,7 +24,6 @@ import vm.org.utilities.PropertiesReader;
 
 public class Files extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static PropertiesReader prop = PropertiesReader.getInstance();
 
     public Files() {
         super();
@@ -32,25 +31,28 @@ public class Files extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter("name");
-		response.setContentType("file");
+		String syllabus_url = request.getParameter("syllabus_url");
+		String syllabus_name = request.getParameter("syllabus_name");
 
-		response.setHeader("Content-disposition","attachment; filename="+name);
+        response.setContentType("file");
 
-		File my_file = new File(prop.getValue("baseDir") + "/" +name);
-		System.out.println(name);
+        response.setHeader("Content-disposition","attachment; filename="+syllabus_name);
 
-		OutputStream out = response.getOutputStream();
-		FileInputStream in = new FileInputStream(my_file);
-		byte[] buffer = new byte[4096];
-		int length;
-		while ((length = in.read(buffer)) > 0){
-			out.write(buffer, 0, length);
-		}
-		in.close();
-		out.flush();
+		File my_file = new File(syllabus_url);
+		System.out.println(syllabus_url);
+		System.out.println(syllabus_name);
 
-	}
+        OutputStream out = response.getOutputStream();
+        FileInputStream in = new FileInputStream(my_file);
+        byte[] buffer = new byte[4096];
+        int length;
+        while ((length = in.read(buffer)) > 0){
+            out.write(buffer, 0, length);
+        }
+        in.close();
+        out.flush();
+
+    }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
@@ -65,17 +67,24 @@ public class Files extends HttpServlet {
 		try {
 
 			Integer subject_id = Integer.parseInt(request.getParameter("subject_id"));
+			Integer faculty_code = Integer.parseInt(request.getParameter("faculty_code"));
+			Integer college_code = Integer.parseInt(request.getParameter("college_code"));
+			Integer department_code = Integer.parseInt(request.getParameter("department_code"));
+
 
 			for (Part file : files) {
 				String file_name = getFileName(file);
-				String file_url = prop.getValue("baseDir") + "/" + file_name;
+				String file_url = prop.getValue("baseDir") + "/Faculty_" + faculty_code + "/College_"+ college_code + "/Department_"+ department_code + "/" + file_name;
 
 				filecontent = file.getInputStream();
 
 				db.executeUpdate(prop.getValue("query_updateSubject"), file_name, file_url, subject_id);
 
 				System.out.println("Archivo-> " + file_name + "" + file_url);
-				os = new FileOutputStream(file_url);
+                File myFile = new File(file_url);
+                myFile.getParentFile().mkdirs();
+                myFile.createNewFile();
+				os = new FileOutputStream(myFile);
 				int read = 0;
 				byte[] bytes = new byte[1024];
 				while ((read = filecontent.read(bytes)) != -1) {
@@ -103,26 +112,18 @@ public class Files extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
-		JSONObject reqBody = new JSONObject(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
-		DB db = new DB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		try {
-			
-			Integer subject_id = reqBody.getInt("subject_id");
-			String file_name = reqBody.getString("file_name");
-			String file_url = prop.getValue("baseDir") + "/" + file_name;
-			File file = new File(file_url);
+            String syllabus_url = request.getParameter("syllabus_url");
 
-			if (subject_id!=0) {
-				db.executeUpdate(prop.getValue("query_deleteFile"), subject_id);
-				json.put("status", 200).put("response", prop.getValue("mssg_fileDeleted"));
-				System.out.println(prop.getValue("mssg_fileDeleted"));
-				file.delete();
-			}else {
-				json.put("response", prop.getValue("mssg_fileNotExist")).put("status", 400);
- 		    	System.out.println(prop.getValue("mssg_fileNotExist"));
-			}		
+            //String file_url = prop.getValue("baseDir") + "/Faculty_" + faculty_code + "/College_"+ college_code + "/Department_"+ department_code + "/" + syllabus_name;
+            //System.out.println(file_url);
+            System.out.println(syllabus_url);
+            File file = new File(syllabus_url);
+            file.delete();
+			json.put("status", 200).put("response", prop.getValue("mssg_fileDeleted"));
+			System.out.println(prop.getValue("mssg_fileDeleted"));
 		
 		}catch (Exception e) {
 			System.out.println("error");

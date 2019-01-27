@@ -18,7 +18,7 @@
     </mat-grid-tile>
     <mat-grid-tile [colspan]="4" [rowspan]="1"> 
     <mat-form-field>
-        <input matInput type="text"  class="form-control user-name" [(ngModel)]="user.name" [ngModelOptions]="{standalone: true}">
+        <input matInput type="text"  class="form-control user-name" [(ngModel)]="user.user_name" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -26,7 +26,7 @@
     </mat-grid-tile>
     <mat-grid-tile [colspan]="4" [rowspan]="1"> 
     <mat-form-field>
-        <input matInput type="text"  class="form-control user-lastname" [(ngModel)]="user.lastname" [ngModelOptions]="{standalone: true}">
+        <input matInput type="text"  class="form-control user-lastname" [(ngModel)]="user.user_lastname" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -34,7 +34,7 @@
     </mat-grid-tile>
     <mat-grid-tile [colspan]="4" [rowspan]="1"> 
     <mat-form-field>
-        <input matInput type="text"  class="form-control user-username" [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}">
+        <input matInput type="text"  class="form-control user-username" [(ngModel)]="user.user_username" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -42,12 +42,13 @@
     </mat-grid-tile>
     <mat-grid-tile [colspan]="4" [rowspan]="1"> 
     <mat-form-field>
-        <input matInput type="password"  class="form-control user-password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}">
+        <input matInput type="password"  class="form-control user-password" [(ngModel)]="user.user_password" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="4" [rowspan]="1"> 
       <div class="btn-createUser">
-        <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="signUp()">Crear Usuario</button>
+        <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="signUp()" *ngIf="new">Crear Usuario</button>
+        <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="updateUser()" *ngIf="!new">Modificar Usuario</button>        
       </div>
     </mat-grid-tile>
   </mat-grid-list>

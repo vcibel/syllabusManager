@@ -53,12 +53,12 @@ public class Departments extends HttpServlet {
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		try {
-            String department_code = reqBody.getString("department_code");
-			Integer career_id = reqBody.getInt("career_id");
-			String description = reqBody.getString("description");
+            Integer department_code = reqBody.getInt("department_code");
+			Integer college_id = reqBody.getInt("college_id");
+			String department_name = reqBody.getString("department_name");
 
-			if (db.executeQuery(prop.getValue("query_checkDepartment"), department_code, description, career_id).length() ==0) {
-				Integer department_id = db. executeUpdate(prop.getValue("query_addDepartment"), career_id, description) ;
+			if (db.executeQuery(prop.getValue("query_checkDepartment"), department_name, department_code).length() ==0) {
+				Integer department_id = db. executeUpdate(prop.getValue("query_addDepartment"), department_code, department_name, college_id) ;
 				json.put("status", 200).put("response", prop.getValue("mssg_departmentCreated")).put("department_id", department_id);
 				System.out.println(prop.getValue("mssg_departmentCreated"));
 			}else {
@@ -79,12 +79,11 @@ public class Departments extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
-		JSONObject reqBody = new JSONObject(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
 		DB db = new DB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		try {
-			Integer department_id = reqBody.getInt("department_id");
+			Integer department_id = Integer.parseInt(request.getParameter("id"));
 
 			db.executeUpdate(prop.getValue("query_deleteDepartment"), department_id);
 			json.put("status", 200).put("response", prop.getValue("mssg_departmentDeleted"));
@@ -109,13 +108,16 @@ public class Departments extends HttpServlet {
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		try {
-            String department_code = reqBody.getString("department_code");
+            Integer department_code = reqBody.getInt("department_code");
             Integer department_id = reqBody.getInt("department_id");
-			Integer career_id = reqBody.getInt("career_id");
-			String description = reqBody.getString("description");
+			Integer college_id = reqBody.getInt("college_id");
+			String department_name = reqBody.getString("department_name");
 
-			if (db.executeQuery(prop.getValue("query_checkDepartment"), department_code, description, career_id).length() ==0) {
-				db.executeUpdate(prop.getValue("query_updateDepartment"), description, career_id, department_id);
+			JSONArray table = db.executeQuery(prop.getValue("query_checkDepartment"), department_name, department_code);
+			System.out.println(table.toString());
+
+			if (table.length()==0 || (table.length()==1 && table.getJSONObject(0).getInt("department_id") == department_id)) {
+				db.executeUpdate(prop.getValue("query_updateDepartment"), department_code, department_name, college_id, department_id);
 				json.put("status", 200).put("response", prop.getValue("mssg_departmentUpdated"));
 				System.out.println(prop.getValue("mssg_departmentUpdated"));
 			}else {

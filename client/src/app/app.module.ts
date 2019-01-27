@@ -1,4 +1,5 @@
-import { HttpService } from './service/http.service';
+import { HttpService } from './service/http/http.service';
+import { FilesService } from './service/files/files.service';
 import { MatSidenavModule, MatListModule, MatButtonModule, MatCheckboxModule,
   MatInputModule, MatIconModule, MatCardModule, MatDividerModule,
   MatGridListModule, MatMenuModule, MatExpansionModule, MatSelectModule, MatDialogModule, MatFormFieldModule, MatToolbarModule } from '@angular/material';
@@ -15,7 +16,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { CareerComponent } from './career/career.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SubjectComponent } from './subject/subject.component';
 import { FacultiesComponent } from './faculties/faculties.component';
@@ -34,7 +34,6 @@ import { UsersComponent } from './users/users.component';
     LoginComponent,
     SignupComponent,
     HomeComponent,
-    CareerComponent,
     CollegeComponent,
     SubjectComponent,
     FacultiesComponent,
@@ -74,7 +73,8 @@ import { UsersComponent } from './users/users.component';
   ],
   entryComponents: [ CollegeComponent, SubjectComponent, FacultyComponent, DepartmentComponent, SignupComponent ],
   providers: [
-    HttpService
+    HttpService,
+    FilesService
   ],
   bootstrap: [
     AppComponent,

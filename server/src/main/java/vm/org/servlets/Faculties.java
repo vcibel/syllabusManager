@@ -1,5 +1,6 @@
 package vm.org.servlets;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import vm.org.DB;
 import vm.org.utilities.PropertiesReader;
@@ -42,10 +43,10 @@ public class Faculties extends HttpServlet {
 		
 		try {
 			Integer faculty_code = reqBody.getInt("faculty_code");
-			String description = reqBody.getString("description");
+			String faculty_name = reqBody.getString("faculty_name");
 
-			if (db.executeQuery(prop.getValue("query_checkFaculty"), description, faculty_code).length() ==0) {
-				Integer faculty_id = db. executeUpdate(prop.getValue("query_addFaculty"), faculty_code, description) ;
+			if (db.executeQuery(prop.getValue("query_checkFaculty"), faculty_name, faculty_code).length() ==0) {
+				Integer faculty_id = db. executeUpdate(prop.getValue("query_addFaculty"), faculty_code, faculty_name) ;
 				json.put("status", 200).put("response", prop.getValue("mssg_facultyCreated")).put("faculty_id", faculty_id);
 				System.out.println(prop.getValue("mssg_facultyCreated"));
 			}else {
@@ -66,12 +67,11 @@ public class Faculties extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
-		JSONObject reqBody = new JSONObject(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
 		DB db = new DB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		try {
-			Integer faculty_id = reqBody.getInt("faculty_id");
+			Integer faculty_id = Integer.parseInt(request.getParameter("id"));
 
 			db.executeUpdate(prop.getValue("query_deleteFaculty"), faculty_id);
 			json.put("status", 200).put("response", prop.getValue("mssg_facultyDeleted"));
@@ -97,12 +97,19 @@ public class Faculties extends HttpServlet {
 		
 		try {
 			Integer faculty_id = reqBody.getInt("faculty_id");
-			String new_description = reqBody.getString("description");
+			Integer faculty_code = reqBody.getInt("faculty_code");
+			String new_faculty_name = reqBody.getString("faculty_name");
+			JSONArray table = db.executeQuery(prop.getValue("query_checkFaculty"), new_faculty_name, faculty_code);
+            System.out.println(table.toString());
 
-			db.executeUpdate(prop.getValue("query_updateFaculty"), new_description, faculty_id);
-			json.put("status", 200).put("response", prop.getValue("mssg_facultyUpdated"));
-			System.out.println(prop.getValue("mssg_facultyUpdated"));
-		
+			if (table.length()==0 || (table.length()==1 && table.getJSONObject(0).getInt("faculty_id") == faculty_id)){
+				db.executeUpdate(prop.getValue("query_updateFaculty"), faculty_code, new_faculty_name, faculty_id);
+				json.put("status", 200).put("response", prop.getValue("mssg_facultyUpdated"));
+				System.out.println(prop.getValue("mssg_facultyUpdated"));
+			}else {
+				json.put("response", prop.getValue("mssg_facultyExist")).put("status", 400);
+				System.out.println(prop.getValue("mssg_facultyExist"));
+			}
 		}catch (Exception e) {
 			System.out.println("error");
 			System.out.println(e. getMessage());

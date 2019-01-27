@@ -1,4 +1,4 @@
-import { HttpService } from '../service/http.service';
+import { HttpService } from '../service/http/http.service';
 import { User } from './../models/user';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -13,12 +13,12 @@ export class LoginComponent implements OnInit {
   title = 'Universidad Rafael Urdaneta';
   user: User = {
     user_id: null,
-    name: '',
-    lastname: '',
-    username: '',
-    password: '',
+    user_name: '',
+    user_lastname: '',
+    user_username: '',
+    user_password: '',
     type_user_id: null,
-    created_at: '',
+    user_created_at: '',
 };
 
   constructor(private router: Router, private httpService: HttpService) {

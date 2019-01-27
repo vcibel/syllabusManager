@@ -1,10 +1,9 @@
 export interface College {
     college_id: number;
     college_code: number;
-    name: string;
+    college_name: string;
     faculty_id: number;
     faculty_code: number;
-    created_at: any;
-    updated_at: any;
-    college_image: string;
+    college_created_at: any;
+    college_updated_at: any;
 }
