@@ -1,0 +1,46 @@
+<div class="dialog-faculty">
+    <div class="dialog-content">
+      <div class="faculty-header">
+        <mat-grid-list cols="10" rowHeight="100px">
+          <mat-grid-tile [colspan]="5" [rowspan]="1">
+            <h4>Crear Pensum</h4>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="5" [rowspan]="1">
+            <button type="button" class="close" aria-label="Close" (click)="onClose()">
+              <span aria-hidden="true">×</span> 
+            </button>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+      <mat-grid-list cols="8" rowHeight="100px">
+        <mat-grid-tile [colspan]="6" [rowspan]="1"> 
+          <label for="collage-type">Seleccionar Facultad:</label>
+          <mat-form-field class="select-career">
+            <mat-select>
+              <mat-option>facultad de ingenieria</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="6" [rowspan]="1"> 
+            <label for="collage-type">Seleccionar Escuela:</label>
+            <mat-form-field class="select-career">
+              <mat-select>
+                <mat-option>escuela de computacion</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="6" [rowspan]="1"> 
+          <label for="faculty-name">Vigencia:</label>
+        <mat-form-field>
+          <input matInput type="text" class="form-control faculty-name" >
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="8" [rowspan]="1"> 
+          <div class="btn-crearCarrera">
+            <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createPensum()" *ngIf="new" >Crear Pensum</button>      
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+            

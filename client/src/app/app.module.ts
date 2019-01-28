@@ -26,7 +26,9 @@ import { SubjectsComponent } from './subjects/subjects.component';
 import { DepartmentComponent } from './department/department.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { UsersComponent } from './users/users.component';
-
+import { PensumComponent } from './pensum/pensum.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { CreatePensumComponent } from './create-pensum/create-pensum.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { UsersComponent } from './users/users.component';
     SubjectsComponent,
     DepartmentComponent,
     DepartmentsComponent,
-    UsersComponent
+    UsersComponent,
+    PensumComponent,
+    CreatePensumComponent
   ],
   imports: [
     HttpClientModule,
@@ -68,10 +72,18 @@ import { UsersComponent } from './users/users.component';
     MatDialogModule,
     MatExpansionModule,
     AngularFontAwesomeModule,
+    DragDropModule,
     MDBBootstrapModule.forRoot(),
     NgbModule.forRoot(),
   ],
-  entryComponents: [ CollegeComponent, SubjectComponent, FacultyComponent, DepartmentComponent, SignupComponent ],
+  entryComponents: [ 
+    CollegeComponent, 
+    SubjectComponent, 
+    FacultyComponent, 
+    DepartmentComponent, 
+    SignupComponent,
+    CreatePensumComponent
+   ],
   providers: [
     HttpService,
     FilesService

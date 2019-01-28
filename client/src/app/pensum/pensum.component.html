@@ -1,0 +1,184 @@
+<div cdkDropListGroup>
+<mat-drawer-container class="example-container">
+  <mat-drawer #drawer mode="side">
+    <button (click)="goToHome()" mat-raised-button>
+      Go Home
+    </button>
+  </mat-drawer>
+  <mat-drawer mode="side" opened position="end">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Show Sidenav
+    </button>
+    <button type="button" mat-button (click)="openPensum()" >
+        New
+      </button>
+    <div class="example-container">
+        <h2>Seleccione</h2>
+    
+        <div
+          cdkDropList
+          [cdkDropListData]="todo"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of todo" cdkDrag>
+              <mat-card class="subject-card">
+                  <mat-grid-list cols="4" rowHeight="15px">
+                    <mat-grid-tile [colspan]="3" [rowspan]="1">
+                      <mat-card class="code-subject">
+                        <span>{{item.code}}</span>
+                      </mat-card>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                      <mat-card class="hc-subject">
+                        <span>{{item.hc}}</span>
+                      </mat-card>
+                    </mat-grid-tile>
+                  </mat-grid-list>
+                  <mat-grid-list cols="2" rowHeight="20px">
+                    <mat-grid-tile [colspan]="2" [rowspan]="1">
+                          <mat-card class="name-subject">
+                            <span>{{item.name}}</span>
+                          </mat-card>
+                      </mat-grid-tile>
+                  </mat-grid-list>
+                </mat-card>
+          </div>
+        </div>
+      </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-card class="pensum">
+      <mat-card-content class="pensum-content">
+        <mat-card class="pensum-header" id="card-pensum">
+          <mat-grid-list cols="4" rowHeight="20px">
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                Universidad Rafael Urdaneta
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="3">
+                <mat-card>Vigencia MAYO 2016</mat-card>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="2" [rowspan]="1">
+                Nombre:___________________
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                Facultad de Ingenieria
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="2" [rowspan]="1">
+                Apellido:___________________
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                Escuela de Ingenieria de Computación
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="2" [rowspan]="1">
+                C.I.:_______________________
+              </mat-grid-tile>
+            </mat-grid-list>
+        </mat-card>
+        <mat-card class="pensum-body" id="card-pensum">
+          <mat-grid-list cols="20" rowHeight="30px">
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+              I SEM
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+              II SEM
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+              III SEM
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+              IV SEM
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+              V SEM
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+              VI SEM
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+              VII SEM
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+              VIII SEM
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+              IX SEM
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+              X SEM
+            </mat-grid-tile>
+          </mat-grid-list>
+          <mat-grid-list cols="20" rowHeight="220px">
+            <mat-grid-tile [colspan]="2" [rowspan]="2">
+                  <div
+                  cdkDropList
+                  [cdkDropListData]="done"
+                  class="example-list"
+                  (cdkDropListDropped)="drop($event)">
+                  <div class="example-box" *ngFor="let item of done" cdkDrag>
+                    <div class="subjects-column">
+                        <mat-card class="subject-card">
+                            <mat-grid-list cols="4" rowHeight="15px">
+                              <mat-grid-tile [colspan]="3" [rowspan]="1">
+                                <mat-card class="code-subject">
+                                  <span>{{item.code}}</span>
+                                </mat-card>
+                              </mat-grid-tile>
+                              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                                <mat-card class="hc-subject">
+                                  <span>{{item.hc}}</span>
+                                </mat-card>
+                              </mat-grid-tile>
+                            </mat-grid-list>
+                            <mat-grid-list cols="2" rowHeight="20px">
+                              <mat-grid-tile [colspan]="2" [rowspan]="1">
+                                    <mat-card class="name-subject">
+                                      <span>{{item.name}}</span>
+                                    </mat-card>
+                                </mat-grid-tile>
+                            </mat-grid-list>
+                          </mat-card>
+                    </div>
+                  </div>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="2">
+                <div
+                cdkDropList
+                [cdkDropListData]="done"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of done" cdkDrag>
+                  <div class="subjects-column">
+                      <mat-card class="subject-card">
+                          <mat-grid-list cols="4" rowHeight="15px">
+                            <mat-grid-tile [colspan]="3" [rowspan]="1">
+                              <mat-card class="code-subject">
+                                <span>{{item.code}}</span>
+                              </mat-card>
+                            </mat-grid-tile>
+                            <mat-grid-tile [colspan]="1" [rowspan]="1">
+                              <mat-card class="hc-subject">
+                                <span>{{item.hc}}</span>
+                              </mat-card>
+                            </mat-grid-tile>
+                          </mat-grid-list>
+                          <mat-grid-list cols="2" rowHeight="20px">
+                            <mat-grid-tile [colspan]="2" [rowspan]="1">
+                                  <mat-card class="name-subject">
+                                    <span>{{item.name}}</span>
+                                  </mat-card>
+                              </mat-grid-tile>
+                          </mat-grid-list>
+                        </mat-card>
+                  </div>
+                </div>
+              </div>
+          </mat-grid-tile>
+          </mat-grid-list>
+        </mat-card>
+        <mat-card class="pensum-footer" id="card-pensum">Pensum footer</mat-card>
+      </mat-card-content>
+    </mat-card>
+  </mat-drawer-content>
+</mat-drawer-container>
+ </div>

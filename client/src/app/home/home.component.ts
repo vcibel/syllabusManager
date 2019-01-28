@@ -60,6 +60,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  goToPensum(){
+    this.router.navigateByUrl('/pensum');
+  }
+
   // toggleRegister() {
   //   if(this.isRegister)
   //     this.isRegister = false;
