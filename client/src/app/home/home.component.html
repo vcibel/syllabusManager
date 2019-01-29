@@ -22,7 +22,7 @@
                       <button mat-list-item (click)="toggleDepartments()" >Departamento</button>
                     </mat-action-list>
                     <mat-action-list>
-                      <button mat-list-item (click)="goToPensum()">Pensum</button>
+                      <button mat-list-item (click)="togglepPensum()">Pensum</button>
                     </mat-action-list>
                     <mat-action-list>
                       <button mat-list-item  (click)="toggleUser()">Usuarios</button>
@@ -53,6 +53,7 @@
           <app-subjects *ngIf="Show || isSubject"></app-subjects>
           <app-departments *ngIf="Show || isDepartment"></app-departments>
           <app-users *ngIf="Show || isUser"></app-users>
+          <app-pensums *ngIf="Show || isPensum"></app-pensums>
         </div>
       </div>
     </mat-grid-list>
