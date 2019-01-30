@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
   isSubject: boolean  = false;
   isDepartment: boolean  = false;
   isUser: boolean  = false;
+  isPensum: boolean  = false;
   Show: boolean = false;  
 
   showCollege: boolean = true;
@@ -111,5 +112,14 @@ export class HomeComponent implements OnInit {
       this.isUser = true;
     }
   }
+
+  togglepPensum() {
+    if (this.isPensum) {
+      this.isPensum = false;
+    } else {
+      this.isPensum = true;
+    }
+  }
+
 
 }
