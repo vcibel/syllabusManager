@@ -38,7 +38,7 @@ export class SubjectsComponent implements OnInit {
     this.httpService.get('/Subjects').subscribe((res: any) => {
       if (res.status === 200) {
         this.subjects = res.subjects;
-        this.typesSubject = res.typesSubject;
+        this.typesSubject = res.types;
         console.log(this.subjects, this.typesSubject);
       } else {
         alert(res.response);

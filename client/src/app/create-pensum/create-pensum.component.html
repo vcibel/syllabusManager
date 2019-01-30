@@ -13,31 +13,31 @@
         </mat-grid-list>
       </div>
       <mat-grid-list cols="8" rowHeight="100px">
-        <mat-grid-tile [colspan]="6" [rowspan]="1"> 
+        <!-----<mat-grid-tile [colspan]="6" [rowspan]="1"> 
           <label for="collage-type">Seleccionar Facultad:</label>
           <mat-form-field class="select-career">
             <mat-select>
               <mat-option>facultad de ingenieria</mat-option>
             </mat-select>
           </mat-form-field>
-        </mat-grid-tile>
+        </mat-grid-tile>----->
         <mat-grid-tile [colspan]="6" [rowspan]="1"> 
             <label for="collage-type">Seleccionar Escuela:</label>
             <mat-form-field class="select-career">
-              <mat-select>
-                <mat-option>escuela de computacion</mat-option>
+              <mat-select [(ngModel)]="pensum.college_id" [ngModelOptions]="{standalone: true}">
+                <mat-option *ngFor="let college of colleges" value=college.college_id>{{college.college_name}}</mat-option>
               </mat-select>
             </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="6" [rowspan]="1"> 
+        <!----- <mat-grid-tile [colspan]="6" [rowspan]="1"> 
           <label for="faculty-name">Vigencia:</label>
         <mat-form-field>
           <input matInput type="text" class="form-control faculty-name" >
           </mat-form-field>
-        </mat-grid-tile>
+        </mat-grid-tile>------>
         <mat-grid-tile [colspan]="8" [rowspan]="1"> 
           <div class="btn-crearCarrera">
-            <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createPensum()" *ngIf="new" >Crear Pensum</button>      
+            <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createPensum()">Crear Pensum</button>      
           </div>
         </mat-grid-tile>
       </mat-grid-list>

@@ -17,27 +17,27 @@
     
         <div
           cdkDropList
-          [cdkDropListData]="todo"
+          [cdkDropListData]="subjects"
           class="example-list"
           (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of todo" cdkDrag>
+          <div class="example-box" *ngFor="let item of subjects" cdkDrag>
               <mat-card class="subject-card">
                   <mat-grid-list cols="4" rowHeight="15px">
                     <mat-grid-tile [colspan]="3" [rowspan]="1">
                       <mat-card class="code-subject">
-                        <span>{{item.code}}</span>
+                        <span>{{item.subject_code}}</span>
                       </mat-card>
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
                       <mat-card class="hc-subject">
-                        <span>{{item.hc}}</span>
+                        <span>{{item.subject_hc}}</span>
                       </mat-card>
                     </mat-grid-tile>
                   </mat-grid-list>
                   <mat-grid-list cols="2" rowHeight="20px">
                     <mat-grid-tile [colspan]="2" [rowspan]="1">
                           <mat-card class="name-subject">
-                            <span>{{item.name}}</span>
+                            <span>{{item.subject_name}}</span>
                           </mat-card>
                       </mat-grid-tile>
                   </mat-grid-list>
@@ -111,28 +111,28 @@
             <mat-grid-tile [colspan]="2" [rowspan]="2">
                   <div
                   cdkDropList
-                  [cdkDropListData]="done"
+                  [cdkDropListData]="done.first"
                   class="example-list"
                   (cdkDropListDropped)="drop($event)">
-                  <div class="example-box" *ngFor="let item of done" cdkDrag>
+                  <div class="example-box" *ngFor="let item of done.first" cdkDrag>
                     <div class="subjects-column">
                         <mat-card class="subject-card">
                             <mat-grid-list cols="4" rowHeight="15px">
                               <mat-grid-tile [colspan]="3" [rowspan]="1">
                                 <mat-card class="code-subject">
-                                  <span>{{item.code}}</span>
+                                  <span>{{item.subject_code}}</span>
                                 </mat-card>
                               </mat-grid-tile>
                               <mat-grid-tile [colspan]="1" [rowspan]="1">
                                 <mat-card class="hc-subject">
-                                  <span>{{item.hc}}</span>
+                                  <span>{{item.subject_hc}}</span>
                                 </mat-card>
                               </mat-grid-tile>
                             </mat-grid-list>
                             <mat-grid-list cols="2" rowHeight="20px">
                               <mat-grid-tile [colspan]="2" [rowspan]="1">
                                     <mat-card class="name-subject">
-                                      <span>{{item.name}}</span>
+                                      <span>{{item.subject_name}}</span>
                                     </mat-card>
                                 </mat-grid-tile>
                             </mat-grid-list>
@@ -144,28 +144,28 @@
             <mat-grid-tile [colspan]="2" [rowspan]="2">
                 <div
                 cdkDropList
-                [cdkDropListData]="done"
+                [cdkDropListData]="done.second"
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                <div class="example-box" *ngFor="let item of done" cdkDrag>
+                <div class="example-box" *ngFor="let item of done.second" cdkDrag>
                   <div class="subjects-column">
                       <mat-card class="subject-card">
                           <mat-grid-list cols="4" rowHeight="15px">
                             <mat-grid-tile [colspan]="3" [rowspan]="1">
                               <mat-card class="code-subject">
-                                <span>{{item.code}}</span>
+                                <span>{{item.subject_code}}</span>
                               </mat-card>
                             </mat-grid-tile>
                             <mat-grid-tile [colspan]="1" [rowspan]="1">
                               <mat-card class="hc-subject">
-                                <span>{{item.hc}}</span>
+                                <span>{{item.subject_hc}}</span>
                               </mat-card>
                             </mat-grid-tile>
                           </mat-grid-list>
                           <mat-grid-list cols="2" rowHeight="20px">
                             <mat-grid-tile [colspan]="2" [rowspan]="1">
                                   <mat-card class="name-subject">
-                                    <span>{{item.name}}</span>
+                                    <span>{{item.subject_name}}</span>
                                   </mat-card>
                               </mat-grid-tile>
                           </mat-grid-list>
@@ -174,6 +174,39 @@
                 </div>
               </div>
           </mat-grid-tile>
+          <mat-grid-tile [colspan]="2" [rowspan]="2">
+              <div
+              cdkDropList
+              [cdkDropListData]="done.third"
+              class="example-list"
+              (cdkDropListDropped)="drop($event)">
+              <div class="example-box" *ngFor="let item of done.third" cdkDrag>
+                <div class="subjects-column">
+                    <mat-card class="subject-card">
+                        <mat-grid-list cols="4" rowHeight="15px">
+                          <mat-grid-tile [colspan]="3" [rowspan]="1">
+                            <mat-card class="code-subject">
+                              <span>{{item.subject_code}}</span>
+                            </mat-card>
+                          </mat-grid-tile>
+                          <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-card class="hc-subject">
+                              <span>{{item.subject_hc}}</span>
+                            </mat-card>
+                          </mat-grid-tile>
+                        </mat-grid-list>
+                        <mat-grid-list cols="2" rowHeight="20px">
+                          <mat-grid-tile [colspan]="2" [rowspan]="1">
+                                <mat-card class="name-subject">
+                                  <span>{{item.subject_name}}</span>
+                                </mat-card>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                      </mat-card>
+                </div>
+              </div>
+            </div>
+        </mat-grid-tile>
           </mat-grid-list>
         </mat-card>
         <mat-card class="pensum-footer" id="card-pensum">Pensum footer</mat-card>

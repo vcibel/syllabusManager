@@ -1,14 +1,12 @@
+import { SubjectPensum } from './../models/subject_pensum';
+import { HttpService } from './../service/http/http.service';
+import { Faculty } from './../models/faculty';
+import { Subject } from './../models/subject';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { CreatePensumComponent } from '../create-pensum/create-pensum.component';
-
-export interface Section {
-  hc: number;
-  name:string;
-  code: string;
-}
 
 @Component({
   selector: 'app-pensum',
@@ -18,33 +16,30 @@ export interface Section {
 
 export class PensumComponent implements OnInit {
 
+  subjects: Subject[];
+  faculty: Faculty;
+  typesSubjectPensum;
   showFiller = false;
+  done = {
+    first: [],
+    second: [],
+    third: [],
+    fourth: [],
+    fith: [],
+    sixth: [],
+    seventh: [],
+    eigth: [],
+    nineth: [],
+    tenth: [],
+  };
 
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 
-  constructor(private router: Router, private dialog: MatDialog) { }
+  constructor(private router: Router, private dialog: MatDialog, private httpService: HttpService) { }
 
-  goToHome(){
+  goToHome() {
     this.router.navigateByUrl('/home');
   }
-
-  todo: Section[] = [
-    { code: '201T18', hc:2, name:'Fisica'},
-    { code: '201T18', hc:3, name:'Matematica'},
-    { code: '201T18', hc:5, name:'Qumica'},
-    { code: '201T18', hc:6, name:'Algebra'},
-    { code: '201T18', hc:3, name:'Geometria'},
-    { code: '201T18', hc:2, name:'Matematica'},
-  ];
-
-  done: Section[] = [
-    { code: '201T18', hc:2, name:'Matematica'},
-    { code: '201T18', hc:3, name:'Matematica'},
-    { code: '201T18', hc:5, name:'Matematica'},
-    { code: '201T18', hc:6, name:'Matematica'},
-    { code: '201T18', hc:3, name:'Matematica'},
-    { code: '201T18', hc:2, name:'Matematica'},
-  ];
 
   openPensum() {
     const dialogConfig = new MatDialogConfig();
@@ -65,7 +60,27 @@ export class PensumComponent implements OnInit {
     }
   }
 
+  createPensum() {
+    this.httpService.post(this.done, '/SubjectPensum').subscribe((res: any) => {
+      if (res.status === 200) {
+          console.log(res);
+      } else {
+        console.log(res.message);
+      }
+    });
+  }
+
   ngOnInit() {
+    // LISTAR MATERIAS
+    this.httpService.get('/Subjects?id=2').subscribe((res: any) => { // + this.faculty.faculty_id
+      if (res.status === 200) {
+        this.subjects = res.subjects;
+        this.typesSubjectPensum = res.types;
+        console.log(this.subjects, this.typesSubjectPensum);
+      } else {
+        alert(res.response);
+      }
+    });
   }
 
 }

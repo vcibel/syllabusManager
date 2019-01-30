@@ -29,15 +29,18 @@ public class Subjects extends HttpServlet {
 		PropertiesReader prop = PropertiesReader.getInstance();
 
 		JSONArray result;
+		JSONArray types;
 
 		if(request.getParameterMap().containsKey("id")){
 			Integer id = Integer.parseInt(request.getParameter("id"));
-			result = db.executeQuery(prop.getValue("query_getSubjectByDepartment"),id);
+			result = db.executeQuery(prop.getValue("query_getSubjectByFaculty"),id);
+			types = db.executeQuery(prop.getValue("query_getTypeSubjectPensum"));
         } else {
 		    result = db.executeQuery(prop.getValue("query_getSubjects"));
+		    types = db.executeQuery(prop.getValue("query_getTypeSubject"));
         }
 
-		json.put("subjects", result).put("typesSubject", db.executeQuery(prop.getValue("query_getTypeSubject")))
+		json.put("subjects", result).put("types", types)
                 .put("status", 200).put("response", prop.getValue("mssg_success"));
 
 		out.print(json.toString());
