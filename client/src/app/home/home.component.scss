@@ -159,23 +159,47 @@ input.form-control.cod-deparment {
     position: relative;
     top: -17px;
 }
-
 .modal.modal-body, .modal-body-2{
     position: relative;
     flex: 1 1 auto;
     padding: 1rem;
     overflow-y: scroll !important;
 }
-
 .modal-content {
     height: 690px !important;
 }
-
 label.faculties {
     position: relative;
     top: 18px;
 }
-
 mat-drawer-container.example-container.mat-drawer-container {
     height: 657px;
 }
+.content {
+    padding: 16px;
+}
+label.label {
+    position: relative;
+    left: -110px;
+}
+.grid{
+    left: calc(((5% - 0.75px) + 1px) * 2) !important;
+    width: calc(((26% - 0.75px) * 2) + 1px) !important;
+    /* top: 0px !important; */
+    /* height: calc(95px) !important; */
+}
+.grid-1{
+    left: calc(((17% - 0.8px) + 1px) * 4) !important;
+}
+.grid-2{
+    // left: calc(((13% - 0.8px) + 1px) * 4) !important;
+    // top: calc(-15px) !important;
+    width: calc(((46% - 0.8px) * 1) + 0px) !important;
+    left: calc(((14% - 0.8px) + 1px) * 4) !important;
+    top: calc(72px) !important;
+}
+mat-card.list-card.mat-card {
+    width: 300px;
+    height: 320px;
+}
+
