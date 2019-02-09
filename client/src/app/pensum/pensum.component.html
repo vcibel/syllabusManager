@@ -9,9 +9,7 @@
     <button type="button" mat-button (click)="drawer.toggle()">
       Show Sidenav
     </button>
-    <button type="button" mat-button (click)="openPensum()" >
-        New
-      </button>
+    
     <div class="example-container">
         <h2>Seleccione</h2>
     
@@ -111,10 +109,10 @@
             <mat-grid-tile [colspan]="2" [rowspan]="2">
                   <div
                   cdkDropList
-                  [cdkDropListData]="done.first"
+                  [cdkDropListData]="done[1]"
                   class="example-list"
                   (cdkDropListDropped)="drop($event)">
-                  <div class="example-box" *ngFor="let item of done.first" cdkDrag>
+                  <div class="example-box" *ngFor="let item of done[1]" cdkDrag>
                     <div class="subjects-column">
                         <mat-card class="subject-card">
                             <mat-grid-list cols="4" rowHeight="15px">
@@ -144,10 +142,10 @@
             <mat-grid-tile [colspan]="2" [rowspan]="2">
                 <div
                 cdkDropList
-                [cdkDropListData]="done.second"
+                [cdkDropListData]="done[2]"
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                <div class="example-box" *ngFor="let item of done.second" cdkDrag>
+                <div class="example-box" *ngFor="let item of done[2]" cdkDrag>
                   <div class="subjects-column">
                       <mat-card class="subject-card">
                           <mat-grid-list cols="4" rowHeight="15px">
@@ -177,10 +175,10 @@
           <mat-grid-tile [colspan]="2" [rowspan]="2">
               <div
               cdkDropList
-              [cdkDropListData]="done.third"
+              [cdkDropListData]="done[3]"
               class="example-list"
               (cdkDropListDropped)="drop($event)">
-              <div class="example-box" *ngFor="let item of done.third" cdkDrag>
+              <div class="example-box" *ngFor="let item of done[3]" cdkDrag>
                 <div class="subjects-column">
                     <mat-card class="subject-card">
                         <mat-grid-list cols="4" rowHeight="15px">

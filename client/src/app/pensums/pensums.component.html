@@ -2,31 +2,30 @@
   <mat-toolbar color="primary">
     <span>pensums</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button (click)="goToPensum()">
-      <mat-icon class="example-icon">add_box</mat-icon>
+    <button type="button" mat-button (click)="openPensum()" >
+      New
     </button>
   </mat-toolbar>
   <div class="pensums-created">
     <mat-list>
-      <mat-list-item class="list-pensum" >
-        <mat-card class="card-pensum">
+      <mat-list-item class="list-pensum" *ngFor="let pensum of pensums">
+        <mat-card class="card-pensum" (click)="goToPensum(pensum)">
           <mat-card-header>
             <mat-card-title>
-              pensum escuela
+              {{pensum.college_name}}
             </mat-card-title>
           </mat-card-header>
           <mat-card-content>
               <mat-grid-list cols="3" rowHeight="150px">
                   <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    escuela
-                    facultad
-                    vigencia
+                    {{pensum.college_name}}
+                    {{pensum.faculty_name}}
+                    {{pensum.pensum_date}}
                   </mat-grid-tile>
                 </mat-grid-list>
           </mat-card-content>
           <mat-card-actions>
-            <mat-icon mat-icon-button class="example-icon" >delete</mat-icon>
-            <mat-icon mat-icon-button class="example-icon" >create</mat-icon>
+            <mat-icon mat-icon-button class="example-icon" (click)="deletePensum(pensum)">delete</mat-icon>
           </mat-card-actions>
         </mat-card>
       </mat-list-item>
