@@ -11,6 +11,7 @@
     </button>
     
     <div class="example-container">
+        <span class="btn btn-primary" (click)="showConnectOnClick()">{{buttonName}}</span>
         <h2>Seleccione</h2>
     
         <div
@@ -19,7 +20,7 @@
           class="example-list"
           (cdkDropListDropped)="drop($event)">
           <div class="example-box" *ngFor="let item of subjects" cdkDrag>
-              <mat-card class="subject-card">
+              <mat-card class="subject-card" id="{{item.id}}">
                   <mat-grid-list cols="4" rowHeight="15px">
                     <mat-grid-tile [colspan]="3" [rowspan]="1">
                       <mat-card class="code-subject">
@@ -114,7 +115,7 @@
                   (cdkDropListDropped)="drop($event)">
                   <div class="example-box" *ngFor="let item of done[1]" cdkDrag>
                     <div class="subjects-column">
-                        <mat-card class="subject-card">
+                        <mat-card class="subject-card" id="{{item.id}}">
                             <mat-grid-list cols="4" rowHeight="15px">
                               <mat-grid-tile [colspan]="3" [rowspan]="1">
                                 <mat-card class="code-subject">
@@ -147,7 +148,7 @@
                 (cdkDropListDropped)="drop($event)">
                 <div class="example-box" *ngFor="let item of done[2]" cdkDrag>
                   <div class="subjects-column">
-                      <mat-card class="subject-card">
+                      <mat-card class="subject-card" id="{{item.id}}">
                           <mat-grid-list cols="4" rowHeight="15px">
                             <mat-grid-tile [colspan]="3" [rowspan]="1">
                               <mat-card class="code-subject">
@@ -212,4 +213,35 @@
     </mat-card>
   </mat-drawer-content>
 </mat-drawer-container>
- </div>
+
+  <!-- <div class="text-center title">
+    hola
+  </div>
+  
+  <div class="container">
+    <span class="btn btn-primary" (click)="showConnectOnClick()">{{buttonName}}</span>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alignleft">
+          <div class="customBox" id="Source">
+            Source
+          </div>
+        </div>
+        <div class="alignright">
+          <div class="customBox" id="Target1">
+            Target 1
+          </div>
+        </div>
+        <div class="afterright">
+            <div class="customBox" id="Target2">
+              Target 2
+            </div>
+          </div>
+        <div style="clear: both;"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div style="position: fixed;bottom: 10px;left: 30%">
+    Example Created By <a href="https://stackblitz.com/@vishalbiradar">Vishal Biradar</a>
+  </div> -->

@@ -58,3 +58,51 @@ mat-card.subject-card.mat-card {
 .subjects-column {
     padding: 5px;
 }
+
+
+/* Add application styles & imports to this file! */
+
+
+.title {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #405065;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 49px;
+  }
+  .customBox {
+    margin-top: 5%;
+    padding: 8px 100px;
+    box-shadow: 0 10px 40px 0 #B0C1D9;
+    width: 270px;
+
+  }
+  
+  .alignleft {
+    float: left;
+  }
+  
+  .alignright {
+    position: relative;
+    left: 340px;
+    top: -28px;
+  }
+
+  .afterright{
+    position: relative;
+    left: 690px;
+    top: -110px;
+  }
+  
+  .connectingConnectorLabel {
+      height: 23px;
+      width: 110px;
+      border-radius: 13px;
+      color: #FFFFFF;
+      text-align: center;
+      z-index:3 !important;
+      left: 50% !important;
+      background-color: #456;
+  }
+  
