@@ -74,13 +74,13 @@
                                 </mat-grid-tile>
                                 <mat-grid-tile class="grid" [colspan]="2" [rowspan]="1">
                                   <mat-form-field>
-                                    <input matInput type="text" class="form-control">
+                                    <input matInput type="text" class="form-control" [(ngModel)]="input" (keyup)="search(input)">
                                   </mat-form-field>
                                 </mat-grid-tile>
-                                <mat-grid-tile class="grid-1" [colspan]="1" [rowspan]="1">
+                                <!-- <mat-grid-tile class="grid-1" [colspan]="1" [rowspan]="1">
                                     <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect>Buscar</button>
                                   </mat-grid-tile>
-                                <!-- <mat-grid-tile [colspan]="1" [rowspan]="1">
+                                <mat-grid-tile [colspan]="1" [rowspan]="1">
                                   <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect>Buscar</button>
                                 </mat-grid-tile> -->
                                 <mat-grid-tile [colspan]="2" [rowspan]="1">
@@ -89,21 +89,15 @@
                                 <mat-grid-tile class="grid" [colspan]="2" [rowspan]="1">
                                   <mat-form-field class="select-faculty">
                                     <mat-select>
-                                      <mat-option>Facultad</mat-option>
+                                      <mat-option *ngFor="let faculty of faculties" [value]=faculty.faculty_id (click)="getFacultyColleges(faculty)">{{faculty.faculty_name}}</mat-option>
                                     </mat-select>
                                   </mat-form-field>
                                 </mat-grid-tile>
                                 <mat-grid-tile class="grid-2" [colspan]="1" [rowspan]="4">
                                     <mat-card class="list-card">
                                         <mat-list>
-                                            <mat-list-item>
-                                              Item 1
-                                            </mat-list-item>
-                                            <mat-list-item>
-                                              Item 2
-                                            </mat-list-item>
-                                            <mat-list-item>
-                                              Item 2
+                                            <mat-list-item *ngFor="let subject of searchResult" >
+                                                {{subject.subject_name}}
                                             </mat-list-item>
                                           </mat-list>
                                     </mat-card>
@@ -113,8 +107,11 @@
                                 </mat-grid-tile>
                                 <mat-grid-tile class="grid" [colspan]="2" [rowspan]="1">
                                   <mat-form-field class="select-collage">
-                                    <mat-select>
-                                      <mat-option>Escuela</mat-option>
+                                    <mat-select *ngIf="!facultyColleges">
+                                      <mat-option *ngFor="let college of colleges" [value]=college.college_id (click)="getCollegeDepartments(college)">{{college.college_name}}</mat-option>
+                                    </mat-select>
+                                    <mat-select *ngIf="facultyColleges">
+                                        <mat-option *ngFor="let college of facultyColleges" [value]=college.college_id (click)="getCollegeDepartments(college)">{{college.college_name}}</mat-option>
                                     </mat-select>
                                   </mat-form-field>
                                 </mat-grid-tile>
@@ -124,17 +121,17 @@
                                 <mat-grid-tile class="grid" [colspan]="2" [rowspan]="1">
                                   <mat-form-field class="select-deparment">
                                     <mat-select>
-                                      <mat-option>Departamento</mat-option>
+                                        <mat-option *ngFor="let department of collegeDepartments" [value]=department.department_id>{{department.department_name}}</mat-option>
                                     </mat-select>
                                   </mat-form-field>
                                 </mat-grid-tile>
                                 <mat-grid-tile [colspan]="2" [rowspan]="1">
-                                  <label class="label">Pensum:</label>
+                                  <label class="label">Pensum Date:</label>
                                 </mat-grid-tile>
                                 <mat-grid-tile class="grid" [colspan]="2" [rowspan]="1">
                                   <mat-form-field class="select-faculty">
                                     <mat-select>
-                                      <mat-option>Pensum name</mat-option>
+                                        <mat-option *ngFor="let pensum of pensums" [value]=pensum.pensum_id>{{pensum.pensum_date}}</mat-option>
                                     </mat-select>
                                   </mat-form-field>
                                 </mat-grid-tile>

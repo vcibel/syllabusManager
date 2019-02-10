@@ -7,15 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3596c7e-1748-45ca-b3c8-c8e1e3745f09" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../client/src/app/create-pensum/create-pensum.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/create-pensum/create-pensum.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/models/pensum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/models/pensum.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/pensums/pensums.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pensums/pensums.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/pensums/pensums.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pensums/pensums.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Pensum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Pensum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/home/home.component.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -68,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="268">
-              <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+              <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -202,7 +195,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -249,6 +241,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -411,11 +404,12 @@
       <workItem from="1548800142596" duration="4932000" />
       <workItem from="1548885591385" duration="2246000" />
       <workItem from="1549064988982" duration="3001000" />
+      <workItem from="1549802373609" duration="1168000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="176826000" />
+    <option name="totallyTimeSpent" value="177994000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -430,7 +424,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.2375189" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.24130106" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -440,7 +434,7 @@
       <window_info id="Web" order="7" sideWeight="0.5021008" side_tool="true" weight="0.25340393" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4975728" weight="0.42716858" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4975728" visible="true" weight="0.42716858" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -618,6 +612,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Departments.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Files.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -644,17 +645,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Departments.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
-          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
         </state>
       </provider>
     </entry>

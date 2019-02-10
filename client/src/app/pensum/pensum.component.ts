@@ -1,3 +1,4 @@
+import { SubjectPensum } from './../models/subject_pensum';
 import { Pensum } from './../models/pensum';
 import { HttpService } from './../service/http/http.service';
 import { Subject } from './../models/subject';
@@ -22,14 +23,17 @@ export interface Section {
 export class PensumComponent implements OnInit, AfterViewInit {
 
   jsPlumbInstance;
-  showConnectionToggle = false;
-  buttonName = 'Connect';
+  add = false;
+  buttonNameAdd = 'Dibujar Prelación';
 
   subjects: Subject[];
+  subjectSource;
   typesSubjectPensum;
   showFiller = false;
   pensum: Pensum;
   done = [[], [], [], [], []];
+  source = '';
+  target = '';
 
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 
@@ -39,43 +43,58 @@ export class PensumComponent implements OnInit, AfterViewInit {
     this.jsPlumbInstance = jsPlumb.getInstance();
    }
 
-   showConnectOnClick() {
-    this.showConnectionToggle = ! this.showConnectionToggle;
-    if ( this.showConnectionToggle) {
-    this.buttonName = 'Dissconnect';
-      this.connectSourceToTargetUsingJSPlumb();
+   addRestriction() {
+    this.add = ! this.add;
+    if ( this.add) {
+      this.buttonNameAdd = 'Prelación Lista';
     } else {
-      this.buttonName = 'Connect';
-      this.jsPlumbInstance.reset();
-
-      // var conn = this.jsPlumbInstance.connect({source:"element1", target:"element2"});
-      // this.jsPlumbInstance.remove("element1");
-
-      // var conn = this.jsPlumbInstance.connect({source:"element1", target:"element2"});
-      // this.jsPlumbInstance.detach(conn);
+      this.buttonNameAdd = 'Dibujar Prelación';
+      this.source = '';
+      this.target = '';
     }
   }
 
+  onClick(event, subject) {
+    if (this.add) {
+      if (this.source === '') {
+        this.source = event.target.id;
+        this.subjectSource = subject;
+      } else {
+        this.target = event.target.id;
+        this.connectSourceToTargetUsingJSPlumb(this.source, this.target);
+        this.subjectSource['subject_restriction'] = this.target;
+        this.source = '';
+        this.target = '';
+      }
+    }
+    console.log(event, this.source, this.target);
+    console.log(this.subjectSource, this.done);
+  }
 
-
-  connectSourceToTargetUsingJSPlumb() {
+  connectSourceToTargetUsingJSPlumb(source, target) {
     // let labelName;
     //   labelName = 'connection';
-      this.jsPlumbInstance.connect({
+    const conn = this.jsPlumbInstance.connect({
         connector: ['Flowchart', {stub: [10, 10], cornerRadius: 4, alwaysRespectStubs: true}],
         endpointStyle: {fill: 'transparent'},
-        source: 'Source',
-        target: 'Target1',
+        source: source,
+        target: target,
+        detachable: false,
         anchor: ['Right', 'Left'],
         paintStyle: {stroke: '#456', strokeWidth: 2},
       });
+    const myJsPlumb = this.jsPlumbInstance;
+    conn.bind('dblclick', myConn => {
+      console.log(myConn);
+      myJsPlumb.deleteConnection(myConn);
+    });
   }
 
   goToHome() {
     this.router.navigateByUrl('/home');
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -84,7 +103,23 @@ export class PensumComponent implements OnInit, AfterViewInit {
                         event.container.data,
                         event.previousIndex,
                         event.currentIndex);
+      const arrayString = event.container.id.split('-');
+      const term = Number(arrayString[arrayString.length - 1]);
+      this.done[term][event.currentIndex]['pensum_id'] = this.pensum.pensum_id;
+      this.done[term][event.currentIndex]['type_subject_pensum_id'] = 1;
+      this.done[term][event.currentIndex]['term'] = term;
+      console.log(term, this.done);
     }
+    /*if (term !== 0 && this.subjectPensum[term - 1]) {
+      this.subjectPensum[term - 1].push({
+        subject_id: event.container.data[0],
+        pensum_id: this.pensum.pensum_id,
+        type_subject_pensum_id: 1,
+        term: term,
+        subject_restriction: null,
+        hour_restriction: null,
+      });
+    }*/
   }
 
   createPensum() {
