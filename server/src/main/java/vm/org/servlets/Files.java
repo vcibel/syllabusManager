@@ -3,7 +3,6 @@ package vm.org.servlets;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -27,7 +26,6 @@ public class Files extends HttpServlet {
 
     public Files() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

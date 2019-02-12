@@ -5,6 +5,8 @@ export interface Subject {
     subject_hc: number;
     type_subject_id: number;
     department_id: number;
+    faculty_id: number;
+    college_id: number;
     code_consecutive: number;
     syllabus_name: string;
     syllabus_url: string;

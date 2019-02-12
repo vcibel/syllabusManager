@@ -1,13 +1,13 @@
+import { Department } from './../models/department';
+import { College } from './../models/college';
+import { Faculty } from './../models/faculty';
 import { Subject } from './../models/subject';
 import { HttpService } from '../service/http/http.service';
-import { Component, OnInit, ViewChildren, ViewChild } from '@angular/core';
-import { LoginComponent } from '../login/login.component';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { TypeSubject } from '../models/type_subjet';
-import * as $ from 'jquery';
-import { MDBModalService, ModalDirective } from 'angular-bootstrap-md';
-import { MatDialog, MatDialogConfig} from '@angular/material';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialog } from '@angular/material';
+import { Pensum } from '../models/pensum';
 
 
 export interface Section {
@@ -30,13 +30,20 @@ export class HomeComponent implements OnInit {
   isDepartment: boolean  = false;
   isUser: boolean  = false;
   isPensum: boolean  = false;
-  Show: boolean = false;  
+  Show: boolean = false;
 
   showCollege: boolean = true;
   closeResult: string;
 
   subjects: Subject[];
-  departmentSubjects: Subject[];
+  faculties: Faculty[];
+  colleges: College[];
+  departments: Department[];
+  pensums: Pensum[];
+  searchResult: Subject[] = [];
+  collegeDepartments: Department[];
+  facultyColleges: College[];
+  input: String;
 
   constructor(private router: Router, private modalService: NgbModal, private httpService: HttpService,
     private dialog: MatDialog ) { }
@@ -51,6 +58,51 @@ export class HomeComponent implements OnInit {
     ];
 
   ngOnInit() {
+    // LISTAR FACULTADES
+    this.httpService.get('/Faculties').subscribe((res: any) => {
+      if (res.status === 200) {
+        this.faculties = res.faculties;
+        console.log(this.faculties);
+      } else {
+        alert(res.response);
+      }
+    });
+    // LISTAR ESCUELAS
+    this.httpService.get('/Colleges').subscribe((res: any) => {
+      if (res.status === 200) {
+        this.colleges = res.colleges;
+        console.log(this.colleges);
+      } else {
+        alert(res.response);
+      }
+    });
+    // LISTAR DEPARTAMENTOS
+    this.httpService.get('/Departments').subscribe((res: any) => {
+      if (res.status === 200) {
+        this.departments = res.departments;
+        console.log(this.departments);
+      } else {
+        alert(res.response);
+      }
+    });
+    // LISTAR PENSUMS
+    this.httpService.get('/Pensum').subscribe((res: any) => {
+      if (res.status === 200) {
+        this.pensums = res.pensum;
+        console.log(this.pensums);
+      } else {
+        alert(res.response);
+      }
+    });
+    // LISTAR MATERIAS
+    this.httpService.get('/Subjects').subscribe((res: any) => {
+      if (res.status === 200) {
+        this.subjects = res.subjects;
+        console.log(this.subjects);
+      } else {
+        alert(res.response);
+      }
+    });
   }
 
   logout() {
@@ -61,17 +113,43 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  goToPensum(){
-    this.router.navigateByUrl('/pensum');
+  search(input) {
+    this.searchResult = [];
+    //const myInput = this.input;
+    console.log(input);
+    if (input !== '') {
+    this.subjects.filter((subject: Subject) => {
+          if (subject.subject_name.toLowerCase().indexOf(input.toLowerCase()) > -1) {
+            this.searchResult.push(subject);
+          } else if (subject.subject_code.toLowerCase().indexOf(input.toLowerCase()) > -1) {
+            this.searchResult.push(subject);
+          }
+        });
+      }
+    console.log(this.searchResult);
   }
 
-  // toggleRegister() {
-  //   if(this.isRegister)
-  //     this.isRegister = false;
-  //   else{
-  //     this.isRegister = true;
-  //   }
-  // }
+  getFacultyColleges(faculty_selected) {
+    console.log(faculty_selected);
+    this.facultyColleges = this.colleges.filter(function(college: College) {
+                                                        return college.faculty_id === faculty_selected.faculty_id;
+                                                      });
+    console.log(this.facultyColleges);
+    this.searchResult = this.subjects.filter(function(subject: Subject) {
+                                                        return subject.faculty_id === faculty_selected.faculty_id;
+                                                      });
+  }
+
+  getCollegeDepartments(college_selected) {
+    console.log(college_selected);
+    this.collegeDepartments = this.departments.filter(function(department: Department) {
+                                                        return department.college_id === college_selected.college_id;
+                                                      });
+    console.log(this.collegeDepartments);
+    this.searchResult = this.subjects.filter(function(subject: Subject) {
+      return subject.college_id === college_selected.college_id;
+    });
+  }
 
   toggleColleges() {
     if (this.isCollege) {

@@ -22,6 +22,8 @@ export class SubjectComponent implements OnInit {
     subject_hc: null,
     type_subject_id: null,
     department_id: null,
+    faculty_id: null,
+    college_id: null,
     code_consecutive: null,
     syllabus_name: '',
     syllabus_url: '',

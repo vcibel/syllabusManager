@@ -9,36 +9,34 @@
     <button type="button" mat-button (click)="drawer.toggle()">
       Show Sidenav
     </button>
-    <button type="button" mat-button (click)="openPensum()" >
-        New
-      </button>
+    
     <div class="example-container">
-        <span class="btn btn-primary" (click)="showConnectOnClick()">{{buttonName}}</span>
+        <span class="btn btn-primary" (click)="addRestriction()">{{buttonNameAdd}}</span>
         <h2>Seleccione</h2>
     
         <div
           cdkDropList
-          [cdkDropListData]="todo"
+          [cdkDropListData]="subjects"
           class="example-list"
           (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of todo" cdkDrag>
-              <mat-card class="subject-card" id="{{item.id}}">
+          <div class="example-box" *ngFor="let item of subjects" cdkDrag>
+              <mat-card class="subject-card" id="{{item.subject_id}}">
                   <mat-grid-list cols="4" rowHeight="15px">
                     <mat-grid-tile [colspan]="3" [rowspan]="1">
                       <mat-card class="code-subject">
-                        <span>{{item.code}}</span>
+                        <span>{{item.subject_code}}</span>
                       </mat-card>
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
                       <mat-card class="hc-subject">
-                        <span>{{item.hc}}</span>
+                        <span>{{item.subject_hc}}</span>
                       </mat-card>
                     </mat-grid-tile>
                   </mat-grid-list>
                   <mat-grid-list cols="2" rowHeight="20px">
                     <mat-grid-tile [colspan]="2" [rowspan]="1">
                           <mat-card class="name-subject">
-                            <span>{{item.name}}</span>
+                            <span>{{item.subject_name}}</span>
                           </mat-card>
                       </mat-grid-tile>
                   </mat-grid-list>
@@ -112,28 +110,28 @@
             <mat-grid-tile [colspan]="2" [rowspan]="2">
                   <div
                   cdkDropList
-                  [cdkDropListData]="done"
+                  [cdkDropListData]="done[1]"
                   class="example-list"
                   (cdkDropListDropped)="drop($event)">
-                  <div class="example-box" *ngFor="let item of done" cdkDrag>
-                    <div class="subjects-column">
-                        <mat-card class="subject-card" id="{{item.id}}">
+                  <div class="example-box" *ngFor="let item of done[1]" cdkDrag id="{{item.subject_id}}">
+                    <div class="subjects-column" id="{{item.subject_id}}">
+                        <mat-card class="subject-card" id="{{item.subject_id}}" (click)="onClick($event, item)">
                             <mat-grid-list cols="4" rowHeight="15px">
                               <mat-grid-tile [colspan]="3" [rowspan]="1">
                                 <mat-card class="code-subject">
-                                  <span>{{item.code}}</span>
+                                  <span id="{{item.subject_id}}">{{item.subject_code}}</span>
                                 </mat-card>
                               </mat-grid-tile>
                               <mat-grid-tile [colspan]="1" [rowspan]="1">
                                 <mat-card class="hc-subject">
-                                  <span>{{item.hc}}</span>
+                                  <span id="{{item.subject_id}}">{{item.subject_hc}}</span>
                                 </mat-card>
                               </mat-grid-tile>
                             </mat-grid-list>
                             <mat-grid-list cols="2" rowHeight="20px">
                               <mat-grid-tile [colspan]="2" [rowspan]="1">
                                     <mat-card class="name-subject">
-                                      <span>{{item.name}}</span>
+                                      <span id="{{item.subject_id}}">{{item.subject_name}}</span>
                                     </mat-card>
                                 </mat-grid-tile>
                             </mat-grid-list>
@@ -145,28 +143,28 @@
             <mat-grid-tile [colspan]="2" [rowspan]="2">
                 <div
                 cdkDropList
-                [cdkDropListData]="done"
+                [cdkDropListData]="done[2]"
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                <div class="example-box" *ngFor="let item of done" cdkDrag>
-                  <div class="subjects-column">
-                      <mat-card class="subject-card" id="{{item.id}}">
+                <div class="example-box" *ngFor="let item of done[2]" cdkDrag>
+                  <div class="subjects-column" id="{{item.subject_id}}">
+                      <mat-card class="subject-card" id="{{item.subject_id}}" (click)="onClick($event, item)">
                           <mat-grid-list cols="4" rowHeight="15px">
                             <mat-grid-tile [colspan]="3" [rowspan]="1">
                               <mat-card class="code-subject">
-                                <span>{{item.code}}</span>
+                                <span id="{{item.subject_id}}">{{item.subject_code}}</span>
                               </mat-card>
                             </mat-grid-tile>
                             <mat-grid-tile [colspan]="1" [rowspan]="1">
                               <mat-card class="hc-subject">
-                                <span>{{item.hc}}</span>
+                                <span id="{{item.subject_id}}">{{item.subject_hc}}</span>
                               </mat-card>
                             </mat-grid-tile>
                           </mat-grid-list>
                           <mat-grid-list cols="2" rowHeight="20px">
                             <mat-grid-tile [colspan]="2" [rowspan]="1">
                                   <mat-card class="name-subject">
-                                    <span>{{item.name}}</span>
+                                    <span id="{{item.subject_id}}">{{item.subject_name}}</span>
                                   </mat-card>
                               </mat-grid-tile>
                           </mat-grid-list>
@@ -175,9 +173,43 @@
                 </div>
               </div>
           </mat-grid-tile>
+          <mat-grid-tile [colspan]="2" [rowspan]="2">
+              <div
+              cdkDropList
+              [cdkDropListData]="done[3]"
+              class="example-list"
+              (cdkDropListDropped)="drop($event)">
+              <div class="example-box" *ngFor="let item of done[3]" cdkDrag>
+                <div class="subjects-column">
+                    <mat-card class="subject-card">
+                        <mat-grid-list cols="4" rowHeight="15px">
+                          <mat-grid-tile [colspan]="3" [rowspan]="1">
+                            <mat-card class="code-subject">
+                              <span>{{item.subject_code}}</span>
+                            </mat-card>
+                          </mat-grid-tile>
+                          <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-card class="hc-subject">
+                              <span>{{item.subject_hc}}</span>
+                            </mat-card>
+                          </mat-grid-tile>
+                        </mat-grid-list>
+                        <mat-grid-list cols="2" rowHeight="20px">
+                          <mat-grid-tile [colspan]="2" [rowspan]="1">
+                                <mat-card class="name-subject">
+                                  <span>{{item.subject_name}}</span>
+                                </mat-card>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                      </mat-card>
+                </div>
+              </div>
+            </div>
+        </mat-grid-tile>
           </mat-grid-list>
         </mat-card>
         <mat-card class="pensum-footer" id="card-pensum">Pensum footer</mat-card>
+        <span class="btn btn-primary" (click)="createPensum()">LISTO</span>
       </mat-card-content>
     </mat-card>
   </mat-drawer-content>

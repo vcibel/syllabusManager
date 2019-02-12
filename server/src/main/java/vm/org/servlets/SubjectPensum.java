@@ -14,8 +14,8 @@ import java.io.PrintWriter;
 import java.util.stream.Collectors;
 
 @WebServlet(
-		name="Departments",
-		urlPatterns="/Departments")
+		name="SubjectPensum",
+		urlPatterns="/SubjectPensum")
 
 public class SubjectPensum extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,7 +30,7 @@ public class SubjectPensum extends HttpServlet {
 		
 		Integer id = Integer.parseInt(request.getParameter("id"));
 
-		json.put("subjects", db.executeQuery(prop.getValue("query_getSubjectByPensum"), id)).put("status", 200).put("response", prop.getValue("mssg_success"));
+		json.put("pensumSubjects", db.executeQuery(prop.getValue("query_getSubjectByPensum"), id)).put("status", 200).put("response", prop.getValue("mssg_success"));
 		
 		out.print(json.toString());
 	}
