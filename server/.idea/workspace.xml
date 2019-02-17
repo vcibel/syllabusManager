@@ -7,12 +7,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3596c7e-1748-45ca-b3c8-c8e1e3745f09" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Files.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Files.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Pensum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Pensum.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/SubjectPensum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/SubjectPensum.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Subjects.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Subjects.class" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/../SyllabusManager.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../SyllabusManager.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/SubjectPensum.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/SubjectPensum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/SubjectPensum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/SubjectPensum.class" afterDir="false" />
+>>>>>>> server
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -65,7 +74,20 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/target/classes/vm/org/servlets/Files.class">
+=======
+        <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="107" column="30" selection-start-line="107" selection-start-column="30" selection-end-line="107" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Subjects.java">
+>>>>>>> server
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1070">
               <folding>
@@ -401,16 +423,32 @@
       <workItem from="1548514880692" duration="10398000" />
       <workItem from="1548616048068" duration="3451000" />
       <workItem from="1548624119540" duration="2967000" />
+<<<<<<< HEAD
       <workItem from="1548725888364" duration="754000" />
       <workItem from="1549301951821" duration="1047000" />
       <workItem from="1549586238731" duration="991000" />
       <workItem from="1549668981521" duration="1281000" />
       <workItem from="1549714854152" duration="866000" />
+=======
+      <workItem from="1548800142596" duration="4932000" />
+      <workItem from="1548885591385" duration="2246000" />
+      <workItem from="1549064988982" duration="3001000" />
+      <workItem from="1549802373609" duration="1168000" />
+      <workItem from="1550234101084" duration="2560000" />
+      <workItem from="1550317847053" duration="6184000" />
+      <workItem from="1550328730685" duration="1465000" />
+      <workItem from="1550339898971" duration="1214000" />
+      <workItem from="1550402674994" duration="5272000" />
+>>>>>>> server
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="172007000" />
+=======
+    <option name="totallyTimeSpent" value="194689000" />
+>>>>>>> server
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -422,10 +460,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="-8" y="-8" width="1296" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.24110033" />
+=======
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.2602118" />
+>>>>>>> server
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -435,7 +479,11 @@
       <window_info id="Web" order="7" sideWeight="0.5021008" side_tool="true" weight="0.25340393" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4975728" weight="0.64648116" />
+=======
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4975728" weight="0.3535188" />
+>>>>>>> server
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -648,8 +696,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        <state relative-caret-position="232">
+          <caret line="107" column="30" selection-start-line="107" selection-start-column="30" selection-end-line="107" selection-end-column="30" />
         </state>
       </provider>
     </entry>

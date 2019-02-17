@@ -1,0 +1,108 @@
+.example-container {
+    width: 100%;
+    height: 657px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.example-sidenav {
+    padding: 20px;
+}
+
+mat-card.pensum.mat-card {
+    margin: 10px;
+    border-radius: 0px;
+    border: 1px solid;
+}
+
+#card-pensum {
+    box-shadow: 0 0px 0px 0 transparent;
+    border: 1px solid;
+    margin: -1px;
+    border-radius: 0px;
+}
+
+mat-card-content.pensum-content.mat-card-content {
+    margin: -16px;
+}
+
+.pensum-footer#card-pensum {
+    border: 1px solid transparent;
+    margin: 0;
+}
+
+mat-card.subject-card.mat-card {
+    border: 1px solid;
+    padding: 5px;
+    margin: 2px;
+    width: 90px;
+    height: 50px;
+    border-radius: 0px;
+}
+
+.example-list {
+    width: 101px;
+    height: 100%;
+    border: solid 1px transparent;
+    // background: #f9f9f9;
+    border-radius: 4px;
+    display: block;
+}
+
+.subjects-column {
+    padding: 5px;
+}
+
+
+/* Add application styles & imports to this file! */
+
+
+.title {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #405065;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 49px;
+  }
+  .customBox {
+    margin-top: 5%;
+    padding: 8px 100px;
+    box-shadow: 0 10px 40px 0 #B0C1D9;
+    width: 270px;
+
+  }
+  
+  .alignleft {
+    float: left;
+  }
+  
+  .alignright {
+    position: relative;
+    left: 340px;
+    top: -28px;
+  }
+
+  .afterright{
+    position: relative;
+    left: 690px;
+    top: -110px;
+  }
+  
+  .connectingConnectorLabel {
+      height: 23px;
+      width: 110px;
+      border-radius: 13px;
+      color: #FFFFFF;
+      text-align: center;
+      z-index:3 !important;
+      left: 50% !important;
+      background-color: #456;
+  }
+  

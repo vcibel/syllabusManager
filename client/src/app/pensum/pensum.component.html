@@ -107,8 +107,9 @@
             </mat-grid-tile>
           </mat-grid-list>
           <mat-grid-list cols="20" rowHeight="220px">
-            <mat-grid-tile [colspan]="2" [rowspan]="2">
-                  <div
+            <mat-grid-tile [colspan]="2" [rowspan]="2" *ngFor="let item of done.slice(1)" >
+              <app-term [done]="item" (droped)="drop($event)" (clicked)="onClick($event, item)"></app-term>
+                  <!--- <div
                   cdkDropList
                   [cdkDropListData]="done[1]"
                   class="example-list"
@@ -204,12 +205,12 @@
                       </mat-card>
                 </div>
               </div>
-            </div>
+            </div>--->
         </mat-grid-tile>
           </mat-grid-list>
         </mat-card>
         <mat-card class="pensum-footer" id="card-pensum">Pensum footer</mat-card>
-        <span class="btn btn-primary" (click)="createPensum()">LISTO</span>
+        <span class="btn btn-primary" (click)="save()">LISTO</span>
       </mat-card-content>
     </mat-card>
   </mat-drawer-content>
