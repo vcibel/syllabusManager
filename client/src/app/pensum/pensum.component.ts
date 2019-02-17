@@ -4,7 +4,7 @@ import { HttpService } from './../service/http/http.service';
 import { Subject } from './../models/subject';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit, ViewChild, ElementRef, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { jsPlumb } from 'jsplumb';
 
 export interface Section {
@@ -27,13 +27,17 @@ export class PensumComponent implements OnInit, AfterViewInit {
   buttonNameAdd = 'Dibujar Prelación';
 
   subjects: Subject[];
-  subjectSource;
   typesSubjectPensum;
   showFiller = false;
   pensum: Pensum;
-  done = [[], [], [], [], []];
+  done = [[], [], [], [], [], [], [], [], [], []];
   source = '';
   target = '';
+  restriction = {
+    subject_id_source_restriction: null,
+    subject_id_target_restriction: null,
+  };
+  new = true;
 
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 
@@ -54,21 +58,26 @@ export class PensumComponent implements OnInit, AfterViewInit {
     }
   }
 
-  onClick(event, subject) {
+  onClick(event) {
     if (this.add) {
       if (this.source === '') {
         this.source = event.target.id;
-        this.subjectSource = subject;
+        this.restriction.subject_id_source_restriction = this.source;
       } else {
         this.target = event.target.id;
         this.connectSourceToTargetUsingJSPlumb(this.source, this.target);
-        this.subjectSource['subject_restriction'] = this.target;
+        this.restriction.subject_id_target_restriction = this.target;
+        this.done[0].push(this.restriction);
         this.source = '';
         this.target = '';
+        this.restriction = {
+          subject_id_source_restriction: null,
+          subject_id_target_restriction: null,
+        };
       }
     }
     console.log(event, this.source, this.target);
-    console.log(this.subjectSource, this.done);
+    console.log(this.done);
   }
 
   connectSourceToTargetUsingJSPlumb(source, target) {
@@ -87,7 +96,14 @@ export class PensumComponent implements OnInit, AfterViewInit {
     conn.bind('dblclick', myConn => {
       console.log(myConn);
       myJsPlumb.deleteConnection(myConn);
+      const restriction = {
+        subject_id_source_restriction: source,
+        subject_id_target_restriction: target,
+      };
+      this.done[0].splice(this.done[0].indexOf(restriction), 1);
+      console.log(restriction, this.done[0]);
     });
+    return '';
   }
 
   goToHome() {
@@ -105,25 +121,25 @@ export class PensumComponent implements OnInit, AfterViewInit {
                         event.currentIndex);
       const arrayString = event.container.id.split('-');
       const term = Number(arrayString[arrayString.length - 1]);
-      this.done[term][event.currentIndex]['pensum_id'] = this.pensum.pensum_id;
       this.done[term][event.currentIndex]['type_subject_pensum_id'] = 1;
       this.done[term][event.currentIndex]['term'] = term;
+      this.done[term][event.currentIndex]['hour_restriction'] = 0;
       console.log(term, this.done);
     }
-    /*if (term !== 0 && this.subjectPensum[term - 1]) {
-      this.subjectPensum[term - 1].push({
-        subject_id: event.container.data[0],
-        pensum_id: this.pensum.pensum_id,
-        type_subject_pensum_id: 1,
-        term: term,
-        subject_restriction: null,
-        hour_restriction: null,
-      });
-    }*/
+  }
+
+  save() {
+      if (this.new) {
+          this.createPensum();
+      } else {
+          this.updatePensum();
+      }
   }
 
   createPensum() {
-    this.httpService.post(this.done, '/SubjectPensum').subscribe((res: any) => {
+    const data = {data: this.done};
+    console.log(data);
+    this.httpService.post(data, '/SubjectPensum').subscribe((res: any) => {
       if (res.status === 200) {
           console.log(res);
       } else {
@@ -132,33 +148,82 @@ export class PensumComponent implements OnInit, AfterViewInit {
     });
   }
 
+  updatePensum() {
+    const data = {data: this.done, pensum_id: this.pensum.pensum_id};
+    console.log(data);
+    this.httpService.put(data, '/SubjectPensum').subscribe((res: any) => {
+      if (res.status === 200) {
+          console.log(res);
+      } else {
+        console.log(res.message);
+      }
+    });
+  }
+
+  getSubjects() {
+    return new Promise ((resolve, reject) => {
+        // LISTAR TODAS LAS MATERIAS
+        this.httpService.get('/Subjects?id=' + this.pensum.faculty_id).subscribe((res: any) => {
+          if (res.status === 200) {
+            this.typesSubjectPensum = res.types;
+            console.log(this.typesSubjectPensum);
+            resolve(res.subjects);
+          } else {
+            reject(res.response);
+          }
+        });
+    });
+  }
+
+  getSubjectPensum() {
+    return new Promise ((resolve, reject) => {
+    this.getSubjects().then((data: any) => {
+        // LISTAR MATERIAS EN PENSUM
+          this.httpService.get('/SubjectPensum?id=' + this.pensum.pensum_id).subscribe((res: any) => {
+            console.log(res);
+            if (res.status === 200) {
+              this.done[0] = res.subjectRestriction;
+              for (let i = 0; i < res.pensumSubjects.length; i++) {
+                this.done[res.pensumSubjects[i].term].push(res.pensumSubjects[i]);
+                data.splice(data.indexOf(res.pensumSubjects[i]), 1);
+              }
+              if (res.pensumSubjects.length > 0) {
+                this.new = false;
+                console.log(this.new);
+              }
+              resolve(data);
+            } else {
+              reject(res.response);
+            }
+          });
+        }).catch(error => console.log(error));
+    });
+  }
+
+  drawRestrictions(done) {
+    console.log(done);
+    for (let i = 0; i < done[0].length; i++) {
+      this.source = done[0][i].subject_id_source_restriction.toString();
+      this.target = done[0][i].subject_id_target_restriction.toString();
+      console.log(this.source, this.target, document.getElementById(this.source));
+      this.connectSourceToTargetUsingJSPlumb(this.source, this.target);
+    }
+    return '';
+  }
+
   ngOnInit() {
     console.log(this.activeRouter.queryParams);
     this.activeRouter.queryParams.subscribe(params => {
       console.log(params);
         this.pensum = JSON.parse(params['pensum']);
     });
-    // LISTAR TODAS LAS MATERIAS
-    this.httpService.get('/Subjects?id=' + this.pensum.faculty_id).subscribe((res: any) => {
-      if (res.status === 200) {
-        this.subjects = res.subjects;
-        this.typesSubjectPensum = res.types;
-        console.log(this.subjects, this.typesSubjectPensum);
-      } else {
-        alert(res.response);
-      }
-    });
-    // LISTAR MATERIAS EN PENSUM
-    this.httpService.get('/SubjectPensum?id=' + this.pensum.pensum_id).subscribe((res: any) => {
-      console.log(res);
-      if (res.status === 200) {
-        for (let i = 0; i < res.pensumSubjects.length; i++) {
-          this.done[res.pensumSubjects.term].push(res.pensumSubjects);
-        }
-        console.log();
-      } else {
-        alert(res.response);
-      }
-    });
+    this.getSubjectPensum().then((data: any) => {
+      this.subjects = data;
+      const $this = this;
+      setTimeout(function() {$this.drawRestrictions($this.done); }, 2000);
+      this.source = '';
+      this.target = '';
+      console.log(this.done);
+    }).catch(error => console.log(error));
   }
 }

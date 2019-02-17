@@ -125,7 +125,7 @@ CREATE SEQUENCE public.pensum_pensum_id_seq;
 CREATE TABLE public.pensum (
                 pensum_id INTEGER NOT NULL DEFAULT nextval('public.pensum_pensum_id_seq'),
                 college_id INTEGER NOT NULL,
-                pensum_date TIMESTAMP NOT NULL,
+                pensum_date TIMESTAMP,
                 created_at TIMESTAMP NOT NULL,
                 CONSTRAINT pensum_pk PRIMARY KEY (pensum_id)
 );
@@ -138,10 +138,18 @@ CREATE TABLE public.subject_pensum (
                 pensum_id INTEGER NOT NULL,
                 type_subject_pensum_id INTEGER NOT NULL,
                 term INTEGER NOT NULL,
-                subject_restriction INTEGER,
                 hour_restriction INTEGER,
                 subject_pensum_created_at TIMESTAMP NOT NULL,
                 CONSTRAINT subject_pensum_pk PRIMARY KEY (subject_id, pensum_id)
+);
+
+
+CREATE TABLE public.subject_restriction (
+                subject_id_source_restriction INTEGER NOT NULL,
+                pensum_id_source_restriction INTEGER NOT NULL,
+                subject_id_target_restriction INTEGER NOT NULL,
+                pensum_id_target_restriction INTEGER NOT NULL,
+                CONSTRAINT subject_restriction_pk PRIMARY KEY (subject_id_source_restriction, pensum_id_source_restriction, subject_id_target_restriction, pensum_id_target_restriction)
 );
 
 
@@ -211,6 +219,20 @@ NOT DEFERRABLE;
 ALTER TABLE public.subject_pensum ADD CONSTRAINT pensum_materia_pensum_fk
 FOREIGN KEY (pensum_id)
 REFERENCES public.pensum (pensum_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.subject_restriction ADD CONSTRAINT subject_pensum_subject_restriction_fk
+FOREIGN KEY (subject_id_source_restriction, pensum_id_source_restriction)
+REFERENCES public.subject_pensum (subject_id, pensum_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.subject_restriction ADD CONSTRAINT subject_pensum_subject_restriction_fk1
+FOREIGN KEY (subject_id_target_restriction, pensum_id_target_restriction)
+REFERENCES public.subject_pensum (subject_id, pensum_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;

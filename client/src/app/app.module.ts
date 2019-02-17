@@ -30,6 +30,7 @@ import { PensumComponent } from './pensum/pensum.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { CreatePensumComponent } from './create-pensum/create-pensum.component';
 import { PensumsComponent } from './pensums/pensums.component';
+import { TermComponent } from './term/term.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { PensumsComponent } from './pensums/pensums.component';
     UsersComponent,
     PensumComponent,
     CreatePensumComponent,
-    PensumsComponent
+    PensumsComponent,
+    TermComponent
   ],
   imports: [
     HttpClientModule,
