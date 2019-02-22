@@ -105,4 +105,36 @@ mat-card.subject-card.mat-card {
       left: 50% !important;
       background-color: #456;
   }
-  
+
+  .pensum-back{
+    height: 630px;
+  }
+
+  mat-card.electivas.mat-card {
+    width: 99%;
+    height: 99%;
+    border: 1px solid;
+    border-radius: 0px;
+}
+
+mat-card.electiva.mat-card {
+    border-radius: 0px;
+    box-shadow: none;
+    height: 40px;
+    width: 100%;
+    /* margin: 0px; */
+    right: 0px;
+    position: absolute;
+    border: 1px solid;
+}
+
+mat-grid-list.electivas-table.mat-grid-list {
+    position: static !important;
+    /* margin: -10px; */
+}
+
+.list{
+    top: -5px !important;
+    position: relative !important;
+    margin: -30px !important;
+}

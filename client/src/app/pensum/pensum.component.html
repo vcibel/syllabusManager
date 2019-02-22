@@ -6,10 +6,18 @@
     </button>
   </mat-drawer>
   <mat-drawer mode="side" opened position="end">
-    <button type="button" mat-button (click)="drawer.toggle()">
+    <!-- <button type="button" mat-button (click)="drawer.toggle()">
       Show Sidenav
+    </button> -->
+    <button (click)="goToHome()" mat-raised-button>
+      Go Home
     </button>
-    
+    <button (click)="togglePensumB()" mat-raised-button>
+      Back
+    </button>
+    <button (click)="togglePensumF()" mat-raised-button>
+      Front
+    </button>
     <div class="example-container">
         <span class="btn btn-primary" (click)="addRestriction()">{{buttonNameAdd}}</span>
         <h2>Seleccione</h2>
@@ -19,34 +27,112 @@
           [cdkDropListData]="subjects"
           class="example-list"
           (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of subjects" cdkDrag>
-              <mat-card class="subject-card" id="{{item.subject_id}}">
-                  <mat-grid-list cols="4" rowHeight="15px">
-                    <mat-grid-tile [colspan]="3" [rowspan]="1">
-                      <mat-card class="code-subject">
-                        <span>{{item.subject_code}}</span>
-                      </mat-card>
-                    </mat-grid-tile>
-                    <mat-grid-tile [colspan]="1" [rowspan]="1">
-                      <mat-card class="hc-subject">
-                        <span>{{item.subject_hc}}</span>
-                      </mat-card>
-                    </mat-grid-tile>
-                  </mat-grid-list>
-                  <mat-grid-list cols="2" rowHeight="20px">
-                    <mat-grid-tile [colspan]="2" [rowspan]="1">
-                          <mat-card class="name-subject">
-                            <span>{{item.subject_name}}</span>
-                          </mat-card>
-                      </mat-grid-tile>
-                  </mat-grid-list>
+          <div *ngIf="Show || isFront">
+            <div class="example-box" *ngFor="let item of subjects" cdkDrag>
+            <mat-card class="subject-card" id="{{item.subject_id}}">
+              <mat-grid-list cols="4" rowHeight="15px">
+                <mat-grid-tile [colspan]="3" [rowspan]="1">
+                  <mat-card class="code-subject">
+                    <span>{{item.subject_code}}</span>
+                  </mat-card>
+                </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-card class="hc-subject">
+                  <span>{{item.subject_hc}}</span>
                 </mat-card>
+              </mat-grid-tile>
+            </mat-grid-list>
+            <mat-grid-list cols="2" rowHeight="20px">
+              <mat-grid-tile [colspan]="2" [rowspan]="1">
+                <mat-card class="name-subject">
+                  <span>{{item.subject_name}}</span>
+                </mat-card>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </mat-card>
+        </div>
           </div>
+        <div *ngIf="Show || isBack">
+          another list
+        <div
+        cdkDropList
+        #done2List="cdkDropList"
+        [cdkDropListData]="done2"
+        [cdkDropListConnectedTo]="[todoList]"
+        class="example-list"
+        (cdkDropListDropped)="drop2($event)">
+        <div class="example-box" *ngFor="let item of done2" cdkDrag>{{item}}</div>
+      </div>
         </div>
       </div>
+    </div>
   </mat-drawer>
   <mat-drawer-content>
-    <mat-card class="pensum">
+    <mat-card class="pensum pensum-back" *ngIf="Show || isBack">
+      <mat-grid-list cols="10" rowHeight="100px">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
+          <span> <strong>REPOSITORIO DE ASIGNATURAS ELECTIVAS</strong> </span>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="5" [rowspan]="2">
+            <mat-card>
+              <span>UNIDADES CURRICULARES</span>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="5" [rowspan]="3">
+          <mat-card class="electivas">
+              <div
+              cdkDropList
+              #todoList="cdkDropList"
+              [cdkDropListData]="todo"
+              [cdkDropListConnectedTo]="[done2List]"
+              class="example-list"
+              (cdkDropListDropped)="drop2($event)">
+              <mat-grid-list cols="8" rowHeight="30px" class="electivas-table">
+                  <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <span>CÓDIGO</span>
+                  </mat-grid-tile>
+                  <mat-grid-tile [colspan]="4" [rowspan]="1">
+                    <span>DENOMINACIÓN</span>
+                  </mat-grid-tile>
+                  <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <span>REQUISITO</span>
+                  </mat-grid-tile>
+                </mat-grid-list>
+                <div class="example-box" *ngFor="let item of todo" cdkDrag>
+                  <mat-card class="electiva">
+                  <mat-grid-list cols="8" rowHeight="80px" class="list">
+                    <mat-grid-tile [colspan]="2" [rowspan]="1">
+                      <span>0909</span>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="4" [rowspan]="1">
+                      <span>electiva</span>
+                      <!-- <div class="example-box" *ngFor="let item of todo" cdkDrag> 
+                        <mat-card class="electiva">{{item}}</mat-card>            
+                      </div> -->
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="2" [rowspan]="1">
+                      <span>0909</span>
+                    </mat-grid-tile>
+                  </mat-grid-list>
+                </mat-card>
+              </div>
+            </div>
+            <!-- <mat-grid-list cols="8" rowHeight="70px">
+              <mat-grid-tile [colspan]="2" [rowspan]="1">
+                <span>CÓDIGO</span>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="4" [rowspan]="1">
+                <span>DENOMINACIÓN</span>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="2" [rowspan]="1">
+                <span>REQUISITO</span>
+              </mat-grid-tile>
+            </mat-grid-list>-->
+          </mat-card> 
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card>
+    <mat-card class="pensum" *ngIf="Show || isFront">
       <mat-card-content class="pensum-content">
         <mat-card class="pensum-header" id="card-pensum">
           <mat-grid-list cols="4" rowHeight="20px">

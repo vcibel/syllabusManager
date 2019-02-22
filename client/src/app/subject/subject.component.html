@@ -12,72 +12,83 @@
 </div>
 
 <div class="subject-body">
-  <mat-grid-list cols="5" rowHeight="80px">
-    <mat-grid-tile [colspan]="2" [rowspan]="1">
+  <mat-grid-list cols="6" rowHeight="80px">
+    <!-- <mat-grid-tile [colspan]="2" [rowspan]="1">
       <label for="college-name">Nombre de la Materia:</label>
-    </mat-grid-tile>
+    </mat-grid-tile> -->
     <mat-grid-tile [colspan]="3" [rowspan]="1"> 
-    <mat-form-field>
-      <mat-label>Ej. Ingenieria de Computacion</mat-label>
-        <input matInput type="text"  class="form-control college-name" placeholder="Ej. Programacion II" [(ngModel)]="subject.subject_name" [ngModelOptions]="{standalone: true}">
+      <label for="college-name">Nombre de la Materia:</label>
+      <mat-form-field>
+      <!-- <mat-label>Ej. Ingenieria de Computacion</mat-label> -->
+        <input matInput type="text"  class="form-control college-name" [(ngModel)]="subject.subject_name" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="2" [rowspan]="1"> 
+    <!-- <mat-grid-tile [colspan]="2" [rowspan]="1"> 
       <label for="college-name">Código de la Materia:</label>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="1" [rowspan]="1"> 
+  </mat-grid-tile> -->
+  <mat-grid-tile [colspan]="3" [rowspan]="1"> 
+    <label for="college-name">Código de la Materia:</label>
     <mat-form-field class="select-career">
       <input matInput type="text" class="form-control college-name cod"  placeholder="" [(ngModel)]="subject.subject_code" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
   </mat-grid-tile>
-    <mat-grid-tile [colspan]="2" [rowspan]="1"> 
+    <!-- <mat-grid-tile [colspan]="2" [rowspan]="1"> 
       <label for="collage-type">Seleccione la escuela a la cual pertenece:</label>
-    </mat-grid-tile>
+    </mat-grid-tile> -->
     <mat-grid-tile [colspan]="3" [rowspan]="1"> 
+      <label for="collage-type">Escuela a la cual pertenece:</label>
       <mat-form-field class="select-career">
         <select matNativeControl required [(ngModel)]="college_selected" [ngModelOptions]="{standalone: true}" (change)="getCollegeDepartments(college_selected)">
           <option *ngFor="let college of colleges" [ngValue]=college>{{college.college_name}}</option>
         </select>
       </mat-form-field>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="2" [rowspan]="1"> 
+    <!-- <mat-grid-tile [colspan]="2" [rowspan]="1"> 
       <label for="collage-type">Seleccione departamento al que pertenece:</label>
-    </mat-grid-tile>
+    </mat-grid-tile> -->
     <mat-grid-tile [colspan]="3" [rowspan]="1"> 
+      <label for="collage-type">Departamento al cual pertenece:</label>
       <mat-form-field class="select-career">
         <select matNativeControl required [(ngModel)]="department_selected" [ngModelOptions]="{standalone: true}">
           <option *ngFor="let collegeDepartment of collegeDepartments" [ngValue]=collegeDepartment>{{collegeDepartment.department_name}}</option>
         </select>
       </mat-form-field>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="2" [rowspan]="1"> 
+    <mat-grid-tile [colspan]="3" [rowspan]="1"> 
       <label for="number-terms">Seleccione el Programa de Estudio:</label>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="3" [rowspan]="1"> 
       <input type="file" class="form-control input-file file" #file (change)="onFilesAdded(this)">
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="2" [rowspan]="1"> 
+    <!-- <mat-grid-tile [colspan]="2" [rowspan]="1"> 
       <label for="college-name">Tipo de materia:</label>
-    </mat-grid-tile>
+    </mat-grid-tile> -->
     <mat-grid-tile [colspan]="3" [rowspan]="1"> 
+      <label for="college-name">Tipo de materia:</label>
       <mat-form-field>
         <select matNativeControl required [(ngModel)]="type_subject_selected" [ngModelOptions]="{standalone: true}">
           <option *ngFor="let type_subject of typesSubject" [ngValue]=type_subject>{{type_subject.type_subject_description}}</option>
         </select>
       </mat-form-field>
     </mat-grid-tile>
+    <mat-grid-tile [colspan]="3" [rowspan]="1"> 
+      <label for="number-terms">Hora Crédito de la materia:</label>
+      <mat-form-field>
+        <input matInput type="number" class="form-control cod" [(ngModel)]="subject.subject_hc" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </mat-grid-tile>
   </mat-grid-list>
 </div>
 <div class="subject-2-body">
   <mat-grid-list cols="5" rowHeight="80px">
-    <mat-grid-tile [colspan]="1" [rowspan]="1"> 
+    <!-- <mat-grid-tile [colspan]="1" [rowspan]="1"> 
       <label for="number-terms">Hora Crédito de la materia:</label>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1"> 
       <mat-form-field>
         <input matInput type="number" class="form-control cod" placeholder="2" [(ngModel)]="subject.subject_hc" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
-    </mat-grid-tile>
+    </mat-grid-tile> -->
     <mat-grid-tile [colspan]="4" [rowspan]="1"> 
       <div class="btn-crearCarrera">
         <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createSubject()">Crear Materia</button>

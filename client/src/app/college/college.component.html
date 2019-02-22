@@ -13,46 +13,48 @@
               </mat-grid-tile>
         </mat-grid-list>
     </div>
-      <mat-grid-list cols="10" rowHeight="100px">
-            <mat-grid-tile [colspan]="4" [rowspan]="1"> 
-            <label for="college-name">Nombre de la Escuela:</label>
+    <div class="inputs">
+      <mat-grid-list cols="10" rowHeight="100px" class="college-inputs">
+        <mat-grid-tile [colspan]="9" [rowspan]="1"> 
+        <label for="college-name">Nombre de la Escuela:</label>
+        <mat-form-field>
+          <!-- <mat-label>Ej. Ingenieria de Computacion</mat-label> -->
+          <input matInput type="text" class="form-control college-name" [(ngModel)]="college.college_name" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        </mat-grid-tile>
+        <!-- <mat-grid-tile [colspan]="3" [rowspan]="3">
+          <mat-card class="img-ccareer">
+            <img class="img-career" src="https://images.vexels.com/media/users/3/131734/isolated/preview/05d86a9b63d1930d6298b27081ddc345-foto-icono-del-marco-de-previsualizaci-n-by-vexels.png" alt="">
+          </mat-card>
+        </mat-grid-tile> -->
+        <mat-grid-tile [colspan]="9" [rowspan]="1"> 
+          <label for="college-name">Código de la Escuela:</label> 
             <mat-form-field>
-              <mat-label>Ej. Ingenieria de Computacion</mat-label>
-              <input matInput type="text" class="form-control college-name" [(ngModel)]="college.college_name" [ngModelOptions]="{standalone: true}">
+              <input matInput type="number" class="form-control cod" [(ngModel)]="college.college_code" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="9" [rowspan]="1"> 
+            <label for="collage-type">Seleccionar Facultad:</label>
+              <mat-form-field class="select-career">
+                <mat-select [(ngModel)]="college.faculty_id" [ngModelOptions]="{standalone: true}">
+                  <mat-option *ngFor="let faculty of faculties" [value]=faculty.faculty_id>{{faculty.faculty_name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            <!--  <label for="collage-type">Seleccionar Facultad:</label>
+               <mat-form-field class="select-career">
+                  <select matNativeControl required [(ngModel)]="college.faculty_id" [ngModelOptions]="{standalone: true}">
+                    <option *ngFor="let faculty of faculties" [value]=faculty.faculty_id>{{faculty.description}}</option>
+                  </select>
+                </mat-form-field> -->
             </mat-grid-tile>
-            <mat-grid-tile [colspan]="3" [rowspan]="3">
-              <mat-card class="img-ccareer">
-                <img class="img-career" src="https://images.vexels.com/media/users/3/131734/isolated/preview/05d86a9b63d1930d6298b27081ddc345-foto-icono-del-marco-de-previsualizaci-n-by-vexels.png" alt="">
-              </mat-card>
+            <mat-grid-tile [colspan]="10" [rowspan]="1"> 
+              <div class="btn-crearCarrera">
+                <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createCollege()" *ngIf="new" >Crear Escuela</button>
+                <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="updateCollege()" *ngIf="!new" >Modificar Escuela</button>
+              </div>
             </mat-grid-tile>
-            <mat-grid-tile [colspan]="4" [rowspan]="1"> 
-              <label for="college-name">Código de la Escuela:</label> 
-                <mat-form-field>
-                  <input matInput type="number" class="form-control cod" [(ngModel)]="college.college_code" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </mat-grid-tile>
-              <mat-grid-tile [colspan]="4" [rowspan]="1"> 
-                <label for="collage-type">Seleccionar Facultad:</label>
-                  <mat-form-field class="select-career">
-                    <mat-select [(ngModel)]="college.faculty_id" [ngModelOptions]="{standalone: true}">
-                      <mat-option *ngFor="let faculty of faculties" [value]=faculty.faculty_id>{{faculty.faculty_name}}</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                <!--  <label for="collage-type">Seleccionar Facultad:</label>
-                   <mat-form-field class="select-career">
-                      <select matNativeControl required [(ngModel)]="college.faculty_id" [ngModelOptions]="{standalone: true}">
-                        <option *ngFor="let faculty of faculties" [value]=faculty.faculty_id>{{faculty.description}}</option>
-                      </select>
-                    </mat-form-field> -->
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="10" [rowspan]="1"> 
-                  <div class="btn-crearCarrera">
-                    <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createCollege()" *ngIf="new" >Crear Escuela</button>
-                    <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="updateCollege()" *ngIf="!new" >Modificar Escuela</button>
-                  </div>
-                </mat-grid-tile>
-            </mat-grid-list>
+        </mat-grid-list>
+    </div>  
   </div>
 </div>
         
