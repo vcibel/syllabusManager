@@ -25,6 +25,9 @@ export class PensumComponent implements OnInit, AfterViewInit {
   jsPlumbInstance;
   add = false;
   buttonNameAdd = 'Dibujar Prelación';
+  isFront: boolean  = true;
+  isBack: boolean  = false;
+  Show: boolean = false;
 
   subjects: Subject[];
   typesSubjectPensum;
@@ -38,6 +41,21 @@ export class PensumComponent implements OnInit, AfterViewInit {
     subject_id_target_restriction: null,
   };
   new = true;
+  
+  todo = [
+    'Get to work',
+    'Pick up groceries',
+    'Go home',
+    'Fall asleep'
+  ];
+
+  done2 = [
+    'Get up',
+    'Brush teeth',
+    'Take a shower',
+    'Check e-mail',
+    'Walk dog'
+  ];
 
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 
@@ -46,6 +64,22 @@ export class PensumComponent implements OnInit, AfterViewInit {
    ngAfterViewInit() {
     this.jsPlumbInstance = jsPlumb.getInstance();
    }
+
+   togglePensumF() {
+    if (this.isFront) {
+      this.isFront = false;
+    } else {
+      this.isFront = true;
+    }
+  }
+
+  togglePensumB() {
+    if (this.isBack) {
+      this.isBack = false;
+    } else {
+      this.isBack = true;
+    }
+  }
 
    addRestriction() {
     this.add = ! this.add;
@@ -125,6 +159,17 @@ export class PensumComponent implements OnInit, AfterViewInit {
       this.done[term][event.currentIndex]['term'] = term;
       this.done[term][event.currentIndex]['hour_restriction'] = 0;
       console.log(term, this.done);
+    }
+  }
+
+  drop2(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+                        event.container.data,
+                        event.previousIndex,
+                        event.currentIndex);
     }
   }
 

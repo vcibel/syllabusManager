@@ -13,19 +13,19 @@
         </mat-grid-list>
       </div>
       <mat-grid-list cols="8" rowHeight="100px">
-        <mat-grid-tile [colspan]="6" [rowspan]="1"> 
+        <mat-grid-tile [colspan]="7" [rowspan]="1"> 
           <label for="depart-name">Nombre del Departamento:</label>
         <mat-form-field>
           <input matInput type="text" class="form-control depart-name" [(ngModel)]="department.department_name" [ngModelOptions]="{standalone: true}">
           </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="6" [rowspan]="1"> 
+        <mat-grid-tile [colspan]="7" [rowspan]="1"> 
           <label for="depart-name">Código del Departamento:</label> 
           <mat-form-field>
             <input matInput type="number" class="form-control cod" [(ngModel)]="department.department_code" [ngModelOptions]="{standalone: true}">
           </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="6" [rowspan]="1"> 
+        <mat-grid-tile [colspan]="7" [rowspan]="1"> 
           <label for="depart-type">Seleccione a que escuela pertenece:</label>
           <mat-form-field class="select-career">
             <mat-select [(ngModel)]="department.college_id" [ngModelOptions]="{standalone: true}">
