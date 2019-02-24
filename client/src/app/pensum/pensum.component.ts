@@ -33,7 +33,8 @@ export class PensumComponent implements OnInit, AfterViewInit {
   typesSubjectPensum;
   showFiller = false;
   pensum: Pensum;
-  done = [[], [], [], [], [], [], [], [], [], []];
+  done = [[], [], [], [], [], [], [], [], [], [], []];
+  electives = [];
   source = '';
   target = '';
   restriction = {
@@ -41,7 +42,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
     subject_id_target_restriction: null,
   };
   new = true;
-  
+
   todo = [
     'Get to work',
     'Pick up groceries',
@@ -170,6 +171,10 @@ export class PensumComponent implements OnInit, AfterViewInit {
                         event.container.data,
                         event.previousIndex,
                         event.currentIndex);
+      this.electives[event.currentIndex]['type_subject_pensum_id'] = 2;
+      this.electives[event.currentIndex]['term'] = 10;
+      this.electives[event.currentIndex]['hour_restriction'] = 0;
+      console.log(this.electives);
     }
   }
 
@@ -182,7 +187,8 @@ export class PensumComponent implements OnInit, AfterViewInit {
   }
 
   createPensum() {
-    const data = {data: this.done};
+    this.done['11'] = this.electives;
+    const data = {data: this.done, pensum_id: this.pensum.pensum_id};
     console.log(data);
     this.httpService.post(data, '/SubjectPensum').subscribe((res: any) => {
       if (res.status === 200) {
@@ -194,6 +200,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
   }
 
   updatePensum() {
+    this.done['11'] = this.electives;
     const data = {data: this.done, pensum_id: this.pensum.pensum_id};
     console.log(data);
     this.httpService.put(data, '/SubjectPensum').subscribe((res: any) => {
@@ -202,6 +209,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
       } else {
         console.log(res.message);
       }
+      this.done.pop();
     });
   }
 
@@ -229,7 +237,11 @@ export class PensumComponent implements OnInit, AfterViewInit {
             if (res.status === 200) {
               this.done[0] = res.subjectRestriction;
               for (let i = 0; i < res.pensumSubjects.length; i++) {
+                if (res.pensumSubjects[i].type_subject_pensum_id === 1) {
                 this.done[res.pensumSubjects[i].term].push(res.pensumSubjects[i]);
+                } else {
+                  this.electives.push(res.pensumSubjects[i]);
+                }
                 data.splice(data.indexOf(res.pensumSubjects[i]), 1);
               }
               if (res.pensumSubjects.length > 0) {

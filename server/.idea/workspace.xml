@@ -8,12 +8,15 @@
   <component name="ChangeListManager">
     <list default="true" id="b3596c7e-1748-45ca-b3c8-c8e1e3745f09" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/SubjectPensum.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/SubjectPensum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/props/conn.properties" beforeDir="false" afterPath="$PROJECT_DIR$/props/conn.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Files.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Files.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Pensum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Pensum.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/SubjectPensum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/SubjectPensum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Subjects.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Subjects.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -43,10 +46,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/props/conn.properties">
+        <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+            <state relative-caret-position="136">
+              <caret line="110" column="86" selection-start-line="110" selection-start-column="86" selection-end-line="110" selection-end-column="86" />
             </state>
           </provider>
         </entry>
@@ -79,6 +82,7 @@
       <find>career</find>
       <find>response</find>
       <find>utf</find>
+      <find>term</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\administrador\val\syllabusManager\server</dir>
@@ -138,8 +142,8 @@
         <option value="$PROJECT_DIR$/src/main/java/vm/org/servlets/Files.java" />
         <option value="$PROJECT_DIR$/src/main/java/vm/org/servlets/Subjects.java" />
         <option value="$PROJECT_DIR$/src/main/java/vm/org/servlets/Pensum.java" />
-        <option value="$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java" />
         <option value="$PROJECT_DIR$/props/conn.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java" />
       </list>
     </option>
   </component>
@@ -182,40 +186,35 @@
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="props" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="vm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="vm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="org" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="vm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="org" type="462c0819:PsiDirectoryNode" />
               <item name="servlets" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -394,11 +393,13 @@
       <workItem from="1550624444496" duration="2036000" />
       <workItem from="1550699414788" duration="1551000" />
       <workItem from="1550786786021" duration="847000" />
+      <workItem from="1550923940465" duration="2051000" />
+      <workItem from="1550966372828" duration="4000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="202542000" />
+    <option name="totallyTimeSpent" value="204597000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -410,9 +411,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.25728154" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.2647504" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -422,7 +423,7 @@
       <window_info id="Web" order="7" sideWeight="0.5021008" side_tool="true" weight="0.25340393" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4975728" weight="0.66448444" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4975728" weight="0.5319149" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -626,13 +627,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="107" column="30" selection-start-line="107" selection-start-column="30" selection-end-line="107" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/target/classes/vm/org/servlets/Colleges.class">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -664,7 +658,14 @@
     <entry file="file://$PROJECT_DIR$/props/conn.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+          <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="110" column="86" selection-start-line="110" selection-start-column="86" selection-end-line="110" selection-end-column="86" />
         </state>
       </provider>
     </entry>
@@ -710,7 +711,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.8</last-edited>
+          <last-edited>11</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -727,7 +728,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
