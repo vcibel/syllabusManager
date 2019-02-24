@@ -55,30 +55,7 @@ public class SubjectPensum extends HttpServlet {
 
 		}	
 	
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		JSONObject json = new JSONObject();
-		JSONObject reqBody = new JSONObject(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
-		DB db = new DB();
-		PropertiesReader prop = PropertiesReader.getInstance();
-		
-		try {
-			Integer subject_pensum_id = reqBody.getInt("subject_pensum_id");
 
-			db.executeUpdate(prop.getValue("query_deleteSubjectPensum"), subject_pensum_id);
-			json.put("status", 200).put("response", prop.getValue("mssg_subjectPensumDeleted"));
-			System.out.println(prop.getValue("mssg_subjectPensumDeleted"));
-
-		}catch (Exception e) {
-			System.out.println("error");
-			json.put("response", prop.getValue("mssg_deleteFail")).put("status", 400);
-			System.out.println(e. getMessage());
-			e.printStackTrace();
-		}
-
-		out.print(json.toString());
-
-		}
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
@@ -95,15 +72,6 @@ public class SubjectPensum extends HttpServlet {
 			System.out.println(prop.getValue("mssg_subjectPensumDeleted"));
 
 			json = createPensum(reqBody);
-/*
-			if (db.executeQuery(prop.getValue("query_checkSubjectPensum"), pensum_id, subject_id).length() ==0) {
-				db.executeUpdate(prop.getValue("query_updateSubjectPensum"),pensum_id, subject_id,type_subject_pensum_id,term);
-				json.put("status", 200).put("response", prop.getValue("mssg_subjectPensumUpdated"));
-				System.out.println(prop.getValue("mssg_subjectPensumUpdated"));
-			}else {
-				json.put("response", prop.getValue("mssg_subjectPensumExist")).put("status", 400);
-				System.out.println(prop.getValue("mssg_subjectPensumExist"));
-			}*/
 
 		}catch (Exception e) {
 			System.out.println("error");

@@ -27,7 +27,7 @@
           [cdkDropListData]="subjects"
           class="example-list"
           (cdkDropListDropped)="drop($event)">
-          <div *ngIf="Show || isFront">
+          <div>
             <div class="example-box" *ngFor="let item of subjects" cdkDrag>
             <mat-card class="subject-card" id="{{item.subject_id}}">
               <mat-grid-list cols="4" rowHeight="15px">
@@ -52,7 +52,7 @@
           </mat-card>
         </div>
           </div>
-        <div *ngIf="Show || isBack">
+        <!----<div *ngIf="Show || isBack">
           another list
         <div
         cdkDropList
@@ -63,7 +63,7 @@
         (cdkDropListDropped)="drop2($event)">
         <div class="example-box" *ngFor="let item of done2" cdkDrag>{{item}}</div>
       </div>
-        </div>
+        </div>---->
       </div>
     </div>
   </mat-drawer>
@@ -83,8 +83,7 @@
               <div
               cdkDropList
               #todoList="cdkDropList"
-              [cdkDropListData]="todo"
-              [cdkDropListConnectedTo]="[done2List]"
+              [cdkDropListData]="electives"
               class="example-list"
               (cdkDropListDropped)="drop2($event)">
               <mat-grid-list cols="8" rowHeight="30px" class="electivas-table">
@@ -98,14 +97,14 @@
                     <span>REQUISITO</span>
                   </mat-grid-tile>
                 </mat-grid-list>
-                <div class="example-box" *ngFor="let item of todo" cdkDrag>
+                <div class="example-box" *ngFor="let item of electives" cdkDrag>
                   <mat-card class="electiva">
                   <mat-grid-list cols="8" rowHeight="80px" class="list">
                     <mat-grid-tile [colspan]="2" [rowspan]="1">
-                      <span>0909</span>
+                      <span>{{item.subject_code}}</span>
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="4" [rowspan]="1">
-                      <span>electiva</span>
+                      <span>{{item.subject_name}}</span>
                       <!-- <div class="example-box" *ngFor="let item of todo" cdkDrag> 
                         <mat-card class="electiva">{{item}}</mat-card>            
                       </div> -->
@@ -201,103 +200,6 @@
           <mat-grid-list cols="20" rowHeight="240px">
             <mat-grid-tile [colspan]="2" [rowspan]="2" *ngFor="let item of done.slice(1)" class="term" >
               <app-term [done]="item" (droped)="drop($event)" (clicked)="onClick($event, item)"></app-term>
-                  <!--- <div
-                  cdkDropList
-                  [cdkDropListData]="done[1]"
-                  class="example-list"
-                  (cdkDropListDropped)="drop($event)">
-                  <div class="example-box" *ngFor="let item of done[1]" cdkDrag id="{{item.subject_id}}">
-                    <div class="subjects-column" id="{{item.subject_id}}">
-                        <mat-card class="subject-card" id="{{item.subject_id}}" (click)="onClick($event, item)">
-                            <mat-grid-list cols="4" rowHeight="15px">
-                              <mat-grid-tile [colspan]="3" [rowspan]="1">
-                                <mat-card class="code-subject">
-                                  <span id="{{item.subject_id}}">{{item.subject_code}}</span>
-                                </mat-card>
-                              </mat-grid-tile>
-                              <mat-grid-tile [colspan]="1" [rowspan]="1">
-                                <mat-card class="hc-subject">
-                                  <span id="{{item.subject_id}}">{{item.subject_hc}}</span>
-                                </mat-card>
-                              </mat-grid-tile>
-                            </mat-grid-list>
-                            <mat-grid-list cols="2" rowHeight="20px">
-                              <mat-grid-tile [colspan]="2" [rowspan]="1">
-                                    <mat-card class="name-subject">
-                                      <span id="{{item.subject_id}}">{{item.subject_name}}</span>
-                                    </mat-card>
-                                </mat-grid-tile>
-                            </mat-grid-list>
-                          </mat-card>
-                    </div>
-                  </div>
-                </div>
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="2">
-                <div
-                cdkDropList
-                [cdkDropListData]="done[2]"
-                class="example-list"
-                (cdkDropListDropped)="drop($event)">
-                <div class="example-box" *ngFor="let item of done[2]" cdkDrag>
-                  <div class="subjects-column" id="{{item.subject_id}}">
-                      <mat-card class="subject-card" id="{{item.subject_id}}" (click)="onClick($event, item)">
-                          <mat-grid-list cols="4" rowHeight="15px">
-                            <mat-grid-tile [colspan]="3" [rowspan]="1">
-                              <mat-card class="code-subject">
-                                <span id="{{item.subject_id}}">{{item.subject_code}}</span>
-                              </mat-card>
-                            </mat-grid-tile>
-                            <mat-grid-tile [colspan]="1" [rowspan]="1">
-                              <mat-card class="hc-subject">
-                                <span id="{{item.subject_id}}">{{item.subject_hc}}</span>
-                              </mat-card>
-                            </mat-grid-tile>
-                          </mat-grid-list>
-                          <mat-grid-list cols="2" rowHeight="20px">
-                            <mat-grid-tile [colspan]="2" [rowspan]="1">
-                                  <mat-card class="name-subject">
-                                    <span id="{{item.subject_id}}">{{item.subject_name}}</span>
-                                  </mat-card>
-                              </mat-grid-tile>
-                          </mat-grid-list>
-                        </mat-card>
-                  </div>
-                </div>
-              </div>
-          </mat-grid-tile>
-          <mat-grid-tile [colspan]="2" [rowspan]="2">
-              <div
-              cdkDropList
-              [cdkDropListData]="done[3]"
-              class="example-list"
-              (cdkDropListDropped)="drop($event)">
-              <div class="example-box" *ngFor="let item of done[3]" cdkDrag>
-                <div class="subjects-column">
-                    <mat-card class="subject-card">
-                        <mat-grid-list cols="4" rowHeight="15px">
-                          <mat-grid-tile [colspan]="3" [rowspan]="1">
-                            <mat-card class="code-subject">
-                              <span>{{item.subject_code}}</span>
-                            </mat-card>
-                          </mat-grid-tile>
-                          <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-card class="hc-subject">
-                              <span>{{item.subject_hc}}</span>
-                            </mat-card>
-                          </mat-grid-tile>
-                        </mat-grid-list>
-                        <mat-grid-list cols="2" rowHeight="20px">
-                          <mat-grid-tile [colspan]="2" [rowspan]="1">
-                                <mat-card class="name-subject">
-                                  <span>{{item.subject_name}}</span>
-                                </mat-card>
-                            </mat-grid-tile>
-                        </mat-grid-list>
-                      </mat-card>
-                </div>
-              </div>
-            </div>--->
         </mat-grid-tile>
           </mat-grid-list>
         </mat-card>
