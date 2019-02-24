@@ -46,13 +46,22 @@ mat-card.subject-card.mat-card {
     border-radius: 0px;
 }
 
-.example-list {
-    width: 101px;
-    height: 100%;
-    border: solid 1px transparent;
-    // background: #f9f9f9;
-    border-radius: 4px;
-    display: block;
+// .example-list {
+//     width: 101px;
+//     height: 100%;
+//     border: solid 1px transparent;
+//     // background: #f9f9f9;
+//     border-radius: 4px;
+//     display: block;
+// }
+
+.example-list{
+    /* width: 63px; */
+    /* height: 100%; */
+    /* border: solid 1px transparent; */
+    /* border-radius: 4px; */
+    /* display: block; */
+    text-align: -webkit-center;
 }
 
 .subjects-column {
@@ -137,4 +146,31 @@ mat-grid-list.electivas-table.mat-grid-list {
     top: -5px !important;
     position: relative !important;
     margin: -30px !important;
+}
+
+mat-card.name-subject.mat-card {
+    margin: -92px !important;
+    font-size: 10px !important;
+    width: 110px;
+    text-align: center;
+}
+
+span.subject-text {
+    text-transform: uppercase;
+}
+
+// mat-drawer.mat-drawer.ng-tns-c4-1.ng-trigger.ng-trigger-transform.mat-drawer-end.mat-drawer-side.ng-star-inserted {
+//     width: 15% !important;
+// }
+
+// mat-drawer-content.mat-drawer-content {
+//     width: 85%;
+// }
+
+mat-card.code-subject.mat-card {
+    font-size: 12px;
+}
+
+mat-card.hc-subject.mat-card {
+    font-size: 12px;
 }

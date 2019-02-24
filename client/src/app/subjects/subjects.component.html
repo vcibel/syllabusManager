@@ -1,6 +1,6 @@
 <div class="container subjects" >
-    <mat-toolbar color="primary">
-      <span>Subjects</span>
+    <mat-toolbar class="toolbar">
+      <span>Materias</span>
       <span class="example-spacer"></span>
       <button mat-icon-button (click)="openSubject()">
         <mat-icon class="example-icon">add_box</mat-icon>
@@ -10,29 +10,36 @@
       <mat-list>
         <mat-list-item class="list-subject" *ngFor="let subject of subjects" >
           <mat-card class="card-subject">
-            <mat-card-header>
-              <mat-card-title>
-                {{subject.subject_name}}
-              </mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-                <mat-grid-list cols="3" rowHeight="150px">
-                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-grid-list cols="10" rowHeight="100px">
+              <mat-grid-tile [colspan]="4" [rowspan]="1">
+                <h5><strong>{{subject.subject_name}}</strong></h5>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="3" [rowspan]="1">
+                <h6>Código de la Materia: {{subject.subject_code}} </h6>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="3" [rowspan]="1">
+                <mat-icon mat-icon-button class="example-icon" (click)="deleteSubject(subject)">delete</mat-icon>
+                <button  mat-raised-button class="example-icon" (click)="getSyllabus(subject)">Ver Programa de Estudio</button>
+              </mat-grid-tile>
+            </mat-grid-list>
+            <!-- <mat-card-content>
+                <mat-grid-list cols="3" rowHeight="60px">
+                     <mat-grid-tile [colspan]="1" [rowspan]="1">
                       <img class="img-subject" src="https://1.bp.blogspot.com/-CPY0iSr-jlU/Wh4VH0J9lhI/AAAAAAAABIA/h_ILn0EdN-QpVg9ZVBzs67BoupyZ2pKOQCLcBGAs/s750/Ingenieria_electrica_principios.jpg" alt="">
-                    </mat-grid-tile>
+                    </mat-grid-tile> 
                     <mat-grid-tile [colspan]="2" [rowspan]="1">
                       {{subject.subject_name}}
                       {{subject.subject_code}}
                       Faculty
                     </mat-grid-tile>
                   </mat-grid-list>
-            </mat-card-content>
-            <mat-card-actions>
+            </mat-card-content> -->
+            <!-- <mat-card-actions>
               <mat-icon mat-icon-button class="example-icon" (click)="deleteSubject(subject)">delete</mat-icon>
             </mat-card-actions>
             <mat-card-actions>
               <mat-icon mat-icon-button class="example-icon" (click)="getSyllabus(subject)">VER PROGRAMA DE ESTUDIOS</mat-icon>
-            </mat-card-actions>
+            </mat-card-actions> -->
           </mat-card>
         </mat-list-item>
         <mat-divider></mat-divider>

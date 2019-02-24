@@ -15,6 +15,8 @@ import * as $ from 'jquery';
 })
 export class SubjectComponent implements OnInit {
 
+  disabled = false;
+
   subject: Subject = {
     subject_id: null,
     subject_code: '',

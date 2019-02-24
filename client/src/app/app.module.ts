@@ -2,7 +2,7 @@ import { HttpService } from './service/http/http.service';
 import { FilesService } from './service/files/files.service';
 import { MatSidenavModule, MatListModule, MatButtonModule, MatCheckboxModule,
   MatInputModule, MatIconModule, MatCardModule, MatDividerModule,
-  MatGridListModule, MatMenuModule, MatExpansionModule, MatSelectModule, MatDialogModule, MatFormFieldModule, MatToolbarModule } from '@angular/material';
+  MatGridListModule, MatMenuModule, MatExpansionModule, MatSelectModule, MatDialogModule, MatFormFieldModule, MatToolbarModule, MatDatepickerModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -77,6 +77,7 @@ import { TermComponent } from './term/term.component';
     MatExpansionModule,
     AngularFontAwesomeModule,
     DragDropModule,
+    MatDatepickerModule,
     MDBBootstrapModule.forRoot(),
     NgbModule.forRoot(),
   ],

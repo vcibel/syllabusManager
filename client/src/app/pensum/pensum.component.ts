@@ -6,6 +6,30 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { jsPlumb } from 'jsplumb';
+import { FormControl } from '@angular/forms';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+
+import * as  _moment from 'moment';
+import { default as _rollupMoment} from 'moment';
+
+const moment = _rollupMoment || _moment;
+
+//const moment =  _moment;
+
+// See the Moment.js docs for the meaning of these formats:
+// https://momentjs.com/docs/#/displaying/format/
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'LL',
+  },
+  display: {
+    dateInput: 'LL',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 export interface Section {
   hc: number;
@@ -17,10 +41,20 @@ export interface Section {
 @Component({
   selector: 'app-pensum',
   templateUrl: './pensum.component.html',
-  styleUrls: ['./pensum.component.scss']
+  styleUrls: ['./pensum.component.scss'],
+  providers: [
+    // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
+    // application's root module. We provide it at the component level here, due to limitations of
+    // our example generation script.
+    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
+
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+  ],
 })
 
 export class PensumComponent implements OnInit, AfterViewInit {
+
+  date = new FormControl(moment());
 
   jsPlumbInstance;
   add = false;
@@ -66,17 +100,15 @@ export class PensumComponent implements OnInit, AfterViewInit {
    }
 
    togglePensumF() {
-    if (this.isFront) {
-      this.isFront = false;
-    } else {
+    this.isBack = false;
+    if (!this.isFront) {
       this.isFront = true;
     }
   }
 
   togglePensumB() {
-    if (this.isBack) {
-      this.isBack = false;
-    } else {
+    this.isFront = false;
+    if (!this.isBack) {
       this.isBack = true;
     }
   }
@@ -155,6 +187,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
                         event.currentIndex);
       const arrayString = event.container.id.split('-');
       const term = Number(arrayString[arrayString.length - 1]);
+      console.log(arrayString, arrayString[arrayString.length - 1])
       this.done[term][event.currentIndex]['type_subject_pensum_id'] = 1;
       this.done[term][event.currentIndex]['term'] = term;
       this.done[term][event.currentIndex]['hour_restriction'] = 0;
@@ -182,7 +215,8 @@ export class PensumComponent implements OnInit, AfterViewInit {
   }
 
   createPensum() {
-    const data = {data: this.done};
+    //const data = {data: this.done};
+    const data = {data: this.done, pensum_id: this.pensum.pensum_id};
     console.log(data);
     this.httpService.post(data, '/SubjectPensum').subscribe((res: any) => {
       if (res.status === 200) {

@@ -27,10 +27,11 @@ export class HomeComponent implements OnInit {
   isCollege: boolean  = false;
   isFaculty: boolean  = false;
   isSubject: boolean  = false;
+  isHome: boolean = false;
   isDepartment: boolean  = false;
   isUser: boolean  = false;
   isPensum: boolean  = false;
-  Show: boolean = false;
+  Show: boolean = true;
 
   showCollege: boolean = true;
   closeResult: string;
@@ -152,52 +153,94 @@ export class HomeComponent implements OnInit {
   }
 
   toggleColleges() {
-    if (this.isCollege) {
-      this.isCollege = false;
-    } else {
+    this.Show= false;
+    this.isFaculty= false;
+    this.isRegister = false;
+    this.isSubject= false;
+    this.isDepartment= false;
+    this.isUser= false;
+    this.isPensum= false;
+    if (!this.isCollege) {
       this.isCollege = true;
     }
   }
 
   toggleFaculties() {
-    if (this.isFaculty) {
-      this.isFaculty = false;
-    } else {
+    this.Show= false;
+    this.isCollege = false;
+    this.isRegister = false;
+    this.isSubject= false;
+    this.isDepartment= false;
+    this.isUser= false;
+    this.isPensum= false;
+    if (!this.isFaculty) {
       this.isFaculty = true;
-    }
+    } 
   }
 
   toggleSubjects() {
-    if (this.isSubject) {
-      this.isSubject = false;
-    } else {
+    this.Show= false;
+    this.isCollege = false;
+    this.isRegister = false;
+    this.isFaculty= false;
+    this.isDepartment= false;
+    this.isUser= false;
+    this.isPensum= false;
+    if (!this.isSubject) {
       this.isSubject = true;
-    }
+    } 
   }
 
   toggleDepartments() {
-    if (this.isDepartment) {
-      this.isDepartment = false;
-    } else {
+    this.Show= false;
+    this.isCollege = false;
+    this.isRegister = false;
+    this.isFaculty= false;
+    this.isSubject= false;
+    this.isUser= false;
+    this.isPensum= false;
+    if (!this.isDepartment) {
       this.isDepartment = true;
     }
   }
 
   toggleUser() {
-    if (this.isUser) {
-      this.isUser = false;
-    } else {
+    this.Show= false;
+    this.isCollege = false;
+    this.isRegister = false;
+    this.isFaculty= false;
+    this.isDepartment= false;
+    this.isSubject= false;
+    this.isPensum= false;
+    if (!this.isUser) {
       this.isUser = true;
     }
   }
 
   togglepPensum() {
-    if (this.isPensum) {
-      this.isPensum = false;
-    } else {
+    this.Show= false;
+    this.isCollege = false;
+    this.isRegister = false;
+    this.isFaculty= false;
+    this.isDepartment= false;
+    this.isUser= false;
+    this.isSubject= false;
+    if (!this.isPensum) {
       this.isPensum = true;
-    }
+    } 
   }
 
+  togglepHome() {
+    this.isCollege = false;
+    this.isRegister = false;
+    this.isFaculty= false;
+    this.isDepartment= false;
+    this.isUser= false;
+    this.isSubject= false;
+    this.isPensum = false;
+    if (!this.Show) {
+      this.Show = true;
+    } 
+  }
 
 }

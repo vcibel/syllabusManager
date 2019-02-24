@@ -1,7 +1,8 @@
 
 
 .example-icon {
-    padding: 0 24px;
+   // padding: 0 24px;
+   margin: 4px;
 }
   
 .example-spacer {
@@ -18,5 +19,20 @@
 }
 
 mat-list-item.list-subject.mat-list-item {
-    height: 300px;
+    height: 150px;
+}
+
+mat-card.name-subject.mat-card {
+    margin: -92px !important;
+    font-size: 10px !important;
+}
+
+span.subject-text {
+    text-transform: uppercase;
+}
+
+
+mat-toolbar.toolbar.mat-toolbar.mat-toolbar-single-row {
+    background-color: #155193;
+    color: white;
 }
