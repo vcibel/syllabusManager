@@ -6,12 +6,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { jsPlumb } from 'jsplumb';
-import { FormControl } from '@angular/forms';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MomentDateAdapter } from '@angular/material-moment-adapter';
+//import { FormControl } from '@angular/forms';
+//import { MomentDateAdapter } from '@angular/material-moment-adapter';
+//import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
 import * as  _moment from 'moment';
 import { default as _rollupMoment} from 'moment';
+import { FormControl } from '@angular/forms';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material';
 
 const moment = _rollupMoment || _moment;
 
@@ -21,15 +24,24 @@ const moment = _rollupMoment || _moment;
 // https://momentjs.com/docs/#/displaying/format/
 export const MY_FORMATS = {
   parse: {
-    dateInput: 'LL',
+    dateInput: 'MMMM YYYY',
   },
   display: {
-    dateInput: 'LL',
+    dateInput: 'MMMM YYYY',
     monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'LL',
     monthYearA11yLabel: 'MMMM YYYY',
   },
 };
+
+// parse: {
+//   dateInput: 'MM/YYYY',
+// },
+// display: {
+//   dateInput: 'MM/YYYY',
+//   monthYearLabel: 'MMM YYYY',
+//   dateA11yLabel: 'LL',
+//   monthYearA11yLabel: 'MMMM YYYY',
+// },
 
 export interface Section {
   hc: number;
@@ -47,7 +59,7 @@ export interface Section {
     // application's root module. We provide it at the component level here, due to limitations of
     // our example generation script.
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
-
+    {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
   ],
 })
@@ -220,11 +232,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
   }
 
   createPensum() {
-<<<<<<< HEAD
-    //const data = {data: this.done};
-=======
     this.done['11'] = this.electives;
->>>>>>> server
     const data = {data: this.done, pensum_id: this.pensum.pensum_id};
     console.log(data);
     this.httpService.post(data, '/SubjectPensum').subscribe((res: any) => {
@@ -279,7 +287,12 @@ export class PensumComponent implements OnInit, AfterViewInit {
                 } else {
                   this.electives.push(res.pensumSubjects[i]);
                 }
-                data.splice(data.indexOf(res.pensumSubjects[i]), 1);
+                const remove = data.findIndex((subject) =>{
+                  console.log(subject.subject_id, res.pensumSubjects[i].subject_id);
+                  return subject.subject_id === res.pensumSubjects[i].subject_id;
+                });
+                data.splice(remove, 1)
+                //data.splice(data.indexOf(res.pensumSubjects[i]), 1);
               }
               if (res.pensumSubjects.length > 0) {
                 this.new = false;

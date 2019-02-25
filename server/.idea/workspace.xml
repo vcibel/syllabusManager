@@ -7,16 +7,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3596c7e-1748-45ca-b3c8-c8e1e3745f09" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/SubjectPensum.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/SubjectPensum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Files.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Files.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Pensum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Pensum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/SubjectPensum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/SubjectPensum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Subjects.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Subjects.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/DB.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/filters/CORSFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/filters/SessionFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/filters/TypeUserBoard$method.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/filters/TypeUserBoard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Colleges.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Departments.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Faculties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Files.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Login.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Logout.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Pensum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/SubjectPensum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Subjects.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Users.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/utilities/Conn.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/utilities/PropertiesReader.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -45,11 +59,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/props/conn.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="110" column="86" selection-start-line="110" selection-start-column="86" selection-end-line="110" selection-end-column="86" />
+            <state relative-caret-position="408">
+              <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -57,8 +71,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="133" column="25" lean-forward="true" selection-start-line="133" selection-start-column="25" selection-end-line="133" selection-end-column="25" />
+            <state relative-caret-position="255">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -91,7 +108,6 @@
       <find>career</find>
       <find>response</find>
       <find>utf</find>
-      <find>term</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\administrador\val\syllabusManager\server</dir>
@@ -151,8 +167,8 @@
         <option value="$PROJECT_DIR$/src/main/java/vm/org/servlets/Files.java" />
         <option value="$PROJECT_DIR$/src/main/java/vm/org/servlets/Subjects.java" />
         <option value="$PROJECT_DIR$/src/main/java/vm/org/servlets/Pensum.java" />
-        <option value="$PROJECT_DIR$/props/conn.properties" />
         <option value="$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java" />
+        <option value="$PROJECT_DIR$/props/conn.properties" />
       </list>
     </option>
   </component>
@@ -184,14 +200,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="props" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
@@ -232,6 +251,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -402,13 +423,14 @@
       <workItem from="1550624444496" duration="2036000" />
       <workItem from="1550699414788" duration="1551000" />
       <workItem from="1550786786021" duration="847000" />
-      <workItem from="1550923940465" duration="2051000" />
-      <workItem from="1550966372828" duration="4000" />
+      <workItem from="1550951860629" duration="7226000" />
+      <workItem from="1551012435163" duration="1159000" />
+      <workItem from="1551134796855" duration="1453000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="204597000" />
+    <option name="totallyTimeSpent" value="212380000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -420,9 +442,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1296" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.2647504" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.26941746" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -432,7 +455,7 @@
       <window_info id="Web" order="7" sideWeight="0.5021008" side_tool="true" weight="0.25340393" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4975728" weight="0.5319149" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4975728" weight="0.690671" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -454,7 +477,7 @@
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="8" side_tool="true" visible="true" weight="0.32928804" />
+      <window_info anchor="right" id="Maven" order="8" side_tool="true" weight="0.32928804" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -666,22 +689,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/props/conn.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+        <state relative-caret-position="408">
+          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="110" column="86" selection-start-line="110" selection-start-column="86" selection-end-line="110" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="133" column="25" lean-forward="true" selection-start-line="133" selection-start-column="25" selection-end-line="133" selection-end-column="25" />
+        <state relative-caret-position="255">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -727,7 +746,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>11</last-edited>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -744,6 +763,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

@@ -99,16 +99,16 @@
                 </mat-grid-list>
                 <div class="example-box" *ngFor="let item of electives" cdkDrag>
                   <mat-card class="electiva">
-                  <mat-grid-list cols="8" rowHeight="80px" class="list">
-                    <mat-grid-tile [colspan]="2" [rowspan]="1">
-                      <span>{{item.subject_code}}</span>
-                    </mat-grid-tile>
-                    <mat-grid-tile [colspan]="4" [rowspan]="1">
-                      <span>{{item.subject_name}}</span>
+                    <mat-grid-list cols="8" rowHeight="80px" class="list">
+                      <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <span>{{item.subject_code}}</span>
+                      </mat-grid-tile>
+                      <mat-grid-tile [colspan]="4" [rowspan]="1">
+                        <span>{{item.subject_name}}</span>
                       <!-- <div class="example-box" *ngFor="let item of todo" cdkDrag> 
                         <mat-card class="electiva">{{item}}</mat-card>            
                       </div> -->
-                    </mat-grid-tile>
+                      </mat-grid-tile>
                     <mat-grid-tile [colspan]="2" [rowspan]="1">
                       <span>0909</span>
                     </mat-grid-tile>
@@ -139,13 +139,11 @@
                 Universidad Rafael Urdaneta
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="3">
-                <mat-card>
-                  <!-- <mat-form-field>
-                    <input matInput [matDatepicker]="dp" placeholder="Verbose datepicker" [formControl]="date">
-                    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-                    <mat-datepicker #dp></mat-datepicker>
-                  </mat-form-field> -->
-                </mat-card>
+                <mat-form-field>
+                  <input matInput [matDatepicker]="dp" style="text-transform: uppercase;">
+                  <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                  <mat-datepicker #dp></mat-datepicker>
+                </mat-form-field>
               </mat-grid-tile>
               <mat-grid-tile [colspan]="2" [rowspan]="1">
                 Nombre:___________________
@@ -200,7 +198,7 @@
           <mat-grid-list cols="20" rowHeight="240px">
             <mat-grid-tile [colspan]="2" [rowspan]="2" *ngFor="let item of done.slice(1)" class="term" >
               <app-term [done]="item" (droped)="drop($event)" (clicked)="onClick($event, item)"></app-term>
-        </mat-grid-tile>
+            </mat-grid-tile>
           </mat-grid-list>
         </mat-card>
         <mat-card class="pensum-footer" id="card-pensum">Pensum footer</mat-card>
