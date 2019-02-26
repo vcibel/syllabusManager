@@ -1,27 +1,28 @@
 <div cdkDropListGroup>
-<mat-drawer-container class="example-container">
-  <mat-drawer #drawer mode="side">
-    <button (click)="goToHome()" mat-raised-button>
-      Go Home
-    </button>
-  </mat-drawer>
-  <mat-drawer mode="side" opened position="end">
-    <!-- <button type="button" mat-button (click)="drawer.toggle()">
-      Show Sidenav
-    </button> -->
-    <button (click)="goToHome()" mat-raised-button>
-      Go Home
-    </button>
-    <button (click)="togglePensumB()" mat-raised-button>
-      Back
-    </button>
-    <button (click)="togglePensumF()" mat-raised-button>
-      Front
-    </button>
-    <div class="example-container">
-        <span class="btn btn-primary" (click)="addRestriction()">{{buttonNameAdd}}</span>
-        <h2>Seleccione</h2>
-    
+  <mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened position="end">
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>list</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="goToHome()">Inicio</button>
+        <button mat-menu-item (click)="togglePensumB()">Back</button>
+        <button mat-menu-item (click)="togglePensumF()">Front</button>
+      </mat-menu>
+      <button mat-button color="primary" (click)="save()">Guardar</button>
+      <mat-grid-list cols="2" rowHeight="30px" class="search">
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <span class="search-text">Buscar Materia:</span>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field class="example-form-field">
+            <input matInput type="text">
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <div class="example-container">
+        <button mat-button color="primary" (click)="addRestriction()">{{buttonNameAdd}}</button>
+        <h5 class="select">Seleccione</h5>
         <div
           cdkDropList
           [cdkDropListData]="subjects"
@@ -29,64 +30,52 @@
           (cdkDropListDropped)="drop($event)">
           <div>
             <div class="example-box" *ngFor="let item of subjects" cdkDrag>
-            <mat-card class="subject-card" id="{{item.subject_id}}">
-              <mat-grid-list cols="4" rowHeight="15px">
-                <mat-grid-tile [colspan]="3" [rowspan]="1">
-                  <mat-card class="code-subject">
-                    <span>{{item.subject_code}}</span>
-                  </mat-card>
-                </mat-grid-tile>
-              <mat-grid-tile [colspan]="1" [rowspan]="1">
-                <mat-card class="hc-subject">
-                  <span>{{item.subject_hc}}</span>
-                </mat-card>
-              </mat-grid-tile>
-            </mat-grid-list>
-            <mat-grid-list cols="2" rowHeight="20px">
-              <mat-grid-tile [colspan]="2" [rowspan]="1">
-                <mat-card class="name-subject">
-                  <span>{{item.subject_name}}</span>
-                </mat-card>
-              </mat-grid-tile>
-            </mat-grid-list>
-          </mat-card>
-        </div>
+              <mat-card class="subject-card" id="{{item.subject_id}}">
+                <mat-grid-list cols="4" rowHeight="15px">
+                  <mat-grid-tile [colspan]="3" [rowspan]="1">
+                    <mat-card class="code-subject">
+                      <span class="subject-text">{{item.subject_code}}</span>
+                    </mat-card>
+                  </mat-grid-tile>
+                  <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-card class="hc-subject">
+                      <span>{{item.subject_hc}}</span>
+                    </mat-card>
+                  </mat-grid-tile>
+                </mat-grid-list>
+                <mat-grid-list cols="2" rowHeight="20px">
+                  <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-card class="name-subject">
+                      <span class="subject-text">{{item.subject_name}}</span>
+                    </mat-card>
+                  </mat-grid-tile>
+                </mat-grid-list>
+              </mat-card>
+            </div>
           </div>
-        <!----<div *ngIf="Show || isBack">
-          another list
-        <div
-        cdkDropList
-        #done2List="cdkDropList"
-        [cdkDropListData]="done2"
-        [cdkDropListConnectedTo]="[todoList]"
-        class="example-list"
-        (cdkDropListDropped)="drop2($event)">
-        <div class="example-box" *ngFor="let item of done2" cdkDrag>{{item}}</div>
+        </div>
       </div>
-        </div>---->
-      </div>
-    </div>
-  </mat-drawer>
-  <mat-drawer-content>
-    <mat-card class="pensum pensum-back" *ngIf="Show || isBack">
-      <mat-grid-list cols="10" rowHeight="100px">
-        <mat-grid-tile [colspan]="5" [rowspan]="1">
-          <span> <strong>REPOSITORIO DE ASIGNATURAS ELECTIVAS</strong> </span>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="5" [rowspan]="2">
+    </mat-drawer>
+    <mat-drawer-content>
+      <mat-card class="pensum pensum-back" *ngIf="Show || isBack">
+        <mat-grid-list cols="10" rowHeight="100px">
+          <mat-grid-tile [colspan]="5" [rowspan]="1">
+            <span> <strong>REPOSITORIO DE ASIGNATURAS ELECTIVAS</strong> </span>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="5" [rowspan]="2">
             <mat-card>
               <span>UNIDADES CURRICULARES</span>
             </mat-card>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="5" [rowspan]="3">
-          <mat-card class="electivas">
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="5" [rowspan]="3">
+            <mat-card class="electivas">
               <div
-              cdkDropList
-              #todoList="cdkDropList"
-              [cdkDropListData]="electives"
-              class="example-list"
-              (cdkDropListDropped)="drop2($event)">
-              <mat-grid-list cols="8" rowHeight="30px" class="electivas-table">
+                cdkDropList
+                #todoList="cdkDropList"
+                [cdkDropListData]="electives"
+                class="example-list"
+                (cdkDropListDropped)="drop2($event)">
+                <mat-grid-list cols="8" rowHeight="30px" class="electivas-table">
                   <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <span>CÓDIGO</span>
                   </mat-grid-tile>
@@ -99,47 +88,37 @@
                 </mat-grid-list>
                 <div class="example-box" *ngFor="let item of electives" cdkDrag>
                   <mat-card class="electiva">
-                  <mat-grid-list cols="8" rowHeight="80px" class="list">
-                    <mat-grid-tile [colspan]="2" [rowspan]="1">
-                      <span>{{item.subject_code}}</span>
-                    </mat-grid-tile>
-                    <mat-grid-tile [colspan]="4" [rowspan]="1">
-                      <span>{{item.subject_name}}</span>
-                      <!-- <div class="example-box" *ngFor="let item of todo" cdkDrag> 
-                        <mat-card class="electiva">{{item}}</mat-card>            
-                      </div> -->
-                    </mat-grid-tile>
-                    <mat-grid-tile [colspan]="2" [rowspan]="1">
-                      <span>0909</span>
-                    </mat-grid-tile>
-                  </mat-grid-list>
-                </mat-card>
+                    <mat-grid-list cols="8" rowHeight="80px" class="list">
+                      <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <span>{{item.subject_code}}</span>
+                      </mat-grid-tile>
+                      <mat-grid-tile [colspan]="4" [rowspan]="1">
+                        <span>{{item.subject_name}}</span>
+                      </mat-grid-tile>
+                      <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <span>0909</span>
+                      </mat-grid-tile>
+                    </mat-grid-list>
+                  </mat-card>
+                </div>
               </div>
-            </div>
-            <!-- <mat-grid-list cols="8" rowHeight="70px">
-              <mat-grid-tile [colspan]="2" [rowspan]="1">
-                <span>CÓDIGO</span>
-              </mat-grid-tile>
-              <mat-grid-tile [colspan]="4" [rowspan]="1">
-                <span>DENOMINACIÓN</span>
-              </mat-grid-tile>
-              <mat-grid-tile [colspan]="2" [rowspan]="1">
-                <span>REQUISITO</span>
-              </mat-grid-tile>
-            </mat-grid-list>-->
-          </mat-card> 
-        </mat-grid-tile>
-      </mat-grid-list>
-    </mat-card>
-    <mat-card class="pensum" *ngIf="Show || isFront">
-      <mat-card-content class="pensum-content">
-        <mat-card class="pensum-header" id="card-pensum">
-          <mat-grid-list cols="4" rowHeight="20px">
+            </mat-card> 
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-card>
+      <mat-card class="pensum" *ngIf="Show || isFront">
+        <mat-card-content class="pensum-content">
+          <mat-card class="pensum-header" id="card-pensum">
+            <mat-grid-list cols="4" rowHeight="20px">
               <mat-grid-tile [colspan]="1" [rowspan]="1">
                 Universidad Rafael Urdaneta
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="3">
-                <mat-card>Vigencia MAYO 2016</mat-card>
+                <mat-form-field>
+                  <input matInput [matDatepicker]="dp" style="text-transform: uppercase;">
+                  <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                  <mat-datepicker #dp></mat-datepicker>
+                </mat-form-field>
               </mat-grid-tile>
               <mat-grid-tile [colspan]="2" [rowspan]="1">
                 Nombre:___________________
@@ -157,81 +136,49 @@
                 C.I.:_______________________
               </mat-grid-tile>
             </mat-grid-list>
-        </mat-card>
-        <mat-card class="pensum-body" id="card-pensum">
-          <mat-grid-list cols="20" rowHeight="30px">
-            <mat-grid-tile [colspan]="2" [rowspan]="1">
-              I SEM
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="1">
-              II SEM
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="1">
-              III SEM
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="1">
-              IV SEM
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="1">
-              V SEM
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="1">
-              VI SEM
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="1">
-              VII SEM
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="1">
-              VIII SEM
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="1">
-              IX SEM
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="1">
-              X SEM
-            </mat-grid-tile>
-          </mat-grid-list>
-          <mat-grid-list cols="20" rowHeight="220px">
-            <mat-grid-tile [colspan]="2" [rowspan]="2" *ngFor="let item of done.slice(1)" >
-              <app-term [done]="item" (droped)="drop($event)" (clicked)="onClick($event, item)"></app-term>
-        </mat-grid-tile>
-          </mat-grid-list>
-        </mat-card>
-        <mat-card class="pensum-footer" id="card-pensum">Pensum footer</mat-card>
-        <span class="btn btn-primary" (click)="save()">LISTO</span>
-      </mat-card-content>
-    </mat-card>
-  </mat-drawer-content>
+          </mat-card>
+          <mat-card class="pensum-body" id="card-pensum">
+            <mat-grid-list cols="20" rowHeight="30px">
+              <mat-grid-tile [colspan]="2" [rowspan]="1">
+                I SEM
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="2" [rowspan]="1">
+                II SEM
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="2" [rowspan]="1">
+                III SEM
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="2" [rowspan]="1">
+                IV SEM
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="2" [rowspan]="1">
+                V SEM
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="2" [rowspan]="1">
+                VI SEM
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="2" [rowspan]="1">
+                VII SEM
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="2" [rowspan]="1">
+                VIII SEM
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="2" [rowspan]="1">
+                IX SEM
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="2" [rowspan]="1">
+                X SEM
+              </mat-grid-tile>
+            </mat-grid-list>
+            <mat-grid-list cols="20" rowHeight="240px">
+              <mat-grid-tile [colspan]="2" [rowspan]="2" *ngFor="let item of done.slice(1)" class="term" >
+                <app-term [done]="item" (droped)="drop($event)" (clicked)="onClick($event, item)"></app-term>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </mat-card>
+          <mat-card class="pensum-footer" id="card-pensum">Pensum footer</mat-card>
+          <button mat-button color="primary" (click)="save()">Guardar</button>
+        </mat-card-content>
+      </mat-card>
+    </mat-drawer-content>
 </mat-drawer-container>
-
-  <!-- <div class="text-center title">
-    hola
-  </div>
-  
-  <div class="container">
-    <span class="btn btn-primary" (click)="showConnectOnClick()">{{buttonName}}</span>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="alignleft">
-          <div class="customBox" id="Source">
-            Source
-          </div>
-        </div>
-        <div class="alignright">
-          <div class="customBox" id="Target1">
-            Target 1
-          </div>
-        </div>
-        <div class="afterright">
-            <div class="customBox" id="Target2">
-              Target 2
-            </div>
-          </div>
-        <div style="clear: both;"></div>
-      </div>
-    </div>
-  </div>
-  
-  <div style="position: fixed;bottom: 10px;left: 30%">
-    Example Created By <a href="https://stackblitz.com/@vishalbiradar">Vishal Biradar</a>
-  </div> -->

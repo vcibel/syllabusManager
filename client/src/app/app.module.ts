@@ -2,7 +2,8 @@ import { HttpService } from './service/http/http.service';
 import { FilesService } from './service/files/files.service';
 import { MatSidenavModule, MatListModule, MatButtonModule, MatCheckboxModule,
   MatInputModule, MatIconModule, MatCardModule, MatDividerModule,
-  MatGridListModule, MatMenuModule, MatExpansionModule, MatSelectModule, MatDialogModule, MatFormFieldModule, MatToolbarModule } from '@angular/material';
+  MatGridListModule, MatMenuModule, MatExpansionModule, MatSelectModule, MatDialogModule, 
+  MatFormFieldModule, MatToolbarModule, MatDatepicker, MatDatepickerModule} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -31,6 +32,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { CreatePensumComponent } from './create-pensum/create-pensum.component';
 import { PensumsComponent } from './pensums/pensums.component';
 import { TermComponent } from './term/term.component';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [
@@ -77,6 +79,7 @@ import { TermComponent } from './term/term.component';
     MatExpansionModule,
     AngularFontAwesomeModule,
     DragDropModule,
+    MatDatepickerModule,
     MDBBootstrapModule.forRoot(),
     NgbModule.forRoot(),
   ],

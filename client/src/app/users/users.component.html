@@ -1,6 +1,6 @@
 <div class="container users" >
-  <mat-toolbar color="primary">
-    <span>USUARIOS</span>
+  <mat-toolbar class="toolbar">
+    <span>Usuarios</span>
     <span class="example-spacer"></span>
     <button mat-icon-button (click)="openRegister()">
       <mat-icon class="example-icon">add_box</mat-icon>
@@ -10,12 +10,22 @@
     <mat-list>
       <mat-list-item class="list-user" *ngFor="let user of users">
         <mat-card class="card-user">
-          <mat-card-header>
-            <mat-card-title>
-              {{user.user_name}}
-            </mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
+          <mat-grid-list cols="10" rowHeight="100px">
+            <mat-grid-tile [colspan]="4" [rowspan]="1">
+              <h5><strong>Nombre de Usuario: {{user.user_username}}</strong></h5>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+              <h6>Nombre: {{user.user_name}}</h6>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+              <h6> Apellido: {{user.user_lastname}}</h6>
+            </mat-grid-tile> 
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+              <mat-icon mat-icon-button class="example-icon" (click)="deleteUser(user)">delete</mat-icon>
+              <mat-icon mat-icon-button class="example-icon" (click)="openRegister(user)">create</mat-icon>
+            </mat-grid-tile>   
+          </mat-grid-list>
+          <!-- <mat-card-content>
               <mat-grid-list cols="3" rowHeight="150px">
                   <mat-grid-tile [colspan]="2" [rowspan]="1">
                     {{user.user_name}} 
@@ -27,10 +37,9 @@
           <mat-card-actions>
             <mat-icon mat-icon-button class="example-icon" (click)="deleteUser(user)">delete</mat-icon>
             <mat-icon mat-icon-button class="example-icon" (click)="openRegister(user)">create</mat-icon>
-          </mat-card-actions>
+          </mat-card-actions> -->
         </mat-card>
       </mat-list-item>
-      <mat-divider></mat-divider>
-      </mat-list>
-    </div>
+    </mat-list>
+  </div>
 </div>

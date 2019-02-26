@@ -21,6 +21,7 @@
     "@angular/forms": "~7.1.4",
     "@angular/http": "~7.1.4",
     "@angular/material": "^7.2.0",
+    "@angular/material-moment-adapter": "^7.3.3",
     "@angular/platform-browser": "~7.1.4",
     "@angular/platform-browser-dynamic": "~7.1.4",
     "@angular/router": "~7.1.4",
@@ -40,12 +41,13 @@
     "materialize-css": "^1.0.0",
     "node-sass": "^4.11.0",
     "popper.js": "^1.14.5",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "moment": "2.24.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.12.3",
     "@angular/cli": "^7.1.4",
-    "@angular/compiler-cli": "~7.1.4",
+    "@angular/compiler-cli": "^7.2.6",
     "@angular/language-service": "~7.1.4",
     "@types/chart.js": "^2.7.42",
     "@types/jasmine": "~2.8.8",

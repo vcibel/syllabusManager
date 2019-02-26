@@ -6,6 +6,42 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { jsPlumb } from 'jsplumb';
+//import { FormControl } from '@angular/forms';
+//import { MomentDateAdapter } from '@angular/material-moment-adapter';
+//import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+
+import * as  _moment from 'moment';
+import { default as _rollupMoment} from 'moment';
+import { FormControl } from '@angular/forms';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material';
+
+const moment = _rollupMoment || _moment;
+
+//const moment =  _moment;
+
+// See the Moment.js docs for the meaning of these formats:
+// https://momentjs.com/docs/#/displaying/format/
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'MMMM YYYY',
+  },
+  display: {
+    dateInput: 'MMMM YYYY',
+    monthYearLabel: 'MMM YYYY',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
+
+// parse: {
+//   dateInput: 'MM/YYYY',
+// },
+// display: {
+//   dateInput: 'MM/YYYY',
+//   monthYearLabel: 'MMM YYYY',
+//   dateA11yLabel: 'LL',
+//   monthYearA11yLabel: 'MMMM YYYY',
+// },
 
 export interface Section {
   hc: number;
@@ -17,10 +53,20 @@ export interface Section {
 @Component({
   selector: 'app-pensum',
   templateUrl: './pensum.component.html',
-  styleUrls: ['./pensum.component.scss']
+  styleUrls: ['./pensum.component.scss'],
+  providers: [
+    // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
+    // application's root module. We provide it at the component level here, due to limitations of
+    // our example generation script.
+    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
+    {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+  ],
 })
 
 export class PensumComponent implements OnInit, AfterViewInit {
+
+  date = new FormControl(moment());
 
   jsPlumbInstance;
   add = false;
@@ -67,17 +113,15 @@ export class PensumComponent implements OnInit, AfterViewInit {
    }
 
    togglePensumF() {
-    if (this.isFront) {
-      this.isFront = false;
-    } else {
+    this.isBack = false;
+    if (!this.isFront) {
       this.isFront = true;
     }
   }
 
   togglePensumB() {
-    if (this.isBack) {
-      this.isBack = false;
-    } else {
+    this.isFront = false;
+    if (!this.isBack) {
       this.isBack = true;
     }
   }
@@ -156,6 +200,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
                         event.currentIndex);
       const arrayString = event.container.id.split('-');
       const term = Number(arrayString[arrayString.length - 1]);
+      console.log(arrayString, arrayString[arrayString.length - 1])
       this.done[term][event.currentIndex]['type_subject_pensum_id'] = 1;
       this.done[term][event.currentIndex]['term'] = term;
       this.done[term][event.currentIndex]['hour_restriction'] = 0;
@@ -243,6 +288,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
                 } else {
                   this.electives.push(res.pensumSubjects[i]);
                 }
+<<<<<<< HEAD
                 const remove = data.findIndex((subject) => {
                   console.log(subject.subject_id, res.pensumSubjects[i].subject_id);
                   return subject.subject_id === res.pensumSubjects[i].subject_id;
@@ -250,6 +296,14 @@ export class PensumComponent implements OnInit, AfterViewInit {
                 console.log(remove);
                 data.splice(remove, 1);
                 console.log(remove, data);
+=======
+                const remove = data.findIndex((subject) =>{
+                  console.log(subject.subject_id, res.pensumSubjects[i].subject_id);
+                  return subject.subject_id === res.pensumSubjects[i].subject_id;
+                });
+                data.splice(remove, 1)
+                //data.splice(data.indexOf(res.pensumSubjects[i]), 1);
+>>>>>>> front
               }
               if (res.pensumSubjects.length > 0) {
                 this.new = false;

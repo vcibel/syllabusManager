@@ -63,7 +63,7 @@ button.btn.btn-lg.btn-addCareer {
     border-color: transparent;
 }
 
-.container-all, {
+.container-all {
     max-height: 100%;
 }
 
@@ -84,19 +84,27 @@ mat-card.mat-card.side-card {
     height: 100%;
 }
 
-// .mat-drawer-content {
-//     position: relative;
-//     z-index: 1;
-//     display: inline; 
-//     overflow: auto;
-// }
+.mat-drawer-content {
+    // position: relative;
+    // z-index: 1;
+    // display: inline; 
+    // overflow: auto;
+    background-color: white;
+}
 
 mat-card.img.mat-card {
-    background-color: #e6e6ff;
+    //background-color: #e6e6ff;
     height: 170px;
     width: 310px;
     border-radius: 0px;
     box-shadow: 0 0px 0px 0px rgba(0,0,0,.2)
+}
+
+img.img-sidenav {
+    height: 160px;
+    margin: 16px;
+    top: -5px;
+    position: absolute;
 }
 
 .header{
@@ -196,10 +204,23 @@ label.label {
     // top: calc(-15px) !important;
     width: calc(((46% - 0.8px) * 1) + 0px) !important;
     left: calc(((14% - 0.8px) + 1px) * 4) !important;
-    top: calc(72px) !important;
+    top: calc(50px) !important;
 }
 mat-card.list-card.mat-card {
     width: 300px;
-    height: 320px;
+    height: 340px;
+    overflow-y: scroll;
+}
+
+img.img-home {
+    position: fixed;
+    height: 92px;
+    width: 400px;
+    top: -3px;
+}
+
+mat-toolbar.toolbar.mat-toolbar.mat-toolbar-single-row {
+    background-color: #155193;
+    color: white;
 }
 
