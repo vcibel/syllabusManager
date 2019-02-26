@@ -9,7 +9,7 @@
     <div class="faculties-created">
       <mat-list>
         <mat-list-item class="list-faculty" *ngFor="let faculty of faculties" >
-          <mat-card class="card-faculty">
+          <mat-card class="card-faculty" (click)="goToColleges(faculty)">
             <mat-card-header>
               <mat-card-title>
                 {{faculty.faculty_name}}

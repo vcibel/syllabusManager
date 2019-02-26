@@ -1,3 +1,5 @@
+import { Router, ActivatedRoute } from '@angular/router';
+import { College } from './../models/college';
 import { Department } from './../models/department';
 import { HttpService } from '../service/http/http.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,8 +14,14 @@ import { DepartmentComponent } from '../department/department.component';
 export class DepartmentsComponent implements OnInit {
 
   departments: Department[];
+  tittle = '';
+  college: College;
 
-  constructor(private dialog: MatDialog, private httpService: HttpService) { }
+  constructor(private dialog: MatDialog, private httpService: HttpService, private router: Router, private activeRouter: ActivatedRoute) { }
+
+  goToSubjects(department) {
+    this.router.navigate(['subjects'], {queryParams: {department: JSON.stringify(department)}});
+  }
 
   openDepartment(department) {
     const dialogConfig = new MatDialogConfig();
@@ -32,7 +40,15 @@ export class DepartmentsComponent implements OnInit {
 
 
   ngOnInit() {
-    // LISTAR DEPARTAMENTOS
+    console.log(this.activeRouter.queryParams);
+    this.activeRouter.queryParams.subscribe(params => {
+        console.log(params);
+        this.college = JSON.parse(params['college']);
+    });
+    console.log(this.college);
+    if (this.college === undefined) {
+      this.tittle = 'DEPARTAMENTOS';
+      // LISTAR DEPARTAMENTOS
     this.httpService.get('/Departments').subscribe((res: any) => {
       if (res.status === 200) {
         this.departments = res.departments;
@@ -41,6 +57,18 @@ export class DepartmentsComponent implements OnInit {
         alert(res.response);
       }
     });
+    } else {
+      this.tittle = this.college.college_name;
+      // LISTAR DEPARTAMENTOS EN ESCUELA
+      this.httpService.get('/Departments?id=' + this.college.college_id).subscribe((res: any) => {
+        if (res.status === 200) {
+          this.departments = res.departments;
+          console.log(this.departments);
+        } else {
+          alert(res.response);
+        }
+      });
+    }
   }
 
     deleteDepartment(department) {

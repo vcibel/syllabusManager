@@ -1,3 +1,5 @@
+import { ActivatedRoute } from '@angular/router';
+import { Department } from './../models/department';
 import { FilesService } from './../service/files/files.service';
 import { HttpService } from '../service/http/http.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,8 +17,11 @@ export class SubjectsComponent implements OnInit {
 
   subjects: Subject[];
   typesSubject: TypeSubject[];
+  department: Department;
+  tittle = '';
 
-  constructor(private dialog: MatDialog, private httpService: HttpService, private filesService: FilesService) { }
+  constructor(private dialog: MatDialog, private httpService: HttpService, private filesService: FilesService,
+              private activeRouter: ActivatedRoute) { }
 
   openSubject() {
     const dialogConfig = new MatDialogConfig();
@@ -34,16 +39,37 @@ export class SubjectsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // LISTAR MATERIAS
-    this.httpService.get('/Subjects').subscribe((res: any) => {
-      if (res.status === 200) {
-        this.subjects = res.subjects;
-        this.typesSubject = res.types;
-        console.log(this.subjects, this.typesSubject);
-      } else {
-        alert(res.response);
-      }
+    console.log(this.activeRouter.queryParams);
+    this.activeRouter.queryParams.subscribe(params => {
+        console.log(params);
+        this.department = JSON.parse(params['department']);
     });
+    console.log(this.department);
+    if (this.department === undefined) {
+      this.tittle = 'SUBJECTS';
+      // LISTAR MATERIAS
+      this.httpService.get('/Subjects').subscribe((res: any) => {
+        if (res.status === 200) {
+          this.subjects = res.subjects;
+          this.typesSubject = res.types;
+          console.log(this.subjects, this.typesSubject);
+        } else {
+          alert(res.response);
+        }
+      });
+    } else {
+      this.tittle = this.department.department_name;
+      // LISTAR MATERIAS EN DEPARTAMENTO
+      this.httpService.get('/Subjects?department_id=' + this.department.department_id).subscribe((res: any) => {
+        if (res.status === 200) {
+          this.subjects = res.subjects;
+          this.typesSubject = res.types;
+          console.log(this.subjects, this.typesSubject);
+        } else {
+          alert(res.response);
+        }
+      });
+    }
   }
 
   deleteSubject(subject) {

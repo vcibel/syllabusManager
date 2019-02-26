@@ -121,7 +121,7 @@
                                 <mat-grid-tile class="grid" [colspan]="2" [rowspan]="1">
                                   <mat-form-field class="select-deparment">
                                     <mat-select>
-                                        <mat-option *ngFor="let department of collegeDepartments" [value]=department.department_id>{{department.department_name}}</mat-option>
+                                        <mat-option *ngFor="let department of collegeDepartments" [value]=department.department_id (click)="getDepartmentSubjects(department)">{{department.department_name}}</mat-option>
                                     </mat-select>
                                   </mat-form-field>
                                 </mat-grid-tile>

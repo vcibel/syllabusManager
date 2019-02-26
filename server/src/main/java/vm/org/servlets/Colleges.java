@@ -31,7 +31,15 @@ public class Colleges extends HttpServlet {
 		DB db = new DB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 
-		json.put("colleges", db.executeQuery(prop.getValue("query_getColleges"))).put("status", 200).put("response", prop.getValue("mssg_success"));
+		JSONArray query;
+
+		if (request.getParameterMap().containsKey("id")) {
+			query = db.executeQuery(prop.getValue("query_getCollegesByFacultyId"), Integer.parseInt(request.getParameter("id")));
+		} else {
+			query = db.executeQuery(prop.getValue("query_getColleges"));
+		}
+
+		json.put("colleges", query).put("status", 200).put("response", prop.getValue("mssg_success"));
 
 		out.print(json.toString());
 		

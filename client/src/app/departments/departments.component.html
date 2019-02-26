@@ -1,6 +1,6 @@
 <div class="container departments" >
     <mat-toolbar color="primary">
-      <span>DEPARTAMENTOS</span>
+      <span>{{tittle}}</span>
       <span class="example-spacer"></span>
       <button mat-icon-button (click)="openDepartment()">
         <mat-icon class="example-icon">add_box</mat-icon>
@@ -9,7 +9,7 @@
     <div class="departments-created">
       <mat-list>
         <mat-list-item class="list-depart" *ngFor="let department of departments" >
-          <mat-card class="card-depart">
+          <mat-card class="card-depart" (click)="goToSubjects(department)">
             <mat-card-header>
               <mat-card-title>
                 {{department.department_name}}

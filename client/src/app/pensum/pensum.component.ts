@@ -220,6 +220,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
           if (res.status === 200) {
             this.typesSubjectPensum = res.types;
             console.log(this.typesSubjectPensum);
+            console.log(res.subjects);
             resolve(res.subjects);
           } else {
             reject(res.response);
@@ -238,11 +239,17 @@ export class PensumComponent implements OnInit, AfterViewInit {
               this.done[0] = res.subjectRestriction;
               for (let i = 0; i < res.pensumSubjects.length; i++) {
                 if (res.pensumSubjects[i].type_subject_pensum_id === 1) {
-                this.done[res.pensumSubjects[i].term].push(res.pensumSubjects[i]);
+                  this.done[res.pensumSubjects[i].term].push(res.pensumSubjects[i]);
                 } else {
                   this.electives.push(res.pensumSubjects[i]);
                 }
-                data.splice(data.indexOf(res.pensumSubjects[i]), 1);
+                const remove = data.findIndex((subject) => {
+                  console.log(subject.subject_id, res.pensumSubjects[i].subject_id);
+                  return subject.subject_id === res.pensumSubjects[i].subject_id;
+                });
+                console.log(remove);
+                data.splice(remove, 1);
+                console.log(remove, data);
               }
               if (res.pensumSubjects.length > 0) {
                 this.new = false;
@@ -276,6 +283,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
     });
     this.getSubjectPensum().then((data: any) => {
       this.subjects = data;
+      console.log(data);
       const $this = this;
       setTimeout(function() {$this.drawRestrictions($this.done); }, 2000);
       this.source = '';

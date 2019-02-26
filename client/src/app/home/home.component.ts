@@ -103,6 +103,16 @@ export class HomeComponent implements OnInit {
         alert(res.response);
       }
     });
+    // LISTAR PENSUMS
+    this.httpService.get('/Pensum').subscribe((res: any) => {
+      if (res.status === 200) {
+        this.pensums = res.pensum;
+        console.log(this.pensums);
+      } else {
+        alert(res.response);
+      }
+    });
+
   }
 
   logout() {
@@ -115,7 +125,6 @@ export class HomeComponent implements OnInit {
 
   search(input) {
     this.searchResult = [];
-    //const myInput = this.input;
     console.log(input);
     if (input !== '') {
     this.subjects.filter((subject: Subject) => {
@@ -148,6 +157,23 @@ export class HomeComponent implements OnInit {
     console.log(this.collegeDepartments);
     this.searchResult = this.subjects.filter(function(subject: Subject) {
       return subject.college_id === college_selected.college_id;
+    });
+  }
+
+  getDepartmentSubjects(department_selected) {
+    this.searchResult = this.subjects.filter(function(subject: Subject) {
+      return subject.department_id === department_selected.department_id;
+    });
+  }
+
+  getPensumSubjects(pensum_selected) {
+    this.httpService.get('/SubjectPensum?id=' + pensum_selected.pensum_id).subscribe((res: any) => {
+      console.log(res);
+      if (res.status === 200) {
+        this.searchResult = res.pensumSubjects;
+      } else {
+        console.log(res.response);
+      }
     });
   }
 

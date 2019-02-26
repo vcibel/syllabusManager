@@ -1,3 +1,5 @@
+import { Faculty } from './../models/faculty';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../service/http/http.service';
 import { College } from './../models/college';
 import { Component, OnInit } from '@angular/core';
@@ -12,8 +14,14 @@ import { CollegeComponent } from '../college/college.component';
 export class CollegesComponent implements OnInit {
 
   colleges: College[];
+  faculty: Faculty;
+  tittle = '';
 
-  constructor(private dialog: MatDialog, private httpService: HttpService) { }
+  constructor(private dialog: MatDialog, private httpService: HttpService, private router: Router, private activeRouter: ActivatedRoute) { }
+
+  goToDepartments(college) {
+    this.router.navigate(['departments'], {queryParams: {college: JSON.stringify(college)}});
+  }
 
   openCollege(college) {
     const dialogConfig = new MatDialogConfig();
@@ -31,15 +39,35 @@ export class CollegesComponent implements OnInit {
   }
 
   ngOnInit() {
-    // LISTAR ESCUELAS
-    this.httpService.get('/Colleges').subscribe((res: any) => {
-      if (res.status === 200) {
-        this.colleges = res.colleges;
-        console.log(this.colleges);
-      } else {
-        alert(res.response);
-      }
+    console.log(this.activeRouter.queryParams);
+    this.activeRouter.queryParams.subscribe(params => {
+        console.log(params);
+        this.faculty = JSON.parse(params['faculty']);
     });
+    console.log(this.faculty);
+    if (this.faculty === undefined) {
+      this.tittle = 'ESCUELAS';
+        // LISTAR ESCUELAS
+        this.httpService.get('/Colleges').subscribe((res: any) => {
+          if (res.status === 200) {
+            this.colleges = res.colleges;
+            console.log(this.colleges);
+          } else {
+            alert(res.response);
+          }
+        });
+    } else {
+      this.tittle = this.faculty.faculty_name;
+        // LISTAR ESCUELAS DE FACULTAD
+        this.httpService.get('/Colleges?id=' + this.faculty.faculty_id).subscribe((res: any) => {
+          if (res.status === 200) {
+            this.colleges = res.colleges;
+            console.log(this.colleges);
+          } else {
+            alert(res.response);
+          }
+        });
+    }
   }
 
   deleteCollege(college) {

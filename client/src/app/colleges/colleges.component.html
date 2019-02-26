@@ -1,6 +1,6 @@
 <div class="container colleges" >
     <mat-toolbar color="primary">
-      <span>ESCUELAS</span>
+      <span>{{tittle}}</span>
       <span class="example-spacer"></span>
       <button mat-icon-button (click)="openCollege()">
         <mat-icon class="example-icon">add_box</mat-icon>
@@ -12,7 +12,7 @@
     <div class="colleges-created">
       <mat-list>
         <mat-list-item class="list-college" *ngFor="let college of colleges" >
-          <mat-card class="card-college">
+          <mat-card class="card-college" (click)="goToDepartments(college)">
             <mat-card-header>
               <mat-card-title>
                 {{college.college_name}}

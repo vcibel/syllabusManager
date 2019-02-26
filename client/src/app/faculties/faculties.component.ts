@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Faculty } from './../models/faculty';
 import { HttpService } from '../service/http/http.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,7 +14,11 @@ export class FacultiesComponent implements OnInit {
 
   faculties: Faculty[];
 
-  constructor(private dialog: MatDialog, private httpService: HttpService) { }
+  constructor(private dialog: MatDialog, private httpService: HttpService, private router: Router) { }
+
+  goToColleges(faculty) {
+    this.router.navigate(['colleges'], {queryParams: {faculty: JSON.stringify(faculty)}});
+  }
 
   openFaculty(faculty) {
     const dialogConfig = new MatDialogConfig();
