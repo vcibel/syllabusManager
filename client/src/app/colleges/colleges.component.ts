@@ -5,6 +5,7 @@ import { College } from './../models/college';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { CollegeComponent } from '../college/college.component';
+import { UserService } from '../service/user/user.service';
 
 @Component({
   selector: 'app-colleges',
@@ -16,8 +17,10 @@ export class CollegesComponent implements OnInit {
   colleges: College[];
   faculty: Faculty;
   tittle = '';
+  admin = false;
 
-  constructor(private dialog: MatDialog, private httpService: HttpService, private router: Router, private activeRouter: ActivatedRoute) { }
+  constructor(private dialog: MatDialog, private httpService: HttpService, private router: Router,
+              private activeRouter: ActivatedRoute, private userService: UserService) { }
 
   goToDepartments(college) {
     this.router.navigate(['departments'], {queryParams: {college: JSON.stringify(college)}});
@@ -39,6 +42,9 @@ export class CollegesComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.userService.user.type_user_id === 1) {
+      this.admin = true;
+    }
     console.log(this.activeRouter.queryParams);
     this.activeRouter.queryParams.subscribe(params => {
         console.log(params);

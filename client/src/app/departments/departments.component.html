@@ -2,7 +2,7 @@
     <mat-toolbar color="primary">
       <span>{{tittle}}</span>
       <span class="example-spacer"></span>
-      <button mat-icon-button (click)="openDepartment()">
+      <button mat-icon-button (click)="openDepartment()" *ngIf="admin">
         <mat-icon class="example-icon">add_box</mat-icon>
       </button>
     </mat-toolbar>
@@ -15,8 +15,8 @@
                 <h5><strong>{{department.department_name}}</strong></h5>
               </mat-grid-tile>
               <mat-grid-tile [colspan]="2" [rowspan]="1">
-                <mat-icon mat-icon-button class="example-icon" (click)="deleteDepartment(department)">delete</mat-icon>
-                <mat-icon mat-icon-button class="example-icon" (click)="openDepartment(department)">create</mat-icon>
+                <mat-icon mat-icon-button class="example-icon" (click)="deleteDepartment(department)" *ngIf="admin">delete</mat-icon>
+                <mat-icon mat-icon-button class="example-icon" (click)="openDepartment(department)" *ngIf="admin">create</mat-icon>
               </mat-grid-tile>
             </mat-grid-list>
             <!--<mat-card-content>

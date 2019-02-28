@@ -115,7 +115,7 @@
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="3">
                 <mat-form-field>
-                  <input matInput [matDatepicker]="dp" style="text-transform: uppercase;">
+                  <input matInput [matDatepicker]="dp" style="text-transform: uppercase;" [value]="pensum.pensum_date" (dateInput)="setDate($event)">
                   <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                   <mat-datepicker #dp></mat-datepicker>
                 </mat-form-field>

@@ -5,8 +5,6 @@ import { Subject } from './../models/subject';
 import { HttpService } from '../service/http/http.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { MatDialog } from '@angular/material';
 import { Pensum } from '../models/pensum';
 
 
@@ -46,8 +44,7 @@ export class HomeComponent implements OnInit {
   facultyColleges: College[];
   input: String;
 
-  constructor(private router: Router, private modalService: NgbModal, private httpService: HttpService,
-    private dialog: MatDialog ) { }
+  constructor(private router: Router, private httpService: HttpService) { }
 
     menu: Section[] = [
       { name: 'College'},
@@ -118,9 +115,7 @@ export class HomeComponent implements OnInit {
 
   logout() {
     this.httpService.get('/Logout').subscribe((res: any) => {
-      if (res.status === 200 || 400) {
-          this.router.navigateByUrl('/');
-      }
+        this.router.navigateByUrl('/');
     });
   }
 

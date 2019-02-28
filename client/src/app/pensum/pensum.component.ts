@@ -223,12 +223,25 @@ export class PensumComponent implements OnInit, AfterViewInit {
     }
   }
 
+  setDate(event) {
+    console.log(event);
+    this.pensum.pensum_date = event.value;
+  }
+
   save() {
       if (this.new) {
           this.createPensum();
       } else {
           this.updatePensum();
       }
+      console.log(this.pensum);
+      this.httpService.put(this.pensum, '/Pensum').subscribe((res: any) => {
+        if (res.status === 200) {
+            console.log(res);
+        } else {
+          console.log(res.message);
+        }
+      });
   }
 
   createPensum() {
@@ -288,7 +301,6 @@ export class PensumComponent implements OnInit, AfterViewInit {
                 } else {
                   this.electives.push(res.pensumSubjects[i]);
                 }
-<<<<<<< HEAD
                 const remove = data.findIndex((subject) => {
                   console.log(subject.subject_id, res.pensumSubjects[i].subject_id);
                   return subject.subject_id === res.pensumSubjects[i].subject_id;
@@ -296,14 +308,6 @@ export class PensumComponent implements OnInit, AfterViewInit {
                 console.log(remove);
                 data.splice(remove, 1);
                 console.log(remove, data);
-=======
-                const remove = data.findIndex((subject) =>{
-                  console.log(subject.subject_id, res.pensumSubjects[i].subject_id);
-                  return subject.subject_id === res.pensumSubjects[i].subject_id;
-                });
-                data.splice(remove, 1)
-                //data.splice(data.indexOf(res.pensumSubjects[i]), 1);
->>>>>>> front
               }
               if (res.pensumSubjects.length > 0) {
                 this.new = false;
@@ -335,6 +339,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
       console.log(params);
         this.pensum = JSON.parse(params['pensum']);
     });
+    console.log(this.pensum);
     this.getSubjectPensum().then((data: any) => {
       this.subjects = data;
       console.log(data);

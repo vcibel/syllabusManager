@@ -2,7 +2,7 @@
   <mat-toolbar class="toolbar">
     <span>Usuarios</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button (click)="openRegister()">
+    <button mat-icon-button (click)="openRegister()" *ngIf="admin">
       <mat-icon class="example-icon">add_box</mat-icon>
     </button>
   </mat-toolbar>
@@ -21,8 +21,8 @@
               <h6> Apellido: {{user.user_lastname}}</h6>
             </mat-grid-tile> 
             <mat-grid-tile [colspan]="2" [rowspan]="1">
-              <mat-icon mat-icon-button class="example-icon" (click)="deleteUser(user)">delete</mat-icon>
-              <mat-icon mat-icon-button class="example-icon" (click)="openRegister(user)">create</mat-icon>
+              <mat-icon mat-icon-button class="example-icon" (click)="deleteUser(user)" *ngIf="admin">delete</mat-icon>
+              <mat-icon mat-icon-button class="example-icon" (click)="openRegister(user)" *ngIf="admin">create</mat-icon>
             </mat-grid-tile>   
           </mat-grid-list>
           <!-- <mat-card-content>

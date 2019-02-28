@@ -5,7 +5,7 @@
     <!-- <button type="button" mat-button (click)="openPensum()" >
       New
     </button> -->
-    <button mat-icon-button (click)="openPensum()">
+    <button mat-icon-button (click)="openPensum()" *ngIf="admin">
       <mat-icon class="example-icon">add_box</mat-icon>
     </button>
   </mat-toolbar>
@@ -35,7 +35,7 @@
               <h6> Fecha: {{pensum.pensum_date}}</h6>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="2" [rowspan]="1">
-              <mat-icon mat-icon-button class="example-icon" (click)="deletePensum(pensum)">delete</mat-icon>
+              <mat-icon mat-icon-button class="example-icon" (click)="deletePensum(pensum)" *ngIf="admin">delete</mat-icon>
             </mat-grid-tile>
           </mat-grid-list>
           <!-- <mat-card-content>

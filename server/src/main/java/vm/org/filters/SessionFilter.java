@@ -18,33 +18,15 @@ import org.json.JSONObject;
 
 import vm.org.utilities.PropertiesReader;
 
-/**"/signin.html"
- * Servlet Filter implementation class SessionFilter
- */
-@WebFilter(servletNames= {"Login","Logout", "Signup", "UserBoard"})
+@WebFilter(servletNames= {"Login","Logout", "Users", "Subjects", "SubjectPensum", "Pensum", "Files", "Faculties", "Departments", "Colleges"})
 //@WebFilter(value={"/*"})
 public class SessionFilter implements Filter {
 
-    /**
-     * Default constructor. 
-     */
-    public SessionFilter() {
-        // TODO Auto-generated constructor stub
-    }
+    public SessionFilter() {}
 
-	/**
-	 * @see Filter#destroy()
-	 */
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
+	public void destroy() {}
 
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
 		PrintWriter out = res.getWriter();
 		JSONObject json = new JSONObject();
 		HttpServletResponse response = (HttpServletResponse) res;
@@ -56,16 +38,14 @@ public class SessionFilter implements Filter {
 		String requestURI = request.getRequestURI();
 		System.out.println(requestURI+" "+ session.isNew());
 		
-		String URIs[]= {"/SyllabusManager/Logout", "/SyllabusManager/Files", "/SyllabusManager/Careers", "/SyllabusManager/Colleges",
-						"/SyllabusManager/Departments", "/SyllabusManager/Pensum", "/SyllabusManager/SubjectPensum",
-						"/SyllabusManager/Subjects", "/SyllabusManager/Users"};
+		String URIs[]= {"/SyllabusManager/Login"};
 		
-		boolean in = true;
+		boolean needSession = true;
 		System.out.println(URIs.length);
 		for (int x=0;x<URIs.length;x++) {
 			System.out.println(URIs[x].equals(requestURI)); 
 			if (URIs[x].equals(requestURI)) {
-				in = false;
+				needSession = false;
 				break;
 			}
 		}
@@ -73,7 +53,7 @@ public class SessionFilter implements Filter {
 		if(session.isNew()) {
 			System.out.println(requestURI+" "+ session.isNew());
 			
-			if (in) {
+			if (!needSession) {
 				System.out.println("Filter");
 				session.invalidate();
 				chain.doFilter(request, response);
@@ -90,7 +70,7 @@ public class SessionFilter implements Filter {
 			}
 			
 		}else {
-			if(in) {
+			if(!needSession) {
 				System.out.println("Already log");			
 				json.put("response", pr.getValue("mssg_logged")).put("status", 304);
 				//session.invalidate();

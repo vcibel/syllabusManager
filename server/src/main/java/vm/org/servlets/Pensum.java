@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.stream.Collectors;
 
 @WebServlet(
@@ -96,8 +98,9 @@ public class Pensum extends HttpServlet {
 		
 		try {
 			Integer pensum_id = reqBody.getInt("pensum_id");
+			String pensum_date = reqBody.getString("pensum_date");
 
-			db.executeUpdate(prop.getValue("query_updatePensum"), pensum_id);
+			db.executeUpdate(prop.getValue("query_updatePensum"), pensum_date, pensum_id);
 			json.put("status", 200).put("response", prop.getValue("mssg_pensumUpdated"));
 			System.out.println(prop.getValue("mssg_pensumUpdated"));
 		

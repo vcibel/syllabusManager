@@ -2,7 +2,7 @@
     <mat-toolbar class="toolbar">
       <span>Facultades</span>
       <span class="example-spacer"></span>
-      <button mat-icon-button (click)="openFaculty()">
+      <button mat-icon-button (click)="openFaculty()" *ngIf="admin">
         <mat-icon class="example-icon">add_box</mat-icon>
       </button>
     </mat-toolbar>
@@ -18,8 +18,8 @@
                 <h6>Código de la Facultad: {{faculty.faculty_code}}</h6>
               </mat-grid-tile>
               <mat-grid-tile [colspan]="3" [rowspan]="1">
-                <mat-icon mat-icon-button class="example-icon" (click)="deleteFaculty(faculty)">delete</mat-icon>
-                <mat-icon mat-icon-button class="example-icon" (click)="openFaculty(faculty)">create</mat-icon>
+                <mat-icon mat-icon-button class="example-icon" (click)="deleteFaculty(faculty)" *ngIf="admin">delete</mat-icon>
+                <mat-icon mat-icon-button class="example-icon" (click)="openFaculty(faculty)" *ngIf="admin">create</mat-icon>
               </mat-grid-tile>
             </mat-grid-list>
              <!-- <mat-card-content>

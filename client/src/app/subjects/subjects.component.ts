@@ -7,6 +7,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 import { SubjectComponent } from '../subject/subject.component';
 import { Subject } from '../models/subject';
 import { TypeSubject } from '../models/type_subjet';
+import { UserService } from '../service/user/user.service';
 
 @Component({
   selector: 'app-subjects',
@@ -19,9 +20,10 @@ export class SubjectsComponent implements OnInit {
   typesSubject: TypeSubject[];
   department: Department;
   tittle = '';
+  admin = false;
 
   constructor(private dialog: MatDialog, private httpService: HttpService, private filesService: FilesService,
-              private activeRouter: ActivatedRoute) { }
+              private activeRouter: ActivatedRoute, private userService: UserService) { }
 
   openSubject() {
     const dialogConfig = new MatDialogConfig();
@@ -39,6 +41,9 @@ export class SubjectsComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.userService.user.type_user_id === 1) {
+      this.admin = true;
+    }
     console.log(this.activeRouter.queryParams);
     this.activeRouter.queryParams.subscribe(params => {
         console.log(params);

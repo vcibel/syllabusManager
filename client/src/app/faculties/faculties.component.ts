@@ -4,6 +4,7 @@ import { HttpService } from '../service/http/http.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { FacultyComponent } from '../faculty/faculty.component';
+import { UserService } from '../service/user/user.service';
 
 @Component({
   selector: 'app-faculties',
@@ -13,8 +14,10 @@ import { FacultyComponent } from '../faculty/faculty.component';
 export class FacultiesComponent implements OnInit {
 
   faculties: Faculty[];
+  admin = false;
 
-  constructor(private dialog: MatDialog, private httpService: HttpService, private router: Router) { }
+  constructor(private dialog: MatDialog, private httpService: HttpService, private router: Router,
+              private userService: UserService) { }
 
   goToColleges(faculty) {
     this.router.navigate(['colleges'], {queryParams: {faculty: JSON.stringify(faculty)}});
@@ -35,8 +38,10 @@ export class FacultiesComponent implements OnInit {
     });
   }
 
-
   ngOnInit() {
+    if (this.userService.user.type_user_id === 1) {
+      this.admin = true;
+    }
     // LISTAR FACULTADES
     this.httpService.get('/Faculties').subscribe((res: any) => {
       if (res.status === 200) {
