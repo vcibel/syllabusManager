@@ -1,6 +1,6 @@
-<div cdkDropListGroup>
+<div cdkDropListGroup >
   <mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened position="end">
+    <mat-drawer mode="side" opened position="end" *ngIf="edit">
       <button mat-button [matMenuTriggerFor]="menu">
         <mat-icon>list</mat-icon>
       </button>
@@ -135,6 +135,7 @@
               <mat-grid-tile [colspan]="2" [rowspan]="1">
                 C.I.:_______________________
               </mat-grid-tile>
+              <button (click)="edit=!edit" *ngIf="admin" >EDITAR</button>
             </mat-grid-list>
           </mat-card>
           <mat-card class="pensum-body" id="card-pensum">
@@ -171,13 +172,12 @@
               </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="20" rowHeight="240px">
-              <mat-grid-tile [colspan]="2" [rowspan]="2" *ngFor="let item of done.slice(1)" class="term" >
-                <app-term [done]="item" (droped)="drop($event)" (clicked)="onClick($event, item)"></app-term>
+              <mat-grid-tile [colspan]="2" [rowspan]="2" *ngFor="let term of done.slice(1)" class="term" >
+                <app-term [done]="term" (droped)="drop($event)" (clicked)="onClick($event)"></app-term>
               </mat-grid-tile>
             </mat-grid-list>
           </mat-card>
           <mat-card class="pensum-footer" id="card-pensum">Pensum footer</mat-card>
-          <button mat-button color="primary" (click)="save()">Guardar</button>
         </mat-card-content>
       </mat-card>
     </mat-drawer-content>

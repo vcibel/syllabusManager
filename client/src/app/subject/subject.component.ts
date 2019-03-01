@@ -64,9 +64,13 @@ export class SubjectComponent implements OnInit {
   colleges: College[];
 
   constructor(public dialogRef: MatDialogRef<SubjectComponent>, private httpService: HttpService, private filesService: FilesService) {
-    this.typesSubject = this.dialogRef._containerInstance._config.data.typesSubject;
     if (this.dialogRef._containerInstance._config.data !== undefined) {
-      this.subjects = this.dialogRef._containerInstance._config.data.subjects;
+      if (Object.keys(this.dialogRef._containerInstance._config.data).length === 2) {
+          this.subjects = this.dialogRef._containerInstance._config.data.subjects;
+          this.typesSubject = this.dialogRef._containerInstance._config.data.typesSubject;
+      } else {
+          this.subject = this.dialogRef._containerInstance._config.data;
+      }
     }
     console.log(this.typesSubject, this.subjects);
   }

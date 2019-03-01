@@ -14,7 +14,9 @@ import * as  _moment from 'moment';
 import { default as _rollupMoment} from 'moment';
 import { FormControl } from '@angular/forms';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
-import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material';
+import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS, MatDialogConfig, MatDialog } from '@angular/material';
+import { UserService } from '../service/user/user.service';
+import { SubjectComponent } from '../subject/subject.component';
 
 const moment = _rollupMoment || _moment;
 
@@ -88,25 +90,13 @@ export class PensumComponent implements OnInit, AfterViewInit {
     subject_id_target_restriction: null,
   };
   new = true;
-
-  todo = [
-    'Get to work',
-    'Pick up groceries',
-    'Go home',
-    'Fall asleep'
-  ];
-
-  done2 = [
-    'Get up',
-    'Brush teeth',
-    'Take a shower',
-    'Check e-mail',
-    'Walk dog'
-  ];
+  edit = false;
+  admin = false;
 
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 
-  constructor(private router: Router, private activeRouter: ActivatedRoute, private httpService: HttpService) {}
+  constructor(private router: Router, private activeRouter: ActivatedRoute, private httpService: HttpService,
+              private userService: UserService, private dialog: MatDialog) {}
 
    ngAfterViewInit() {
     this.jsPlumbInstance = jsPlumb.getInstance();
@@ -138,12 +128,13 @@ export class PensumComponent implements OnInit, AfterViewInit {
   }
 
   onClick(event) {
+    if (this.edit) {
     if (this.add) {
       if (this.source === '') {
-        this.source = event.target.id;
+        this.source = event.subject_id.toString();
         this.restriction.subject_id_source_restriction = this.source;
       } else {
-        this.target = event.target.id;
+        this.target = event.subject_id.toString();
         this.connectSourceToTargetUsingJSPlumb(this.source, this.target);
         this.restriction.subject_id_target_restriction = this.target;
         this.done[0].push(this.restriction);
@@ -154,6 +145,15 @@ export class PensumComponent implements OnInit, AfterViewInit {
           subject_id_target_restriction: null,
         };
       }
+    }
+    } else {
+      console.log(event);
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = true;
+      dialogConfig.autoFocus = true;
+      dialogConfig.width = '50%';
+      dialogConfig.data = event;
+      const dialogRef = this.dialog.open(SubjectComponent, dialogConfig);
     }
     console.log(event, this.source, this.target);
     console.log(this.done);
@@ -238,6 +238,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
       this.httpService.put(this.pensum, '/Pensum').subscribe((res: any) => {
         if (res.status === 200) {
             console.log(res);
+            this.edit = false;
         } else {
           console.log(res.message);
         }
@@ -334,6 +335,9 @@ export class PensumComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    if (this.userService.user.type_user_id === 1) {
+      this.admin = true;
+    }
     console.log(this.activeRouter.queryParams);
     this.activeRouter.queryParams.subscribe(params => {
       console.log(params);
