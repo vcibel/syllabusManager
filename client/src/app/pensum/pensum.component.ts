@@ -163,7 +163,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
     // let labelName;
     //   labelName = 'connection';
     const conn = this.jsPlumbInstance.connect({
-        connector: ['Flowchart', {stub: [10, 10], cornerRadius: 4, alwaysRespectStubs: true}],
+        connector: ['Flowchart', {stub: [9, 9], cornerRadius: 0, alwaysRespectStubs: true}],
         endpointStyle: {fill: 'transparent'},
         source: source,
         target: target,

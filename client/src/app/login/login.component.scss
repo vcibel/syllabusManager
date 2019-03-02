@@ -12,7 +12,7 @@ h4.center-align {
 
 label {
     position: relative;
-    top: 35px;
+    top: 13px;
     left: 15px;
 }
 
@@ -20,5 +20,10 @@ label {
     position: relative;
     top: 10px;
     margin-left: 28%;
+}
+
+.form-control:focus{
+    border-color: transparent !important;
+    box-shadow: 0px 0px 0px 0px transparent !important;
 }
 

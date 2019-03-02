@@ -15,7 +15,7 @@
           <span class="search-text">Buscar Materia:</span>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-form-field class="example-form-field">
+          <mat-form-field class="example-form-field" style="width: 130px;">
             <input matInput type="text">
           </mat-form-field>
         </mat-grid-tile>
@@ -170,11 +170,22 @@
                 X SEM
               </mat-grid-tile>
             </mat-grid-list>
-            <mat-grid-list cols="20" rowHeight="240px">
-              <mat-grid-tile [colspan]="2" [rowspan]="2" *ngFor="let item of done.slice(1)" class="term" >
-                <app-term [done]="item" (droped)="drop($event)" (clicked)="onClick($event, item)"></app-term>
-              </mat-grid-tile>
-            </mat-grid-list>
+            <div class="term-container">
+            <!-- <mat-grid-list cols="20" rowHeight="240px">
+              <mat-grid-tile [colspan]="2" [rowspan]="2" *ngFor="let item of done.slice(1)" class="term" > -->
+                <div *ngFor="let item of done.slice(1)" class="term"> 
+                  <app-term [done]="item" (droped)="drop($event)" (clicked)="onClick($event, item)"></app-term>
+                 </div>
+                 <!-- <div class="term">
+                    <div
+                    cdkDropList
+                    [cdkDropListData]="done"
+                    class="example-list"
+                    (cdkDropListDropped)="drop($event)">
+                  </div>
+                 </div>  -->
+              <!-- </mat-grid-tile>
+            </mat-grid-list> --></div>
           </mat-card>
           <mat-card class="pensum-footer" id="card-pensum">Pensum footer</mat-card>
           <button mat-button color="primary" (click)="save()">Guardar</button>

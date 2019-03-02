@@ -149,9 +149,9 @@ mat-grid-list.electivas-table.mat-grid-list {
 }
 
 mat-card.name-subject.mat-card {
-    margin: -92px !important;
-    font-size: 10px !important;
-    width: 110px;
+    margin: -28px !important;
+    font-size: 9px !important;
+    width: 140px;
     text-align: center;
 }
 
@@ -185,5 +185,21 @@ mat-form-field.example-form-field.mat-form-field.ng-tns-c10-2.mat-primary.mat-fo
 
 mat-grid-list.search.mat-grid-list {
     top: -1%;
+}
+
+.term-container::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.term{
+    float: left;
+    width: 10%;
+    padding: 10px;
+}
+
+.example-list{
+    background-color: red;
 }
 
