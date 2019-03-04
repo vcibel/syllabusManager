@@ -63,10 +63,14 @@
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="3" [rowspan]="1"> 
-      <label for="number-terms">Seleccione el Programa de Estudio:</label>
+      <label for="number-terms" *ngIf="!subject.syllabus_name">Seleccione el Programa de Estudio:</label>
+      <label for="number-terms" *ngIf="subject.syllabus_name">Programa de Estudio:</label>      
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="3" [rowspan]="1"> 
+    <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="!subject.syllabus_name"> 
       <input type="file" class="form-control input-file file" #file (change)="onFilesAdded(this)">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="subject.syllabus_name"> 
+      {{subject.syllabus_name}}
     </mat-grid-tile>
     <!-- <mat-grid-tile [colspan]="2" [rowspan]="1"> 
       <label for="college-name">Tipo de materia:</label>

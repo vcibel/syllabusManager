@@ -103,7 +103,7 @@
                                 <mat-grid-tile class="grid-2" [colspan]="1" [rowspan]="4">
                                   <mat-card class="list-card">
                                     <mat-list>
-                                      <mat-list-item *ngFor="let subject of searchResult" >
+                                      <mat-list-item *ngFor="let subject of searchResult" (click)="openSubject(subject)">
                                         {{subject.subject_name}}
                                       </mat-list-item>
                                     </mat-list>
@@ -129,8 +129,7 @@
                                 <mat-grid-tile class="grid" [colspan]="2" [rowspan]="1">
                                   <mat-form-field class="select-deparment">
                                     <mat-select>
-                                        <mat-option></mat-option>
-                                        <mat-option *ngFor="let department of collegeDepartments" [value]=department.department_id>{{department.department_name}}</mat-option>
+                                        <mat-option *ngFor="let department of collegeDepartments" [value]=department.department_id (click)="getDepartmentSubjects(department)">{{department.department_name}}</mat-option>
                                     </mat-select>
                                   </mat-form-field>
                                 </mat-grid-tile>

@@ -1,8 +1,8 @@
 <div class="container subjects" >
-    <mat-toolbar class="toolbar">
-      <span>Materias</span>
+    <mat-toolbar color="primary">
+      <span>{{tittle}}</span>
       <span class="example-spacer"></span>
-      <button mat-icon-button (click)="openSubject()">
+      <button mat-icon-button (click)="openSubject()" *ngIf="admin">
         <mat-icon class="example-icon">add_box</mat-icon>
       </button>
     </mat-toolbar>
@@ -18,8 +18,8 @@
                 <h6>Código de la Materia: {{subject.subject_code}} </h6>
               </mat-grid-tile>
               <mat-grid-tile [colspan]="3" [rowspan]="1">
-                <mat-icon mat-icon-button class="example-icon" (click)="deleteSubject(subject)">delete</mat-icon>
-                <button  mat-raised-button class="example-icon" (click)="getSyllabus(subject)">Ver Programa de Estudio</button>
+                <mat-icon mat-icon-button class="example-icon" (click)="deleteSubject(subject)" *ngIf="admin">delete</mat-icon>
+                <button  mat-raised-button class="example-icon" (click)="getSyllabus(subject)" *ngIf="admin">Ver Programa de Estudio</button>
               </mat-grid-tile>
             </mat-grid-list>
             <!-- <mat-card-content>

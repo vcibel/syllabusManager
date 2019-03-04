@@ -3,6 +3,7 @@ import { User } from './../models/user';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { SignupComponent } from '../signup/signup.component';
+import { UserService } from '../service/user/user.service';
 
 @Component({
   selector: 'app-users',
@@ -12,8 +13,9 @@ import { SignupComponent } from '../signup/signup.component';
 export class UsersComponent implements OnInit {
 
   users: User[];
+  admin = false;
 
-  constructor(private dialog: MatDialog, private httpService: HttpService) { }
+  constructor(private dialog: MatDialog, private httpService: HttpService, private userService: UserService) { }
 
   openRegister(user) {
     const dialogConfig = new MatDialogConfig();
@@ -31,6 +33,9 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.userService.user.type_user_id === 1) {
+      this.admin = true;
+    }
     // LISTAR USUARIOS
     this.httpService.get('/Users').subscribe((res: any) => {
       if (res.status === 200) {

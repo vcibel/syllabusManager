@@ -35,7 +35,11 @@ public class Subjects extends HttpServlet {
 			Integer id = Integer.parseInt(request.getParameter("id"));
 			result = db.executeQuery(prop.getValue("query_getSubjectByFaculty"),id);
 			types = db.executeQuery(prop.getValue("query_getTypeSubjectPensum"));
-        } else {
+        } else if(request.getParameterMap().containsKey("department_id")){
+			Integer id = Integer.parseInt(request.getParameter("department_id"));
+			result = db.executeQuery(prop.getValue("query_getSubjectByDepartment"),id);
+			types = db.executeQuery(prop.getValue("query_getTypeSubject"));
+		} else {
 		    result = db.executeQuery(prop.getValue("query_getSubjects"));
 		    types = db.executeQuery(prop.getValue("query_getTypeSubject"));
         }

@@ -4,6 +4,7 @@ import { HttpService } from './../service/http/http.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CreatePensumComponent } from '../create-pensum/create-pensum.component';
+import { UserService } from '../service/user/user.service';
 
 @Component({
   selector: 'app-pensums',
@@ -13,8 +14,10 @@ import { CreatePensumComponent } from '../create-pensum/create-pensum.component'
 export class PensumsComponent implements OnInit {
 
   pensums: Pensum[];
+  admin = false;
 
-  constructor(private router: Router, private dialog: MatDialog, private httpService: HttpService) { }
+  constructor(private router: Router, private dialog: MatDialog, private httpService: HttpService,
+              private userService: UserService) { }
 
   goToPensum(pensum) {
     this.router.navigate(['pensum'], {queryParams: {pensum: JSON.stringify(pensum)}});
@@ -29,6 +32,9 @@ export class PensumsComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.userService.user.type_user_id === 1) {
+      this.admin = true;
+    }
     // LISTAR PENSUMS
     this.httpService.get('/Pensum').subscribe((res: any) => {
       if (res.status === 200) {

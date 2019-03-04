@@ -1,6 +1,6 @@
-<div cdkDropListGroup>
+<div cdkDropListGroup >
   <mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened position="end">
+    <mat-drawer mode="side" opened position="end" *ngIf="edit">
       <button mat-button [matMenuTriggerFor]="menu">
         <mat-icon>list</mat-icon>
       </button>
@@ -115,7 +115,7 @@
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="3">
                 <mat-form-field>
-                  <input matInput [matDatepicker]="dp" style="text-transform: uppercase;">
+                  <input matInput [matDatepicker]="dp" style="text-transform: uppercase;" [value]="pensum.pensum_date" (dateInput)="setDate($event)">
                   <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                   <mat-datepicker #dp></mat-datepicker>
                 </mat-form-field>
@@ -135,6 +135,7 @@
               <mat-grid-tile [colspan]="2" [rowspan]="1">
                 C.I.:_______________________
               </mat-grid-tile>
+              <button (click)="edit=!edit" *ngIf="admin" >EDITAR</button>
             </mat-grid-list>
           </mat-card>
           <mat-card class="pensum-body" id="card-pensum">
@@ -188,7 +189,6 @@
             </mat-grid-list> --></div>
           </mat-card>
           <mat-card class="pensum-footer" id="card-pensum">Pensum footer</mat-card>
-          <button mat-button color="primary" (click)="save()">Guardar</button>
         </mat-card-content>
       </mat-card>
     </mat-drawer-content>

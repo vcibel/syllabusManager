@@ -1,3 +1,4 @@
+import { SubjectComponent } from './../subject/subject.component';
 import { Department } from './../models/department';
 import { College } from './../models/college';
 import { Faculty } from './../models/faculty';
@@ -5,9 +6,8 @@ import { Subject } from './../models/subject';
 import { HttpService } from '../service/http/http.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { MatDialog } from '@angular/material';
 import { Pensum } from '../models/pensum';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 
 
 export interface Section {
@@ -45,9 +45,9 @@ export class HomeComponent implements OnInit {
   collegeDepartments: Department[];
   facultyColleges: College[];
   input: String;
+  typesSubject;
 
-  constructor(private router: Router, private modalService: NgbModal, private httpService: HttpService,
-    private dialog: MatDialog ) { }
+  constructor(private router: Router, private httpService: HttpService, private dialog: MatDialog) { }
 
     menu: Section[] = [
       { name: 'College'},
@@ -99,24 +99,41 @@ export class HomeComponent implements OnInit {
     this.httpService.get('/Subjects').subscribe((res: any) => {
       if (res.status === 200) {
         this.subjects = res.subjects;
+        this.typesSubject = res.types;
         console.log(this.subjects);
       } else {
         alert(res.response);
       }
     });
+    // LISTAR PENSUMS
+    this.httpService.get('/Pensum').subscribe((res: any) => {
+      if (res.status === 200) {
+        this.pensums = res.pensum;
+        console.log(this.pensums);
+      } else {
+        alert(res.response);
+      }
+    });
+
   }
 
   logout() {
     this.httpService.get('/Logout').subscribe((res: any) => {
-      if (res.status === 200 || 400) {
-          this.router.navigateByUrl('/');
-      }
+        this.router.navigateByUrl('/');
     });
+  }
+
+  openSubject(subject) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '50%';
+    dialogConfig.data = subject;
+    const dialogRef = this.dialog.open(SubjectComponent, dialogConfig);
   }
 
   search(input) {
     this.searchResult = [];
-    //const myInput = this.input;
     console.log(input);
     if (input !== '') {
     this.subjects.filter((subject: Subject) => {
@@ -149,6 +166,23 @@ export class HomeComponent implements OnInit {
     console.log(this.collegeDepartments);
     this.searchResult = this.subjects.filter(function(subject: Subject) {
       return subject.college_id === college_selected.college_id;
+    });
+  }
+
+  getDepartmentSubjects(department_selected) {
+    this.searchResult = this.subjects.filter(function(subject: Subject) {
+      return subject.department_id === department_selected.department_id;
+    });
+  }
+
+  getPensumSubjects(pensum_selected) {
+    this.httpService.get('/SubjectPensum?id=' + pensum_selected.pensum_id).subscribe((res: any) => {
+      console.log(res);
+      if (res.status === 200) {
+        this.searchResult = res.pensumSubjects;
+      } else {
+        console.log(res.response);
+      }
     });
   }
 

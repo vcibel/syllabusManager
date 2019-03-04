@@ -32,9 +32,9 @@ public class Files extends HttpServlet {
 		String syllabus_url = request.getParameter("syllabus_url");
 		String syllabus_name = request.getParameter("syllabus_name");
 
-        response.setContentType("file");
+        response.setContentType("application/pdf");
 
-        response.setHeader("Content-disposition","attachment; filename="+syllabus_name);
+        response.setHeader("Content-disposition","inline; filename="+syllabus_name);
 
 		File my_file = new File(syllabus_url);
 		System.out.println(syllabus_url);
