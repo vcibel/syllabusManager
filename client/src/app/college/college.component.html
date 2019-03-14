@@ -17,10 +17,13 @@
       <mat-grid-list cols="10" rowHeight="100px" class="college-inputs">
         <mat-grid-tile [colspan]="9" [rowspan]="1"> 
         <label for="college-name">Nombre de la Escuela:</label>
-        <mat-form-field>
-          <!-- <mat-label>Ej. Ingenieria de Computacion</mat-label> -->
-          <input matInput type="text" class="form-control college-name" [(ngModel)]="college.college_name" [ngModelOptions]="{standalone: true}">
+        <mat-form-field class="select-career">
+          <input matInput #career minlength="5" maxlength="50" type="text" class="form-control college-name" [(ngModel)]="college.college_name" [ngModelOptions]="{standalone: true}">
+          <mat-hint align="end">{{career.value.length}} / 50 </mat-hint>
         </mat-form-field>
+        <!-- <mat-form-field>
+          <input matInput type="text" class="form-control college-name" [(ngModel)]="college.college_name" [ngModelOptions]="{standalone: true}">
+        </mat-form-field> -->
         </mat-grid-tile>
         <!-- <mat-grid-tile [colspan]="3" [rowspan]="3">
           <mat-card class="img-ccareer">
@@ -29,9 +32,13 @@
         </mat-grid-tile> -->
         <mat-grid-tile [colspan]="9" [rowspan]="1"> 
           <label for="college-name">Código de la Escuela:</label> 
-            <mat-form-field>
+          <mat-form-field>
+            <input matInput #subjectCode maxlength="1" class="form-control cod" [(ngModel)]="college.college_code" [ngModelOptions]="{standalone: true}">
+            <mat-hint align="end">{{subjectCode.value.length}} / 1</mat-hint>
+          </mat-form-field>
+            <!-- <mat-form-field>
               <input matInput type="number" class="form-control cod" [(ngModel)]="college.college_code" [ngModelOptions]="{standalone: true}">
-            </mat-form-field>
+            </mat-form-field> -->
           </mat-grid-tile>
           <mat-grid-tile [colspan]="9" [rowspan]="1"> 
             <label for="collage-type">Seleccionar Facultad:</label>

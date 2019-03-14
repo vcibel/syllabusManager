@@ -1,8 +1,15 @@
-.card {
+.card-div {
     width: 500px;
-    position: relative;
-    left: 315px;
-    top: 20px;
+    // position: relative;
+    // left: 315px;
+    // top: 20px;
+    margin: auto;
+    box-shadow: 0 2px 4px 1px rgba(0,0,0,0.3) !important;
+    border-radius: 0px !important;
+}
+
+.container {
+    padding: 85px;
 }
 
 h4.center-align {
@@ -26,4 +33,10 @@ label {
     border-color: transparent !important;
     box-shadow: 0px 0px 0px 0px transparent !important;
 }
+
+button.btn-block.btn.btn-info {
+    background-color: #155193 !important;
+}
+
+
 

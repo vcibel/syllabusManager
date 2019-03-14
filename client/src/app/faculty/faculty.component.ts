@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { Faculty } from '../models/faculty';
 import { HttpService } from '../service/http/http.service';
+import { AlertService } from '../service/alert/alert.service';
 
 @Component({
   selector: 'app-faculty',
@@ -19,7 +20,8 @@ export class FacultyComponent implements OnInit {
   };
   new: boolean = true;
 
-  constructor(public dialogRef: MatDialogRef<FacultyComponent>, private httpService: HttpService) {
+  constructor(public dialogRef: MatDialogRef<FacultyComponent>, private httpService: HttpService,
+              private alertService: AlertService) {
     if (this.dialogRef._containerInstance._config.data !== undefined) {
       this.faculty = this.dialogRef._containerInstance._config.data;
       this.new = false;
@@ -28,10 +30,17 @@ export class FacultyComponent implements OnInit {
     console.log(this.new);
   }
 
+  alertError() {
+    this.alertService.confirm('Error', 'Error!')
+    .then((confirmed) => console.log('User confirmed:', confirmed))
+    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+  }
+
   createFaculty() {
     console.log(this.faculty);
       this.httpService.post(this.faculty, '/Faculties').subscribe((res: any) => {
           if (res.status === 200) {
+            this.alertService.confirm('', 'Facultad creada');
             this.onClose(this.faculty);
             console.log(res);
             this.faculty = {
@@ -42,7 +51,9 @@ export class FacultyComponent implements OnInit {
               faculty_updated_at: ''
             };
           } else {
-            alert(res.response);
+            //alert(res.response);
+            this.alertService.confirm('Error', res.response);
+            //this.alertService.confirm('Error', 'Ingrese los datos indicados');
           }
       });
   }
@@ -50,6 +61,7 @@ export class FacultyComponent implements OnInit {
   updateFaculty() {
     this.httpService.put(this.faculty, '/Faculties').subscribe((res: any) => {
       if (res.status === 200) {
+        this.alertService.confirm(' ', 'Facultad editada');
         console.log(res.response);
         this.onClose(undefined);
         this.faculty = {
@@ -60,7 +72,8 @@ export class FacultyComponent implements OnInit {
               faculty_updated_at: ''
         };
       } else {
-        alert(res.response);
+        //alert(res.response);
+        this.alertService.confirm('Error!', res.response);
       }
     });
   }

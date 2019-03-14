@@ -2,6 +2,7 @@ import { HttpService } from '../service/http/http.service';
 import { User } from '../models/user';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
+import { AlertService } from '../service/alert/alert.service';
 
 @Component({
   selector: 'app-signup',
@@ -22,7 +23,8 @@ export class SignupComponent implements OnInit {
 };
 new: boolean = true;
 
-  constructor(private httpService: HttpService, public dialogRef: MatDialogRef<SignupComponent>) {
+  constructor(private httpService: HttpService, public dialogRef: MatDialogRef<SignupComponent>,
+              private alertService: AlertService) {
     if (this.dialogRef._containerInstance._config.data !== undefined) {
       this.user = this.dialogRef._containerInstance._config.data;
       this.new = false;
@@ -37,6 +39,7 @@ new: boolean = true;
   signUp() {
       this.httpService.post(this.user, '/Users').subscribe((res: any) => {
         if (res.status === 200) {
+            this.alertService.confirm('', 'Usuario creado');
             console.log(res);
             this.onClose(this.user);
             this.user = {
@@ -48,9 +51,11 @@ new: boolean = true;
               type_user_id: null,
               user_created_at: '',
           };
-            alert(res.response);
+            //alert(res.response);
+            //this.alertService.confirm('', res.response);
         } else {
           console.log(res.message);
+          this.alertService.confirm('Error', res.message)
         }
       });
     }
@@ -58,6 +63,7 @@ new: boolean = true;
     updateUser() {
       this.httpService.put(this.user, '/Users').subscribe((res: any) => {
         if (res.status === 200) {
+          this.alertService.confirm('', 'Usario editado');
           console.log(res.response);
           this.onClose(undefined);
           this.user = {
@@ -70,7 +76,8 @@ new: boolean = true;
             user_created_at: '',
         };
         } else {
-          alert(res.response);
+          //alert(res.response);
+          this.alertService.confirm('', res.response);
         }
       });
     }
@@ -79,3 +86,4 @@ new: boolean = true;
       this.dialogRef.close(user);
     }
 }
+

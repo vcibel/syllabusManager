@@ -3,7 +3,7 @@ import { FilesService } from './service/files/files.service';
 import { MatSidenavModule, MatListModule, MatButtonModule, MatCheckboxModule,
   MatInputModule, MatIconModule, MatCardModule, MatDividerModule,
   MatGridListModule, MatMenuModule, MatExpansionModule, MatSelectModule, MatDialogModule, 
-  MatFormFieldModule, MatToolbarModule, MatDatepicker, MatDatepickerModule} from '@angular/material';
+  MatFormFieldModule, MatToolbarModule, MatDatepicker, MatDatepickerModule, MatTooltipModule, MatProgressSpinnerModule} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -33,6 +33,9 @@ import { CreatePensumComponent } from './create-pensum/create-pensum.component';
 import { PensumsComponent } from './pensums/pensums.component';
 import { TermComponent } from './term/term.component';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { AlertsModule } from 'angular-alert-module';
+import { AlertComponent } from './alert/alert.component';
+import { AlertService } from './service/alert/alert.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,8 @@ import { MomentDateAdapter } from '@angular/material-moment-adapter';
     PensumComponent,
     CreatePensumComponent,
     PensumsComponent,
-    TermComponent
+    TermComponent,
+    AlertComponent
   ],
   imports: [
     HttpClientModule,
@@ -80,6 +84,10 @@ import { MomentDateAdapter } from '@angular/material-moment-adapter';
     AngularFontAwesomeModule,
     DragDropModule,
     MatDatepickerModule,
+    MatTooltipModule,
+    MatProgressSpinnerModule,
+    MatProgressSpinnerModule,
+    AlertsModule.forRoot(),
     MDBBootstrapModule.forRoot(),
     NgbModule.forRoot(),
   ],
@@ -89,11 +97,13 @@ import { MomentDateAdapter } from '@angular/material-moment-adapter';
     FacultyComponent, 
     DepartmentComponent, 
     SignupComponent,
-    CreatePensumComponent
+    CreatePensumComponent,
+    AlertComponent
    ],
   providers: [
     HttpService,
-    FilesService
+    FilesService,
+    AlertService
   ],
   bootstrap: [
     AppComponent,

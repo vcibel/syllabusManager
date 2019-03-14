@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../service/http/http.service';
 import { Department } from '../models/department';
 import { MatDialogRef } from '@angular/material';
+import { AlertService } from '../service/alert/alert.service';
 
 @Component({
   selector: 'app-department',
@@ -22,7 +23,8 @@ export class DepartmentComponent implements OnInit {
 new: boolean = true;
 colleges: College[];
 
-  constructor(private httpService: HttpService, public dialogRef: MatDialogRef<DepartmentComponent>) {
+  constructor(private httpService: HttpService, public dialogRef: MatDialogRef<DepartmentComponent>,
+              private alertService: AlertService) {
     if (this.dialogRef._containerInstance._config.data !== undefined) {
       this.department = this.dialogRef._containerInstance._config.data;
       this.new = false;
@@ -34,10 +36,13 @@ colleges: College[];
   createDepartment() {
     this.httpService.post(this.department, '/Departments').subscribe((res: any) => {
         if (res.status === 200) {
+        this.alertService.confirm('', 'Departamento creado!');
          this.onClose(this.department);
           console.log(res);
         } else {
-          alert(res.response);
+          //alert(res.response);
+          //this.alertService.confirm('Error', res.response);
+          this.alertService.confirm('Error', 'Ingrese los datos indicados');
         }
     });
   }
@@ -49,6 +54,7 @@ colleges: College[];
   updateDepartment() {
     this.httpService.put(this.department, '/Departments').subscribe((res: any) => {
       if (res.status === 200) {
+        this.alertService.confirm('', 'Departamento editado');
         console.log(res.response);
         this.onClose(undefined);
         this.department = {
@@ -60,7 +66,8 @@ colleges: College[];
           department_updated_at: null
       };
       } else {
-        alert(res.response);
+        this.alertService.confirm('Error', res.response);
+        //alert(res.response);
       }
     });
   }
@@ -72,7 +79,8 @@ colleges: College[];
         this.colleges = res.colleges;
         console.log(this.colleges);
       } else {
-        alert(res.response);
+        //alert(res.response);
+        this.alertService.confirm('Error', res.response);
       }
     });
   }

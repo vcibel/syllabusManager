@@ -4,22 +4,21 @@
    // padding: 0 24px;
    margin: 4px;
 }
-  
-.example-spacer {
-    flex: 1 1 auto;
-}
 
-.colleges-created {
-    top: 20px;
+.subjects-created {
+    /* margin-top: 1px; */
+    /* padding: 60px; */
+    /* width: 86%; */
+    /* height: 23%; */
     position: relative;
+    top: 60px;
+    /* left: 25px; */
 }
 
-.card-subject{
+.card-subject {
     width: 100%;
-}
-
-mat-list-item.list-subject.mat-list-item {
-    height: 150px;
+    box-shadow: 0 2px 4px 1px rgba(0,0,0,0.3) !important;
+    border-radius: 0px;
 }
 
 mat-card.name-subject.mat-card {
@@ -29,10 +28,4 @@ mat-card.name-subject.mat-card {
 
 span.subject-text {
     text-transform: uppercase;
-}
-
-
-mat-toolbar.toolbar.mat-toolbar.mat-toolbar-single-row {
-    background-color: #155193;
-    color: white;
 }

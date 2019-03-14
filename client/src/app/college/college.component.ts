@@ -5,6 +5,7 @@ import { NgbModal, ModalDismissReasons, NgbModalRef, NgbActiveModal } from '@ng-
 import { MatDialogRef } from '@angular/material';
 import { HttpService } from '../service/http/http.service';
 import { College } from '../models/college';
+import { AlertService } from '../service/alert/alert.service';
 
 @Component({
   selector: 'app-college',
@@ -25,7 +26,8 @@ export class CollegeComponent implements OnInit {
   new: boolean = true;
   faculties: Faculty[];
 
-  constructor(public dialogRef: MatDialogRef<CollegeComponent>, private httpService: HttpService) {
+  constructor(public dialogRef: MatDialogRef<CollegeComponent>, private httpService: HttpService,
+              private alertService: AlertService) {
     if (this.dialogRef._containerInstance._config.data !== undefined) {
         this.college = this.dialogRef._containerInstance._config.data;
         this.new = false;
@@ -38,6 +40,7 @@ export class CollegeComponent implements OnInit {
     console.log(this.college);
     this.httpService.post(this.college, '/Colleges').subscribe((res: any) => {
         if (res.status === 200) {
+          this.alertService.confirm('', 'Escuela creada');
           this.onClose(this.college);
           console.log(res);
           this.college = {
@@ -50,7 +53,9 @@ export class CollegeComponent implements OnInit {
             college_updated_at: ''
           };
         } else {
-          alert(res.response);
+         // alert(res.response);
+         this.alertService.confirm('Error', res.response);
+         //this.alertService.confirm('Error', 'Ingrese los datos indicados');
         }
     });
   }
@@ -58,6 +63,7 @@ export class CollegeComponent implements OnInit {
   updateCollege() {
     this.httpService.put(this.college, '/Colleges').subscribe((res: any) => {
       if (res.status === 200) {
+        this.alertService.confirm('', 'Escuela editada')
         console.log(res.response);
         this.onClose(undefined);
         this.college = {
@@ -70,7 +76,8 @@ export class CollegeComponent implements OnInit {
           college_updated_at: ''
         };
       } else {
-        alert(res.response);
+        //alert(res.response);
+        this.alertService.confirm('Error', res.response);
       }
     });
   }

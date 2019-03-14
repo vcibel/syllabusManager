@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { SignupComponent } from '../signup/signup.component';
 import { UserService } from '../service/user/user.service';
+import { AlertService } from '../service/alert/alert.service';
 
 @Component({
   selector: 'app-users',
@@ -14,8 +15,10 @@ export class UsersComponent implements OnInit {
 
   users: User[];
   admin = false;
+  showLoadder: boolean = true;
 
-  constructor(private dialog: MatDialog, private httpService: HttpService, private userService: UserService) { }
+  constructor(private dialog: MatDialog, private httpService: HttpService, private userService: UserService,
+              private alertService: AlertService ) { }
 
   openRegister(user) {
     const dialogConfig = new MatDialogConfig();
@@ -38,11 +41,13 @@ export class UsersComponent implements OnInit {
     }
     // LISTAR USUARIOS
     this.httpService.get('/Users').subscribe((res: any) => {
+      this.showLoadder = false;
       if (res.status === 200) {
         this.users = res.users;
         console.log(this.users);
       } else {
-        alert(res.response);
+        //alert(res.response);
+        this.alertService.confirm('Error', res.response);
       }
     });
   }
@@ -50,9 +55,11 @@ export class UsersComponent implements OnInit {
   deleteUser(user) {
     this.httpService.delete(user.user_id, '/Users').subscribe((res: any) => {
       if (res.status === 200) {
+        this.alertService.confirm('', 'Usuario Eliminado');
         console.log(res.response);
       } else {
-        alert(res.response);
+        //alert(res.response);
+        this.alertService.confirm('Error', res.response);
       }
     });
   }

@@ -41,9 +41,14 @@
       <label for="college-name">Contraseña:</label>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="4" [rowspan]="1"> 
-    <mat-form-field>
-        <input matInput type="password"  class="form-control user-password" [(ngModel)]="user.user_password" [ngModelOptions]="{standalone: true}">
-      </mat-form-field>
+    <mat-form-field class="select-career">
+      <input matInput #password minlength="6" type="password"  class="form-control user-password" [(ngModel)]="user.user_password" [ngModelOptions]="{standalone: true}">
+      <!-- <mat-hint align="end">{{password.value.length}} / mininmo 6 </mat-hint> -->
+      <mat-hint align="end"> Mínimo 6 caracteres </mat-hint>
+    </mat-form-field>
+    <!-- <mat-form-field>
+      <input matInput type="password"  class="form-control user-password" [(ngModel)]="user.user_password" [ngModelOptions]="{standalone: true}">
+    </mat-form-field> -->
     </mat-grid-tile>
     <mat-grid-tile [colspan]="4" [rowspan]="1"> 
       <div class="btn-createUser">

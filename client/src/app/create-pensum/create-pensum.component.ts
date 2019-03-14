@@ -4,6 +4,7 @@ import { HttpService } from './../service/http/http.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { Pensum } from '../models/pensum';
+import { AlertService } from '../service/alert/alert.service';
 
 @Component({
   selector: 'app-create-pensum',
@@ -22,7 +23,8 @@ export class CreatePensumComponent implements OnInit {
   };
   colleges: College[];
 
-  constructor(private router: Router, private httpService: HttpService, public dialogRef: MatDialogRef<CreatePensumComponent>) { }
+  constructor(private router: Router, private httpService: HttpService, public dialogRef: MatDialogRef<CreatePensumComponent>,
+              private alertService: AlertService) { }
 
   onClose() {
     this.dialogRef.close();
@@ -44,12 +46,14 @@ export class CreatePensumComponent implements OnInit {
     console.log(this.pensum);
     this.httpService.post(this.pensum, '/Pensum').subscribe((res: any) => {
       if (res.status === 200) {
+          this.alertService.confirm(' ', 'Pensum creado')
           console.log(res);
           this.onClose();
           this.pensum.pensum_id = res.pensum_id;
           this.router.navigate(['pensum'], {queryParams: {pensum: this.pensum}});
       } else {
-        console.log(res.message);
+        //console.log(res.message);
+        this.alertService.confirm('Error', 'Seleccione un escuela')
       }
     });
   }

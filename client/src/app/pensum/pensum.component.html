@@ -1,15 +1,23 @@
-<div cdkDropListGroup >
-  <mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened position="end" *ngIf="edit">
-      <button mat-button [matMenuTriggerFor]="menu">
+<mat-toolbar color="primary" class="toolbar">
+  <mat-toolbar-row>
+    <span>College Name</span>
+    <span class="example-spacer"></span>
+    <button mat-button [matMenuTriggerFor]="menu">
         <mat-icon>list</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="goToHome()">Inicio</button>
-        <button mat-menu-item (click)="togglePensumB()">Back</button>
-        <button mat-menu-item (click)="togglePensumF()">Front</button>
+        <!-- <button mat-menu-item (click)="save()">Guardar</button> -->
+        <button mat-menu-item (click)="edit=!edit">Editar</button>
+        <button mat-menu-item (click)="togglePensumF()">Pensum</button>
+        <button mat-menu-item (click)="togglePensumB()">Electivas</button>
       </mat-menu>
-      <button mat-button color="primary" (click)="save()">Guardar</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div cdkDropListGroup >
+  <mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened position="end" *ngIf="edit">
       <mat-grid-list cols="2" rowHeight="30px" class="search">
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="search-text">Buscar Materia:</span>
@@ -59,15 +67,15 @@
     <mat-drawer-content>
       <mat-card class="pensum pensum-back" *ngIf="Show || isBack">
         <mat-grid-list cols="10" rowHeight="100px">
-          <mat-grid-tile [colspan]="5" [rowspan]="1">
+          <mat-grid-tile [colspan]="10" [rowspan]="1">
             <span> <strong>REPOSITORIO DE ASIGNATURAS ELECTIVAS</strong> </span>
           </mat-grid-tile>
-          <mat-grid-tile [colspan]="5" [rowspan]="2">
+          <!-- <mat-grid-tile [colspan]="5" [rowspan]="2">
             <mat-card>
               <span>UNIDADES CURRICULARES</span>
             </mat-card>
-          </mat-grid-tile>
-          <mat-grid-tile [colspan]="5" [rowspan]="3">
+          </mat-grid-tile> -->
+          <mat-grid-tile [colspan]="10" [rowspan]="3">
             <mat-card class="electivas">
               <div
                 cdkDropList
@@ -76,26 +84,26 @@
                 class="example-list"
                 (cdkDropListDropped)="drop2($event)">
                 <mat-grid-list cols="8" rowHeight="30px" class="electivas-table">
-                  <mat-grid-tile [colspan]="2" [rowspan]="1">
+                  <mat-grid-tile [colspan]="2" [rowspan]="1" class="row-header">
                     <span>CÓDIGO</span>
                   </mat-grid-tile>
-                  <mat-grid-tile [colspan]="4" [rowspan]="1">
+                  <mat-grid-tile [colspan]="4" [rowspan]="1" class="row-header">
                     <span>DENOMINACIÓN</span>
                   </mat-grid-tile>
-                  <mat-grid-tile [colspan]="2" [rowspan]="1">
+                  <mat-grid-tile [colspan]="2" [rowspan]="1" class="row-header">
                     <span>REQUISITO</span>
                   </mat-grid-tile>
                 </mat-grid-list>
-                <div class="example-box" *ngFor="let item of electives" cdkDrag>
+                <div class="example-box2" *ngFor="let item of electives" cdkDrag>
                   <mat-card class="electiva">
                     <mat-grid-list cols="8" rowHeight="80px" class="list">
-                      <mat-grid-tile [colspan]="2" [rowspan]="1">
+                      <mat-grid-tile [colspan]="2" [rowspan]="1" class="row-item">
                         <span>{{item.subject_code}}</span>
                       </mat-grid-tile>
-                      <mat-grid-tile [colspan]="4" [rowspan]="1">
+                      <mat-grid-tile [colspan]="4" [rowspan]="1" class="row-item">
                         <span>{{item.subject_name}}</span>
                       </mat-grid-tile>
-                      <mat-grid-tile [colspan]="2" [rowspan]="1">
+                      <mat-grid-tile [colspan]="2" [rowspan]="1" class="row-item">
                         <span>0909</span>
                       </mat-grid-tile>
                     </mat-grid-list>
@@ -111,6 +119,18 @@
           <mat-card class="pensum-header" id="card-pensum">
             <mat-grid-list cols="4" rowHeight="20px">
               <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <span class="space"></span>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <span class="space"></span>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <span class="space"></span>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1" class="save-pensum">
+                <button mat-button color="primary" (click)="save()">Guardar</button>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
                 Universidad Rafael Urdaneta
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="3">
@@ -122,6 +142,7 @@
               </mat-grid-tile>
               <mat-grid-tile [colspan]="2" [rowspan]="1">
                 Nombre:___________________
+                <!-- <button mat-button color="primary" class="save" (click)="save()">Guardar</button> -->
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="1">
                 Facultad de Ingenieria
@@ -135,8 +156,7 @@
               <mat-grid-tile [colspan]="2" [rowspan]="1">
                 C.I.:_______________________
               </mat-grid-tile>
-              <button (click)="edit=!edit" *ngIf="admin" >EDITAR</button>
-            </mat-grid-list>
+            </mat-grid-list> 
           </mat-card>
           <mat-card class="pensum-body" id="card-pensum">
             <mat-grid-list cols="20" rowHeight="30px">
@@ -188,6 +208,7 @@
               <!-- </mat-grid-tile>
             </mat-grid-list> --></div>
           </mat-card>
+          <button mat-button color="primary" (click)="save()">Guardar</button>
           <mat-card class="pensum-footer" id="card-pensum">Pensum footer</mat-card>
         </mat-card-content>
       </mat-card>

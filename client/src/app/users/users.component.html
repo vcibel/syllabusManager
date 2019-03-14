@@ -1,15 +1,18 @@
-<div class="container users" >
+<!-- <div class="container users" > -->
   <mat-toolbar class="toolbar">
     <span>Usuarios</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button (click)="openRegister()" *ngIf="admin">
+    <button mat-icon-button (click)="openRegister()" matTooltip="Crear usuario"
+    matTooltipClass="example-tooltip-blue"
+    aria-label="Button that shows a red tooltip" *ngIf="admin">
       <mat-icon class="example-icon">add_box</mat-icon>
     </button>
   </mat-toolbar>
   <div class="users-created">
     <mat-list>
+      <mat-spinner style="margin: 0 auto; top: 150px;" color="accent" *ngIf="showLoadder"></mat-spinner>
       <mat-list-item class="list-user" *ngFor="let user of users">
-        <mat-card class="card-user">
+        <mat-card *ngIf="!showLoadder" class="card-user">
           <mat-grid-list cols="10" rowHeight="100px">
             <mat-grid-tile [colspan]="4" [rowspan]="1">
               <h5><strong>Nombre de Usuario: {{user.user_username}}</strong></h5>
@@ -21,8 +24,21 @@
               <h6> Apellido: {{user.user_lastname}}</h6>
             </mat-grid-tile> 
             <mat-grid-tile [colspan]="2" [rowspan]="1">
-              <mat-icon mat-icon-button class="example-icon" (click)="deleteUser(user)" *ngIf="admin">delete</mat-icon>
-              <mat-icon mat-icon-button class="example-icon" (click)="openRegister(user)" *ngIf="admin">create</mat-icon>
+              <button mat-button [matMenuTriggerFor]="menu" *ngIf="admin" class="btn-menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="deleteUser(user)">
+                  <mat-icon>delete</mat-icon>
+                  <span>Eliminar</span>
+                </button>
+                <button mat-menu-item (click)="openRegister(user)">
+                  <mat-icon>create</mat-icon>
+                  <span>Editar</span>
+                </button>
+              </mat-menu>
+              <!-- <mat-icon mat-icon-button class="example-icon" (click)="deleteUser(user)" *ngIf="admin">delete</mat-icon>
+              <mat-icon mat-icon-button class="example-icon" (click)="openRegister(user)" *ngIf="admin">create</mat-icon> -->
             </mat-grid-tile>   
           </mat-grid-list>
           <!-- <mat-card-content>
@@ -42,4 +58,4 @@
       </mat-list-item>
     </mat-list>
   </div>
-</div>
+<!-- </div> -->

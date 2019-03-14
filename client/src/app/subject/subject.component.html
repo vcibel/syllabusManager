@@ -37,9 +37,13 @@
   <mat-grid-tile [colspan]="3" [rowspan]="1"> 
     <label for="college-name">Código de la Materia:</label>
     <mat-form-field class="select-career">
-      <input [disabled]="!disabled" matInput type="text" class="form-control college-name cod"  placeholder="" [(ngModel)]="subject.subject_code" [ngModelOptions]="{standalone: true}">
+      <input matInput #subjectCode maxlength="6" [disabled]="!disabled" class="form-control college-name cod"  [(ngModel)]="subject.subject_code" [ngModelOptions]="{standalone: true}">
+      <mat-hint align="end">{{subjectCode.value.length}} / 6</mat-hint>
     </mat-form-field>
-  </mat-grid-tile>
+    <!-- <mat-form-field class="select-career">
+      <input [disabled]="!disabled" matInput type="text" class="form-control college-name cod"  placeholder="" [(ngModel)]="subject.subject_code" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>-->
+  </mat-grid-tile> 
     <!-- <mat-grid-tile [colspan]="2" [rowspan]="1"> 
       <label for="collage-type">Seleccione la escuela a la cual pertenece:</label>
     </mat-grid-tile> -->
@@ -62,13 +66,6 @@
         </select>
       </mat-form-field>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="3" [rowspan]="1"> 
-      <label for="number-terms" *ngIf="!subject.syllabus_name">Seleccione el Programa de Estudio:</label>
-      <label for="number-terms" *ngIf="subject.syllabus_name">Programa de Estudio:</label>      
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="!subject.syllabus_name"> 
-      <input type="file" class="form-control input-file file" #file (change)="onFilesAdded(this)">
-    </mat-grid-tile>
     <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="subject.syllabus_name"> 
       {{subject.syllabus_name}}
     </mat-grid-tile>
@@ -85,9 +82,20 @@
     </mat-grid-tile>
     <mat-grid-tile [colspan]="3" [rowspan]="1"> 
       <label for="number-terms">Hora Crédito de la materia:</label>
-      <mat-form-field>
-        <input matInput type="number" class="form-control cod" [(ngModel)]="subject.subject_hc" [ngModelOptions]="{standalone: true}">
+      <mat-form-field class="example-full-width">
+        <input matInput #subjectHc maxlength="1" class="form-control cod" [(ngModel)]="subject.subject_hc" [ngModelOptions]="{standalone: true}">
+        <mat-hint align="end">{{subjectHc.value.length}} / 1</mat-hint>
       </mat-form-field>
+      <!-- <mat-form-field>
+        <input matInput type="number" class="form-control cod" [(ngModel)]="subject.subject_hc" [ngModelOptions]="{standalone: true}">
+      </mat-form-field> -->
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="3" [rowspan]="1"> 
+      <label for="number-terms" *ngIf="!subject.syllabus_name">Seleccione el Programa de Estudio:</label>
+      <label for="number-terms" *ngIf="subject.syllabus_name">Programa de Estudio:</label>      
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="!subject.syllabus_name"> 
+      <input type="file" class="form-control input-file file" #file (change)="onFilesAdded(this)">
     </mat-grid-tile>
   </mat-grid-list>
 </div>

@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pensum } from '../models/pensum';
 import { MatDialog, MatDialogConfig } from '@angular/material';
+import { AlertService } from '../service/alert/alert.service';
 
 
 export interface Section {
@@ -32,6 +33,7 @@ export class HomeComponent implements OnInit {
   isUser: boolean  = false;
   isPensum: boolean  = false;
   Show: boolean = true;
+  showLoadder: boolean = true;
 
   showCollege: boolean = true;
   closeResult: string;
@@ -47,7 +49,8 @@ export class HomeComponent implements OnInit {
   input: String;
   typesSubject;
 
-  constructor(private router: Router, private httpService: HttpService, private dialog: MatDialog) { }
+  constructor(private router: Router, private httpService: HttpService, private dialog: MatDialog,
+               private alertService: AlertService) { }
 
     menu: Section[] = [
       { name: 'College'},
@@ -65,7 +68,8 @@ export class HomeComponent implements OnInit {
         this.faculties = res.faculties;
         console.log(this.faculties);
       } else {
-        alert(res.response);
+        //alert(res.response);
+        this.alertService.confirm('Error', res.response);
       }
     });
     // LISTAR ESCUELAS
@@ -74,7 +78,8 @@ export class HomeComponent implements OnInit {
         this.colleges = res.colleges;
         console.log(this.colleges);
       } else {
-        alert(res.response);
+        //alert(res.response);
+        this.alertService.confirm('Error', res.response);
       }
     });
     // LISTAR DEPARTAMENTOS
@@ -83,7 +88,8 @@ export class HomeComponent implements OnInit {
         this.departments = res.departments;
         console.log(this.departments);
       } else {
-        alert(res.response);
+        //alert(res.response);
+        this.alertService.confirm('Error', res.response);
       }
     });
     // LISTAR PENSUMS
@@ -92,7 +98,8 @@ export class HomeComponent implements OnInit {
         this.pensums = res.pensum;
         console.log(this.pensums);
       } else {
-        alert(res.response);
+        //alert(res.response);
+        this.alertService.confirm('Error', res.response);
       }
     });
     // LISTAR MATERIAS
@@ -102,7 +109,8 @@ export class HomeComponent implements OnInit {
         this.typesSubject = res.types;
         console.log(this.subjects);
       } else {
-        alert(res.response);
+        //alert(res.response);
+        this.alertService.confirm('Error', res.response);
       }
     });
     // LISTAR PENSUMS
@@ -111,7 +119,8 @@ export class HomeComponent implements OnInit {
         this.pensums = res.pensum;
         console.log(this.pensums);
       } else {
-        alert(res.response);
+        //alert(res.response);
+        this.alertService.confirm('Error', res.response);
       }
     });
 
@@ -120,6 +129,7 @@ export class HomeComponent implements OnInit {
   logout() {
     this.httpService.get('/Logout').subscribe((res: any) => {
         this.router.navigateByUrl('/');
+        this.alertService.confirm(' ', 'Sesión cerrada');
     });
   }
 

@@ -1,23 +1,26 @@
 import { Router } from '@angular/router';
 import { Faculty } from './../models/faculty';
 import { HttpService } from '../service/http/http.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { FacultyComponent } from '../faculty/faculty.component';
 import { UserService } from '../service/user/user.service';
+import { AlertService } from '../service/alert/alert.service';
 
 @Component({
   selector: 'app-faculties',
   templateUrl: './faculties.component.html',
-  styleUrls: ['./faculties.component.scss']
+  styleUrls: ['./faculties.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class FacultiesComponent implements OnInit {
 
   faculties: Faculty[];
   admin = false;
+  showLoadder: boolean = true;
 
   constructor(private dialog: MatDialog, private httpService: HttpService, private router: Router,
-              private userService: UserService) { }
+              private userService: UserService, private alertService: AlertService) { }
 
   goToColleges(faculty) {
     this.router.navigate(['colleges'], {queryParams: {faculty: JSON.stringify(faculty)}});
@@ -42,8 +45,10 @@ export class FacultiesComponent implements OnInit {
     if (this.userService.user.type_user_id === 1) {
       this.admin = true;
     }
+
     // LISTAR FACULTADES
     this.httpService.get('/Faculties').subscribe((res: any) => {
+      this.showLoadder = false;
       if (res.status === 200) {
         this.faculties = res.faculties;
         console.log(this.faculties);
@@ -56,9 +61,11 @@ export class FacultiesComponent implements OnInit {
   deleteFaculty(faculty) {
     this.httpService.delete(faculty.faculty_id, '/Faculties').subscribe((res: any) => {
       if (res.status === 200) {
+        this.alertService.confirm('Eliminada!', 'Facultad eliminada')
         console.log(res.response);
       } else {
         alert(res.response);
+        this.alertService.confirm('Error', res.response)
       }
     });
   }
