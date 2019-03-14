@@ -40,7 +40,14 @@ export class UsersComponent implements OnInit {
     this.httpService.get('/Users').subscribe((res: any) => {
       if (res.status === 200) {
         this.users = res.users;
-        console.log(this.users);
+        console.log(this.users, this.userService.user);
+        const remove = this.users.findIndex((user) => {
+          console.log(user.user_id, this.userService.user.user_id);
+          return user.user_id === this.userService.user.user_id;
+        });
+        console.log(remove);
+        this.users.splice(remove, 1);
+        // this.users.splice(this.users.indexOf(this.userService.user), 1);
       } else {
         alert(res.response);
       }
@@ -51,6 +58,7 @@ export class UsersComponent implements OnInit {
     this.httpService.delete(user.user_id, '/Users').subscribe((res: any) => {
       if (res.status === 200) {
         console.log(res.response);
+        this.users.splice(this.users.indexOf(user), 1);
       } else {
         alert(res.response);
       }

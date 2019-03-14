@@ -57,6 +57,7 @@ export class FacultiesComponent implements OnInit {
     this.httpService.delete(faculty.faculty_id, '/Faculties').subscribe((res: any) => {
       if (res.status === 200) {
         console.log(res.response);
+        this.faculties.splice(this.faculties.indexOf(faculty), 1);
       } else {
         alert(res.response);
       }

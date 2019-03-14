@@ -50,6 +50,7 @@ export class PensumsComponent implements OnInit {
     this.httpService.delete(pensum.pensum_id, '/Pensum').subscribe((res: any) => {
       if (res.status === 200) {
         console.log(res.response);
+        this.pensums.splice(this.pensums.indexOf(pensum), 1);
       } else {
         alert(res.response);
       }
