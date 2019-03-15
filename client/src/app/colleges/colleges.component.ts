@@ -2,25 +2,29 @@ import { Faculty } from './../models/faculty';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../service/http/http.service';
 import { College } from './../models/college';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { CollegeComponent } from '../college/college.component';
 import { UserService } from '../service/user/user.service';
+import { AlertService } from '../service/alert/alert.service';
 
 @Component({
   selector: 'app-colleges',
   templateUrl: './colleges.component.html',
-  styleUrls: ['./colleges.component.scss']
+  styleUrls: ['./colleges.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CollegesComponent implements OnInit {
 
   colleges: College[];
   faculty: Faculty;
-  tittle = '';
+  title = '';
   admin = false;
+  showLoadder: boolean = true;
+  
 
   constructor(private dialog: MatDialog, private httpService: HttpService, private router: Router,
-              private activeRouter: ActivatedRoute, private userService: UserService) { }
+              private activeRouter: ActivatedRoute, private userService: UserService, private alertService: AlertService) { }
 
   goToDepartments(college) {
     this.router.navigate(['departments'], {queryParams: {college: JSON.stringify(college)}});
@@ -52,25 +56,29 @@ export class CollegesComponent implements OnInit {
     });
     console.log(this.faculty);
     if (this.faculty === undefined) {
-      this.tittle = 'ESCUELAS';
+      this.title = 'Escuelas';
         // LISTAR ESCUELAS
         this.httpService.get('/Colleges').subscribe((res: any) => {
+          this.showLoadder = false;
           if (res.status === 200) {
             this.colleges = res.colleges;
             console.log(this.colleges);
           } else {
-            alert(res.response);
+            //alert(res.response);
+            this.alertService.confirm('Error', res.response)
           }
         });
     } else {
-      this.tittle = this.faculty.faculty_name;
+      this.title = this.faculty.faculty_name;
         // LISTAR ESCUELAS DE FACULTAD
         this.httpService.get('/Colleges?id=' + this.faculty.faculty_id).subscribe((res: any) => {
+          this.showLoadder = false;
           if (res.status === 200) {
             this.colleges = res.colleges;
             console.log(this.colleges);
           } else {
-            alert(res.response);
+            //alert(res.response);
+            this.alertService.confirm('Error', res.response)
           }
         });
     }
@@ -82,7 +90,8 @@ export class CollegesComponent implements OnInit {
         console.log(res.response);
         this.colleges.splice(this.colleges.indexOf(college), 1);
       } else {
-        alert(res.response);
+        //alert(res.response);
+        this.alertService.confirm('Error', res.response)
       }
     });
   }

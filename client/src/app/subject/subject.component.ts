@@ -7,6 +7,7 @@ import { TypeSubject } from '../models/type_subjet';
 import { Department } from '../models/department';
 import { College } from '../models/college';
 import * as $ from 'jquery';
+import { AlertService } from '../service/alert/alert.service';
 
 @Component({
   selector: 'app-subject',
@@ -64,7 +65,8 @@ export class SubjectComponent implements OnInit {
   colleges: College[];
   read = false;
 
-  constructor(public dialogRef: MatDialogRef<SubjectComponent>, private httpService: HttpService, private filesService: FilesService) {
+  constructor(public dialogRef: MatDialogRef<SubjectComponent>, private httpService: HttpService, private filesService: FilesService,
+    private alertService: AlertService) {
     if (this.dialogRef._containerInstance._config.data !== undefined) {
       if (Object.keys(this.dialogRef._containerInstance._config.data).length === 2) {
           this.subjects = this.dialogRef._containerInstance._config.data.subjects;
@@ -105,15 +107,19 @@ export class SubjectComponent implements OnInit {
       this.subject.code_consecutive = parseInt(this.subject.subject_code.split(this.type_subject_selected.type_subject_code)[1], 10);
     }
     console.log(this.subject);
-    alert (this.subject.subject_code);
+    //alert (this.subject.subject_code);
+    // this.alertService.confirm('', this.subject.subject_code);
     this.httpService.post(this.subject, '/Subjects').subscribe((res: any) => {
         if (res.status === 200) {
+          this.alertService.confirm(' ', 'Materia creada');
+          this.onClose(this.subject);
           console.log(res);
           this.subject.subject_id = res.subject_id;
           console.log(this.files);
           this.uploadFile();
         } else {
-          alert(res.response);
+          //alert(res.response);
+          this.alertService.confirm('Error', res.response);
         }
     });
   }
@@ -127,10 +133,12 @@ export class SubjectComponent implements OnInit {
     this.filesService.postFile(this.formData, `/Files?subject_id=${this.subject.subject_id}&faculty_code=${this.college_selected.faculty_code}&college_code=${this.college_selected.college_code}&department_code=${this.department_selected.department_code}`)
                               .subscribe((response: any) => {
       if (response.status === 200) {
+        this.alertService.confirm('', 'Materia editada');
         this.onClose(this.subject);
         console.log(response);
       } else {
-        alert(response.response);
+        //alert(response.response);
+        this.alertService.confirm('Error', response.response);
       }
   });
   }
@@ -146,7 +154,8 @@ export class SubjectComponent implements OnInit {
         this.colleges = res.colleges;
         console.log(this.colleges);
       } else {
-        alert(res.response);
+        //alert(res.response);
+        this.alertService.confirm('', res.response);
       }
     });
     // LISTAR DEPARTAMENTOS
@@ -155,7 +164,8 @@ export class SubjectComponent implements OnInit {
         this.departments = res.departments;
         console.log(this.departments);
       } else {
-        alert(res.response);
+        //alert(res.response);
+        this.alertService.confirm('', res.response);
       }
     });
   }

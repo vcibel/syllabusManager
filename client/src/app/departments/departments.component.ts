@@ -2,25 +2,28 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { College } from './../models/college';
 import { Department } from './../models/department';
 import { HttpService } from '../service/http/http.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { DepartmentComponent } from '../department/department.component';
 import { UserService } from '../service/user/user.service';
+import { AlertService } from '../service/alert/alert.service';
 
 @Component({
   selector: 'app-departments',
   templateUrl: './departments.component.html',
-  styleUrls: ['./departments.component.scss']
+  styleUrls: ['./departments.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class DepartmentsComponent implements OnInit {
 
   departments: Department[];
-  tittle = '';
+  title = '';
   college: College;
   admin = false;
+  showLoadder: boolean = true;
 
   constructor(private dialog: MatDialog, private httpService: HttpService, private router: Router,
-              private activeRouter: ActivatedRoute, private userService: UserService) { }
+              private activeRouter: ActivatedRoute, private userService: UserService, private alertService: AlertService) { }
 
   goToSubjects(department) {
     this.router.navigate(['subjects'], {queryParams: {department: JSON.stringify(department)}});
@@ -53,10 +56,11 @@ export class DepartmentsComponent implements OnInit {
     });
     console.log(this.college);
     if (this.college === undefined) {
-      this.tittle = 'DEPARTAMENTOS';
+      this.title = 'Departamentos';
       // LISTAR DEPARTAMENTOS
     this.httpService.get('/Departments').subscribe((res: any) => {
       if (res.status === 200) {
+        this.showLoadder = false;
         this.departments = res.departments;
         console.log(this.departments);
       } else {
@@ -64,9 +68,10 @@ export class DepartmentsComponent implements OnInit {
       }
     });
     } else {
-      this.tittle = this.college.college_name;
+      this.title = this.college.college_name;
       // LISTAR DEPARTAMENTOS EN ESCUELA
       this.httpService.get('/Departments?id=' + this.college.college_id).subscribe((res: any) => {
+        this.showLoadder = false;
         if (res.status === 200) {
           this.departments = res.departments;
           console.log(this.departments);
@@ -80,10 +85,12 @@ export class DepartmentsComponent implements OnInit {
     deleteDepartment(department) {
       this.httpService.delete(department.department_id, '/Departments').subscribe((res: any) => {
         if (res.status === 200) {
+          this.alertService.confirm('', 'Departamento eliminado!')
           console.log(res.response);
           this.departments.splice(this.departments.indexOf(department), 1);
         } else {
-          alert(res.response);
+          //alert(res.response);
+          this.alertService.confirm('Error', res.response);
         }
       });
     }

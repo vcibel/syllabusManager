@@ -1,25 +1,49 @@
-<div class="container faculties" >
+<!-- <div class="container" > -->
     <mat-toolbar class="toolbar">
       <span>Facultades</span>
       <span class="example-spacer"></span>
-      <button mat-icon-button (click)="openFaculty()" *ngIf="admin">
+      <button mat-icon-button (click)="openFaculty()" matTooltip="Crear facultad"
+      matTooltipClass="example-tooltip-blue"
+      aria-label="Button that shows a red tooltip"
+      class="example-tooltip" *ngIf="admin">
         <mat-icon class="example-icon">add_box</mat-icon>
       </button>
     </mat-toolbar>
     <div class="faculties-created">
       <mat-list>
+        <mat-spinner style="margin: 0 auto; top: 150px;" color="accent" *ngIf="showLoadder" ></mat-spinner>
         <mat-list-item class="list-faculty" *ngFor="let faculty of faculties" >
-          <mat-card class="card-faculty" (click)="goToColleges(faculty)">
+          <!-- <mat-progress-spinner></mat-progress-spinner> -->
+          <mat-card *ngIf="!showLoadder" class="card-faculty">
             <mat-grid-list cols="10" rowHeight="100px">
               <mat-grid-tile [colspan]="4" [rowspan]="1">
-                <h5><strong>{{faculty.faculty_name}}</strong></h5>
+                <h5 
+                matTooltip="Ver escuelas"
+                matTooltipClass="example-tooltip-red"
+                aria-label="Button that shows a red tooltip"
+                class="example-tooltip"
+                (click)="goToColleges(faculty)"
+                ><strong>Facultad de {{faculty.faculty_name}}</strong></h5>
               </mat-grid-tile>
               <mat-grid-tile [colspan]="3" [rowspan]="1">
                 <h6>Código de la Facultad: {{faculty.faculty_code}}</h6>
               </mat-grid-tile>
               <mat-grid-tile [colspan]="3" [rowspan]="1">
-                <mat-icon mat-icon-button class="example-icon" (click)="deleteFaculty(faculty)" *ngIf="admin">delete</mat-icon>
-                <mat-icon mat-icon-button class="example-icon" (click)="openFaculty(faculty)" *ngIf="admin">create</mat-icon>
+                <button mat-button [matMenuTriggerFor]="menu" *ngIf="admin" class="btn-menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="deleteFaculty(faculty)">
+                    <mat-icon>delete</mat-icon>
+                    <span>Eliminar</span>
+                  </button>
+                  <button mat-menu-item (click)="openFaculty(faculty)">
+                    <mat-icon>create</mat-icon>
+                    <span>Editar</span>
+                  </button>
+                </mat-menu>
+                <!-- <mat-icon mat-icon-button class="example-icon" (click)="deleteFaculty(faculty)" *ngIf="admin">delete</mat-icon>
+                <mat-icon mat-icon-button class="example-icon" (click)="openFaculty(faculty)" *ngIf="admin">create</mat-icon> -->
               </mat-grid-tile>
             </mat-grid-list>
              <!-- <mat-card-content>
@@ -41,4 +65,4 @@
         </mat-list-item>
       </mat-list>
     </div>
-  </div>
+  <!-- </div> -->

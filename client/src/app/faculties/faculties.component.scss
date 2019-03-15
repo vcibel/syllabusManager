@@ -1,28 +1,18 @@
 
-
-.example-icon {
-    padding: 0 24px;
-}
-  
-.example-spacer {
-    flex: 1 1 auto;
-}
-
-.colleges-created {
-    top: 20px;
-    position: relative;
-}
-
 .card-faculty {
     width: 100%;
+    box-shadow: 0 2px 4px 1px rgba(0,0,0,0.3) !important;
+    border-radius: 0px;
 }
 
-mat-list-item.list-faculty.mat-list-item {
-    height: 150px;
+.faculties-created {
+    /* margin-top: 1px; */
+    /* padding: 60px; */
+    /* width: 86%; */
+    /* height: 23%; */
+    position: relative;
+    top: 60px;
+    /* left: 25px; */
 }
-
-mat-toolbar.toolbar.mat-toolbar.mat-toolbar-single-row {
-    background-color: #155193;
-    color: white;
-}
+  
 

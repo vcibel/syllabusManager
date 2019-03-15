@@ -120,10 +120,20 @@ mat-card.subject-card.mat-card {
   }
 
   mat-card.electivas.mat-card {
-    width: 99%;
-    height: 99%;
+    width: 100%;
+    // height: 99%;
     border: 1px solid;
     border-radius: 0px;
+}
+
+mat-grid-tile.mat-grid-tile.row-header {
+    border: 1px solid;
+    height: 61px !important;
+}
+
+mat-grid-tile.mat-grid-tile.row-item {
+    border: 1px solid;
+    height: calc(40px) !important;
 }
 
 mat-card.electiva.mat-card {
@@ -131,10 +141,26 @@ mat-card.electiva.mat-card {
     box-shadow: none;
     height: 40px;
     width: 100%;
-    /* margin: 0px; */
     right: 0px;
+    /* top: 102px; */
+    padding: 31px;
+    margin: 0px;
     position: absolute;
-    border: 1px solid;
+    /* border: 1px solid; */
+    text-transform: uppercase;
+    // border-radius: 0px;
+    // box-shadow: none;
+    // height: 40px;
+    // width: 100%;
+    // /* margin: 0px; */
+    // right: 0px;
+    // position: absolute;
+    // border: 1px solid;
+    // text-transform: uppercase;
+}
+
+.example-list {
+    margin: -1px;
 }
 
 mat-grid-list.electivas-table.mat-grid-list {
@@ -149,9 +175,9 @@ mat-grid-list.electivas-table.mat-grid-list {
 }
 
 mat-card.name-subject.mat-card {
-    margin: -92px !important;
-    font-size: 10px !important;
-    width: 110px;
+    margin: -28px !important;
+    font-size: 9px !important;
+    width: 140px;
     text-align: center;
 }
 
@@ -187,3 +213,47 @@ mat-grid-list.search.mat-grid-list {
     top: -1%;
 }
 
+.term-container::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.term{
+    float: left;
+    width: 10%;
+    padding: 10px;
+}
+
+// .example-list{
+//     background-color: red;
+// }
+
+.example-box2.cdk-drag.ng-star-inserted {
+    height: 124px;
+    padding: 20px;
+    height: 100%;
+}
+
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+button.mat-button.mat-primary.save {
+    position: relative;
+    left: 120px;
+}
+
+mat-toolbar.toolbar {
+    background-color: #155193;
+    color: white;
+}
+
+.save-pensum{
+    left: calc(((25% - 0.75px) + 35px) * 3) !important;
+    top: -8px !important;
+}

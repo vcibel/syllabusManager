@@ -17,6 +17,7 @@ import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS, MatDialogConfig, MatDialog } from '@angular/material';
 import { UserService } from '../service/user/user.service';
 import { SubjectComponent } from '../subject/subject.component';
+import { AlertService } from '../service/alert/alert.service';
 
 const moment = _rollupMoment || _moment;
 
@@ -98,7 +99,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 
   constructor(private router: Router, private activeRouter: ActivatedRoute, private httpService: HttpService,
-              private userService: UserService, private dialog: MatDialog) {}
+              private userService: UserService, private dialog: MatDialog, private alertService: AlertService) {}
 
    ngAfterViewInit() {
     this.jsPlumbInstance = jsPlumb.getInstance();
@@ -165,7 +166,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
     // let labelName;
     //   labelName = 'connection';
     const conn = this.jsPlumbInstance.connect({
-        connector: ['Flowchart', {stub: [10, 10], cornerRadius: 4, alwaysRespectStubs: true}],
+        connector: ['Flowchart', {stub: [9, 9], cornerRadius: 0, alwaysRespectStubs: true}],
         endpointStyle: {fill: 'transparent'},
         source: source,
         target: target,
@@ -239,10 +240,12 @@ export class PensumComponent implements OnInit, AfterViewInit {
       console.log(this.pensum);
       this.httpService.put(this.pensum, '/Pensum').subscribe((res: any) => {
         if (res.status === 200) {
+            this.alertService.confirm('', 'Guardado con exito!');
             console.log(res);
             this.edit = false;
         } else {
           console.log(res.message);
+          this.alertService.confirm('Error', res.message);
         }
       });
   }
@@ -253,9 +256,11 @@ export class PensumComponent implements OnInit, AfterViewInit {
     console.log(data);
     this.httpService.post(data, '/SubjectPensum').subscribe((res: any) => {
       if (res.status === 200) {
-          console.log(res);
+        this.alertService.confirm('', 'Pensum creado');
+        console.log(res);
       } else {
         console.log(res.message);
+        this.alertService.confirm('Error', 'Error!');
       }
     });
   }
@@ -266,8 +271,10 @@ export class PensumComponent implements OnInit, AfterViewInit {
     console.log(data);
     this.httpService.put(data, '/SubjectPensum').subscribe((res: any) => {
       if (res.status === 200) {
-          console.log(res);
+        this.alertService.confirm('', 'Pensum editado');
+        console.log(res);
       } else {
+        this.alertService.confirm('Error', 'Error!');
         console.log(res.message);
       }
       this.done.pop();
