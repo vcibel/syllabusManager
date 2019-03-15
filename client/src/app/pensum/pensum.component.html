@@ -16,7 +16,7 @@
         </mat-grid-tile>
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <mat-form-field class="example-form-field">
-            <input matInput type="text">
+            <input matInput type="text" [(ngModel)]="input" (keyup)="search(input)">
           </mat-form-field>
         </mat-grid-tile>
       </mat-grid-list>
@@ -25,11 +25,11 @@
         <h5 class="select">Seleccione</h5>
         <div
           cdkDropList
-          [cdkDropListData]="subjects"
+          [cdkDropListData]="searchResult"
           class="example-list"
           (cdkDropListDropped)="drop($event)">
           <div>
-            <div class="example-box" *ngFor="let item of subjects" cdkDrag>
+            <div class="example-box" *ngFor="let item of searchResult" cdkDrag>
               <mat-card class="subject-card" id="{{item.subject_id}}">
                 <mat-grid-list cols="4" rowHeight="15px">
                   <mat-grid-tile [colspan]="3" [rowspan]="1">
