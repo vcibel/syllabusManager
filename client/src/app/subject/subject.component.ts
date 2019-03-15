@@ -63,6 +63,7 @@ export class SubjectComponent implements OnInit {
   files: Set<File> = new Set ;
   formData: FormData = new FormData();
   colleges: College[];
+  read = false;
 
   constructor(public dialogRef: MatDialogRef<SubjectComponent>, private httpService: HttpService, private filesService: FilesService,
     private alertService: AlertService) {
@@ -72,6 +73,7 @@ export class SubjectComponent implements OnInit {
           this.typesSubject = this.dialogRef._containerInstance._config.data.typesSubject;
       } else {
           this.subject = this.dialogRef._containerInstance._config.data;
+          this.read = true;
       }
     }
     console.log(this.typesSubject, this.subjects);

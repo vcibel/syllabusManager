@@ -93,6 +93,8 @@ export class PensumComponent implements OnInit, AfterViewInit {
   new = true;
   edit = false;
   admin = false;
+  searchResult: Subject[];
+  input: String;
 
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 
@@ -200,8 +202,8 @@ export class PensumComponent implements OnInit, AfterViewInit {
                         event.previousIndex,
                         event.currentIndex);
       const arrayString = event.container.id.split('-');
-      const term = Number(arrayString[arrayString.length - 1]);
-      console.log(arrayString, arrayString[arrayString.length - 1])
+      const term = Number(arrayString[arrayString.length - 1]) + 1;
+      console.log(arrayString, arrayString[arrayString.length - 1]);
       this.done[term][event.currentIndex]['type_subject_pensum_id'] = 1;
       this.done[term][event.currentIndex]['term'] = term;
       this.done[term][event.currentIndex]['hour_restriction'] = 0;
@@ -330,6 +332,23 @@ export class PensumComponent implements OnInit, AfterViewInit {
     });
   }
 
+  search(input) {
+    this.searchResult = [];
+    console.log(input);
+    if (input !== '') {
+    this.subjects.filter((subject: Subject) => {
+          if (subject.subject_name.toLowerCase().indexOf(input.toLowerCase()) > -1) {
+            this.searchResult.push(subject);
+          } else if (subject.subject_code.toLowerCase().indexOf(input.toLowerCase()) > -1) {
+            this.searchResult.push(subject);
+          }
+        });
+    } else {
+      this.searchResult = this.subjects;
+    }
+    console.log(this.searchResult);
+  }
+
   drawRestrictions(done) {
     console.log(done);
     for (let i = 0; i < done[0].length; i++) {
@@ -353,6 +372,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
     console.log(this.pensum);
     this.getSubjectPensum().then((data: any) => {
       this.subjects = data;
+      this.searchResult = data;
       console.log(data);
       const $this = this;
       setTimeout(function() {$this.drawRestrictions($this.done); }, 2000);

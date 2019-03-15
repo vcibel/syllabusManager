@@ -56,6 +56,7 @@ export class PensumsComponent implements OnInit {
       if (res.status === 200) {
         this.alertService.confirm('', 'Pensum eliminado');
         console.log(res.response);
+        this.pensums.splice(this.pensums.indexOf(pensum), 1);
       } else {
         //alert(res.response);
         this.alertService.confirm('Error', res.response);

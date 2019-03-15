@@ -54,7 +54,8 @@ public class Login extends HttpServlet {
 			
 		JSONArray table = db.executeQuery(prop.getValue("query_getUser"),user_username, DigestUtils.sha512Hex(user_password));
         System.out.println(table.toString());
-        System.out.println(table.getJSONObject(0));
+        //
+        // System.out.println(table.getJSONObject(0));
 
         if(table.length() != 0) {
 					User user = new User(table.getJSONObject(0).getInt("user_id"), user_username, table.getJSONObject(0).getInt("type_user_id"));

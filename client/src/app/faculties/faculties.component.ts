@@ -63,6 +63,7 @@ export class FacultiesComponent implements OnInit {
       if (res.status === 200) {
         this.alertService.confirm('Eliminada!', 'Facultad eliminada')
         console.log(res.response);
+        this.faculties.splice(this.faculties.indexOf(faculty), 1);
       } else {
         alert(res.response);
         this.alertService.confirm('Error', res.response)

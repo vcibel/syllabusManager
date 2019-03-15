@@ -44,7 +44,14 @@ export class UsersComponent implements OnInit {
       this.showLoadder = false;
       if (res.status === 200) {
         this.users = res.users;
-        console.log(this.users);
+        console.log(this.users, this.userService.user);
+        const remove = this.users.findIndex((user) => {
+          console.log(user.user_id, this.userService.user.user_id);
+          return user.user_id === this.userService.user.user_id;
+        });
+        console.log(remove);
+        this.users.splice(remove, 1);
+        // this.users.splice(this.users.indexOf(this.userService.user), 1);
       } else {
         //alert(res.response);
         this.alertService.confirm('Error', res.response);
@@ -57,6 +64,7 @@ export class UsersComponent implements OnInit {
       if (res.status === 200) {
         this.alertService.confirm('', 'Usuario Eliminado');
         console.log(res.response);
+        this.users.splice(this.users.indexOf(user), 1);
       } else {
         //alert(res.response);
         this.alertService.confirm('Error', res.response);

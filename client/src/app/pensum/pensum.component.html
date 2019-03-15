@@ -8,7 +8,7 @@
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="goToHome()">Inicio</button>
         <!-- <button mat-menu-item (click)="save()">Guardar</button> -->
-        <button mat-menu-item (click)="edit=!edit">Editar</button>
+        <button mat-menu-item (click)="edit=!edit" *ngIf="admin">Editar</button>
         <button mat-menu-item (click)="togglePensumF()">Pensum</button>
         <button mat-menu-item (click)="togglePensumB()">Electivas</button>
       </mat-menu>
@@ -24,7 +24,7 @@
         </mat-grid-tile>
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <mat-form-field class="example-form-field" style="width: 130px;">
-            <input matInput type="text">
+            <input matInput type="text" [(ngModel)]="input" (keyup)="search(input)">
           </mat-form-field>
         </mat-grid-tile>
       </mat-grid-list>
@@ -33,11 +33,11 @@
         <h5 class="select">Seleccione</h5>
         <div
           cdkDropList
-          [cdkDropListData]="subjects"
+          [cdkDropListData]="searchResult"
           class="example-list"
           (cdkDropListDropped)="drop($event)">
           <div>
-            <div class="example-box" *ngFor="let item of subjects" cdkDrag>
+            <div class="example-box" *ngFor="let item of searchResult" cdkDrag>
               <mat-card class="subject-card" id="{{item.subject_id}}">
                 <mat-grid-list cols="4" rowHeight="15px">
                   <mat-grid-tile [colspan]="3" [rowspan]="1">
@@ -60,6 +60,7 @@
                 </mat-grid-list>
               </mat-card>
             </div>
+            <button mat-button color="primary" (click)="save()">Guardar</button>
           </div>
         </div>
       </div>
@@ -128,7 +129,7 @@
                 <span class="space"></span>
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="1" class="save-pensum">
-                <button mat-button color="primary" (click)="save()">Guardar</button>
+                <!--<button mat-button color="primary" (click)="save()">Guardar</button>-->
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="1">
                 Universidad Rafael Urdaneta
@@ -208,8 +209,6 @@
               <!-- </mat-grid-tile>
             </mat-grid-list> --></div>
           </mat-card>
-          <button mat-button color="primary" (click)="save()">Guardar</button>
-          <mat-card class="pensum-footer" id="card-pensum">Pensum footer</mat-card>
         </mat-card-content>
       </mat-card>
     </mat-drawer-content>

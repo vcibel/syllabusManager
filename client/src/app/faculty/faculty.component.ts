@@ -38,6 +38,7 @@ export class FacultyComponent implements OnInit {
 
   createFaculty() {
     console.log(this.faculty);
+    this.faculty.faculty_code = Number(this.faculty.faculty_code);
       this.httpService.post(this.faculty, '/Faculties').subscribe((res: any) => {
           if (res.status === 200) {
             this.alertService.confirm('', 'Facultad creada');
