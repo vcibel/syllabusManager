@@ -202,8 +202,8 @@ export class PensumComponent implements OnInit, AfterViewInit {
                         event.previousIndex,
                         event.currentIndex);
       const arrayString = event.container.id.split('-');
-      const term = Number(arrayString[arrayString.length - 1]);
-      console.log(arrayString, arrayString[arrayString.length - 1])
+      const term = Number(arrayString[arrayString.length - 1]) + 1;
+      console.log(arrayString, arrayString[arrayString.length - 1]);
       this.done[term][event.currentIndex]['type_subject_pensum_id'] = 1;
       this.done[term][event.currentIndex]['term'] = term;
       this.done[term][event.currentIndex]['hour_restriction'] = 0;
