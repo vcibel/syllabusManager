@@ -1,4 +1,4 @@
-import { MatDialogConfig, MatDialog } from '@angular/material';
+import { MatDialogConfig, MatDialog, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { Pensum } from './../models/pensum';
 import { HttpService } from './../service/http/http.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
@@ -19,8 +19,24 @@ export class PensumsComponent implements OnInit {
   admin = false;
   showLoadder: boolean = true;
 
+  message: string;
+  actionButtonLabel: string = '';
+  action: boolean = true;
+  setAutoHide: boolean = true;
+  autoHide: number = 2000;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+
   constructor(private router: Router, private dialog: MatDialog, private httpService: HttpService,
-              private userService: UserService, private alertService: AlertService) { }
+              private userService: UserService, private alertService: AlertService,  public snackBar: MatSnackBar) { }
+
+  open(message) {
+    let config = new MatSnackBarConfig();
+    config.verticalPosition = this.verticalPosition;
+    config.horizontalPosition = this.horizontalPosition;
+    config.duration = this.setAutoHide ? this.autoHide : 0;
+    this.snackBar.open(message, this.action ? this.actionButtonLabel : undefined, config);
+  }
 
   goToPensum(pensum) {
     this.router.navigate(['pensum'], {queryParams: {pensum: JSON.stringify(pensum)}});
@@ -54,7 +70,7 @@ export class PensumsComponent implements OnInit {
   deletePensum(pensum) {
     this.httpService.delete(pensum.pensum_id, '/Pensum').subscribe((res: any) => {
       if (res.status === 200) {
-        this.alertService.confirm('', 'Pensum eliminado');
+        this.open('Pensum eliminado!');
         console.log(res.response);
         this.pensums.splice(this.pensums.indexOf(pensum), 1);
       } else {

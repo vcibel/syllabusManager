@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { Faculty } from '../models/faculty';
 import { HttpService } from '../service/http/http.service';
 import { AlertService } from '../service/alert/alert.service';
@@ -18,10 +18,19 @@ export class FacultyComponent implements OnInit {
     faculty_created_at: '',
     faculty_updated_at: ''
   };
+
   new: boolean = true;
 
+  message: string;
+  actionButtonLabel: string = '';
+  action: boolean = true;
+  setAutoHide: boolean = true;
+  autoHide: number = 2000;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+
   constructor(public dialogRef: MatDialogRef<FacultyComponent>, private httpService: HttpService,
-              private alertService: AlertService) {
+              private alertService: AlertService, public snackBar: MatSnackBar) {
     if (this.dialogRef._containerInstance._config.data !== undefined) {
       this.faculty = this.dialogRef._containerInstance._config.data;
       this.new = false;
@@ -30,10 +39,12 @@ export class FacultyComponent implements OnInit {
     console.log(this.new);
   }
 
-  alertError() {
-    this.alertService.confirm('Error', 'Error!')
-    .then((confirmed) => console.log('User confirmed:', confirmed))
-    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+  open(message) {
+    let config = new MatSnackBarConfig();
+    config.verticalPosition = this.verticalPosition;
+    config.horizontalPosition = this.horizontalPosition;
+    config.duration = this.setAutoHide ? this.autoHide : 0;
+    this.snackBar.open(message, this.action ? this.actionButtonLabel : undefined, config);
   }
 
   createFaculty() {
@@ -41,7 +52,7 @@ export class FacultyComponent implements OnInit {
     this.faculty.faculty_code = Number(this.faculty.faculty_code);
       this.httpService.post(this.faculty, '/Faculties').subscribe((res: any) => {
           if (res.status === 200) {
-            this.alertService.confirm('', 'Facultad creada');
+            this.open('Facultad creada!');
             this.onClose(this.faculty);
             console.log(res);
             this.faculty = {
@@ -52,9 +63,7 @@ export class FacultyComponent implements OnInit {
               faculty_updated_at: ''
             };
           } else {
-            //alert(res.response);
             this.alertService.confirm('Error', res.response);
-            //this.alertService.confirm('Error', 'Ingrese los datos indicados');
           }
       });
   }
@@ -62,7 +71,7 @@ export class FacultyComponent implements OnInit {
   updateFaculty() {
     this.httpService.put(this.faculty, '/Faculties').subscribe((res: any) => {
       if (res.status === 200) {
-        this.alertService.confirm(' ', 'Facultad editada');
+        this.open('Facultad editada!');
         console.log(res.response);
         this.onClose(undefined);
         this.faculty = {
@@ -73,7 +82,6 @@ export class FacultyComponent implements OnInit {
               faculty_updated_at: ''
         };
       } else {
-        //alert(res.response);
         this.alertService.confirm('Error!', res.response);
       }
     });

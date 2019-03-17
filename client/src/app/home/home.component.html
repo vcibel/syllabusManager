@@ -104,7 +104,13 @@
                                   <mat-card class="list-card">
                                     <mat-list>
                                       <mat-list-item class="list-home" *ngFor="let subject of searchResult" (click)="openSubject(subject)">
-                                        {{subject.subject_name}}
+                                        <button #tooltip="matTooltip"
+                                          matTooltip="Ver materia"
+                                          matTooltipPosition="right"
+                                          matTooltipClass="example-tooltip-blue"
+                                          class="btn search-subject">
+                                          {{subject.subject_name}}
+                                        </button> 
                                       </mat-list-item>
                                     </mat-list>
                                   </mat-card>

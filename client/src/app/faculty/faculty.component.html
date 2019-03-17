@@ -16,8 +16,8 @@
       <mat-grid-tile [colspan]="7" [rowspan]="1"> 
         <label for="faculty-name">Nombre de la Facultad:</label>
         <mat-form-field class="select-career">
-          <input matInput #faculty minlength="5" maxlength="30" type="text" class="form-control faculty-name" [(ngModel)]="faculty.faculty_name" [ngModelOptions]="{standalone: true}" >
-          <mat-hint align="end">{{faculty.value.length}} / 30</mat-hint>
+          <input matInput #faculty minlength="5" maxlength="20" type="text" class="form-control faculty-name" [(ngModel)]="faculty.faculty_name" [ngModelOptions]="{standalone: true}" >
+          <mat-hint align="end">{{faculty.value.length}} / 20</mat-hint>
         </mat-form-field>
      <!-- <mat-form-field>
          <mat-label>Ej. Ingenieria de Computacion</mat-label> 

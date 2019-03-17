@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../service/http/http.service';
 import { College } from './../models/college';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { MatDialogConfig, MatDialog } from '@angular/material';
+import { MatDialogConfig, MatDialog, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { CollegeComponent } from '../college/college.component';
 import { UserService } from '../service/user/user.service';
 import { AlertService } from '../service/alert/alert.service';
@@ -21,10 +21,37 @@ export class CollegesComponent implements OnInit {
   title = '';
   admin = false;
   showLoadder: boolean = true;
+  Show: boolean = true;
+  isFaculty: boolean = false;
+  isCollege: boolean  = false;
+  isSubject: boolean  = false;
+  isDepartment: boolean  = false;
+  isUser: boolean  = false;
+  isPensum: boolean  = false;
   
+  message: string;
+  actionButtonLabel: string = '';
+  action: boolean = true;
+  setAutoHide: boolean = true;
+  autoHide: number = 2000;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
   constructor(private dialog: MatDialog, private httpService: HttpService, private router: Router,
-              private activeRouter: ActivatedRoute, private userService: UserService, private alertService: AlertService) { }
+              private activeRouter: ActivatedRoute, private userService: UserService, private alertService: AlertService,
+              public snackBar: MatSnackBar) { }
+
+  open(message) {
+    let config = new MatSnackBarConfig();
+    config.verticalPosition = this.verticalPosition;
+    config.horizontalPosition = this.horizontalPosition;
+    config.duration = this.setAutoHide ? this.autoHide : 0;
+    this.snackBar.open(message, this.action ? this.actionButtonLabel : undefined, config);
+  }
+
+  goToHome() {
+    this.router.navigateByUrl('/home');
+  }
 
   goToDepartments(college) {
     this.router.navigate(['departments'], {queryParams: {college: JSON.stringify(college)}});
@@ -89,11 +116,92 @@ export class CollegesComponent implements OnInit {
       if (res.status === 200) {
         console.log(res.response);
         this.colleges.splice(this.colleges.indexOf(college), 1);
+        this.open('Escuela Eliminada!')
       } else {
         //alert(res.response);
         this.alertService.confirm('Error', res.response)
       }
     });
   }
+
+  faculties(){
+    this.Show = false;
+    this.isCollege = false;
+    this.isSubject= false;
+    this.isDepartment= false;
+    this.isUser= false;
+    this.isPensum= false;
+    if (!this.isFaculty) {
+      this.isFaculty = true;
+    }
+  }
+
+  collegess() {
+    this.Show= false;
+    this.isFaculty= false;
+    this.isSubject= false;
+    this.isDepartment= false;
+    this.isUser= false;
+    this.isPensum= false;
+    if (!this.isCollege) {
+      this.isCollege = true;
+    }
+  }
+
+  subjects() {
+    this.Show= false;
+    this.isCollege = false;
+    this.isFaculty= false;
+    this.isDepartment= false;
+    this.isUser= false;
+    this.isPensum= false;
+    if (!this.isSubject) {
+      this.isSubject = true;
+    } 
+  }
+
+  departments() {
+    this.Show= false;
+    this.isCollege = false;
+    this.isFaculty= false;
+    this.isSubject= false;
+    this.isUser= false;
+    this.isPensum= false;
+    if (!this.isDepartment) {
+      this.isDepartment = true;
+    }
+  }
+
+  users() {
+    this.Show= false;
+    this.isCollege = false;
+    this.isFaculty= false;
+    this.isDepartment= false;
+    this.isSubject= false;
+    this.isPensum= false;
+    if (!this.isUser) {
+      this.isUser = true;
+    }
+  }
+
+  pensum() {
+    this.Show= false;
+    this.isCollege = false;
+    this.isFaculty= false;
+    this.isDepartment= false;
+    this.isUser= false;
+    this.isSubject= false;
+    if (!this.isPensum) {
+      this.isPensum = true;
+    } 
+  }
+
+  logout() {
+    this.httpService.get('/Logout').subscribe((res: any) => {
+      this.router.navigateByUrl('/');
+      this.open('Sesión cerrada!');
+    });
+  }
+ 
 
 }

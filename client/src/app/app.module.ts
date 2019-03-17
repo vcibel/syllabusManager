@@ -3,7 +3,7 @@ import { FilesService } from './service/files/files.service';
 import { MatSidenavModule, MatListModule, MatButtonModule, MatCheckboxModule,
   MatInputModule, MatIconModule, MatCardModule, MatDividerModule,
   MatGridListModule, MatMenuModule, MatExpansionModule, MatSelectModule, MatDialogModule, 
-  MatFormFieldModule, MatToolbarModule, MatDatepicker, MatDatepickerModule, MatTooltipModule, MatProgressSpinnerModule} from '@angular/material';
+  MatFormFieldModule, MatToolbarModule, MatDatepicker, MatDatepickerModule, MatTooltipModule, MatProgressSpinnerModule, MatSnackBarModule} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -36,6 +36,7 @@ import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { AlertsModule } from 'angular-alert-module';
 import { AlertComponent } from './alert/alert.component';
 import { AlertService } from './service/alert/alert.service';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { AlertService } from './service/alert/alert.service';
     CreatePensumComponent,
     PensumsComponent,
     TermComponent,
-    AlertComponent
+    AlertComponent,
+    MenuComponent
   ],
   imports: [
     HttpClientModule,
@@ -85,6 +87,7 @@ import { AlertService } from './service/alert/alert.service';
     DragDropModule,
     MatDatepickerModule,
     MatTooltipModule,
+    MatSnackBarModule,
     MatProgressSpinnerModule,
     MatProgressSpinnerModule,
     AlertsModule.forRoot(),

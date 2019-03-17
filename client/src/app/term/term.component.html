@@ -9,19 +9,19 @@
             <mat-grid-list cols="4" rowHeight="15px">
               <mat-grid-tile [colspan]="3" [rowspan]="1">
                 <mat-card class="code-subject">
-                  <span id="{{item.subject_id}}">{{item.subject_code}}</span>
+                  <span class="subject-code" id="{{item.subject_id}}">{{item.subject_code}}</span>
                 </mat-card>
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="1">
                 <mat-card class="hc-subject">
-                  <span id="{{item.subject_id}}">{{item.subject_hc}}</span>
+                  <span class="subject-hc" id="{{item.subject_id}}">{{item.subject_hc}}</span>
                 </mat-card>
               </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="2" rowHeight="20px">
               <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-card class="name-subject">
-                      <span id="{{item.subject_id}}">{{item.subject_name}}</span>
+                      <span class="subject-name" id="{{item.subject_id}}">{{item.subject_name}}</span>
                     </mat-card>
                 </mat-grid-tile>
             </mat-grid-list>

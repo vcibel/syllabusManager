@@ -38,6 +38,8 @@ mat-card.name-subject.mat-card {
     width: 110px;
     text-align: center;
     text-transform: uppercase;
+    padding: 10px;
+    cursor: pointer;
 }
 
 .pensum-footer#card-pensum {
@@ -122,9 +124,9 @@ mat-card.hc-subject.mat-card {
     font-size: 12px;
 }
 
-// .example-list{
-//     background-color: red;
-// }
+.example-list{
+    background-color: rgba(250, 246, 246, 0.5);
+}
 
 // .term::after{
 //     content: "";

@@ -1,4 +1,22 @@
-<!-- <div class="container departments" > -->
+<div class="component-container">
+<app-menu class="menu" *ngIf="college" 
+(faculty)="faculties()" (college)="collegess()" (subject)="subjects()" 
+(department)="department()" (user)="users()" (pensum)="pensum()"
+[ngStyle]="{'visibility': isDepartment ? 'hidden' : (!isDepartment ? 'visible' : null)}"
+></app-menu>
+<div class="contanier2" *ngIf="!Show" style="position: relative; left: 10%">
+    <app-colleges *ngIf="isCollege"></app-colleges> 
+    <app-faculties *ngIf="isFaculty" ></app-faculties>
+    <app-subjects *ngIf="isSubject"></app-subjects>
+    <app-departments *ngIf="isDepartment"></app-departments>
+    <app-users *ngIf="isUser"></app-users>
+    <app-pensums *ngIf="isPensum"></app-pensums>
+</div>
+<div *ngIf="college" class="header" style="left: 120px;top: 30px;"><h2 class="title">Universidad Rafael Urdaneta</h2></div>
+<div class="container2" *ngIf="Show"
+  [ngStyle]="{'width': college ? '75%' : (!college ? '100%' : null), 'left': college ? '26%' : (!college ? '0%' : null),
+  'top': college ? '90px' : (!college ? '0px' : null)
+}"> 
     <mat-toolbar color="primary" class="toolbar">
       <span>{{title}}</span>
       <span class="example-spacer"></span>
@@ -62,4 +80,5 @@
         </mat-list-item>
       </mat-list>
     </div>
-  <!-- </div> -->
+  </div>
+</div>
