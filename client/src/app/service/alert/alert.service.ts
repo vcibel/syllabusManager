@@ -15,6 +15,7 @@ export class AlertService {
     btnOkText: string = 'OK',
     btnCancelText: string = 'Cancel',
     dialogSize: 'sm'|'lg' = 'sm'): Promise<boolean> {
+    this.modalService.dismissAll(AlertComponent);
     const modalRef = this.modalService.open(AlertComponent, { size: dialogSize });
     modalRef.componentInstance.title = title;
     modalRef.componentInstance.message = message;

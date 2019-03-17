@@ -7,7 +7,7 @@ import { HttpService } from '../service/http/http.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pensum } from '../models/pensum';
-import { MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogConfig, MatSnackBarConfig, MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition, MatSnackBar } from '@angular/material';
 import { AlertService } from '../service/alert/alert.service';
 
 
@@ -49,17 +49,33 @@ export class HomeComponent implements OnInit {
   input: String;
   typesSubject;
 
-  constructor(private router: Router, private httpService: HttpService, private dialog: MatDialog,
-               private alertService: AlertService) { }
+  message: string;
+  actionButtonLabel: string = '';
+  action: boolean = true;
+  setAutoHide: boolean = true;
+  autoHide: number = 2000;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
-    menu: Section[] = [
-      { name: 'College'},
-      { name: 'Subject'},
-      { name: 'Deparment'},
-      { name: 'Faculties'},
-      { name: 'Pensum'},
-      { name: 'Register'},
-    ];
+  constructor(private router: Router, private httpService: HttpService, private dialog: MatDialog,
+               private alertService: AlertService, public snackBar: MatSnackBar) { }
+  
+  open(message) {
+    let config = new MatSnackBarConfig();
+    config.verticalPosition = this.verticalPosition;
+    config.horizontalPosition = this.horizontalPosition;
+    config.duration = this.setAutoHide ? this.autoHide : 0;
+    this.snackBar.open(message, this.action ? this.actionButtonLabel : undefined, config);
+  }
+
+    // menu: Section[] = [
+    //   { name: 'College'},
+    //   { name: 'Subject'},
+    //   { name: 'Deparment'},
+    //   { name: 'Faculties'},
+    //   { name: 'Pensum'},
+    //   { name: 'Register'},
+    // ];
 
   ngOnInit() {
     // LISTAR FACULTADES
@@ -129,7 +145,7 @@ export class HomeComponent implements OnInit {
   logout() {
     this.httpService.get('/Logout').subscribe((res: any) => {
         this.router.navigateByUrl('/');
-        this.alertService.confirm(' ', 'Sesión cerrada');
+        this.open('Sesión cerrada!');
     });
   }
 

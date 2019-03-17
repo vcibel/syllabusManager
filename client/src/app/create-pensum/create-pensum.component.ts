@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { College } from './../models/college';
 import { HttpService } from './../service/http/http.service';
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MatSnackBarConfig, MatSnackBar, MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition } from '@angular/material';
 import { Pensum } from '../models/pensum';
 import { AlertService } from '../service/alert/alert.service';
 
@@ -21,13 +21,30 @@ export class CreatePensumComponent implements OnInit {
     faculty_name: '',
     pensum_date: null,
   };
+
   colleges: College[];
 
+  message: string;
+  actionButtonLabel: string = '';
+  action: boolean = true;
+  setAutoHide: boolean = true;
+  autoHide: number = 2000;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+
   constructor(private router: Router, private httpService: HttpService, public dialogRef: MatDialogRef<CreatePensumComponent>,
-              private alertService: AlertService) { }
+              private alertService: AlertService, public snackBar: MatSnackBar) { }
 
   onClose() {
     this.dialogRef.close();
+  }
+
+  open(message) {
+    let config = new MatSnackBarConfig();
+    config.verticalPosition = this.verticalPosition;
+    config.horizontalPosition = this.horizontalPosition;
+    config.duration = this.setAutoHide ? this.autoHide : 0;
+    this.snackBar.open(message, this.action ? this.actionButtonLabel : undefined, config);
   }
 
   ngOnInit() {
@@ -37,7 +54,8 @@ export class CreatePensumComponent implements OnInit {
         this.colleges = res.colleges;
         console.log(this.colleges);
       } else {
-        alert(res.response);
+        //alert(res.response);
+        this.alertService.confirm('Error', res.response)
       }
     });
   }
@@ -46,14 +64,14 @@ export class CreatePensumComponent implements OnInit {
     console.log(this.pensum);
     this.httpService.post(this.pensum, '/Pensum').subscribe((res: any) => {
       if (res.status === 200) {
-          this.alertService.confirm(' ', 'Pensum creado')
+          this.open('Pensum creado!')
           console.log(res);
           this.onClose();
           this.pensum.pensum_id = res.pensum_id;
           this.router.navigate(['pensum'], {queryParams: {pensum: this.pensum}});
       } else {
         //console.log(res.message);
-        this.alertService.confirm('Error', 'Seleccione un escuela')
+        this.alertService.confirm('Error', 'Seleccione un escuela');
       }
     });
   }

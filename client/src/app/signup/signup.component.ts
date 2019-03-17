@@ -1,7 +1,7 @@
 import { HttpService } from '../service/http/http.service';
 import { User } from '../models/user';
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MatSnackBarConfig, MatSnackBar, MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition } from '@angular/material';
 import { AlertService } from '../service/alert/alert.service';
 
 @Component({
@@ -21,10 +21,20 @@ export class SignupComponent implements OnInit {
     type_user_id: null,
     user_created_at: '',
 };
+
 new: boolean = true;
 
+message: string;
+actionButtonLabel: string = '';
+action: boolean = true;
+setAutoHide: boolean = true;
+autoHide: number = 2000;
+horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+
+
   constructor(private httpService: HttpService, public dialogRef: MatDialogRef<SignupComponent>,
-              private alertService: AlertService) {
+              private alertService: AlertService, public snackBar: MatSnackBar) {
     if (this.dialogRef._containerInstance._config.data !== undefined) {
       this.user = this.dialogRef._containerInstance._config.data;
       this.new = false;
@@ -33,13 +43,21 @@ new: boolean = true;
     console.log(this.new);
   }
 
+  open(message) {
+    let config = new MatSnackBarConfig();
+    config.verticalPosition = this.verticalPosition;
+    config.horizontalPosition = this.horizontalPosition;
+    config.duration = this.setAutoHide ? this.autoHide : 0;
+    this.snackBar.open(message, this.action ? this.actionButtonLabel : undefined, config);
+  }
+
   ngOnInit() {
   }
 
   signUp() {
       this.httpService.post(this.user, '/Users').subscribe((res: any) => {
         if (res.status === 200) {
-            this.alertService.confirm('', 'Usuario creado');
+            this.open('Usuario creado!');
             console.log(res);
             this.onClose(this.user);
             this.user = {
@@ -55,7 +73,7 @@ new: boolean = true;
             //this.alertService.confirm('', res.response);
         } else {
           console.log(res.message);
-          this.alertService.confirm('Error', res.message)
+          this.alertService.confirm('Error!', res.message)
         }
       });
     }
@@ -63,7 +81,7 @@ new: boolean = true;
     updateUser() {
       this.httpService.put(this.user, '/Users').subscribe((res: any) => {
         if (res.status === 200) {
-          this.alertService.confirm('', 'Usario editado');
+          this.open('Usario editado!');
           console.log(res.response);
           this.onClose(undefined);
           this.user = {
@@ -77,7 +95,7 @@ new: boolean = true;
         };
         } else {
           //alert(res.response);
-          this.alertService.confirm('', res.response);
+          this.alertService.confirm('Error!', res.response);
         }
       });
     }

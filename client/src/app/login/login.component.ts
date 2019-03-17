@@ -4,6 +4,7 @@ import { User } from './../models/user';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertService } from '../service/alert/alert.service';
+import { MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -21,23 +22,27 @@ export class LoginComponent implements OnInit {
     user_password: '',
     type_user_id: null,
     user_created_at: '',
-};
+  };
+
+  message: string;
+  actionButtonLabel: string = '';
+  action: boolean = true;
+  setAutoHide: boolean = true;
+  autoHide: number = 2000;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
   constructor(private router: Router, private httpService: HttpService, private userService: UserService,
-              private alertService: AlertService) {
+              private alertService: AlertService, public snackBar: MatSnackBar) {
 
   }
 
-  alertError() {
-    this.alertService.confirm('Error', 'Error! Usuario o Contraseña Invalida')
-    .then((confirmed) => console.log('User confirmed:', confirmed))
-    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
-  }
-
-  alert() {
-    this.alertService.confirm('Bienvenido', 'Usted ha iniciado sesión')
-    .then((confirmed) => console.log('User confirmed:', confirmed))
-    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+  open(message) {
+    let config = new MatSnackBarConfig();
+    config.verticalPosition = this.verticalPosition;
+    config.horizontalPosition = this.horizontalPosition;
+    config.duration = this.setAutoHide ? this.autoHide : 0;
+    this.snackBar.open(message, this.action ? this.actionButtonLabel : undefined, config);
   }
 
   ngOnInit() {
@@ -49,15 +54,12 @@ export class LoginComponent implements OnInit {
           console.log(res);
           this.userService.user = res.user;
           console.log(this.userService.user);
-          // this.router.navigate(['home'], {queryParams: {type_user: res.type_user_id}});
           console.log('logged in')
           this.router.navigateByUrl('/home');
-          this.alert();
+          this.open('Bienvenido!');
       } else {
         console.log(res.response);
         console.log('error');
-        // this.alerts.setMessage('Error! wrong password','error');
-      //  this.alertError();
       this.alertService.confirm('Error', res.response);
       }
     });

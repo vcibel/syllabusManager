@@ -14,17 +14,13 @@ import * as  _moment from 'moment';
 import { default as _rollupMoment} from 'moment';
 import { FormControl } from '@angular/forms';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
-import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS, MatDialogConfig, MatDialog } from '@angular/material';
+import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS, MatDialogConfig, MatDialog, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { UserService } from '../service/user/user.service';
 import { SubjectComponent } from '../subject/subject.component';
 import { AlertService } from '../service/alert/alert.service';
 
 const moment = _rollupMoment || _moment;
 
-//const moment =  _moment;
-
-// See the Moment.js docs for the meaning of these formats:
-// https://momentjs.com/docs/#/displaying/format/
 export const MY_FORMATS = {
   parse: {
     dateInput: 'MMMM YYYY',
@@ -35,16 +31,6 @@ export const MY_FORMATS = {
     monthYearA11yLabel: 'MMMM YYYY',
   },
 };
-
-// parse: {
-//   dateInput: 'MM/YYYY',
-// },
-// display: {
-//   dateInput: 'MM/YYYY',
-//   monthYearLabel: 'MMM YYYY',
-//   dateA11yLabel: 'LL',
-//   monthYearA11yLabel: 'MMMM YYYY',
-// },
 
 export interface Section {
   hc: number;
@@ -77,6 +63,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
   isFront: boolean  = true;
   isBack: boolean  = false;
   Show: boolean = false;
+  showLoadder: boolean = true;
 
   subjects: Subject[];
   typesSubjectPensum;
@@ -98,12 +85,29 @@ export class PensumComponent implements OnInit, AfterViewInit {
 
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 
+  message: string;
+  actionButtonLabel: string = '';
+  action: boolean = true;
+  setAutoHide: boolean = true;
+  autoHide: number = 2000;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+
   constructor(private router: Router, private activeRouter: ActivatedRoute, private httpService: HttpService,
-              private userService: UserService, private dialog: MatDialog, private alertService: AlertService) {}
+              private userService: UserService, private dialog: MatDialog, private alertService: AlertService,
+              public snackBar: MatSnackBar) {}
 
    ngAfterViewInit() {
     this.jsPlumbInstance = jsPlumb.getInstance();
    }
+
+   open(message) {
+    let config = new MatSnackBarConfig();
+    config.verticalPosition = this.verticalPosition;
+    config.horizontalPosition = this.horizontalPosition;
+    config.duration = this.setAutoHide ? this.autoHide : 0;
+    this.snackBar.open(message, this.action ? this.actionButtonLabel : undefined, config);
+  }
 
    togglePensumF() {
     this.isBack = false;
@@ -233,14 +237,14 @@ export class PensumComponent implements OnInit, AfterViewInit {
 
   save() {
       if (this.new) {
-          this.createPensum();
+        this.createPensum();
       } else {
-          this.updatePensum();
+        this.updatePensum();
       }
       console.log(this.pensum);
       this.httpService.put(this.pensum, '/Pensum').subscribe((res: any) => {
         if (res.status === 200) {
-            this.alertService.confirm('', 'Guardado con exito!');
+            this.open('Guardado con exito!');
             console.log(res);
             this.edit = false;
         } else {
@@ -256,11 +260,11 @@ export class PensumComponent implements OnInit, AfterViewInit {
     console.log(data);
     this.httpService.post(data, '/SubjectPensum').subscribe((res: any) => {
       if (res.status === 200) {
-        this.alertService.confirm('', 'Pensum creado');
+        this.open('Pensum creado!');
         console.log(res);
       } else {
         console.log(res.message);
-        this.alertService.confirm('Error', 'Error!');
+        this.alertService.confirm('Error', res.message);
       }
     });
   }
@@ -271,10 +275,10 @@ export class PensumComponent implements OnInit, AfterViewInit {
     console.log(data);
     this.httpService.put(data, '/SubjectPensum').subscribe((res: any) => {
       if (res.status === 200) {
-        this.alertService.confirm('', 'Pensum editado');
+        this.open('Pensum editado!');
         console.log(res);
       } else {
-        this.alertService.confirm('Error', 'Error!');
+        this.alertService.confirm('Error', 'error');
         console.log(res.message);
       }
       this.done.pop();
@@ -367,10 +371,12 @@ export class PensumComponent implements OnInit, AfterViewInit {
     console.log(this.activeRouter.queryParams);
     this.activeRouter.queryParams.subscribe(params => {
       console.log(params);
-        this.pensum = JSON.parse(params['pensum']);
+      //this.showLoadder = false;
+      this.pensum = JSON.parse(params['pensum']);
     });
     console.log(this.pensum);
     this.getSubjectPensum().then((data: any) => {
+      this.showLoadder = false;
       this.subjects = data;
       this.searchResult = data;
       console.log(data);

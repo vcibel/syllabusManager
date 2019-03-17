@@ -1,0 +1,39 @@
+.btn-home {
+    /* background-color: #e84f33; */
+    color: #f44336;
+    /* width: 105px; */
+    /* left: -16px; */
+    /* top: -4px; */
+    /* position: relative; */
+}
+
+// img.img-sidenav {
+//     height: 160px;
+//     margin: 16px;
+//     top: -5px;
+//     position: absolute;
+// }
+
+img.img-sidenav {
+    margin: 16px;
+    height: 160px;
+    width: 230px !important;
+    top: -5px;
+    position: absolute;
+}
+
+mat-card.mat-card.side-card{
+    height: 657px;
+    margin: -10px;
+    border-radius: 0px;
+}
+
+.component-container {
+    overflow-x: hidden;
+}
+
+mat-card.img.mat-card {
+    box-shadow: none;
+    padding: 0px;
+    height: 162px;
+}

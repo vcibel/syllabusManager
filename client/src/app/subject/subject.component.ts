@@ -1,6 +1,6 @@
 import { FilesService } from './../service/files/files.service';
 import { Component, OnInit, ViewChildren } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MatSnackBarConfig, MatSnackBar, MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition } from '@angular/material';
 import { HttpService } from '../service/http/http.service';
 import { Subject } from '../models/subject';
 import { TypeSubject } from '../models/type_subjet';
@@ -65,8 +65,16 @@ export class SubjectComponent implements OnInit {
   colleges: College[];
   read = false;
 
+  message: string;
+  actionButtonLabel: string = '';
+  action: boolean = true;
+  setAutoHide: boolean = true;
+  autoHide: number = 2000;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+
   constructor(public dialogRef: MatDialogRef<SubjectComponent>, private httpService: HttpService, private filesService: FilesService,
-    private alertService: AlertService) {
+    private alertService: AlertService, public snackBar: MatSnackBar) {
     if (this.dialogRef._containerInstance._config.data !== undefined) {
       if (Object.keys(this.dialogRef._containerInstance._config.data).length === 2) {
           this.subjects = this.dialogRef._containerInstance._config.data.subjects;
@@ -77,6 +85,14 @@ export class SubjectComponent implements OnInit {
       }
     }
     console.log(this.typesSubject, this.subjects);
+  }
+
+  open(message) {
+    let config = new MatSnackBarConfig();
+    config.verticalPosition = this.verticalPosition;
+    config.horizontalPosition = this.horizontalPosition;
+    config.duration = this.setAutoHide ? this.autoHide : 0;
+    this.snackBar.open(message, this.action ? this.actionButtonLabel : undefined, config);
   }
 
   createSubject() {
@@ -111,7 +127,7 @@ export class SubjectComponent implements OnInit {
     // this.alertService.confirm('', this.subject.subject_code);
     this.httpService.post(this.subject, '/Subjects').subscribe((res: any) => {
         if (res.status === 200) {
-          this.alertService.confirm(' ', 'Materia creada');
+          this.open('Materia creada!');
           this.onClose(this.subject);
           console.log(res);
           this.subject.subject_id = res.subject_id;
@@ -119,7 +135,7 @@ export class SubjectComponent implements OnInit {
           this.uploadFile();
         } else {
           //alert(res.response);
-          this.alertService.confirm('Error', res.response);
+          this.alertService.confirm('Error!', res.response);
         }
     });
   }
@@ -133,12 +149,12 @@ export class SubjectComponent implements OnInit {
     this.filesService.postFile(this.formData, `/Files?subject_id=${this.subject.subject_id}&faculty_code=${this.college_selected.faculty_code}&college_code=${this.college_selected.college_code}&department_code=${this.department_selected.department_code}`)
                               .subscribe((response: any) => {
       if (response.status === 200) {
-        this.alertService.confirm('', 'Materia editada');
+        this.open('Materia editada!');
         this.onClose(this.subject);
         console.log(response);
       } else {
         //alert(response.response);
-        this.alertService.confirm('Error', response.response);
+        this.alertService.confirm('Error!', response.response);
       }
   });
   }
@@ -155,7 +171,7 @@ export class SubjectComponent implements OnInit {
         console.log(this.colleges);
       } else {
         //alert(res.response);
-        this.alertService.confirm('', res.response);
+        this.alertService.confirm('Error!', res.response);
       }
     });
     // LISTAR DEPARTAMENTOS
@@ -165,7 +181,7 @@ export class SubjectComponent implements OnInit {
         console.log(this.departments);
       } else {
         //alert(res.response);
-        this.alertService.confirm('', res.response);
+        this.alertService.confirm('Error!', res.response);
       }
     });
   }
