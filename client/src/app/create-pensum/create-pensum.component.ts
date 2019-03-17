@@ -22,6 +22,7 @@ export class CreatePensumComponent implements OnInit {
     pensum_date: null,
   };
   colleges: College[];
+  collegeSelected;
 
   constructor(private router: Router, private httpService: HttpService, public dialogRef: MatDialogRef<CreatePensumComponent>,
               private alertService: AlertService) { }
@@ -42,18 +43,33 @@ export class CreatePensumComponent implements OnInit {
     });
   }
 
+  setCollege(college_id) {
+    console.log(college_id);
+    const collegeIndex = this.colleges.findIndex((college) => {
+      console.log(college.college_id, college_id);
+      return college.college_id === Number(college_id);
+    });
+    console.log(collegeIndex);
+    this.pensum.faculty_id = this.colleges[collegeIndex].faculty_id;
+    this.pensum.college_name = this.colleges[collegeIndex].college_name;
+    this.pensum.faculty_name = this.colleges[collegeIndex].faculty_name;
+    this.pensum.pensum_date = '',
+    console.log(this.pensum);
+  }
+
   createPensum() {
     console.log(this.pensum);
     this.httpService.post(this.pensum, '/Pensum').subscribe((res: any) => {
       if (res.status === 200) {
-          this.alertService.confirm(' ', 'Pensum creado')
-          console.log(res);
-          this.onClose();
-          this.pensum.pensum_id = res.pensum_id;
-          this.router.navigate(['pensum'], {queryParams: {pensum: this.pensum}});
+        console.log(res);
+        this.pensum.pensum_id = res.pensum_id;
+        this.onClose();
+        console.log(this.pensum);
+        this.router.navigate(['pensum'], {queryParams: {pensum: JSON.stringify(this.pensum)}});
+        this.alertService.confirm(' ', 'Pensum creado');
       } else {
-        //console.log(res.message);
-        this.alertService.confirm('Error', 'Seleccione un escuela')
+        // console.log(res.message);
+        this.alertService.confirm('Error', 'Seleccione un escuela');
       }
     });
   }

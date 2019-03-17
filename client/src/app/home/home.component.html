@@ -142,7 +142,7 @@
                                   <mat-form-field class="select-faculty">
                                     <mat-select>
                                         <mat-option></mat-option>
-                                        <mat-option *ngFor="let pensum of pensums" [value]=pensum.pensum_id>{{pensum.pensum_date}}</mat-option>
+                                        <mat-option *ngFor="let pensum of pensums" [value]=pensum.pensum_id (click)="getPensumSubjects(pensum)">{{pensum.pensum_date}}</mat-option>
                                     </mat-select>
                                   </mat-form-field>
                                 </mat-grid-tile>

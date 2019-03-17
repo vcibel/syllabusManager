@@ -6,9 +6,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { jsPlumb } from 'jsplumb';
-//import { FormControl } from '@angular/forms';
-//import { MomentDateAdapter } from '@angular/material-moment-adapter';
-//import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
 import * as  _moment from 'moment';
 import { default as _rollupMoment} from 'moment';
@@ -21,10 +18,6 @@ import { AlertService } from '../service/alert/alert.service';
 
 const moment = _rollupMoment || _moment;
 
-//const moment =  _moment;
-
-// See the Moment.js docs for the meaning of these formats:
-// https://momentjs.com/docs/#/displaying/format/
 export const MY_FORMATS = {
   parse: {
     dateInput: 'MMMM YYYY',
@@ -35,16 +28,6 @@ export const MY_FORMATS = {
     monthYearA11yLabel: 'MMMM YYYY',
   },
 };
-
-// parse: {
-//   dateInput: 'MM/YYYY',
-// },
-// display: {
-//   dateInput: 'MM/YYYY',
-//   monthYearLabel: 'MMM YYYY',
-//   dateA11yLabel: 'LL',
-//   monthYearA11yLabel: 'MMMM YYYY',
-// },
 
 export interface Section {
   hc: number;
@@ -369,6 +352,9 @@ export class PensumComponent implements OnInit, AfterViewInit {
       console.log(params);
         this.pensum = JSON.parse(params['pensum']);
     });
+    if (this.pensum.pensum_date === undefined) {
+      this.pensum.pensum_date = '';
+    }
     console.log(this.pensum);
     this.getSubjectPensum().then((data: any) => {
       this.subjects = data;
