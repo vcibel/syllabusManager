@@ -7,7 +7,7 @@ import { HttpService } from '../service/http/http.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pensum } from '../models/pensum';
-import { MatDialog, MatDialogConfig, MatSnackBarConfig, MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition, MatSnackBar } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 import { AlertService } from '../service/alert/alert.service';
 
 
@@ -24,16 +24,6 @@ export interface Section {
 export class HomeComponent implements OnInit {
 
   panelOpenState = false;
-  isRegister: boolean  = false;
-  isCollege: boolean  = false;
-  isFaculty: boolean  = false;
-  isSubject: boolean  = false;
-  isHome: boolean = false;
-  isDepartment: boolean  = false;
-  isUser: boolean  = false;
-  isPensum: boolean  = false;
-  Show: boolean = true;
-  showLoadder: boolean = true;
 
   showCollege: boolean = true;
   closeResult: string;
@@ -49,34 +39,9 @@ export class HomeComponent implements OnInit {
   input: String;
   typesSubject;
 
-  message: string;
-  actionButtonLabel: string = '';
-  action: boolean = true;
-  setAutoHide: boolean = true;
-  autoHide: number = 2000;
-  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-
   constructor(private router: Router, private httpService: HttpService, private dialog: MatDialog,
-               private alertService: AlertService, public snackBar: MatSnackBar) { }
+               private alertService: AlertService) { }
   
-  open(message) {
-    let config = new MatSnackBarConfig();
-    config.verticalPosition = this.verticalPosition;
-    config.horizontalPosition = this.horizontalPosition;
-    config.duration = this.setAutoHide ? this.autoHide : 0;
-    this.snackBar.open(message, this.action ? this.actionButtonLabel : undefined, config);
-  }
-
-    // menu: Section[] = [
-    //   { name: 'College'},
-    //   { name: 'Subject'},
-    //   { name: 'Deparment'},
-    //   { name: 'Faculties'},
-    //   { name: 'Pensum'},
-    //   { name: 'Register'},
-    // ];
-
   ngOnInit() {
     // LISTAR FACULTADES
     this.httpService.get('/Faculties').subscribe((res: any) => {
@@ -142,13 +107,6 @@ export class HomeComponent implements OnInit {
 
   }
 
-  logout() {
-    this.httpService.get('/Logout').subscribe((res: any) => {
-        this.router.navigateByUrl('/');
-        this.open('Sesión cerrada!');
-    });
-  }
-
   openSubject(subject) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -210,97 +168,6 @@ export class HomeComponent implements OnInit {
         console.log(res.response);
       }
     });
-  }
-
-  toggleColleges() {
-    this.Show= false;
-    this.isFaculty= false;
-    this.isRegister = false;
-    this.isSubject= false;
-    this.isDepartment= false;
-    this.isUser= false;
-    this.isPensum= false;
-    if (!this.isCollege) {
-      this.isCollege = true;
-    }
-  }
-
-  toggleFaculties() {
-    this.Show= false;
-    this.isCollege = false;
-    this.isRegister = false;
-    this.isSubject= false;
-    this.isDepartment= false;
-    this.isUser= false;
-    this.isPensum= false;
-    if (!this.isFaculty) {
-      this.isFaculty = true;
-    } 
-  }
-
-  toggleSubjects() {
-    this.Show= false;
-    this.isCollege = false;
-    this.isRegister = false;
-    this.isFaculty= false;
-    this.isDepartment= false;
-    this.isUser= false;
-    this.isPensum= false;
-    if (!this.isSubject) {
-      this.isSubject = true;
-    } 
-  }
-
-  toggleDepartments() {
-    this.Show= false;
-    this.isCollege = false;
-    this.isRegister = false;
-    this.isFaculty= false;
-    this.isSubject= false;
-    this.isUser= false;
-    this.isPensum= false;
-    if (!this.isDepartment) {
-      this.isDepartment = true;
-    }
-  }
-
-  toggleUser() {
-    this.Show= false;
-    this.isCollege = false;
-    this.isRegister = false;
-    this.isFaculty= false;
-    this.isDepartment= false;
-    this.isSubject= false;
-    this.isPensum= false;
-    if (!this.isUser) {
-      this.isUser = true;
-    }
-  }
-
-  togglepPensum() {
-    this.Show= false;
-    this.isCollege = false;
-    this.isRegister = false;
-    this.isFaculty= false;
-    this.isDepartment= false;
-    this.isUser= false;
-    this.isSubject= false;
-    if (!this.isPensum) {
-      this.isPensum = true;
-    } 
-  }
-
-  togglepHome() {
-    this.isCollege = false;
-    this.isRegister = false;
-    this.isFaculty= false;
-    this.isDepartment= false;
-    this.isUser= false;
-    this.isSubject= false;
-    this.isPensum = false;
-    if (!this.Show) {
-      this.Show = true;
-    } 
   }
 
 }

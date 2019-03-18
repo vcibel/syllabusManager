@@ -1,4 +1,3 @@
-import { SubjectPensum } from './../models/subject_pensum';
 import { Pensum } from './../models/pensum';
 import { HttpService } from './../service/http/http.service';
 import { Subject } from './../models/subject';
@@ -11,7 +10,7 @@ import * as  _moment from 'moment';
 import { default as _rollupMoment} from 'moment';
 import { FormControl } from '@angular/forms';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
-import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS, MatDialogConfig, MatDialog, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS, MatDialogConfig, MatDialog } from '@angular/material';
 import { UserService } from '../service/user/user.service';
 import { SubjectComponent } from '../subject/subject.component';
 import { AlertService } from '../service/alert/alert.service';
@@ -82,29 +81,12 @@ export class PensumComponent implements OnInit, AfterViewInit {
 
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 
-  message: string;
-  actionButtonLabel: string = '';
-  action: boolean = true;
-  setAutoHide: boolean = true;
-  autoHide: number = 2000;
-  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-
   constructor(private router: Router, private activeRouter: ActivatedRoute, private httpService: HttpService,
-              private userService: UserService, private dialog: MatDialog, private alertService: AlertService,
-              public snackBar: MatSnackBar) {}
+              private userService: UserService, private dialog: MatDialog, private alertService: AlertService) {}
 
    ngAfterViewInit() {
     this.jsPlumbInstance = jsPlumb.getInstance();
    }
-
-   open(message) {
-    let config = new MatSnackBarConfig();
-    config.verticalPosition = this.verticalPosition;
-    config.horizontalPosition = this.horizontalPosition;
-    config.duration = this.setAutoHide ? this.autoHide : 0;
-    this.snackBar.open(message, this.action ? this.actionButtonLabel : undefined, config);
-  }
 
    togglePensumF() {
     this.isBack = false;
@@ -241,7 +223,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
       console.log(this.pensum);
       this.httpService.put(this.pensum, '/Pensum').subscribe((res: any) => {
         if (res.status === 200) {
-            this.open('Guardado con exito!');
+            this.alertService.open('Guardado con exito!');
             console.log(res);
             this.edit = false;
         } else {
@@ -257,7 +239,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
     console.log(data);
     this.httpService.post(data, '/SubjectPensum').subscribe((res: any) => {
       if (res.status === 200) {
-        this.open('Pensum creado!');
+        this.alertService.open('Pensum creado!');
         console.log(res);
       } else {
         console.log(res.message);
@@ -272,7 +254,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
     console.log(data);
     this.httpService.put(data, '/SubjectPensum').subscribe((res: any) => {
       if (res.status === 200) {
-        this.open('Pensum editado!');
+        this.alertService.open('Pensum editado!');
         console.log(res);
       } else {
         this.alertService.confirm('Error', 'error');

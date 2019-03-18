@@ -1,5 +1,7 @@
+import { HttpService } from './../service/http/http.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertService } from '../service/alert/alert.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,45 +9,44 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-
-  @Output() faculty = new EventEmitter<any>();
-  @Output() college = new EventEmitter<any>();
-  @Output() subject = new EventEmitter<any>();
-  @Output() pensum = new EventEmitter<any>();
-  @Output() user = new EventEmitter<any>();
-  @Output() department = new EventEmitter<any>();
   
-  constructor(private router: Router) { }
+  constructor(private router: Router, private httpService: HttpService, private alertService: AlertService) { }
 
   goToHome() {
     this.router.navigateByUrl('/home');
   }
 
-  faculties(event){
-    this.faculty.emit(event);
+  goToFaculties() {
+    this.router.navigateByUrl('/faculties');
   }
 
-  colleges(event){
-    this.college.emit(event);
+  goToColleges() {
+    this.router.navigateByUrl('/colleges');
   }
 
-  users(event){
-    this.user.emit(event);
+  goToUsers() {
+    this.router.navigateByUrl('/users');
   }
 
-  pensums(event){
-    this.pensum.emit(event);
+  goToPensum() {
+    this.router.navigateByUrl('/pensums');
   }
 
-  subjects(event){
-    this.subject.emit(event);
+  goToSubjects() {
+    this.router.navigateByUrl('/subjects');
   }
 
-  departments(event){
-    this.department.emit(event);
+  goToDepartments() {
+    this.router.navigateByUrl('/departments');
   }
 
-  ngOnInit() {
+  logout() {
+    this.httpService.get('/Logout').subscribe((res: any) => {
+        this.router.navigateByUrl('/');
+        this.alertService.open('Sesión cerrada!');
+    });
   }
+
+  ngOnInit() {}
 
 }

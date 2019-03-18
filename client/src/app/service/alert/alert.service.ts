@@ -1,3 +1,4 @@
+import { MatSnackBar, MatSnackBarConfig, MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition } from '@angular/material';
 import { Injectable } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AlertComponent } from '../../alert/alert.component';
@@ -7,7 +8,14 @@ import { AlertComponent } from '../../alert/alert.component';
 })
 export class AlertService {
 
-  constructor(private modalService: NgbModal) { }
+  actionButtonLabel: string = '';
+  action: boolean = true;
+  setAutoHide: boolean = true;
+  autoHide: number = 2000;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+
+  constructor(private modalService: NgbModal, public snackBar: MatSnackBar) { }
 
   public confirm(
     title: string,
@@ -23,6 +31,14 @@ export class AlertService {
     // modalRef.componentInstance.btnCancelText = btnCancelText;
 
     return modalRef.result;
+  }
+
+  open(message) {
+    const config = new MatSnackBarConfig();
+    config.verticalPosition = this.verticalPosition;
+    config.horizontalPosition = this.horizontalPosition;
+    config.duration = this.setAutoHide ? this.autoHide : 0;
+    this.snackBar.open(message, this.action ? this.actionButtonLabel : undefined, config);
   }
 
 }

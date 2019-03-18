@@ -2,7 +2,7 @@ import { College } from './../models/college';
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../service/http/http.service';
 import { Department } from '../models/department';
-import { MatDialogRef, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 import { AlertService } from '../service/alert/alert.service';
 
 @Component({
@@ -24,16 +24,8 @@ department: Department = {
 new: boolean = true;
 colleges: College[];
 
-message: string;
-  actionButtonLabel: string = '';
-  action: boolean = true;
-  setAutoHide: boolean = true;
-  autoHide: number = 2000;
-  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-
   constructor(private httpService: HttpService, public dialogRef: MatDialogRef<DepartmentComponent>,
-              private alertService: AlertService, public snackBar: MatSnackBar) {
+              private alertService: AlertService) {
     if (this.dialogRef._containerInstance._config.data !== undefined) {
       this.department = this.dialogRef._containerInstance._config.data;
       this.new = false;
@@ -42,18 +34,10 @@ message: string;
     console.log(this.new);
   }
 
-  open(message) {
-    let config = new MatSnackBarConfig();
-    config.verticalPosition = this.verticalPosition;
-    config.horizontalPosition = this.horizontalPosition;
-    config.duration = this.setAutoHide ? this.autoHide : 0;
-    this.snackBar.open(message, this.action ? this.actionButtonLabel : undefined, config);
-  }
-
   createDepartment() {
     this.httpService.post(this.department, '/Departments').subscribe((res: any) => {
       if (res.status === 200) {
-        this.open('Departamento creado!');
+        this.alertService.open('Departamento creado!');
         this.onClose(this.department);
         console.log(res);
       } else {
@@ -69,7 +53,7 @@ message: string;
   updateDepartment() {
     this.httpService.put(this.department, '/Departments').subscribe((res: any) => {
       if (res.status === 200) {
-        this.open('Departamento editado!');
+        this.alertService.open('Departamento editado!');
         console.log(res.response);
         this.onClose(undefined);
         this.department = {

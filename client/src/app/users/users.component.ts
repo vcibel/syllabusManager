@@ -1,7 +1,7 @@
 import { HttpService } from '../service/http/http.service';
 import { User } from './../models/user';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 import { SignupComponent } from '../signup/signup.component';
 import { UserService } from '../service/user/user.service';
 import { AlertService } from '../service/alert/alert.service';
@@ -17,24 +17,8 @@ export class UsersComponent implements OnInit {
   admin = false;
   showLoadder: boolean = true;
 
-  message: string;
-  actionButtonLabel: string = '';
-  action: boolean = true;
-  setAutoHide: boolean = true;
-  autoHide: number = 2000;
-  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-
   constructor(private dialog: MatDialog, private httpService: HttpService, private userService: UserService,
-              private alertService: AlertService, public snackBar: MatSnackBar ) { }
-
-  open(message) {
-    let config = new MatSnackBarConfig();
-    config.verticalPosition = this.verticalPosition;
-    config.horizontalPosition = this.horizontalPosition;
-    config.duration = this.setAutoHide ? this.autoHide : 0;
-    this.snackBar.open(message, this.action ? this.actionButtonLabel : undefined, config);
-  }
+              private alertService: AlertService) { }
 
   openRegister(user) {
     const dialogConfig = new MatDialogConfig();
@@ -78,7 +62,7 @@ export class UsersComponent implements OnInit {
   deleteUser(user) {
     this.httpService.delete(user.user_id, '/Users').subscribe((res: any) => {
       if (res.status === 200) {
-        this.open('Usuario Eliminado!');
+        this.alertService.open('Usuario Eliminado!');
         console.log(res.response);
         this.users.splice(this.users.indexOf(user), 1);
       } else {

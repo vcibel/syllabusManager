@@ -1,23 +1,16 @@
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened>
+        <app-menu></app-menu>
+    </mat-drawer>
+    <mat-drawer-content>
+    <br>
+    <mat-grid-list cols="1" rowHeight="60px">
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <div class="header"><h2 class="title">Universidad Rafael Urdaneta</h2></div>        
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="50" rowHeight="400px">
 <div class="component-container">
-<app-menu class="menu" *ngIf="faculty" 
-(faculty)="faculties()" (college)="collegess()" (subject)="subjects()" 
-(department)="departments()" (user)="users()" (pensum)="pensum()"
-[ngStyle]="{'visibility': isCollege ? 'hidden' : (!isCollege ? 'visible' : null)}"
-></app-menu>
-<div class="contanier2" *ngIf="!Show" style="position: relative; left: 10%;">
-    <app-colleges *ngIf="isCollege"></app-colleges> 
-    <app-faculties *ngIf="isFaculty"></app-faculties>
-    <app-subjects *ngIf="isSubject"></app-subjects>
-    <app-departments *ngIf="isDepartment"></app-departments>
-    <app-users *ngIf="isUser"></app-users>
-    <app-pensums *ngIf="isPensum"></app-pensums>
-</div>
-<div *ngIf="faculty" class="header" style="left: 120px;top: 30px;"><h2 class="title">Universidad Rafael Urdaneta</h2></div>
-<div class="container2" *ngIf="Show" [ngStyle]="{'width': faculty ? '75%' : (!faculty ? '100%' : null), 'left': faculty ? '26%' : (!faculty ? '0%' : null),
-'top': faculty ? '90px' : (!faculty ? '0px' : null)
-}">
-  <!-- <app-faculties *ngIf="isFaculty || Show"></app-faculties> -->
-  <!-- 'left': faculty ? '10%' : (!faculty ? '0%' : null) -->
     <mat-toolbar color="primary" class="toolbar">
       <span>{{title}}</span>
       <span class="example-spacer"></span>
@@ -62,10 +55,12 @@
                     </mat-menu>
                   </mat-grid-tile>
                 </mat-grid-list>
-          </mat-card>
-        </mat-list-item>
-      </mat-list>
-    </div>
-  </div>
-</div>
+              </mat-card>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+    </mat-grid-list>
+  </mat-drawer-content>
+</mat-drawer-container>
 

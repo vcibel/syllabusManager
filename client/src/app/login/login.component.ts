@@ -4,7 +4,6 @@ import { User } from './../models/user';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertService } from '../service/alert/alert.service';
-import { MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -24,25 +23,9 @@ export class LoginComponent implements OnInit {
     user_created_at: '',
   };
 
-  message: string;
-  actionButtonLabel: string = '';
-  action: boolean = true;
-  setAutoHide: boolean = true;
-  autoHide: number = 2000;
-  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-
   constructor(private router: Router, private httpService: HttpService, private userService: UserService,
-              private alertService: AlertService, public snackBar: MatSnackBar) {
+              private alertService: AlertService) {
 
-  }
-
-  open(message) {
-    let config = new MatSnackBarConfig();
-    config.verticalPosition = this.verticalPosition;
-    config.horizontalPosition = this.horizontalPosition;
-    config.duration = this.setAutoHide ? this.autoHide : 0;
-    this.snackBar.open(message, this.action ? this.actionButtonLabel : undefined, config);
   }
 
   ngOnInit() {
@@ -56,7 +39,7 @@ export class LoginComponent implements OnInit {
           console.log(this.userService.user);
           console.log('logged in')
           this.router.navigateByUrl('/home');
-          this.open('Bienvenido!');
+          this.alertService.open('Bienvenido!');
       } else {
         console.log(res.response);
         console.log('error');
