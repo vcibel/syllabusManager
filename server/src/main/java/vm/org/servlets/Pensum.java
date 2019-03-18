@@ -67,12 +67,11 @@ public class Pensum extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
-		JSONObject reqBody = new JSONObject(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
 		DB db = new DB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		try {
-			Integer pensum_id = reqBody.getInt("pensum_id");
+			Integer pensum_id = Integer.parseInt(request.getParameter("id"));
 
 			db.executeUpdate(prop.getValue("query_deletePensum"), pensum_id);
 			json.put("status", 200).put("response", prop.getValue("mssg_pensumDeleted"));

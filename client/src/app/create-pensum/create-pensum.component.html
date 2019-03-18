@@ -24,7 +24,7 @@
         <mat-grid-tile [colspan]="6" [rowspan]="1"> 
             <label for="collage-type">Seleccionar Escuela:</label>
             <mat-form-field class="select-career">
-              <mat-select [(ngModel)]="pensum.college_id" [ngModelOptions]="{standalone: true}">
+              <mat-select [(ngModel)]="pensum.college_id" [ngModelOptions]="{standalone: true}" (selectionChange)= "setCollege($event.value)">
                 <mat-option *ngFor="let college of colleges" value={{college.college_id}}>{{college.college_name}}</mat-option>
               </mat-select>
             </mat-form-field>

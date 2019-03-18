@@ -143,8 +143,8 @@
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="3">
                 <mat-form-field>
-                  <input matInput [matDatepicker]="dp" style="text-transform: uppercase;" [value]="pensum.pensum_date" (dateInput)="setDate($event)">
-                  <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                  <input matInput [matDatepicker]="dp" style="text-transform: uppercase;" [value]="pensum.pensum_date" (dateInput)="setDate($event)" [disabled]="!edit">
+                  <mat-datepicker-toggle matSuffix [for]="dp" *ngIf="edit" ></mat-datepicker-toggle>
                   <mat-datepicker #dp></mat-datepicker>
                 </mat-form-field>
               </mat-grid-tile>
@@ -153,13 +153,13 @@
                 <!-- <button mat-button color="primary" class="save" (click)="save()">Guardar</button> -->
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="1">
-                Facultad de Ingenieria
+                Facultad de {{pensum.faculty_name}}
               </mat-grid-tile>
               <mat-grid-tile [colspan]="2" [rowspan]="1">
                 Apellido:___________________
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="1">
-                Escuela de Ingenieria de Computación
+                Escuela de {{pensum.college_name}}
               </mat-grid-tile>
               <mat-grid-tile [colspan]="2" [rowspan]="1">
                 C.I.:_______________________

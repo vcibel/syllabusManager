@@ -20,6 +20,7 @@ export class CollegeComponent implements OnInit {
     college_name: '',
     faculty_id: null,
     faculty_code: null,
+    faculty_name: '',
     college_created_at: '',
     college_updated_at: ''
   };
@@ -66,6 +67,7 @@ export class CollegeComponent implements OnInit {
             college_name: '',
             faculty_id: null,
             faculty_code: null,
+            faculty_name: '',
             college_created_at: '',
             college_updated_at: ''
           };
@@ -87,6 +89,7 @@ export class CollegeComponent implements OnInit {
           college_name: '',
           faculty_id: null,
           faculty_code: null,
+          faculty_name: '',
           college_created_at: '',
           college_updated_at: ''
         };

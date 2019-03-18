@@ -6,9 +6,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { jsPlumb } from 'jsplumb';
-//import { FormControl } from '@angular/forms';
-//import { MomentDateAdapter } from '@angular/material-moment-adapter';
-//import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
 import * as  _moment from 'moment';
 import { default as _rollupMoment} from 'moment';
@@ -374,6 +371,9 @@ export class PensumComponent implements OnInit, AfterViewInit {
       //this.showLoadder = false;
       this.pensum = JSON.parse(params['pensum']);
     });
+    if (this.pensum.pensum_date === undefined) {
+      this.pensum.pensum_date = '';
+    }
     console.log(this.pensum);
     this.getSubjectPensum().then((data: any) => {
       this.showLoadder = false;
