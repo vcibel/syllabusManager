@@ -1,7 +1,7 @@
 import { HttpService } from '../service/http/http.service';
 import { User } from '../models/user';
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef, MatSnackBarConfig, MatSnackBar, MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 import { AlertService } from '../service/alert/alert.service';
 
 @Component({
@@ -24,17 +24,8 @@ export class SignupComponent implements OnInit {
 
 new: boolean = true;
 
-message: string;
-actionButtonLabel: string = '';
-action: boolean = true;
-setAutoHide: boolean = true;
-autoHide: number = 2000;
-horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-
-
   constructor(private httpService: HttpService, public dialogRef: MatDialogRef<SignupComponent>,
-              private alertService: AlertService, public snackBar: MatSnackBar) {
+              private alertService: AlertService) {
     if (this.dialogRef._containerInstance._config.data !== undefined) {
       this.user = this.dialogRef._containerInstance._config.data;
       this.new = false;
@@ -43,21 +34,13 @@ verticalPosition: MatSnackBarVerticalPosition = 'bottom';
     console.log(this.new);
   }
 
-  open(message) {
-    let config = new MatSnackBarConfig();
-    config.verticalPosition = this.verticalPosition;
-    config.horizontalPosition = this.horizontalPosition;
-    config.duration = this.setAutoHide ? this.autoHide : 0;
-    this.snackBar.open(message, this.action ? this.actionButtonLabel : undefined, config);
-  }
-
   ngOnInit() {
   }
 
   signUp() {
       this.httpService.post(this.user, '/Users').subscribe((res: any) => {
         if (res.status === 200) {
-            this.open('Usuario creado!');
+            this.alertService.open('Usuario creado!');
             console.log(res);
             this.onClose(this.user);
             this.user = {
@@ -81,7 +64,7 @@ verticalPosition: MatSnackBarVerticalPosition = 'bottom';
     updateUser() {
       this.httpService.put(this.user, '/Users').subscribe((res: any) => {
         if (res.status === 200) {
-          this.open('Usario editado!');
+          this.alertService.open('Usario editado!');
           console.log(res.response);
           this.onClose(undefined);
           this.user = {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 import { Faculty } from '../models/faculty';
 import { HttpService } from '../service/http/http.service';
 import { AlertService } from '../service/alert/alert.service';
@@ -21,16 +21,8 @@ export class FacultyComponent implements OnInit {
 
   new: boolean = true;
 
-  message: string;
-  actionButtonLabel: string = '';
-  action: boolean = true;
-  setAutoHide: boolean = true;
-  autoHide: number = 2000;
-  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-
   constructor(public dialogRef: MatDialogRef<FacultyComponent>, private httpService: HttpService,
-              private alertService: AlertService, public snackBar: MatSnackBar) {
+              private alertService: AlertService) {
     if (this.dialogRef._containerInstance._config.data !== undefined) {
       this.faculty = this.dialogRef._containerInstance._config.data;
       this.new = false;
@@ -39,20 +31,12 @@ export class FacultyComponent implements OnInit {
     console.log(this.new);
   }
 
-  open(message) {
-    let config = new MatSnackBarConfig();
-    config.verticalPosition = this.verticalPosition;
-    config.horizontalPosition = this.horizontalPosition;
-    config.duration = this.setAutoHide ? this.autoHide : 0;
-    this.snackBar.open(message, this.action ? this.actionButtonLabel : undefined, config);
-  }
-
   createFaculty() {
     console.log(this.faculty);
     this.faculty.faculty_code = Number(this.faculty.faculty_code);
       this.httpService.post(this.faculty, '/Faculties').subscribe((res: any) => {
           if (res.status === 200) {
-            this.open('Facultad creada!');
+            this.alertService.open('Facultad creada!');
             this.onClose(this.faculty);
             console.log(res);
             this.faculty = {
@@ -71,7 +55,7 @@ export class FacultyComponent implements OnInit {
   updateFaculty() {
     this.httpService.put(this.faculty, '/Faculties').subscribe((res: any) => {
       if (res.status === 200) {
-        this.open('Facultad editada!');
+        this.alertService.open('Facultad editada!');
         console.log(res.response);
         this.onClose(undefined);
         this.faculty = {

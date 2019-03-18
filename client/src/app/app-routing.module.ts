@@ -1,3 +1,6 @@
+import { PensumsComponent } from './pensums/pensums.component';
+import { UsersComponent } from './users/users.component';
+import { FacultiesComponent } from './faculties/faculties.component';
 import { SubjectsComponent } from './subjects/subjects.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { NgModule } from '@angular/core';
@@ -13,9 +16,12 @@ const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'pensum', component: PensumComponent},
+  {path: 'pensums', component: PensumsComponent},
+  {path: 'faculties', component: FacultiesComponent},
   {path: 'colleges', component: CollegesComponent},
   {path: 'departments', component: DepartmentsComponent},
   {path: 'subjects', component: SubjectsComponent},
+  {path: 'users', component: UsersComponent},
 ];
 
 @NgModule({

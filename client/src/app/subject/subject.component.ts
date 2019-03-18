@@ -66,16 +66,8 @@ export class SubjectComponent implements OnInit {
   colleges: College[];
   read = false;
 
-  message: string;
-  actionButtonLabel: string = '';
-  action: boolean = true;
-  setAutoHide: boolean = true;
-  autoHide: number = 2000;
-  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-
   constructor(public dialogRef: MatDialogRef<SubjectComponent>, private httpService: HttpService, private filesService: FilesService,
-    private alertService: AlertService, public snackBar: MatSnackBar) {
+    private alertService: AlertService) {
     if (this.dialogRef._containerInstance._config.data !== undefined) {
       if (Object.keys(this.dialogRef._containerInstance._config.data).length === 2) {
           this.subjects = this.dialogRef._containerInstance._config.data.subjects;
@@ -86,14 +78,6 @@ export class SubjectComponent implements OnInit {
       }
     }
     console.log(this.typesSubject, this.subjects);
-  }
-
-  open(message) {
-    let config = new MatSnackBarConfig();
-    config.verticalPosition = this.verticalPosition;
-    config.horizontalPosition = this.horizontalPosition;
-    config.duration = this.setAutoHide ? this.autoHide : 0;
-    this.snackBar.open(message, this.action ? this.actionButtonLabel : undefined, config);
   }
 
   createSubject() {
@@ -128,7 +112,7 @@ export class SubjectComponent implements OnInit {
     // this.alertService.confirm('', this.subject.subject_code);
     this.httpService.post(this.subject, '/Subjects').subscribe((res: any) => {
         if (res.status === 200) {
-          this.open('Materia creada!');
+          this.alertService.open('Materia creada!');
           this.onClose(this.subject);
           console.log(res);
           this.subject.subject_id = res.subject_id;
@@ -150,7 +134,7 @@ export class SubjectComponent implements OnInit {
     this.filesService.postFile(this.formData, `/Files?subject_id=${this.subject.subject_id}&faculty_code=${this.college_selected.faculty_code}&college_code=${this.college_selected.college_code}&department_code=${this.department_selected.department_code}`)
                               .subscribe((response: any) => {
       if (response.status === 200) {
-        this.open('Materia editada!');
+        this.alertService.open('Materia editada!');
         this.onClose(this.subject);
         console.log(response);
       } else {

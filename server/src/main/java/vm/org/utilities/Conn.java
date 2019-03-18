@@ -8,15 +8,17 @@ public class Conn {
 	private static PropertiesReader prop = PropertiesReader.getInstance();
 	
 	public Connection getConn() {
-		try {
-			Class.forName(prop.getValue("dbDriver"));
-			con= DriverManager.getConnection(prop.getValue("dbUrl"),prop.getValue("dbUser"),prop.getValue("dbPassword"));
-			System.out.println("Successful Conexion");
-		}
-		catch(Exception e){
-			System.out.println(e);
-			System.out.println("Fail Connection");
-			e.getStackTrace();
+		if (con == null) {
+			try {
+				Class.forName(prop.getValue("dbDriver"));
+				con= DriverManager.getConnection(prop.getValue("dbUrl"),prop.getValue("dbUser"),prop.getValue("dbPassword"));
+				System.out.println("Successful Conexion");
+			}
+			catch(Exception e){
+				System.out.println(e);
+				System.out.println("Fail Connection");
+				e.getStackTrace();
+			}
 		}
 		return con;
 	}
