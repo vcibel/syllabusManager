@@ -95,9 +95,11 @@ export class SubjectComponent implements OnInit {
       this.college_selected = this.colleges.filter(function(college: College) {
                                       return college.college_code === parseInt(subject_code.slice(1, 2), 10);
                                     })[0];
+      this.checkIfUndefined(this.college_selected, `Escuela con código ${subject_code.slice(1, 2)} no existe`);
       this.department_selected = this.departments.filter(function(department: Department) {
                                       return department.department_code === parseInt(subject_code.slice(2, 3), 10);
                                     })[0];
+      this.checkIfUndefined(this.department_selected, `Departamento con código ${subject_code.slice(2, 3)} no existe`);
       console.log(this.department_selected, this.college_selected);
       this.subject.department_id = this.department_selected.department_id;
       this.type_subject_selected = this.typesSubject.filter(function(type_subject: TypeSubject) {
@@ -125,6 +127,12 @@ export class SubjectComponent implements OnInit {
     });
   }
 
+  checkIfUndefined(elem, message) {
+      if (elem === undefined) {
+        this.alertService.confirm('Error!', message);
+      }
+  }
+
   uploadFile () {
     this.files.forEach(file => {
       if (file != null) {
@@ -134,7 +142,7 @@ export class SubjectComponent implements OnInit {
     this.filesService.postFile(this.formData, `/Files?subject_id=${this.subject.subject_id}&faculty_code=${this.college_selected.faculty_code}&college_code=${this.college_selected.college_code}&department_code=${this.department_selected.department_code}`)
                               .subscribe((response: any) => {
       if (response.status === 200) {
-        this.alertService.open('Materia editada!');
+        this.alertService.open('Materia creada!');
         this.onClose(this.subject);
         console.log(response);
       } else {
@@ -193,6 +201,18 @@ export class SubjectComponent implements OnInit {
                                                         return subject.department_id === department_id;
                                                       });
     console.log(this.departmentSubjects);
+  }
+
+  getSyllabus(subject) {
+    this.filesService.getFile(`/Files?syllabus_url=${subject.syllabus_url}&syllabus_name=${subject.syllabus_name}`);
+    // .subscribe((res: any) => {
+    //  console.log(res);
+    //  if (res.status === 200) {
+        // console.log(res.response);
+    //  } else {
+    //    alert(res.response);
+    //  }
+    // });
   }
 
 }

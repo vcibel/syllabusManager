@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit {
   searchResult: Subject[] = [];
   collegeDepartments: Department[];
   facultyColleges: College[];
+  collegePensum: Pensum[];
   input: String;
   typesSubject;
 
@@ -154,6 +155,10 @@ export class HomeComponent implements OnInit {
       return department.college_id === college_selected.college_id;
     });
     console.log(this.collegeDepartments);
+    this.collegePensum = this.pensums.filter(function(pensum: Pensum) {
+      return pensum.college_id === college_selected.college_id;
+    });
+    console.log(this.collegePensum);
     this.searchResult = this.subjects.filter(function(subject: Subject) {
       return subject.college_id === college_selected.college_id;
     });

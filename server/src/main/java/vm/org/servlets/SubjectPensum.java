@@ -3,6 +3,7 @@ package vm.org.servlets;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import vm.org.DB;
+import vm.org.User;
 import vm.org.utilities.PropertiesReader;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.stream.Collectors;
@@ -26,7 +28,9 @@ public class SubjectPensum extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
-		DB db = new DB();
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		DB db = user.getDB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		Integer id = Integer.parseInt(request.getParameter("id"));
@@ -42,9 +46,12 @@ public class SubjectPensum extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
 		JSONObject reqBody = new JSONObject(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		DB db = user.getDB();
 
 		try {
-			json = createPensum(reqBody);
+			json = createPensum(reqBody, db);
 		}catch (Exception e) {
 			System.out.println("error");
 			System.out.println(e. getMessage());
@@ -61,7 +68,9 @@ public class SubjectPensum extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
 		JSONObject reqBody = new JSONObject(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
-		DB db = new DB();
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		DB db = user.getDB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 
 		try {
@@ -71,7 +80,7 @@ public class SubjectPensum extends HttpServlet {
 			db.executeUpdate(prop.getValue("query_deleteSubjectRestriction"), pensum_id);
 			System.out.println(prop.getValue("mssg_subjectPensumDeleted"));
 
-			json = createPensum(reqBody);
+			json = createPensum(reqBody, db);
 
 		}catch (Exception e) {
 			System.out.println("error");
@@ -85,9 +94,9 @@ public class SubjectPensum extends HttpServlet {
 		
 		}
 
-		JSONObject createPensum(JSONObject reqBody) {
+		JSONObject createPensum(JSONObject reqBody, DB database) {
 			JSONObject json = new JSONObject();
-			DB db = new DB();
+			DB db = database;
 			PropertiesReader prop = PropertiesReader.getInstance();
 			JSONArray array = reqBody.getJSONArray("data");
 			System.out.println(array);

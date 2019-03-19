@@ -9,6 +9,8 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 export class TermComponent implements OnInit {
 
   @Input() done;
+  @Input() edit;
+  @Input() term;
   @Output() clicked = new EventEmitter<any>();
   @Output() droped = new EventEmitter<any>();
 
@@ -18,6 +20,7 @@ export class TermComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<[]>) {
+    event['term'] = this.term;
       this.droped.emit(event);
   }
 

@@ -38,14 +38,12 @@ public class TypeUserFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;	
 		
 		HttpSession session = request.getSession();
-		
-		DB db = new DB();
+
 		User user = (User) session.getAttribute("user");
 		String requestURI = request.getRequestURI();
 		System.out.println(requestURI+" "+ session.isNew());
 		PropertiesReader pr = PropertiesReader.getInstance();
-		
-		Integer user_id = user.getId();
+
 		Integer type_user_id = user.getTypeUser();
 
 		if(request.getMethod().equalsIgnoreCase(method.GET.name())){

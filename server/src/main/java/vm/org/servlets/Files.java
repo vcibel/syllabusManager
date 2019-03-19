@@ -7,14 +7,12 @@ import java.util.Collection;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.*;
 
 import org.json.JSONObject;
 
 import vm.org.DB;
+import vm.org.User;
 import vm.org.utilities.PropertiesReader;
 
 @WebServlet(name = "Files",
@@ -40,7 +38,7 @@ public class Files extends HttpServlet {
 		System.out.println(syllabus_url);
 		System.out.println(syllabus_name);
 
-        OutputStream out = response.getOutputStream();
+        OutputStream out= response.getOutputStream();
         FileInputStream in = new FileInputStream(my_file);
         byte[] buffer = new byte[4096];
         int length;
@@ -49,7 +47,6 @@ public class Files extends HttpServlet {
         }
         in.close();
         out.flush();
-
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -58,7 +55,9 @@ public class Files extends HttpServlet {
 		Collection<Part> files = request.getParts();
 		InputStream filecontent = null;
 		OutputStream os = null;
-		DB db = new DB();
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		DB db = user.getDB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 		ArrayList<String> files_name= new ArrayList<String>();
 		

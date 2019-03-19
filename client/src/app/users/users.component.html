@@ -1,16 +1,16 @@
 <mat-drawer-container class="example-container">
-<mat-drawer mode="side" opened>
-  <app-menu></app-menu>
-</mat-drawer>
-<mat-drawer-content>
-    <br>
-    <mat-grid-list cols="1" rowHeight="60px">
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <div class="header"><h2 class="title">Universidad Rafael Urdaneta</h2></div>        
-        </mat-grid-tile>
-      </mat-grid-list>
-      <mat-grid-list cols="50" rowHeight="400px">
-          <div class="component-container">
+  <mat-drawer mode="side" opened>
+      <app-menu></app-menu>
+  </mat-drawer>
+  <mat-drawer-content>
+  <br>
+  <mat-grid-list cols="1" rowHeight="60px">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <div class="header"><h2 class="title">Universidad Rafael Urdaneta</h2></div>        
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="50" rowHeight="400px">
+    <div class="component-container">
   <mat-toolbar class="toolbar">
     <span>Usuarios</span>
     <span class="example-spacer"></span>
@@ -51,7 +51,7 @@
               </mat-menu>
               <!-- <mat-icon mat-icon-button class="example-icon" (click)="deleteUser(user)" *ngIf="admin">delete</mat-icon>
               <mat-icon mat-icon-button class="example-icon" (click)="openRegister(user)" *ngIf="admin">create</mat-icon> -->
-            </mat-grid-tile>   
+            </mat-grid-tile>
           </mat-grid-list>
         </mat-card>
       </mat-list-item>
