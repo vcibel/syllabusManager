@@ -58,7 +58,7 @@ public class Login extends HttpServlet {
         // System.out.println(table.getJSONObject(0));
 
         if(table.length() != 0) {
-					User user = new User(table.getJSONObject(0).getInt("user_id"), user_username, table.getJSONObject(0).getInt("type_user_id"));
+					User user = new User(table.getJSONObject(0).getInt("user_id"), user_username, table.getJSONObject(0).getInt("type_user_id"), db);
 					storeValue(user, session);
 					System.out.println(prop.getValue("mssg_loginSuccess"));
 					json.put("status", 200).put("response", prop.getValue("mssg_loginSuccess")).put("user", table.getJSONObject(0));

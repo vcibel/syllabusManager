@@ -18,7 +18,7 @@ import org.json.JSONObject;
 
 import vm.org.utilities.PropertiesReader;
 
-@WebFilter(servletNames= {"Login","Logout", "Users", "Subjects", "SubjectPensum", "Pensum", "Files", "Faculties", "Departments", "Colleges"})
+@WebFilter(servletNames= {"Login","Logout", "Users", "Subjects", "SubjectPensum", "Pensum", "Faculties", "Departments", "Colleges"})
 //@WebFilter(value={"/*"})
 public class SessionFilter implements Filter {
 

@@ -35,11 +35,11 @@
     <!-- <mat-grid-tile [colspan]="2" [rowspan]="1"> 
       <label for="college-name">Código de la Materia:</label>
   </mat-grid-tile> -->
-  <mat-grid-tile [colspan]="3" [rowspan]="1"> 
+  <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="disabled || read" > 
     <label for="college-name">Código de la Materia:</label>
     <mat-form-field class="select-career">
       <input matInput #subjectCode maxlength="6" [disabled]="!disabled || read" class="form-control college-name cod"  [(ngModel)]="subject.subject_code" [ngModelOptions]="{standalone: true}">
-      <mat-hint align="end">{{subjectCode.value.length}} / 6</mat-hint>
+      <mat-hint align="end" *ngIf="!read">{{subjectCode.value.length}} / 6</mat-hint>
     </mat-form-field>
     <!-- <mat-form-field class="select-career">
       <input [disabled]="!disabled" matInput type="text" class="form-control college-name cod"  placeholder="" [(ngModel)]="subject.subject_code" [ngModelOptions]="{standalone: true}">
@@ -48,7 +48,7 @@
     <!-- <mat-grid-tile [colspan]="2" [rowspan]="1"> 
       <label for="collage-type">Seleccione la escuela a la cual pertenece:</label>
     </mat-grid-tile> -->
-    <mat-grid-tile [colspan]="3" [rowspan]="1"> 
+    <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="!disabled && !read"> 
       <label for="collage-type">Escuela a la cual pertenece:</label>
       <mat-form-field class="select-career">
         <select [disabled]="disabled || read" matNativeControl required [(ngModel)]="college_selected" [ngModelOptions]="{standalone: true}" (change)="getCollegeDepartments(college_selected)">
@@ -59,7 +59,7 @@
     <!-- <mat-grid-tile [colspan]="2" [rowspan]="1"> 
       <label for="collage-type">Seleccione departamento al que pertenece:</label>
     </mat-grid-tile> -->
-    <mat-grid-tile [colspan]="3" [rowspan]="1"> 
+    <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="!disabled && !read"> 
       <label for="collage-type">Departamento al cual pertenece:</label>
       <mat-form-field class="select-career">
         <select [disabled]="disabled || read" matNativeControl required [(ngModel)]="department_selected" [ngModelOptions]="{standalone: true}">
@@ -70,7 +70,7 @@
     <!-- <mat-grid-tile [colspan]="2" [rowspan]="1"> 
       <label for="college-name">Tipo de materia:</label>
     </mat-grid-tile> -->
-    <mat-grid-tile [colspan]="3" [rowspan]="1"> 
+    <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="!disabled && !read"> 
       <label for="college-name">Tipo de materia:</label>
       <mat-form-field>
         <select [disabled]="disabled || read" matNativeControl required [(ngModel)]="type_subject_selected" [ngModelOptions]="{standalone: true}">
@@ -82,7 +82,7 @@
       <label for="number-terms">Hora Crédito de la materia:</label>
       <mat-form-field class="example-full-width">
         <input [disabled]="read" matInput #subjectHc maxlength="1" class="form-control cod" [(ngModel)]="subject.subject_hc" [ngModelOptions]="{standalone: true}">
-        <mat-hint align="end">{{subjectHc.value.length}} / 1</mat-hint>
+        <mat-hint align="end" *ngIf="!read">{{subjectHc.value.length}} / 1</mat-hint>
       </mat-form-field>
       <!-- <mat-form-field>
         <input matInput type="number" class="form-control cod" [(ngModel)]="subject.subject_hc" [ngModelOptions]="{standalone: true}">
@@ -95,7 +95,7 @@
     <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="!read"> 
       <input type="file" class="form-control input-file file" #file (change)="onFilesAdded(this)">
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="subject.syllabus_name"> 
+    <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="subject.syllabus_name" (click)="getSyllabus(subject)"> 
       {{subject.syllabus_name}}
     </mat-grid-tile>
   </mat-grid-list>

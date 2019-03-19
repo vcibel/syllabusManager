@@ -9,11 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import vm.org.DB;
+import vm.org.User;
 import vm.org.utilities.PropertiesReader;
 
 @WebServlet(
@@ -28,7 +30,9 @@ public class Departments extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
-		DB db = new DB();
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		DB db = user.getDB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 
 		JSONArray result;
@@ -49,7 +53,9 @@ public class Departments extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
 		JSONObject reqBody = new JSONObject(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
-		DB db = new DB();
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		DB db = user.getDB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		try {
@@ -79,7 +85,9 @@ public class Departments extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
-		DB db = new DB();
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		DB db = user.getDB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		try {
@@ -104,7 +112,9 @@ public class Departments extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
 		JSONObject reqBody = new JSONObject(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
-		DB db = new DB();
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		DB db = user.getDB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		try {

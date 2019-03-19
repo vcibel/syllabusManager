@@ -202,8 +202,8 @@
             <div class="term-container">
             <!-- <mat-grid-list cols="20" rowHeight="240px">
               <mat-grid-tile [colspan]="2" [rowspan]="2" *ngFor="let item of done.slice(1)" class="term" > -->
-                <div *ngFor="let item of done.slice(1)" class="term"> 
-                  <app-term [done]="item" (droped)="drop($event)" (clicked)="onClick($event, item)"></app-term>
+                <div *ngFor="let item of done.slice(1); let i=index" class="term"> 
+                  <app-term [done]="item" [edit]="edit" [term]="i+1" (droped)="drop($event)" (clicked)="onClick($event, item)"></app-term>
                  </div>
                  <!-- <div class="term">
                     <div

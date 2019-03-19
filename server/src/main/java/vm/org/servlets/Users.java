@@ -9,12 +9,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import vm.org.DB;
+import vm.org.User;
 import vm.org.utilities.PropertiesReader;
 
 @WebServlet(
@@ -31,7 +33,9 @@ public class Users extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
-		DB db = new DB();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        DB db = user.getDB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 
 		json.put("users", db.executeQuery(prop.getValue("query_getUsers"))).put("status", 200).put("response", prop.getValue("mssg_success"));
@@ -44,7 +48,9 @@ public class Users extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
 		JSONObject reqBody = new JSONObject(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
-		DB db = new DB();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        DB db = user.getDB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 		String user_name = reqBody.getString("user_name");
         String user_lastname = reqBody.getString("user_lastname");
@@ -78,7 +84,9 @@ public class Users extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
-		DB db = new DB();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        DB db = user.getDB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 
 		try {
@@ -103,7 +111,9 @@ public class Users extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
 		JSONObject reqBody = new JSONObject(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
-		DB db = new DB();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        DB db = user.getDB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 
 		try {

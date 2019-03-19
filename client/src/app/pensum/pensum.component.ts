@@ -175,7 +175,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
     this.router.navigateByUrl('/home');
   }
 
-  drop(event: CdkDragDrop<[]>) {
+  drop(event) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -185,7 +185,8 @@ export class PensumComponent implements OnInit, AfterViewInit {
                         event.previousIndex,
                         event.currentIndex);
       const arrayString = event.container.id.split('-');
-      const term = Number(arrayString[arrayString.length - 1]) + 1;
+      const term = event.term;
+      // Number(arrayString[arrayString.length - 1]) + 1;
       console.log(arrayString, arrayString[arrayString.length - 1]);
       this.done[term][event.currentIndex]['type_subject_pensum_id'] = 1;
       this.done[term][event.currentIndex]['term'] = term;

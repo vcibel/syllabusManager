@@ -101,10 +101,14 @@
                                 </mat-grid-tile>
                                 <mat-grid-tile class="grid" [colspan]="2" [rowspan]="1">
                                   <mat-form-field class="select-faculty">
-                                    <mat-select>
+                                    <mat-select *ngIf="!collegePensum" >
                                         <mat-option></mat-option>
-                                        <mat-option *ngFor="let pensum of pensums" [value]=pensum.pensum_id (click)="getPensumSubjects(pensum)">{{pensum.pensum_date}}</mat-option>
+                                        <mat-option *ngFor="let pensum of pensums" [value]=pensum.pensum_id (click)="getPensumSubjects(pensum)">{{pensum.college_name}}-{{pensum.pensum_date}}</mat-option>
                                     </mat-select>
+                                    <mat-select *ngIf="collegePensum" >
+                                      <mat-option></mat-option>
+                                      <mat-option *ngFor="let pensum of collegePensum" [value]=pensum.pensum_id (click)="getPensumSubjects(pensum)">{{pensum.pensum_date}}</mat-option>
+                                  </mat-select>
                                   </mat-form-field>
                                 </mat-grid-tile>
                               </mat-grid-list>

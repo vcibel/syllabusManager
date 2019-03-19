@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import vm.org.DB;
+import vm.org.User;
 import vm.org.utilities.PropertiesReader;
 
 @WebServlet(
@@ -28,7 +29,9 @@ public class Colleges extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
-		DB db = new DB();
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		DB db = user.getDB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 
 		JSONArray query;
@@ -49,7 +52,9 @@ public class Colleges extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
 		JSONObject reqBody = new JSONObject(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
-		DB db = new DB();
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		DB db = user.getDB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		try {
@@ -79,7 +84,9 @@ public class Colleges extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
-		DB db = new DB();
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		DB db = user.getDB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		try {
@@ -103,7 +110,9 @@ public class Colleges extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
 		JSONObject reqBody = new JSONObject(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
-		DB db = new DB();
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		DB db = user.getDB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 		
 		try {
