@@ -23,6 +23,9 @@ export class LoginComponent implements OnInit {
     user_created_at: '',
   };
 
+  showLoadder: boolean = false;
+  show: boolean = true;
+
   constructor(private router: Router, private httpService: HttpService, private userService: UserService,
               private alertService: AlertService) {
 
@@ -32,6 +35,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.show = false;
+    this.showLoadder = true;
     this.httpService.post(this.user, '/Login').subscribe((res: any) => {
       if (res.status === 200) {
           console.log(res);
@@ -44,6 +49,8 @@ export class LoginComponent implements OnInit {
         console.log(res.response);
         console.log('error');
       this.alertService.confirm('Error', res.response);
+      this.showLoadder = false;
+      this.show = true;
       }
     });
   }

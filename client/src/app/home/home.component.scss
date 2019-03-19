@@ -199,7 +199,9 @@ mat-drawer-container.example-container.mat-drawer-container {
 }
 label.label {
     position: relative;
-    left: -110px;
+    left: -100px;
+    color: black;
+    font-size: 1rem;
 }
 .grid{
     left: calc(((5% - 0.75px) + 1px) * 2) !important;
@@ -238,7 +240,8 @@ mat-toolbar.toolbar.mat-toolbar.mat-toolbar-single-row {
 }
 
 mat-list-item.list-home.mat-list-item.ng-star-inserted[_ngcontent-c9] {
-    height: 48px !important;
+    // height: 48px !important;
+    height: auto !important;
     cursor: pointer;
     margin: 4px;
     box-shadow: 1px 1px 2px 0px #f1ecec;
@@ -255,4 +258,8 @@ button.btn.search-subject {
     background-color: transparent !important;
     color: black !important;
     text-align: -webkit-left !important;
+}
+
+.mat-list-item-content {
+    color: black !important;
 }

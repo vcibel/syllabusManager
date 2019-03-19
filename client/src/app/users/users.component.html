@@ -1,7 +1,16 @@
-<!-- <div class="container users" > -->
+<mat-drawer-container class="example-container">
 <mat-drawer mode="side" opened>
   <app-menu></app-menu>
 </mat-drawer>
+<mat-drawer-content>
+    <br>
+    <mat-grid-list cols="1" rowHeight="60px">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <div class="header"><h2 class="title">Universidad Rafael Urdaneta</h2></div>        
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="50" rowHeight="400px">
+          <div class="component-container">
   <mat-toolbar class="toolbar">
     <span>Usuarios</span>
     <span class="example-spacer"></span>
@@ -44,21 +53,11 @@
               <mat-icon mat-icon-button class="example-icon" (click)="openRegister(user)" *ngIf="admin">create</mat-icon> -->
             </mat-grid-tile>   
           </mat-grid-list>
-          <!-- <mat-card-content>
-              <mat-grid-list cols="3" rowHeight="150px">
-                  <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    {{user.user_name}} 
-                    {{user.user_lastname}}
-                    {{user.user_username}}
-                  </mat-grid-tile>
-                </mat-grid-list>
-          </mat-card-content>
-          <mat-card-actions>
-            <mat-icon mat-icon-button class="example-icon" (click)="deleteUser(user)">delete</mat-icon>
-            <mat-icon mat-icon-button class="example-icon" (click)="openRegister(user)">create</mat-icon>
-          </mat-card-actions> -->
         </mat-card>
       </mat-list-item>
     </mat-list>
   </div>
-<!-- </div> -->
+</div>
+</mat-grid-list>
+</mat-drawer-content>
+</mat-drawer-container>

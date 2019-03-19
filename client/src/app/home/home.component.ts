@@ -24,7 +24,7 @@ export interface Section {
 export class HomeComponent implements OnInit {
 
   panelOpenState = false;
-
+  found: boolean = true;
   showCollege: boolean = true;
   closeResult: string;
 
@@ -117,36 +117,42 @@ export class HomeComponent implements OnInit {
   }
 
   search(input) {
-    this.searchResult = [];
     console.log(input);
     if (input !== '') {
-    this.subjects.filter((subject: Subject) => {
-          if (subject.subject_name.toLowerCase().indexOf(input.toLowerCase()) > -1) {
-            this.searchResult.push(subject);
-          } else if (subject.subject_code.toLowerCase().indexOf(input.toLowerCase()) > -1) {
-            this.searchResult.push(subject);
-          }
-        });
-      }
+      this.searchResult = [];
+      this.subjects.filter((subject: Subject) => {
+        if (subject.subject_name.toLowerCase().indexOf(input.toLowerCase()) > -1) {
+          this.searchResult.push(subject);
+        } else if (subject.subject_code.toLowerCase().indexOf(input.toLowerCase()) > -1) {
+          this.searchResult.push(subject);
+        }
+      });
+    }
+    if(this.searchResult.length == 0 ){
+      this.found = false;
+      console.log('Not found')
+    }else{
+      this.found = true;
+    }
     console.log(this.searchResult);
   }
 
   getFacultyColleges(faculty_selected) {
     console.log(faculty_selected);
     this.facultyColleges = this.colleges.filter(function(college: College) {
-                                                        return college.faculty_id === faculty_selected.faculty_id;
-                                                      });
+      return college.faculty_id === faculty_selected.faculty_id;
+    });
     console.log(this.facultyColleges);
     this.searchResult = this.subjects.filter(function(subject: Subject) {
-                                                        return subject.faculty_id === faculty_selected.faculty_id;
-                                                      });
+      return subject.faculty_id === faculty_selected.faculty_id;
+    });
   }
 
   getCollegeDepartments(college_selected) {
     console.log(college_selected);
     this.collegeDepartments = this.departments.filter(function(department: Department) {
-                                                        return department.college_id === college_selected.college_id;
-                                                      });
+      return department.college_id === college_selected.college_id;
+    });
     console.log(this.collegeDepartments);
     this.searchResult = this.subjects.filter(function(subject: Subject) {
       return subject.college_id === college_selected.college_id;

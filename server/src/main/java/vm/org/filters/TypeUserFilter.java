@@ -19,7 +19,7 @@ import vm.org.DB;
 import vm.org.User;
 import vm.org.utilities.PropertiesReader;
 
-@WebFilter(servletNames= {"Users", "Subjects", "SubjectPensum", "Pensum", "Files", "Faculties", "Departments", "Colleges"})
+@WebFilter(servletNames= {"Users", "Subjects", "SubjectPensum", "Pensum", "Faculties", "Departments", "Colleges"})
 		   //urlPatterns= "/boards.html*")
 
 public class TypeUserFilter implements Filter {
