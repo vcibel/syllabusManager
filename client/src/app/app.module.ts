@@ -5,7 +5,9 @@ import { MatSidenavModule, MatListModule, MatButtonModule, MatCheckboxModule,
   MatGridListModule, MatMenuModule, MatExpansionModule, MatSelectModule, MatDialogModule, 
   MatFormFieldModule, MatToolbarModule, MatDatepicker, MatDatepickerModule, MatTooltipModule, MatProgressSpinnerModule, MatSnackBarModule} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es-VE';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +39,8 @@ import { AlertsModule } from 'angular-alert-module';
 import { AlertComponent } from './alert/alert.component';
 import { AlertService } from './service/alert/alert.service';
 import { MenuComponent } from './menu/menu.component';
+
+registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [
@@ -94,11 +98,11 @@ import { MenuComponent } from './menu/menu.component';
     MDBBootstrapModule.forRoot(),
     NgbModule.forRoot(),
   ],
-  entryComponents: [ 
-    CollegeComponent, 
-    SubjectComponent, 
-    FacultyComponent, 
-    DepartmentComponent, 
+  entryComponents: [
+    CollegeComponent,
+    SubjectComponent,
+    FacultyComponent,
+    DepartmentComponent,
     SignupComponent,
     CreatePensumComponent,
     AlertComponent
@@ -106,7 +110,8 @@ import { MenuComponent } from './menu/menu.component';
   providers: [
     HttpService,
     FilesService,
-    AlertService
+    AlertService,
+    {provide: LOCALE_ID, useValue: 'es-VE'}
   ],
   bootstrap: [
     AppComponent,

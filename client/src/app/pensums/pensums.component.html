@@ -39,7 +39,7 @@
               <h6>Faculdtad: {{pensum.faculty_name}}</h6>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="2" [rowspan]="1">
-              <h6> Fecha: {{pensum.pensum_date}}</h6>
+              <h6> Fecha: {{pensum.pensum_date.substring(0,10) | date: 'MMMM yyyy'}}</h6>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="2" [rowspan]="1">
               <button mat-button [matMenuTriggerFor]="menu" *ngIf="admin" class="btn-menu">

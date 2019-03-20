@@ -114,6 +114,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
   }
 
   onClick(event) {
+    console.log(event);
     if (this.edit) {
     if (this.add) {
       if (this.source === '') {
@@ -133,7 +134,6 @@ export class PensumComponent implements OnInit, AfterViewInit {
       }
     }
     } else {
-      console.log(event);
       const dialogConfig = new MatDialogConfig();
       dialogConfig.disableClose = true;
       dialogConfig.autoFocus = true;
@@ -343,6 +343,17 @@ export class PensumComponent implements OnInit, AfterViewInit {
     }
     return '';
   }
+
+  /*hideList() {
+    this.edit=!this.edit;
+    this.jsPlumbInstance.deleteEveryConnection();
+    this.jsPlumbInstance.repaintEverything();
+    // this.jsPlumbInstance.deleteEveryConnection();
+    //this.jsPlumbInstance.deleteEveryConnection();
+    const $this = this;
+    setTimeout(function() {$this.jsPlumbInstance.repaintEverything(); }, 10000)
+    // setTimeout(function() {$this.drawRestrictions($this.done); }, 20000);
+  }*/
 
   ngOnInit() {
     if (this.userService.user.type_user_id === 1) {

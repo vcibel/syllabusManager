@@ -96,10 +96,11 @@ export class SubjectComponent implements OnInit {
                                       return college.college_code === parseInt(subject_code.slice(1, 2), 10);
                                     })[0];
       this.checkIfUndefined(this.college_selected, `Escuela con código ${subject_code.slice(1, 2)} no existe`);
+      const college_id = this.college_selected.college_id;
       this.department_selected = this.departments.filter(function(department: Department) {
-                                      return department.department_code === parseInt(subject_code.slice(2, 3), 10);
-                                    })[0];
-      this.checkIfUndefined(this.department_selected, `Departamento con código ${subject_code.slice(2, 3)} no existe`);
+              return department.department_code === parseInt(subject_code.slice(2, 3), 10) && department.college_id === college_id;
+      })[0];
+      this.checkIfUndefined(this.department_selected, `Departamento con código ${subject_code.slice(2, 3)} no existe para la Escuela de ${this.college_selected.college_name}`);
       console.log(this.department_selected, this.college_selected);
       this.subject.department_id = this.department_selected.department_id;
       this.type_subject_selected = this.typesSubject.filter(function(type_subject: TypeSubject) {
@@ -110,6 +111,9 @@ export class SubjectComponent implements OnInit {
       this.subject.code_consecutive = parseInt(this.subject.subject_code.split(this.type_subject_selected.type_subject_code)[1], 10);
     }
     console.log(this.subject);
+    if (this.subject.subject_name === '' || this.subject.subject_code === ''){
+      this.alertService.confirm('Error', 'Por favor introduzca todos los campos');
+    } else {
     //alert (this.subject.subject_code);
     // this.alertService.confirm('', this.subject.subject_code);
     this.httpService.post(this.subject, '/Subjects').subscribe((res: any) => {
@@ -125,6 +129,7 @@ export class SubjectComponent implements OnInit {
           this.alertService.confirm('Error!', res.response);
         }
     });
+  }
   }
 
   checkIfUndefined(elem, message) {

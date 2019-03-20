@@ -39,6 +39,8 @@ export class HomeComponent implements OnInit {
   collegePensum: Pensum[];
   input: String;
   typesSubject;
+  pensumSubjects: Subject[];
+  pensumSearch = false;
 
   constructor(private router: Router, private httpService: HttpService, private dialog: MatDialog,
                private alertService: AlertService) { }
@@ -89,7 +91,7 @@ export class HomeComponent implements OnInit {
       if (res.status === 200) {
         this.subjects = res.subjects;
         this.typesSubject = res.types;
-        console.log(this.subjects);
+        console.log(this.subjects, this.typesSubject);
       } else {
         //alert(res.response);
         this.alertService.confirm('Error', res.response);
@@ -141,6 +143,7 @@ export class HomeComponent implements OnInit {
     this.searchResult = this.subjects.filter(function(subject: Subject) {
                                                         return subject.faculty_id === faculty_selected.faculty_id;
                                                       });
+    this.pensumSearch = false;
   }
 
   getCollegeDepartments(college_selected) {
@@ -156,12 +159,14 @@ export class HomeComponent implements OnInit {
     this.searchResult = this.subjects.filter(function(subject: Subject) {
       return subject.college_id === college_selected.college_id;
     });
+    this.pensumSearch = false;
   }
 
   getDepartmentSubjects(department_selected) {
     this.searchResult = this.subjects.filter(function(subject: Subject) {
       return subject.department_id === department_selected.department_id;
     });
+    this.pensumSearch = false;
   }
 
   getPensumSubjects(pensum_selected) {
@@ -169,10 +174,23 @@ export class HomeComponent implements OnInit {
       console.log(res);
       if (res.status === 200) {
         this.searchResult = res.pensumSubjects;
+        this.pensumSubjects = res.pensumSubjects;
+        this.pensumSearch = true;
       } else {
         console.log(res.response);
       }
     });
+  }
+
+  getPensumSubjectsByType(type_id) {
+    if (type_id === 0) {
+      this.searchResult = this.pensumSubjects;
+    } else {
+    this.searchResult = this.pensumSubjects.filter(function(subject: any) {
+      console.log(type_id, subject.type_subject_pensum_id);
+      return subject.type_subject_pensum_id === type_id;
+    });
+    }
   }
 
 }

@@ -97,18 +97,30 @@
                                   </mat-form-field>
                                 </mat-grid-tile>
                                 <mat-grid-tile [colspan]="2" [rowspan]="1">
-                                  <label class="label">Pensum Date:</label>
+                                  <label class="label">Fecha del Pensum:</label>
                                 </mat-grid-tile>
                                 <mat-grid-tile class="grid" [colspan]="2" [rowspan]="1">
                                   <mat-form-field class="select-faculty">
                                     <mat-select *ngIf="!collegePensum" >
                                         <mat-option></mat-option>
-                                        <mat-option *ngFor="let pensum of pensums" [value]=pensum.pensum_id (click)="getPensumSubjects(pensum)">{{pensum.college_name}}-{{pensum.pensum_date}}</mat-option>
+                                        <mat-option *ngFor="let pensum of pensums" [value]=pensum.pensum_id (click)="getPensumSubjects(pensum)">{{pensum.college_name}} - {{pensum.pensum_date.substring(0,10) | date: 'MMMM yyyy'}}</mat-option>
                                     </mat-select>
                                     <mat-select *ngIf="collegePensum" >
                                       <mat-option></mat-option>
-                                      <mat-option *ngFor="let pensum of collegePensum" [value]=pensum.pensum_id (click)="getPensumSubjects(pensum)">{{pensum.pensum_date}}</mat-option>
+                                      <mat-option *ngFor="let pensum of collegePensum" [value]=pensum.pensum_id (click)="getPensumSubjects(pensum)">{{pensum.pensum_date.substring(0,10) | date: 'MMMM yyyy'}}</mat-option>
                                   </mat-select>
+                                  </mat-form-field>
+                                </mat-grid-tile>
+                                <mat-grid-tile [colspan]="2" [rowspan]="1" *ngIf="pensumSearch">
+                                  <label class="label">Tipo de materia en pensum:</label>
+                                </mat-grid-tile>
+                                <mat-grid-tile class="grid" [colspan]="2" [rowspan]="1"  *ngIf="pensumSearch">
+                                  <mat-form-field class="select-deparment">
+                                    <mat-select (selectionChange)= "getPensumSubjectsByType($event.value)">
+                                      <mat-option [value]=0> Todas </mat-option>
+                                      <mat-option [value]=1> Obligatoria </mat-option>
+                                      <mat-option [value]=2> Electiva </mat-option>
+                                    </mat-select>
                                   </mat-form-field>
                                 </mat-grid-tile>
                               </mat-grid-list>
