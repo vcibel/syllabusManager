@@ -86,7 +86,7 @@ button:focus {
 }
 
 mat-drawer-container.example-container.mat-drawer-container {
-    height: 657px;
+    height: 655px;
 }
 
 .header{
@@ -97,5 +97,17 @@ mat-drawer-container.example-container.mat-drawer-container {
     background-color: white;
     width: 100%;
     height: 20%;
+    text-align: center;
+}
+
+h5.example-tooltip {
+    text-transform: uppercase;
+}
+
+
+mat-card.name-subject.mat-card {
+    margin: -28px !important;
+    font-size: 9px !important;
+    width: 140px;
     text-align: center;
 }

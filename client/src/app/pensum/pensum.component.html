@@ -16,7 +16,7 @@
 </mat-toolbar>
 
 <div cdkDropListGroup >
-  <mat-drawer-container class="example-container">
+  <mat-drawer-container class="example-container" style="height: 600px !important">
     <mat-drawer mode="side" opened position="end" *ngIf="edit">
       <mat-grid-list cols="2" rowHeight="30px" class="search">
         <mat-grid-tile [colspan]="2" [rowspan]="1">
@@ -35,6 +35,7 @@
           cdkDropList
           [cdkDropListData]="searchResult"
           class="example-list"
+          style="background-color:#f9f9f9; padding: 8px;"
           (cdkDropListDropped)="drop($event)">
           <div>
             <div class="example-box" *ngFor="let item of searchResult" cdkDrag>
@@ -60,9 +61,29 @@
                 </mat-grid-list>
               </mat-card>
             </div>
-            <!-- <div class="btn-save">
-              <button mat-button color="primary" (click)="save()">Guardar</button>
-            </div> -->
+            <div class="example-box2">
+                <mat-card class="subject-card">
+                    <mat-grid-list cols="4" rowHeight="15px">
+                      <mat-grid-tile [colspan]="3" [rowspan]="1">
+                        <mat-card class="code-subject">
+                          <span class="subject-text">no</span>
+                        </mat-card>
+                      </mat-grid-tile>
+                      <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-card class="hc-subject">
+                          <span>non</span>
+                        </mat-card>
+                      </mat-grid-tile>
+                    </mat-grid-list>
+                    <mat-grid-list cols="2" rowHeight="20px">
+                      <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <mat-card class="name-subject">
+                          <span class="subject-text">no</span>
+                        </mat-card>
+                      </mat-grid-tile>
+                    </mat-grid-list>
+                </mat-card>
+            </div>
           </div>
         </div>
         <div class="btn-save">
@@ -70,7 +91,7 @@
         </div>
       </div>
     </mat-drawer>
-    <mat-drawer-content style="height: 591px !important;">
+    <mat-drawer-content style="height: 657px !important;">
       <mat-spinner style="margin: 0 auto; top: 150px;" color="accent" *ngIf="showLoadder" ></mat-spinner>
       <mat-card class="pensum pensum-back" *ngIf="Show || isBack && !showLoadder">
         <mat-grid-list cols="10" rowHeight="100px">
@@ -82,7 +103,7 @@
               <span>UNIDADES CURRICULARES</span>
             </mat-card>
           </mat-grid-tile> -->
-          <mat-grid-tile [colspan]="10" [rowspan]="3">
+          <mat-grid-tile [colspan]="10" [rowspan]="3" style="height: 100% !important">
             <mat-card class="electivas">
               <div
                 cdkDropList
