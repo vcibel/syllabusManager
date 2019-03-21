@@ -18,6 +18,7 @@ export class FacultiesComponent implements OnInit {
   faculties: Faculty[];
   admin = false;
   showLoadder: boolean = true;
+  found: boolean = true;
 
   constructor(private dialog: MatDialog, private httpService: HttpService, private router: Router,
               private userService: UserService, private alertService: AlertService) { }
@@ -52,6 +53,11 @@ export class FacultiesComponent implements OnInit {
       if (res.status === 200) {
         this.faculties = res.faculties;
         console.log(this.faculties);
+        if(this.faculties.length == 0){
+          this.found = false;
+        } else {
+          this.found = true;
+        }
       } else {
         this.alertService.confirm('Error', res.response);
       }

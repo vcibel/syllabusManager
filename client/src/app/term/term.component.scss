@@ -34,12 +34,13 @@ mat-card-content.pensum-content.mat-card-content {
 
 mat-card.name-subject.mat-card {
     margin: -92px !important;
-    font-size: 10px !important;
+    font-size: 9px !important;
     width: 110px;
     text-align: center;
     text-transform: uppercase;
     padding: 10px;
     cursor: pointer;
+    word-break: break-word;
 }
 
 .pensum-footer#card-pensum {
@@ -128,16 +129,3 @@ mat-card.hc-subject.mat-card {
     background-color: rgba(250, 246, 246, 0.5);
 }
 
-// .term::after{
-//     content: "";
-//     display: table;
-//     clear: both;
-// }
-
-// .example-list{
-//     float: left;
-//     width: 25%;
-//     padding: 10px;
-// }
-
-  

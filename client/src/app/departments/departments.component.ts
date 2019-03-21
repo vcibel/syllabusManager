@@ -21,6 +21,7 @@ export class DepartmentsComponent implements OnInit {
   college: College;
   admin = false;
   showLoadder: boolean = true;
+  found: boolean = true;
 
   constructor(private dialog: MatDialog, private httpService: HttpService, private router: Router,
               private activeRouter: ActivatedRoute, private userService: UserService, private alertService: AlertService) { }
@@ -65,8 +66,13 @@ export class DepartmentsComponent implements OnInit {
         this.showLoadder = false;
         this.departments = res.departments;
         console.log(this.departments);
+        if(this.departments.length == 0){
+          this.found = false;
+        } else {
+          this.found = true;
+        }
       } else {
-        this.alertService.confirm('Error', res.response);
+        this.alertService.confirm('Error!', res.response);
       }
     });
     } else {
@@ -77,8 +83,13 @@ export class DepartmentsComponent implements OnInit {
         if (res.status === 200) {
           this.departments = res.departments;
           console.log(this.departments);
+          if(this.departments.length == 0){
+            this.found = false;
+          } else {
+            this.found = true;
+          }
         } else {
-          this.alertService.confirm('Error', res.response);
+          this.alertService.confirm('Error!', res.response);
         }
       });
     }

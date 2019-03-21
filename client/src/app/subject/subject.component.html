@@ -1,4 +1,4 @@
-<div class="subject-header">
+<div class="dialog-header">
   <mat-grid-list cols="4" rowHeight="100px">
     <mat-grid-tile [colspan]="2" [rowspan]="1">
       <h4 *ngIf="!subject.subject_name">Crear Materia</h4>
@@ -14,40 +14,28 @@
 
 <div class="subject-body">
   <mat-grid-list cols="6" rowHeight="80px">
-    <!-- <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <label for="college-name">Nombre de la Materia:</label>
-    </mat-grid-tile> -->
-    <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="!read">
-      <label for="college-name">¿Conoce el código de la materia? (Marque la casilla si es correcto)</label>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="!read">
-      <section class="example-section">
-        <mat-checkbox class="example-margin" [(ngModel)]="disabled"></mat-checkbox>
-      </section>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="3" [rowspan]="1"> 
+    <mat-grid-tile [colspan]="5" [rowspan]="1"> 
       <label for="college-name">Nombre de la Materia:</label>
       <mat-form-field>
-      <!-- <mat-label>Ej. Ingenieria de Computacion</mat-label> -->
-        <input matInput [disabled]= "read" type="text"  class="form-control college-name" [(ngModel)]="subject.subject_name" [ngModelOptions]="{standalone: true}">
+        <input matInput #nameSub  maxlength="30" [disabled]= "read" type="text"  class="form-control college-name" [(ngModel)]="subject.subject_name" [ngModelOptions]="{standalone: true}">
+        <mat-hint align="end" *ngIf="!read">{{nameSub.value.length}} / 30</mat-hint>
       </mat-form-field>
     </mat-grid-tile>
-    <!-- <mat-grid-tile [colspan]="2" [rowspan]="1"> 
-      <label for="college-name">Código de la Materia:</label>
-  </mat-grid-tile> -->
+    <mat-grid-tile [colspan]="2" [rowspan]="1" *ngIf="!read">
+      <label for="college-name">¿Conoce el código de la materia? (Marque la casilla si es correcto)</label>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="!read" style="width: calc(((1.6667% - 0.833333px) * 3) + 0px) !important;">
+      <section class="example-section">
+        <mat-checkbox class="example-margin" color="primary" [(ngModel)]="disabled"></mat-checkbox>
+      </section>
+    </mat-grid-tile>
   <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="disabled || read" > 
     <label for="college-name">Código de la Materia:</label>
     <mat-form-field class="select-career">
       <input matInput #subjectCode maxlength="6" [disabled]="!disabled || read" class="form-control college-name cod"  [(ngModel)]="subject.subject_code" [ngModelOptions]="{standalone: true}">
       <mat-hint align="end" *ngIf="!read">{{subjectCode.value.length}} / 6</mat-hint>
     </mat-form-field>
-    <!-- <mat-form-field class="select-career">
-      <input [disabled]="!disabled" matInput type="text" class="form-control college-name cod"  placeholder="" [(ngModel)]="subject.subject_code" [ngModelOptions]="{standalone: true}">
-    </mat-form-field>-->
   </mat-grid-tile> 
-    <!-- <mat-grid-tile [colspan]="2" [rowspan]="1"> 
-      <label for="collage-type">Seleccione la escuela a la cual pertenece:</label>
-    </mat-grid-tile> -->
     <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="!disabled && !read"> 
       <label for="collage-type">Escuela a la cual pertenece:</label>
       <mat-form-field class="select-career">
@@ -56,9 +44,6 @@
         </select>
       </mat-form-field>
     </mat-grid-tile>
-    <!-- <mat-grid-tile [colspan]="2" [rowspan]="1"> 
-      <label for="collage-type">Seleccione departamento al que pertenece:</label>
-    </mat-grid-tile> -->
     <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="!disabled && !read"> 
       <label for="collage-type">Departamento al cual pertenece:</label>
       <mat-form-field class="select-career">
@@ -67,9 +52,6 @@
         </select>
       </mat-form-field>
     </mat-grid-tile>
-    <!-- <mat-grid-tile [colspan]="2" [rowspan]="1"> 
-      <label for="college-name">Tipo de materia:</label>
-    </mat-grid-tile> -->
     <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="!disabled && !read"> 
       <label for="college-name">Tipo de materia:</label>
       <mat-form-field>
@@ -78,22 +60,26 @@
         </select>
       </mat-form-field>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="3" [rowspan]="1"> 
+    <mat-grid-tile [colspan]="6" [rowspan]="1" class="gird-hc" *ngIf="!disabled && !read"> 
       <label for="number-terms">Hora Crédito de la materia:</label>
       <mat-form-field class="example-full-width">
         <input [disabled]="read" matInput #subjectHc maxlength="1" class="form-control cod" [(ngModel)]="subject.subject_hc" [ngModelOptions]="{standalone: true}">
         <mat-hint align="end" *ngIf="!read">{{subjectHc.value.length}} / 1</mat-hint>
       </mat-form-field>
-      <!-- <mat-form-field>
-        <input matInput type="number" class="form-control cod" [(ngModel)]="subject.subject_hc" [ngModelOptions]="{standalone: true}">
-      </mat-form-field> -->
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="disabled || read"> 
+      <label for="number-terms">Hora Crédito de la materia:</label>
+      <mat-form-field class="example-full-width">
+        <input [disabled]="read" matInput #subjectHc maxlength="1" class="form-control cod" [(ngModel)]="subject.subject_hc" [ngModelOptions]="{standalone: true}">
+        <mat-hint align="end" *ngIf="!read">{{subjectHc.value.length}} / 1</mat-hint>
+      </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="3" [rowspan]="1"> 
       <label for="number-terms" *ngIf="!read">Seleccione el Programa de Estudio:</label>
       <label for="number-terms" *ngIf="read">Programa de Estudio:</label>      
     </mat-grid-tile>
     <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="!read"> 
-      <input type="file" class="form-control input-file file" #file (change)="onFilesAdded(this)">
+      <input type="file" class="form-control input-file file" accept="application/pdf" #file (change)="onFilesAdded(this)">
     </mat-grid-tile>
     <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="subject.syllabus_name" (click)="getSyllabus(subject)"> 
       {{subject.syllabus_name}}
@@ -102,14 +88,6 @@
 </div>
 <div class="subject-2-body">
   <mat-grid-list cols="5" rowHeight="80px">
-    <!-- <mat-grid-tile [colspan]="1" [rowspan]="1"> 
-      <label for="number-terms">Hora Crédito de la materia:</label>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1"> 
-      <mat-form-field>
-        <input matInput type="number" class="form-control cod" placeholder="2" [(ngModel)]="subject.subject_hc" [ngModelOptions]="{standalone: true}">
-      </mat-form-field>
-    </mat-grid-tile> -->
     <mat-grid-tile [colspan]="4" [rowspan]="1" *ngIf="!read"> 
       <div class="btn-crearCarrera">
         <button type="button" class="btn" mdbBtn color="info" mdbWavesEffect (click)="createSubject()">Crear Materia</button>

@@ -17,7 +17,10 @@
 
 <div cdkDropListGroup >
   <mat-drawer-container class="example-container" style="height: 600px !important">
-    <mat-drawer mode="side" opened position="end" *ngIf="edit">
+    <!-- <mat-drawer mode="side" opened position="end" *ngIf="!edit" style="width: 156px;">
+      <div class="side-content">here</div>
+    </mat-drawer> -->
+    <mat-drawer mode="side" opened position="end" *ngIf="edit" style="width: 156px !important;">
       <mat-grid-list cols="2" rowHeight="30px" class="search">
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="search-text">Buscar Materia:</span>
@@ -38,7 +41,15 @@
           style="background-color:#f9f9f9; padding: 8px;"
           (cdkDropListDropped)="drop($event)">
           <div>
-            <div class="example-box" *ngFor="let item of searchResult" cdkDrag>
+            <div *ngIf="!found">
+              <mat-icon class="example-icon focus">search</mat-icon>
+              <h6>No se pudo encontrar </h6>
+              <div class="notfound">
+                <span><strong>'{{input}}'</strong></span>
+              </div>
+            </div>
+            <div *ngIf="found">
+              <div class="example-box" *ngFor="let item of searchResult" cdkDrag>
               <mat-card class="subject-card" id="{{item.subject_id}}">
                 <mat-grid-list cols="4" rowHeight="15px">
                   <mat-grid-tile [colspan]="3" [rowspan]="1">
@@ -60,6 +71,77 @@
                   </mat-grid-tile>
                 </mat-grid-list>
               </mat-card>
+            </div>
+            </div>
+            
+            <div class="example-box" *ngIf="isBack">
+                <mat-card class="subject-card">
+                    <mat-grid-list cols="4" rowHeight="15px">
+                      <mat-grid-tile [colspan]="3" [rowspan]="1">
+                        <mat-card class="code-subject">
+                          <span class="subject-text">no</span>
+                        </mat-card>
+                      </mat-grid-tile>
+                      <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-card class="hc-subject">
+                          <span>3</span>
+                        </mat-card>
+                      </mat-grid-tile>
+                    </mat-grid-list>
+                    <mat-grid-list cols="2" rowHeight="20px">
+                      <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <mat-card class="name-subject">
+                          <span class="subject-text">ELECTIVA I</span>
+                        </mat-card>
+                      </mat-grid-tile>
+                    </mat-grid-list>
+                </mat-card>
+            </div>
+            <div class="example-box" *ngIf="isBack">
+                <mat-card class="subject-card">
+                    <mat-grid-list cols="4" rowHeight="15px">
+                      <mat-grid-tile [colspan]="3" [rowspan]="1">
+                        <mat-card class="code-subject">
+                          <span class="subject-text">no</span>
+                        </mat-card>
+                      </mat-grid-tile>
+                      <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-card class="hc-subject">
+                          <span>3</span>
+                        </mat-card>
+                      </mat-grid-tile>
+                    </mat-grid-list>
+                    <mat-grid-list cols="2" rowHeight="20px">
+                      <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <mat-card class="name-subject">
+                          <span class="subject-text">ELECTIVA II</span>
+                        </mat-card>
+                      </mat-grid-tile>
+                    </mat-grid-list>
+                </mat-card>
+            </div>
+            <div class="example-box" *ngIf="isBack">
+                <mat-card class="subject-card">
+                    <mat-grid-list cols="4" rowHeight="15px">
+                      <mat-grid-tile [colspan]="3" [rowspan]="1">
+                        <mat-card class="code-subject">
+                          <span class="subject-text">no</span>
+                        </mat-card>
+                      </mat-grid-tile>
+                      <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-card class="hc-subject">
+                          <span>3</span>
+                        </mat-card>
+                      </mat-grid-tile>
+                    </mat-grid-list>
+                    <mat-grid-list cols="2" rowHeight="20px">
+                      <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <mat-card class="name-subject">
+                          <span class="subject-text">ELECTIVA III</span>
+                        </mat-card>
+                      </mat-grid-tile>
+                    </mat-grid-list>
+                </mat-card>
             </div>
             <div class="example-box2">
                 <mat-card class="subject-card">
@@ -122,7 +204,7 @@
                     <span>REQUISITO</span>
                   </mat-grid-tile> -->
                 </mat-grid-list>
-                <div class="example-box2" *ngFor="let item of electives" cdkDrag>
+                <div class="example-box3" *ngFor="let item of electives" cdkDrag>
                   <mat-card class="electiva" (click)="onClick(item)">
                     <mat-grid-list cols="8" rowHeight="80px" class="list">
                       <mat-grid-tile [colspan]="2" [rowspan]="1" class="row-item">

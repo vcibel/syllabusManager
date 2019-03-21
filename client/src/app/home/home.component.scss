@@ -88,13 +88,9 @@ mat-card.mat-card.side-card {
     height: 100%;
 }
 
-.mat-drawer-content {
-    // position: relative;
-    // z-index: 1;
-    // display: inline; 
-    // overflow: auto;
-    background-color: white;
-}
+// .mat-drawer-content {
+//     background-color: white;
+// }
 
 mat-card.img.mat-card {
     //background-color: #e6e6ff;
@@ -193,9 +189,9 @@ mat-drawer-container.example-container.mat-drawer-container {
     height: 657px;
 }
 .content {
-    padding: 16px;
+    //padding: 16px;
     position: relative;
-    top: 60px;
+    top: 68px;
 }
 label.label {
     position: relative;
@@ -263,3 +259,22 @@ button.btn.search-subject {
 .mat-list-item-content {
     color: black !important;
 }
+
+.not-found.ng-star-inserted {
+    position: relative;
+    top: 20px;
+    margin: 60px;
+}
+
+.notfound {
+    max-width: 100px;
+    width: 100px;
+    word-break: break-word;
+}
+
+mat-icon.example-icon.focus.mat-icon.material-icons.mat-icon-no-color {
+    position: relative;
+    left: 20px;
+}
+
+
