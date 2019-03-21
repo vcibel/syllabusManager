@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
 
   panelOpenState = false;
   found: boolean = true;
+  show: boolean = false;
   showCollege: boolean = true;
   closeResult: string;
 
@@ -119,20 +120,27 @@ export class HomeComponent implements OnInit {
 
   search(input) {
     console.log(input);
+    this.searchResult = [];
+    var value = input !== '';
+    console.log(value);
+
     if (input !== '') {
-      this.searchResult = [];
       this.subjects.filter((subject: Subject) => {
         if (subject.subject_name.toLowerCase().indexOf(input.toLowerCase()) > -1) {
           this.searchResult.push(subject);
+          console.log('aqui1')
+          this.found = true;
         } else if (subject.subject_code.toLowerCase().indexOf(input.toLowerCase()) > -1) {
           this.searchResult.push(subject);
+          console.log('aqui2')
         }
       });
-    }
-    if(this.searchResult.length == 0 ){
+    } 
+
+    if (value == true && this.searchResult.length == 0){
+      console.log('not found');
       this.found = false;
-      console.log('Not found')
-    }else{
+    } else{
       this.found = true;
     }
     console.log(this.searchResult);
@@ -147,27 +155,50 @@ export class HomeComponent implements OnInit {
     this.searchResult = this.subjects.filter(function(subject: Subject) {
       return subject.faculty_id === faculty_selected.faculty_id;
     });
+    console.log(this.searchResult);
+
+    if (this.searchResult.length == 0){
+      console.log('not found');
+      this.found = false;
+    } else{
+      this.found = true;
+    }
   }
 
   getCollegeDepartments(college_selected) {
-    console.log(college_selected);
+    console.log('college',college_selected);
     this.collegeDepartments = this.departments.filter(function(department: Department) {
       return department.college_id === college_selected.college_id;
     });
-    console.log(this.collegeDepartments);
+    console.log('college depart',this.collegeDepartments);
     this.collegePensum = this.pensums.filter(function(pensum: Pensum) {
       return pensum.college_id === college_selected.college_id;
     });
-    console.log(this.collegePensum);
+    console.log('college pensum',this.collegePensum);
     this.searchResult = this.subjects.filter(function(subject: Subject) {
       return subject.college_id === college_selected.college_id;
     });
+
+    console.log('searchresult',this.searchResult)
+    if (this.searchResult.length == 0){
+      console.log('not found');
+      this.found = false;
+    } else{
+      this.found = true;
+    }
   }
 
   getDepartmentSubjects(department_selected) {
     this.searchResult = this.subjects.filter(function(subject: Subject) {
       return subject.department_id === department_selected.department_id;
     });
+    console.log('searchresult',this.searchResult)
+    if (this.searchResult.length == 0){
+      console.log('not found');
+      this.found = false;
+    } else{
+      this.found = true;
+    }
   }
 
   getPensumSubjects(pensum_selected) {
@@ -175,6 +206,13 @@ export class HomeComponent implements OnInit {
       console.log(res);
       if (res.status === 200) {
         this.searchResult = res.pensumSubjects;
+        console.log('searchresult', this.searchResult);
+        if (this.searchResult.length == 0){
+          console.log('not found');
+          this.found = false;
+        } else{
+          this.found = true;
+        }
       } else {
         console.log(res.response);
       }

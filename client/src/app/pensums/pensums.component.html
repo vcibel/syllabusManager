@@ -23,6 +23,10 @@
   <div class="pensums-created">
     <mat-list>
       <mat-spinner style="margin: 0 auto; top: 150px;" color="accent" *ngIf="showLoadder" ></mat-spinner>
+      <div class="not-found-list" *ngIf="!found">
+        <h2>No se pudo encontrar ...</h2>
+      </div>
+      <div *ngIf="found">
       <mat-list-item class="list-pensum" *ngFor="let pensum of pensums">
         <mat-card *ngIf="!showLoadder" class="card-pensum">
           <mat-grid-list cols="10" rowHeight="100px">
@@ -55,13 +59,10 @@
           </mat-grid-list>
         </mat-card>
       </mat-list-item>
+    </div>
     </mat-list>
   </div>
 </div>
 </mat-grid-list>
 </mat-drawer-content>
-<<<<<<< HEAD
 </mat-drawer-container>
-=======
-</mat-drawer-container>
->>>>>>> server

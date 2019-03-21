@@ -10,7 +10,7 @@
           <mat-grid-tile [colspan]="4" [rowspan]="1">
             <!-- <label for="username">Usuario:</label> -->
             <mat-form-field style="width: 400px;">
-              <input matInput type="text" placeholder="Nombre de Usuario:" class="form-control username" [(ngModel)]="user.user_username" [ngModelOptions]="{standalone: true}">
+              <input matInput type="text" placeholder="Nombre de Usuario:" class="form-control username" [(ngModel)]="user.user_username" [ngModelOptions]="{standalone: true}" style="text-transform: none !important;">
             </mat-form-field>
           </mat-grid-tile>
           <!-- <mat-grid-tile [colspan]="2" [rowspan]="1">
@@ -19,7 +19,7 @@
           <mat-grid-tile [colspan]="4" [rowspan]="1">
             <!-- <label for="password">Contraseña:</label> -->
             <mat-form-field style="width: 400px;">
-              <input matInput type="password" placeholder="Contraseña:" class="form-control password" [(ngModel)]="user.user_password" [ngModelOptions]="{standalone: true}">          
+              <input matInput type="password" placeholder="Contraseña:" class="form-control password" [(ngModel)]="user.user_password" [ngModelOptions]="{standalone: true}" style="text-transform: none !important;">          
             </mat-form-field>
           </mat-grid-tile>
           <mat-grid-tile [colspan]="4" [rowspan]="1">

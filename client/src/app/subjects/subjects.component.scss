@@ -1,24 +1,20 @@
 
 
 .example-icon {
-   // padding: 0 24px;
    margin: 4px;
 }
 
 .subjects-created {
-    /* margin-top: 1px; */
-    /* padding: 60px; */
-    /* width: 86%; */
-    /* height: 23%; */
     position: relative;
     top: 60px;
-    /* left: 25px; */
 }
 
 .card-subject {
     width: 100%;
     box-shadow: 0 2px 4px 1px rgba(0,0,0,0.3) !important;
     border-radius: 0px;
+    padding: 0px;
+    text-align: center;
 }
 
 mat-card.name-subject.mat-card {

@@ -4,22 +4,17 @@
     width: 100%;
     box-shadow: 0 2px 4px 1px rgba(0,0,0,0.3) !important;
     border-radius: 0px;
+    padding: 0px;
+    text-align: center;
 }
 
 .departments-created {
-    /* margin-top: 1px; */
-    /* padding: 60px; */
-    /* width: 86%; */
-    /* height: 23%; */
     position: relative;
     top: 60px;
-    /* left: 25px; */
 }
 
 .header{
     position: fixed;
-    /* top: 30px; */
-    /* left: -126px; */
     z-index: 999;
     background-color: white;
     width: 100%;

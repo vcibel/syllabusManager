@@ -126,6 +126,7 @@ mat-card.subject-card.mat-card {
     border-radius: 0px;
     box-shadow: 0 0px 0px 0px rgba(0,0,0,.2), 0 0px 0px 0 rgba(0,0,0,.14), 0 0px 0px 0 rgba(0,0,0,.12) !important;
     left: 100px;
+    height: 100%;
 }
 
 mat-grid-tile.mat-grid-tile.row-header {
@@ -227,7 +228,7 @@ mat-form-field.example-form-field.mat-form-field.ng-tns-c10-2.mat-primary.mat-fo
 //     background-color: rgba(233, 232, 232, 0.5);
 // }
 
-.example-box2.cdk-drag.ng-star-inserted {
+.example-box3.cdk-drag.ng-star-inserted {
     height: 124px;
     padding: 20px;
     height: 100%;
@@ -265,4 +266,18 @@ mat-toolbar.toolbar {
 
 .example-box2 {
     visibility: hidden;
+}
+
+mat-icon.example-icon.focus.mat-icon.material-icons.mat-icon-no-color {
+    padding: 0px;
+}
+
+.notfound {
+    max-width: 90px;
+    width: 90px;
+    word-break: break-word;
+}
+
+svg.jtk-connector {
+    cursor: pointer !important;
 }

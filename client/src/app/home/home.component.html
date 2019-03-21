@@ -6,32 +6,31 @@
     <br>
     <mat-grid-list cols="1" rowHeight="60px">
       <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <!-- <mat-toolbar>My App</mat-toolbar> -->
         <div class="header"><h2 class="title">Universidad Rafael Urdaneta</h2></div>
       </mat-grid-tile>
     </mat-grid-list>
-    <mat-grid-list cols="50" rowHeight="400px">
+    <mat-grid-list cols="50" rowHeight="400px" style="margin: -15px; top: 2%;">
       <div class="row">
         <div class="col">
           <div class="home">
             <div class="container">
-                <mat-toolbar class="toolbar">
-                    <span>Buscador</span>
-                    <span class="example-spacer"></span>
-                  </mat-toolbar>
+              <mat-toolbar class="toolbar">
+                <span>Buscador</span>
+                <span class="example-spacer"></span>
+              </mat-toolbar>
             </div>
             <div class="content">
               <mat-card>
                 <mat-card-content>
                   <div class="container" >
                     <div class="search">
-                            <mat-grid-list cols="5" rowHeight="85px">
+                            <mat-grid-list cols="5" rowHeight="85px" class="home-grid">
                                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                                   <label class="label">Busqueda general:</label>
                                 </mat-grid-tile>
                                 <mat-grid-tile class="grid" [colspan]="2" [rowspan]="1">
                                   <mat-form-field>
-                                    <input matInput type="text" class="form-control" [(ngModel)]="input" (keyup)="search(input)">
+                                    <input matInput type="text" class="form-control" [(ngModel)]="input" (keyup)="search(input)" style="text-transform: none !important; outline: 0px auto -webkit-focus-ring-color !important;">
                                   </mat-form-field>
                                 </mat-grid-tile>
                                 <mat-grid-tile [colspan]="2" [rowspan]="1">
@@ -48,7 +47,11 @@
                                 <mat-grid-tile class="grid-2" [colspan]="1" [rowspan]="4">
                                   <mat-card class="list-card">
                                     <div *ngIf="!found" class="not-found">
-                                      <h5>No se encuentra</h5>
+                                      <mat-icon class="example-icon focus">search</mat-icon>
+                                        <h4>No se pudo encontrar</h4>
+                                        <div class="notfound">
+                                          <h5><span><strong>'{{input}}'</strong></span></h5> 
+                                        </div>
                                     </div>
                                     <mat-list *ngIf="found" >
                                       <mat-spinner style="margin: 0 auto; top: 150px;" color="accent" *ngIf="showLoadder" ></mat-spinner>
@@ -103,6 +106,16 @@
                                       <mat-option></mat-option>
                                       <mat-option *ngFor="let pensum of collegePensum" [value]=pensum.pensum_id (click)="getPensumSubjects(pensum)">{{pensum.pensum_date}}</mat-option>
                                   </mat-select>
+                                  </mat-form-field>
+                                </mat-grid-tile>
+                                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                                  <label class="label">Tipo de Materia:</label>
+                                </mat-grid-tile>
+                                <mat-grid-tile class="grid" [colspan]="2" [rowspan]="1">
+                                  <mat-form-field class="select-faculty">
+                                    <mat-select >
+                                      <mat-option></mat-option>
+                                    </mat-select>
                                   </mat-form-field>
                                 </mat-grid-tile>
                               </mat-grid-list>

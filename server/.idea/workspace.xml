@@ -7,38 +7,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3596c7e-1748-45ca-b3c8-c8e1e3745f09" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/files/Faculty_2/College_0/Department_1/201T02-MATEMATICA II.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/files/Faculty_2/College_0/Department_1/201T05-ALGEBRA LINEAL.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/files/Faculty_2/College_0/Department_1/201T06-GEOMETRIA.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/files/Faculty_2/College_0/Department_1/201T08-INTRODUCCION A LA INGENIERIA.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/files/Faculty_2/College_0/Department_1/201T09-METODOLOGÃ�A DE PROYECTOS.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/files/Faculty_2/College_0/Department_1/201T30-ACTIVIDAD TÃ“PICOS DE INGENIERIA. V.01.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/201G11-FISICA  I.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/201L10-COMUNICACION GRAFICA.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/201T01-MATEMÃ�TICA I.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/201T02-MATEMATICA II.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/201T05-ALGEBRA LINEAL.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/201T06-GEOMETRIA.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/201T08-INTRODUCCION A LA INGENIERIA.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/201T09-METODOLOGIA DE PROYECTOS.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/201T09-METODOLOGÃ�A DE PROYECTOS.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/201T20-REDACCION DE INFORMES TECNICOS.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/201T30-ACTIVIDAD TOPICOS DE INGENIERIA.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/201T30-ACTIVIDAD TÃ“PICOS DE INGENIERIA. V.01.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/colleges/colleges.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/colleges/colleges.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/colleges/colleges.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/colleges/colleges.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/colleges/colleges.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/colleges/colleges.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/departments/departments.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/departments/departments.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/departments/departments.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/departments/departments.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/departments/departments.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/departments/departments.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/faculties/faculties.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/faculties/faculties.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/faculties/faculties.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/faculties/faculties.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/faculties/faculties.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/faculties/faculties.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/home/home.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/home/home.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/home/home.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/menu/menu.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/menu/menu.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/login/login.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/app/pensums/pensums.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pensums/pensums.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/pensums/pensums.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pensums/pensums.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/pensums/pensums.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pensums/pensums.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/app/subject/subject.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/subject/subject.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/subject/subject.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/subject/subject.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/subjects/subjects.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/subjects/subjects.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/subjects/subjects.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/subjects/subjects.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/app/subjects/subjects.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/subjects/subjects.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/term/term.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/term/term.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/term/term.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/term/term.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/app/users/users.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/users/users.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/users/users.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/users/users.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/users/users.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/users/users.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/styles.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/filters/TypeUserFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/filters/TypeUserFilter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Colleges.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Colleges.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Departments.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Departments.class" afterDir="false" />
@@ -49,33 +43,10 @@
       <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/SubjectPensum.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/SubjectPensum.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Subjects.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Subjects.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Users.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Users.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/files/Faculty_2/College_0/Department_1/201T01-MATEMATICA I.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/files/Faculty_2/College_0/Department_1/201T01-MATEMATICA I.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/files/Faculty_2/College_0/Department_1/201T01-MATEMÃ�TICA I.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/files/Faculty_2/College_0/Department_1/201T02-MATEMATICA II.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/files/Faculty_2/College_0/Department_1/201T03-MATEMATICA III.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/files/Faculty_2/College_0/Department_1/201T04-MATEMATICA IV.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/files/Faculty_2/College_0/Department_1/252T54-ALGORITMOS DE PROGRAMACION.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/filters/TypeUserFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/filters/TypeUserFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Colleges.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Colleges.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Departments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Departments.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Faculties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Faculties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Files.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Files.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Pensum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Pensum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Subjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Subjects.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Users.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Colleges.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Colleges.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Files.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Files.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/SubjectPensum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/SubjectPensum.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Subjects.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Subjects.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/201T01-MATEMATICA I.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/201T01-MATEMATICA I.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/201T01-MATEMATICA I.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/201T02-MATEMATICA II.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/201T03-MATEMATICA III.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/201T04-MATEMATICA IV.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/252T54-ALGORITMOS DE PROGRAMACION.doc" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -116,8 +87,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/filters/TypeUserFilter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+            <state relative-caret-position="255">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -125,7 +99,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Users.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1428">
+            <state relative-caret-position="1258">
               <caret line="93" column="30" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
             </state>
           </provider>
@@ -143,7 +117,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Pensum.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
+            <state relative-caret-position="612">
               <caret line="51" column="48" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
             </state>
           </provider>
@@ -164,7 +138,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Colleges.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="493">
               <caret line="45" selection-start-line="45" selection-end-line="45" />
             </state>
           </provider>
@@ -291,6 +265,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -346,8 +322,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -537,12 +511,14 @@
       <workItem from="1552872936815" duration="600000" />
       <workItem from="1552927263635" duration="2278000" />
       <workItem from="1552953424544" duration="1295000" />
-      <workItem from="1553037514684" duration="674000" />
+      <workItem from="1553037514684" duration="2930000" />
+      <workItem from="1553100018385" duration="638000" />
+      <workItem from="1553120376225" duration="1313000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="257132000" />
+    <option name="totallyTimeSpent" value="261339000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -555,9 +531,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.34951457" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.36084142" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -567,7 +542,7 @@
       <window_info id="Web" order="7" sideWeight="0.5021008" side_tool="true" weight="0.25340393" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4975728" visible="true" weight="0.95090014" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4975728" weight="0.95090014" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -789,7 +764,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Users.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
+        <state relative-caret-position="1258">
           <caret line="93" column="30" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
         </state>
       </provider>
@@ -803,7 +778,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Pensum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
+        <state relative-caret-position="612">
           <caret line="51" column="48" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
         </state>
       </provider>
@@ -820,15 +795,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Colleges.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="493">
           <caret line="45" selection-start-line="45" selection-end-line="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/filters/TypeUserFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+        <state relative-caret-position="255">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

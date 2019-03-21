@@ -24,6 +24,7 @@ export class SubjectsComponent implements OnInit {
   title = '';
   admin = false;
   showLoadder: boolean = true;
+  found: boolean = true;
 
   constructor(private dialog: MatDialog, private httpService: HttpService, private filesService: FilesService,
               private activeRouter: ActivatedRoute, private userService: UserService, private alertService: AlertService,
@@ -65,8 +66,12 @@ export class SubjectsComponent implements OnInit {
           this.subjects = res.subjects;
           this.typesSubject = res.types;
           console.log(this.subjects, this.typesSubject);
+          if(this.subjects.length == 0){
+            this.found = false;
+          } else {
+            this.found = true;
+          }
         } else {
-          //alert(res.response);
           this.alertService.confirm('Error!', res.response);
         }
       });
@@ -79,8 +84,12 @@ export class SubjectsComponent implements OnInit {
           this.subjects = res.subjects;
           this.typesSubject = res.types;
           console.log(this.subjects, this.typesSubject);
+          if(this.subjects.length == 0){
+            this.found = false;
+          } else {
+            this.found = true;
+          }
         } else {
-          //alert(res.response);
           this.alertService.confirm('Error!', res.response);
         }
       });
@@ -97,7 +106,6 @@ export class SubjectsComponent implements OnInit {
         this.subjects.splice(this.subjects.indexOf(subject), 1);
         this.deleteFile(subject);
       } else {
-        //alert(res.response);
         this.alertService.confirm('Error!', res.response);
       }
     });
@@ -109,7 +117,6 @@ export class SubjectsComponent implements OnInit {
       if (res.status === 200) {
         console.log(res.response);
       } else {
-        //alert(res.response);
         this.alertService.confirm('Error!', res.response);
       }
     });
@@ -117,14 +124,6 @@ export class SubjectsComponent implements OnInit {
 
   getSyllabus(subject) {
     this.filesService.getFile(`/Files?syllabus_url=${subject.syllabus_url}&syllabus_name=${subject.syllabus_name}`);
-    // .subscribe((res: any) => {
-    //  console.log(res);
-    //  if (res.status === 200) {
-        // console.log(res.response);
-    //  } else {
-    //    alert(res.response);
-    //  }
-    // });
   }
   
 }

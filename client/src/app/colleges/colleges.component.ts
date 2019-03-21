@@ -21,6 +21,7 @@ export class CollegesComponent implements OnInit {
   title = '';
   admin = false;
   showLoadder: boolean = true;
+  found: boolean = true;
 
   constructor(private dialog: MatDialog, private httpService: HttpService, private router: Router,
               private activeRouter: ActivatedRoute, private userService: UserService, private alertService: AlertService) { }
@@ -68,9 +69,14 @@ export class CollegesComponent implements OnInit {
               if (res.status === 200) {
                 this.colleges = res.colleges;
                 console.log(this.colleges);
+                if(this.colleges.length == 0){
+                  this.found = false;
+                } else {
+                  this.found = true;
+                }
               } else {
                 //alert(res.response);
-                this.alertService.confirm('Error', res.response);
+                this.alertService.confirm('Error!', res.response);
               }
             });
         } else {
@@ -81,9 +87,14 @@ export class CollegesComponent implements OnInit {
               if (res.status === 200) {
                 this.colleges = res.colleges;
                 console.log(this.colleges);
+                if(this.colleges.length == 0){
+                  this.found = false;
+                } else {
+                  this.found = true;
+                }
               } else {
                 //alert(res.response);
-                this.alertService.confirm('Error', res.response)
+                this.alertService.confirm('Error!', res.response)
               }
             });
         }
