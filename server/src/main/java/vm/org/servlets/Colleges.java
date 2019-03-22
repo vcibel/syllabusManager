@@ -61,6 +61,7 @@ public class Colleges extends HttpServlet {
 			Integer college_code = reqBody.getInt("college_code");
 			String college_name = reqBody.getString("college_name");
 			Integer faculty_id = reqBody.getInt("faculty_id");
+			System.out.println(college_name);
 
 			if (db.executeQuery(prop.getValue("query_checkCollege"), college_code, college_name).length()==0) {
 				Integer college_id = db.executeUpdate(prop.getValue("query_addCollege"), college_code,  college_name, faculty_id);
@@ -120,6 +121,7 @@ public class Colleges extends HttpServlet {
 			Integer new_college_code = reqBody.getInt("college_code");
 			String new_college_name = reqBody.getString("college_name");
 			Integer new_faculty_id = reqBody.getInt("faculty_id");
+			System.out.println(new_college_name);
 
 			JSONArray table = db.executeQuery(prop.getValue("query_checkCollege"), new_college_code, new_college_name);
 			System.out.println(table.toString());

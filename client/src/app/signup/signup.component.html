@@ -1,7 +1,8 @@
 <div class="dialog-header">
   <mat-grid-list cols="4" rowHeight="100px">
     <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <h4>Crear Usuario</h4>
+      <h4 *ngIf="!user.user_name">Crear Usuario</h4>
+      <h4 *ngIf="user.user_name">{{user.user_name}}</h4>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="2" [rowspan]="1">
       <button type="button" class="close" aria-label="Close" (click)="onClose()">

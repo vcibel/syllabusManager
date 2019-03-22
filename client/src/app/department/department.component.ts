@@ -21,7 +21,7 @@ department: Department = {
   department_updated_at: null
 };
 
-new: boolean = true;
+new = true;
 colleges: College[];
 
   constructor(private httpService: HttpService, public dialogRef: MatDialogRef<DepartmentComponent>,
@@ -35,6 +35,10 @@ colleges: College[];
   }
 
   createDepartment() {
+    console.log(this.department);
+    if (this.department.department_name === '' || this.department.department_code === null || this.department.college_id === null){
+      this.alertService.confirm('Error', 'Por favor introduzca todos los campos');
+    } else {
     this.httpService.post(this.department, '/Departments').subscribe((res: any) => {
       if (res.status === 200) {
         this.alertService.open('Departamento creado!');
@@ -44,6 +48,7 @@ colleges: College[];
         this.alertService.confirm('Error', res.response);
       }
     });
+    }
   }
 
   onClose(department) {

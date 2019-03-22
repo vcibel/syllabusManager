@@ -50,6 +50,7 @@ public class Faculties extends HttpServlet {
 		try {
 			Integer faculty_code = reqBody.getInt("faculty_code");
 			String faculty_name = reqBody.getString("faculty_name");
+			System.out.println(faculty_name);
 
 			if (db.executeQuery(prop.getValue("query_checkFaculty"), faculty_name, faculty_code).length() ==0) {
 				Integer faculty_id = db. executeUpdate(prop.getValue("query_addFaculty"), faculty_code, faculty_name) ;

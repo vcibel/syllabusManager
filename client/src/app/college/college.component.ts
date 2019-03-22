@@ -22,7 +22,7 @@ export class CollegeComponent implements OnInit {
     college_created_at: '',
     college_updated_at: ''
   };
-  new: boolean = true;
+  new = true;
   faculties: Faculty[];
 
   constructor(public dialogRef: MatDialogRef<CollegeComponent>, private httpService: HttpService,
@@ -37,6 +37,9 @@ export class CollegeComponent implements OnInit {
 
   createCollege() {
     console.log(this.college);
+    if (this.college.college_name === '' || this.college.college_code === null || this.college.faculty_id === null){
+      this.alertService.confirm('Error', 'Por favor introduzca todos los campos');
+    } else {
     this.httpService.post(this.college, '/Colleges').subscribe((res: any) => {
         if (res.status === 200) {
           //this.alertService.confirm('', 'Escuela creada');
@@ -57,6 +60,7 @@ export class CollegeComponent implements OnInit {
          this.alertService.confirm('Error', res.response);
         }
     });
+  }
   }
 
   updateCollege() {

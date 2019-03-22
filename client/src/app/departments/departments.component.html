@@ -40,7 +40,7 @@
                 ><strong>Departamento de {{department.department_name}}</strong></h5>
               </mat-grid-tile>
               <mat-grid-tile [colspan]="3" [rowspan]="1">
-                <h6>Código del Departamento: </h6>
+                <h6>Código del Departamento: {{department.department_code}}</h6>
               </mat-grid-tile>
               <mat-grid-tile [colspan]="3" [rowspan]="1">
                 <button mat-button [matMenuTriggerFor]="menu" *ngIf="admin" class="btn-menu">

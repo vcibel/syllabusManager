@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
     user_created_at: '',
 };
 
-new: boolean = true;
+new = true;
 
   constructor(private httpService: HttpService, public dialogRef: MatDialogRef<SignupComponent>,
               private alertService: AlertService) {
@@ -38,6 +38,10 @@ new: boolean = true;
   }
 
   signUp() {
+    console.log(this.user);
+    if (this.user.user_name === '' || this.user.user_lastname === '' || this.user.user_username === '' || this.user.user_password === ''){
+      this.alertService.confirm('Error', 'Por favor introduzca todos los campos');
+    } else {
       this.httpService.post(this.user, '/Users').subscribe((res: any) => {
         if (res.status === 200) {
             this.alertService.open('Usuario creado!');
@@ -52,13 +56,13 @@ new: boolean = true;
               type_user_id: null,
               user_created_at: '',
           };
-            //alert(res.response);
-            //this.alertService.confirm('', res.response);
+            // alert(res.response);
         } else {
           console.log(res.message);
-          this.alertService.confirm('Error!', res.message)
+          this.alertService.confirm('Error!', res.message);
         }
       });
+    }
     }
 
     updateUser() {

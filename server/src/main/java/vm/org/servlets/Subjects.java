@@ -70,6 +70,7 @@ public class Subjects extends HttpServlet {
 			Integer type_subject_id = reqBody.getInt("type_subject_id");
             Integer department_id = reqBody.getInt("department_id");
             Integer code_consecutive = reqBody.getInt("code_consecutive");
+            System.out.println(subject_name);
 
 			if (subject_code.length() < 6) {
 				// arreglar para cuando no hay ninguno

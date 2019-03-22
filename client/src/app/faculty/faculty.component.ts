@@ -19,7 +19,7 @@ export class FacultyComponent implements OnInit {
     faculty_updated_at: ''
   };
 
-  new: boolean = true;
+  new = true;
 
   constructor(public dialogRef: MatDialogRef<FacultyComponent>, private httpService: HttpService,
               private alertService: AlertService) {
@@ -33,6 +33,9 @@ export class FacultyComponent implements OnInit {
 
   createFaculty() {
     console.log(this.faculty);
+    if (this.faculty.faculty_name === '' || this.faculty.faculty_code === null){
+      this.alertService.confirm('Error', 'Por favor introduzca todos los campos');
+    } else {
     this.faculty.faculty_code = Number(this.faculty.faculty_code);
       this.httpService.post(this.faculty, '/Faculties').subscribe((res: any) => {
           if (res.status === 200) {
@@ -50,6 +53,7 @@ export class FacultyComponent implements OnInit {
             this.alertService.confirm('Error', res.response);
           }
       });
+    }
   }
 
   updateFaculty() {
