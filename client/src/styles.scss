@@ -127,3 +127,14 @@ button.close {
     position: relative;
     left: 30%;
 }
+
+h4.header-title, .mat-select-value, span.mat-option-text, span.pensum-name, .notfound {
+    text-transform: uppercase;
+}
+
+.tooltip-help {
+    word-break: break-word;
+    font-size: 12px;
+}
+
+

@@ -126,7 +126,14 @@ mat-card.subject-card.mat-card {
     border-radius: 0px;
     box-shadow: 0 0px 0px 0px rgba(0,0,0,.2), 0 0px 0px 0 rgba(0,0,0,.14), 0 0px 0px 0 rgba(0,0,0,.12) !important;
     left: 100px;
-    height: 100%;
+}
+
+mat-grid-tile.mat-grid-tile.electivas-table {
+    position: fixed !important;
+    height: calc(395px) !important;
+    top: calc(180px) !important;
+    width: calc(((10% - 13.9px) * 10) + 10px) !important;
+    left: -39px !important;
 }
 
 mat-grid-tile.mat-grid-tile.row-header {
@@ -280,4 +287,9 @@ mat-icon.example-icon.focus.mat-icon.material-icons.mat-icon-no-color {
 
 svg.jtk-connector {
     cursor: pointer !important;
+}
+
+.pensum-name-header {
+    text-transform: uppercase;
+    font-size: 11px;
 }
