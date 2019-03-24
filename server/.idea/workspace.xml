@@ -7,33 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3596c7e-1748-45ca-b3c8-c8e1e3745f09" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../client/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/college/college.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/college/college.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/department/department.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/department/department.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/departments/departments.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/departments/departments.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/faculty/faculty.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/faculty/faculty.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/home/home.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pensum/pensum.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/pensums/pensums.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/pensums/pensums.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/app/subject/subject.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/subject/subject.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Colleges.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Colleges.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Departments.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Departments.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Faculties.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Faculties.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Subjects.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/classes/vm/org/servlets/Subjects.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_war_exploded/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/server_war_exploded/files/Faculty_2/College_3/Department_4/drawLine.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Colleges.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Colleges.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Departments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Departments.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Faculties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Faculties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Subjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Subjects.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Colleges.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Colleges.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Subjects.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vm/org/servlets/Subjects.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/files/Faculty_2/College_0/Department_1/201T01-MATEMATICA I.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/files/Faculty_2/College_3/Department_4/drawLine.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Colleges.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Files.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/SubjectPensum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vm/org/servlets/Subjects.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -489,6 +466,7 @@
       <workItem from="1553010852644" duration="2890000" />
       <workItem from="1553028195503" duration="4244000" />
       <workItem from="1553084209964" duration="3092000" />
+      <workItem from="1553431463550" duration="71000" />
     </task>
     <servers />
   </component>
@@ -505,9 +483,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.3698941" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.37594554" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -622,21 +601,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Comment.java" />
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="40" selection-start-column="40" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bin/props/conn.properties" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Faculties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1309">
-          <caret line="77" column="32" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/target/classes/vm/org/servlets/Colleges.class">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -682,43 +647,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Departments.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="36" column="25" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Files.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1457">
-          <caret line="34" column="48" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#682#683#0" expanded="true" />
-            <element signature="e#705#706#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/SubjectPensum.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="70">
           <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/filters/SessionFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="104" column="29" selection-start-line="104" selection-start-column="29" selection-end-line="104" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -760,6 +692,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/filters/EncodingFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="16" column="77" selection-start-line="16" selection-start-column="77" selection-end-line="16" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -776,8 +718,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Files.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="221">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -788,16 +730,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="816">
           <caret line="64" column="48" selection-start-line="64" selection-start-column="48" selection-end-line="64" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/filters/EncodingFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="16" column="77" selection-start-line="16" selection-start-column="77" selection-end-line="16" selection-end-column="77" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
