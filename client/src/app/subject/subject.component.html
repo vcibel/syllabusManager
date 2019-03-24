@@ -2,7 +2,7 @@
   <mat-grid-list cols="4" rowHeight="100px">
     <mat-grid-tile [colspan]="2" [rowspan]="1">
       <h4 *ngIf="!subject.subject_name">Crear Materia</h4>
-      <h4 *ngIf="subject.subject_name">{{subject.subject_name}}</h4>
+      <h4 class="header-title" *ngIf="subject.subject_name">{{subject.subject_name}}</h4>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="2" [rowspan]="1">
       <button type="button" class="close" aria-label="Close" (click)="onClose()">
@@ -67,7 +67,14 @@
         <mat-hint align="end" *ngIf="!read">{{subjectHc.value.length}} / 1</mat-hint>
       </mat-form-field>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="disabled || read"> 
+    <mat-grid-tile [colspan]="6" [rowspan]="1" class="gird-hc" *ngIf="disabled && !read"> 
+      <label for="number-terms">Hora Crédito de la materia:</label>
+      <mat-form-field class="example-full-width">
+        <input [disabled]="read" matInput #subjectHc maxlength="1" class="form-control cod" [(ngModel)]="subject.subject_hc" [ngModelOptions]="{standalone: true}">
+        <mat-hint align="end" *ngIf="!read">{{subjectHc.value.length}} / 1</mat-hint>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="read"> 
       <label for="number-terms">Hora Crédito de la materia:</label>
       <mat-form-field class="example-full-width">
         <input [disabled]="read" matInput #subjectHc maxlength="1" class="form-control cod" [(ngModel)]="subject.subject_hc" [ngModelOptions]="{standalone: true}">
@@ -81,8 +88,10 @@
     <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="!read"> 
       <input type="file" class="form-control input-file file" accept="application/pdf" #file (change)="onFilesAdded(this)">
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="subject.syllabus_name" (click)="getSyllabus(subject)"> 
-      {{subject.syllabus_name}}
+    <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="subject.syllabus_name" (click)="getSyllabus(subject)" style=" cursor: pointer !important;"> 
+      <span matTooltip="Ver programa de estudio"
+      matTooltipClass="example-tooltip-blue"
+      aria-label="Button that shows a red tooltip">{{subject.syllabus_name}}</span>
     </mat-grid-tile>
   </mat-grid-list>
 </div>

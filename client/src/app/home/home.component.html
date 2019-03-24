@@ -30,7 +30,7 @@
                                 </mat-grid-tile>
                                 <mat-grid-tile class="grid" [colspan]="2" [rowspan]="1">
                                   <mat-form-field>
-                                    <input matInput type="text" class="form-control" [(ngModel)]="input" (keyup)="search(input)" style="text-transform: none !important; outline: 0px auto -webkit-focus-ring-color !important;">
+                                    <input matInput type="text" class="form-control" [(ngModel)]="input" (keyup)="search(input)" style="outline: 0px auto -webkit-focus-ring-color !important;">
                                   </mat-form-field>
                                 </mat-grid-tile>
                                 <mat-grid-tile [colspan]="2" [rowspan]="1">
@@ -100,11 +100,11 @@
                                   <mat-form-field class="select-faculty">
                                     <mat-select *ngIf="!collegePensum" >
                                         <mat-option></mat-option>
-                                        <mat-option *ngFor="let pensum of pensums" [value]=pensum.pensum_id (click)="getPensumSubjects(pensum)">{{pensum.college_name}} - {{pensum.pensum_date.substring(0,10) | date: 'MMMM yyyy'}}</mat-option>
+                                        <mat-option *ngFor="let pensum of pensums" [value]=pensum.pensum_id (click)="getPensumSubjects(pensum)">{{pensum.college_name}} - {{pensum.pensum_date | date: 'MMMM yyyy'}}</mat-option>
                                     </mat-select>
                                     <mat-select *ngIf="collegePensum" >
                                       <mat-option></mat-option>
-                                      <mat-option *ngFor="let pensum of collegePensum" [value]=pensum.pensum_id (click)="getPensumSubjects(pensum)">{{pensum.pensum_date.substring(0,10) | date: 'MMMM yyyy'}}</mat-option>
+                                      <mat-option *ngFor="let pensum of collegePensum" [value]=pensum.pensum_id (click)="getPensumSubjects(pensum)">{{pensum.pensum_date | date: 'MMMM yyyy'}}</mat-option>
                                   </mat-select>
                                   </mat-form-field>
                                 </mat-grid-tile>

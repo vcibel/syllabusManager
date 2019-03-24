@@ -1,13 +1,27 @@
 <mat-toolbar color="primary" class="toolbar">
   <mat-toolbar-row>
-    <span>{{pensum.college_name}}</span>
+    <span class="pensum-name">{{pensum.college_name}}</span>
+    <button class="help" mat-icon-button 
+      matTooltip="Para editar/crear el pensum, ver electivas, pensum o ir de vuelta a inicio,
+                  vaya a la parte superior derecha, en la cual se encuentra el menu para ir hacia las opciones 
+                  anteriores. Si desea editar/crear, se desplegara un buscador y una lista con
+                  las materias disponibles, las cuales podra arrastrar hacia el pensum en su trimestre
+                  correspondiente, donde igualmete podra ver la información de cada una de ellas (Para ver 
+                  el detalle deberá darle al boton de editar o guardar los cambios). 
+                  Una vez hecho lo anterior podrá asignarles las prelaciones a las asignaturas
+                  mediante el boton 'dibujar prelacion', una vez asignadas las prelaciones seleccione el boton
+                  de 'prelación lista'. Si ingresa en la opción de electivas, se desplegaran las electivas disponibles,
+                  donde podra arrastrar hacia el cuadro que se encuentra en la parte izquiera. Finalmente, seleccionar 
+                  el boton de guardar."
+      matTooltipClass="tooltip-help">
+      <mat-icon class="example-icon">help</mat-icon>
+    </button>
     <span class="example-spacer"></span>
     <button mat-button [matMenuTriggerFor]="menu">
         <mat-icon>list</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="goToHome()">Inicio</button>
-        <!-- <button mat-menu-item (click)="save()">Guardar</button> -->
         <button mat-menu-item (click)="edit=!edit" *ngIf="admin">Editar</button>
         <button mat-menu-item (click)="togglePensumF()">Pensum</button>
         <button mat-menu-item (click)="togglePensumB()">Electivas</button>
@@ -185,7 +199,7 @@
               <span>UNIDADES CURRICULARES</span>
             </mat-card>
           </mat-grid-tile> -->
-          <mat-grid-tile [colspan]="10" [rowspan]="3" style="height: 100% !important">
+          <mat-grid-tile [colspan]="10" [rowspan]="3" class="electivas-table">
             <mat-card class="electivas">
               <div
                 cdkDropList
@@ -242,7 +256,7 @@
                 <!--<button mat-button color="primary" (click)="save()">Guardar</button>-->
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="1">
-                Universidad Rafael Urdaneta
+                <span class="pensum-name-header">Universidad Rafael Urdaneta</span> 
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="3">
                 <mat-form-field>
@@ -252,20 +266,19 @@
                 </mat-form-field>
               </mat-grid-tile>
               <mat-grid-tile [colspan]="2" [rowspan]="1">
-                Nombre:___________________
-                <!-- <button mat-button color="primary" class="save" (click)="save()">Guardar</button> -->
+                <span class="pensum-name-header">Nombre:___________________</span> 
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="1">
-                Facultad de {{pensum.faculty_name}}
+                <span class="pensum-name-header">Facultad de {{pensum.faculty_name}}</span>
               </mat-grid-tile>
               <mat-grid-tile [colspan]="2" [rowspan]="1">
-                Apellido:___________________
+                <span class="pensum-name-header">Apellido:___________________</span> 
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="1">
-                Escuela de {{pensum.college_name}}
+               <span class="pensum-name-header">Escuela de {{pensum.college_name}}</span>
               </mat-grid-tile>
               <mat-grid-tile [colspan]="2" [rowspan]="1">
-                C.I.:_______________________
+                <span class="pensum-name-header">C.I.:_______________________</span>
               </mat-grid-tile>
             </mat-grid-list> 
           </mat-card>
@@ -303,10 +316,10 @@
               </mat-grid-tile>
             </mat-grid-list>
             <div class="term-container">
-                <div *ngFor="let item of done.slice(1); let i=index" class="term"> 
-                  <app-term [done]="item" [edit]="edit" [term]="i+1" (droped)="drop($event)" (clicked)="onClick($event, item)"></app-term>
-                 </div>
-                </div>
+              <div *ngFor="let item of done.slice(1); let i=index" class="term"> 
+                <app-term [done]="item" [edit]="edit" [term]="i+1" (droped)="drop($event)" (clicked)="onClick($event, item)"></app-term>
+              </div>
+            </div>
           </mat-card>
         </mat-card-content>
       </mat-card>
