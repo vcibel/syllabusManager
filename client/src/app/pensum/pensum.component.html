@@ -30,11 +30,18 @@
 </mat-toolbar>
 
 <div cdkDropListGroup >
-  <mat-drawer-container class="example-container" style="height: 600px !important">
+  <mat-drawer-container class="example-container" style="height: 593px !important">
     <!-- <mat-drawer mode="side" opened position="end" *ngIf="!edit" style="width: 156px;">
-      <div class="side-content">here</div>
-    </mat-drawer> -->
-    <mat-drawer mode="side" opened position="end" *ngIf="edit" style="width: 156px !important;">
+      <div class="side-content"></div>
+    </mat-drawer>
+    [ngStyle]="{'visibility': edit ? 'visible' : (!edit ? 'hidden' : null) }"
+  -->
+    <mat-drawer mode="side" opened position="end">
+      <div class="side-content" *ngIf="edit" style="width: 140px;">
+        <span class="title-pem">Universidad Rafael Urdaneta</span>
+        <img class="img-sidenav" src="https://talloiresnetwork.tufts.edu/wp-content/uploads/talnet__1396.jpg" alt="">
+      </div>
+      <div class="side-content2" *ngIf="!edit" style="width: 140px;">
       <mat-grid-list cols="2" rowHeight="30px" class="search">
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="search-text">Buscar Materia:</span>
@@ -186,19 +193,16 @@
           <button mat-button color="primary" (click)="save()">Guardar</button>
         </div>
       </div>
+    </div>
     </mat-drawer>
-    <mat-drawer-content style="height: 657px !important;">
+    <mat-drawer-content style="overflow-y: -webkit-paged-y !important;">
       <mat-spinner style="margin: 0 auto; top: 150px;" color="accent" *ngIf="showLoadder" ></mat-spinner>
+      <!-- <h3 style="margin: 0 auto; top: 150px;" *ngIf="showLoadder">Cargando...</h3> -->
       <mat-card class="pensum pensum-back" *ngIf="Show || isBack && !showLoadder">
         <mat-grid-list cols="10" rowHeight="100px">
           <mat-grid-tile [colspan]="10" [rowspan]="1">
             <span> <strong>REPOSITORIO DE ASIGNATURAS ELECTIVAS</strong> </span>
           </mat-grid-tile>
-          <!-- <mat-grid-tile [colspan]="5" [rowspan]="2">
-            <mat-card>
-              <span>UNIDADES CURRICULARES</span>
-            </mat-card>
-          </mat-grid-tile> -->
           <mat-grid-tile [colspan]="10" [rowspan]="3" class="electivas-table">
             <mat-card class="electivas">
               <div
@@ -214,9 +218,6 @@
                   <mat-grid-tile [colspan]="4" [rowspan]="1" class="row-header">
                     <span>DENOMINACIÓN</span>
                   </mat-grid-tile>
-                  <!-- <mat-grid-tile [colspan]="2" [rowspan]="1" class="row-header">
-                    <span>REQUISITO</span>
-                  </mat-grid-tile> -->
                 </mat-grid-list>
                 <div class="example-box3" *ngFor="let item of electives" cdkDrag>
                   <mat-card class="electiva" (click)="onClick(item)">
@@ -227,9 +228,6 @@
                       <mat-grid-tile [colspan]="4" [rowspan]="1" class="row-item">
                         <span>{{item.subject_name}}</span>
                       </mat-grid-tile>
-                      <!-- <mat-grid-tile [colspan]="2" [rowspan]="1" class="row-item">
-                        <span>0909</span>
-                      </mat-grid-tile> -->
                     </mat-grid-list>
                   </mat-card>
                 </div>
@@ -240,7 +238,6 @@
       </mat-card>
       <mat-card class="pensum" *ngIf="Show || isFront && !showLoadder">
         <mat-card-content class="pensum-content">
-          <!-- <mat-spinner style="margin: 0 auto; top: 150px;" color="accent" *ngIf="showLoadder" ></mat-spinner> -->
           <mat-card class="pensum-header" id="card-pensum">
             <mat-grid-list cols="4" rowHeight="20px">
               <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -260,8 +257,8 @@
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="3">
                 <mat-form-field>
-                  <input matInput [matDatepicker]="dp" style="text-transform: uppercase;" [value]="pensum.pensum_date" (dateInput)="setDate($event)" [disabled]="!edit">
-                  <mat-datepicker-toggle matSuffix [for]="dp" *ngIf="edit" ></mat-datepicker-toggle>
+                  <input matInput [matDatepicker]="dp" style="text-transform: uppercase;" [value]="pensum.pensum_date" (dateInput)="setDate($event)" [disabled]="edit">
+                  <mat-datepicker-toggle matSuffix [for]="dp" *ngIf="!edit" ></mat-datepicker-toggle>
                   <mat-datepicker #dp></mat-datepicker>
                 </mat-form-field>
               </mat-grid-tile>
@@ -282,7 +279,7 @@
               </mat-grid-tile>
             </mat-grid-list> 
           </mat-card>
-          <mat-card class="pensum-body" id="card-pensum">
+          <mat-card class="pensum-body" id="card-pensum2">
             <mat-grid-list cols="20" rowHeight="30px">
               <mat-grid-tile [colspan]="2" [rowspan]="1">
                 I SEM
@@ -318,6 +315,32 @@
             <div class="term-container">
               <div *ngFor="let item of done.slice(1); let i=index" class="term"> 
                 <app-term [done]="item" [edit]="edit" [term]="i+1" (droped)="drop($event)" (clicked)="onClick($event, item)"></app-term>
+              </div>
+              <!-- [ngStyle]="{'left': edit ? '79.5%' : (!edit ? '89.5%' : null) }" -->
+              <div cdkDrag cdkDragLockAxis="y" class="term10" style="left: 80%;">
+                  <div class="example-box" >
+                      <mat-card class="subject-card">
+                          <mat-grid-list cols="4" rowHeight="15px">
+                            <mat-grid-tile [colspan]="3" [rowspan]="1">
+                              <mat-card class="code-subject">
+                                <span class="subject-text">  </span>
+                              </mat-card>
+                            </mat-grid-tile>
+                            <mat-grid-tile [colspan]="1" [rowspan]="1">
+                              <mat-card class="hc-subject">
+                                <span>3</span>
+                              </mat-card>
+                            </mat-grid-tile>
+                          </mat-grid-list>
+                          <mat-grid-list cols="2" rowHeight="20px">
+                            <mat-grid-tile [colspan]="2" [rowspan]="1">
+                              <mat-card class="name-subject">
+                                <span class="subject-text">ELECTIVA III</span>
+                              </mat-card>
+                            </mat-grid-tile>
+                          </mat-grid-list>
+                      </mat-card>
+                  </div>
               </div>
             </div>
           </mat-card>
