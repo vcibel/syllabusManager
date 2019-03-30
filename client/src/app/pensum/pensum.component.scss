@@ -16,7 +16,7 @@
 }
 
 mat-card.pensum.mat-card {
-    margin: 10px;
+    margin: 5px;
     border-radius: 0px;
     border: 1px solid;
 }
@@ -26,6 +26,14 @@ mat-card.pensum.mat-card {
     border: 1px solid;
     margin: -1px;
     border-radius: 0px;
+}
+
+#card-pensum2 {
+    box-shadow: 0 0px 0px 0 transparent;
+    border: 1px solid;
+    margin: -1px;
+    border-radius: 0px;
+    height: 460px;
 }
 
 mat-card-content.pensum-content.mat-card-content {
@@ -292,4 +300,29 @@ svg.jtk-connector {
 .pensum-name-header {
     text-transform: uppercase;
     font-size: 11px;
+}
+
+.term10.cdk-drag {
+    position: fixed;
+    float: left;
+    -webkit-transform: translate3d(0px, -6px, 0px) !important;
+    transform: translate3d(0px, 336px, 0px) !important;
+    // left: 78.5%; //89.5%
+}
+
+img.img-sidenav {
+    margin: 0px;
+    position: fixed;
+    top: 56%;
+    height: 45%;
+}
+
+span.title-pem {
+    writing-mode: vertical-lr;
+    font-size: 22px;
+    position: absolute;
+    color: #484848;
+    left: 35%;
+    top: 13px;
+    text-shadow: 1px 2px 2px #cccccc;
 }

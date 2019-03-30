@@ -1,4 +1,4 @@
-<div *ngIf="edit" 
+<div
   cdkDropList
   [cdkDropListData]="done"
   class="example-list"
@@ -29,7 +29,7 @@
     </div>
   </div>
 </div>
-<div *ngIf="!edit">
+<!-- <div *ngIf="!edit">
   <div class="example-box" *ngFor="let item of done" id="{{item.subject_id}}">
     <div class="subjects-column" id="{{item.subject_id}}">
         <mat-card class="subject-card" id="{{item.subject_id}}" (click)="onClick(item)">
@@ -55,4 +55,4 @@
           </mat-card>
     </div>
   </div>
-</div>
+</div> -->

@@ -76,6 +76,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
   };
   new = true;
   edit = false;
+  open = false;
   admin = false;
   searchResult: Subject[];
   input: String;
@@ -116,7 +117,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
 
   onClick(event) {
     console.log(event);
-    if (this.edit) {
+    if (!this.edit) {
     if (this.add) {
       if (this.source === '') {
         this.source = event.subject_id.toString();
@@ -227,7 +228,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
         if (res.status === 200) {
             this.alertService.open('Guardado con exito!');
             console.log(res);
-            this.edit = false;
+            this.edit = true;
         } else {
           console.log(res.message);
           this.alertService.confirm('Error', res.message);
@@ -366,6 +367,12 @@ export class PensumComponent implements OnInit, AfterViewInit {
   }*/
 
   ngOnInit() {
+
+    if(this.edit == false){
+      this.edit = true;
+      // this.open = true;
+    }
+
     if (this.userService.user.type_user_id === 1) {
       this.admin = true;
     }
@@ -386,6 +393,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
       console.log(data);
       const $this = this;
       setTimeout(function() {$this.drawRestrictions($this.done); }, 2000);
+      // setTimeout(function() {$this.showLoadder = false; }, 3000);
       this.source = '';
       this.target = '';
       console.log(this.done);

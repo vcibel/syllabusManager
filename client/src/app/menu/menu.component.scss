@@ -104,11 +104,32 @@ mat-card.img.mat-card {
     box-shadow: 0 0px 0px 0px rgba(0,0,0,.2)
 }
 
-img.img-sidenav {
-    height: 160px;
-    margin: 16px;
-    top: -5px;
+// img.img-sidenav {
+//     /* height: 160px; */
+//     margin: -20px;
+//     /* top: -5px; */
+//     position: absolute;
+// }
+
+img.img-sidenav{
+    margin: -33px;
     position: absolute;
+    width: 342px;
+    height: 195px;
+    opacity: 0.8;
+    top: 10%;
+}
+
+h6.title-menu {
+    font-size: 29px;
+    text-align: -webkit-center;
+    position: absolute;
+    color: #ffffff;
+    font-family: sans-serif;
+    left: -3%;
+    top: 50px;
+    text-transform: inherit;
+    text-shadow: 2px 2px #797373;
 }
 
 .header{
