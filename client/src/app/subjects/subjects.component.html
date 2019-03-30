@@ -24,7 +24,7 @@
       <mat-list>
         <mat-spinner style="margin: 0 auto; top: 150px;" color="accent" *ngIf="showLoadder"></mat-spinner>
         <div class="not-found-list" *ngIf="!found">
-          <h2>No se pudo encontrar ...</h2>
+          <h2>No se encuentran materias ...</h2>
         </div>
         <div *ngIf="found">
         <mat-list-item class="list-subject" *ngFor="let subject of subjects" >
