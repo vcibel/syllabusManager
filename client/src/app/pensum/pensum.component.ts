@@ -95,6 +95,8 @@ export class PensumComponent implements OnInit, AfterViewInit {
     if (!this.isFront) {
       this.isFront = true;
     }
+    const $this = this;
+    setTimeout(function() {$this.drawRestrictions($this.done); }, 2000);
   }
 
   togglePensumB() {
@@ -321,7 +323,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
   search(input) {
     this.searchResult = [];
     console.log(input);
-    var value = input !== '';
+    const value = input !== '';
     if (input !== '') {
     this.subjects.filter((subject: Subject) => {
           if (subject.subject_name.toLowerCase().indexOf(input.toLowerCase()) > -1) {
@@ -334,10 +336,10 @@ export class PensumComponent implements OnInit, AfterViewInit {
       this.searchResult = this.subjects;
     }
 
-    if (value == true && this.searchResult.length == 0){
+    if (value === true && this.searchResult.length === 0) {
       console.log('not found');
       this.found = false;
-    } else{
+    } else {
       this.found = true;
     }
 

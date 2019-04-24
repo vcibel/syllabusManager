@@ -19,12 +19,14 @@ import { AlertService } from '../service/alert/alert.service';
 export class SubjectsComponent implements OnInit {
 
   subjects: Subject[];
+  searchResult: Subject[];
   typesSubject: TypeSubject[];
   department: Department;
   title = '';
   admin = false;
-  showLoadder: boolean = true;
-  found: boolean = true;
+  showLoadder = true;
+  found = true;
+  input = '';
 
   constructor(private dialog: MatDialog, private httpService: HttpService, private filesService: FilesService,
               private activeRouter: ActivatedRoute, private userService: UserService, private alertService: AlertService,
@@ -64,9 +66,10 @@ export class SubjectsComponent implements OnInit {
         this.showLoadder = false;
         if (res.status === 200) {
           this.subjects = res.subjects;
+          this.searchResult = res.subjects;
           this.typesSubject = res.types;
           console.log(this.subjects, this.typesSubject);
-          if(this.subjects.length == 0){
+          if (this.subjects.length === 0) {
             this.found = false;
           } else {
             this.found = true;
@@ -84,7 +87,7 @@ export class SubjectsComponent implements OnInit {
           this.subjects = res.subjects;
           this.typesSubject = res.types;
           console.log(this.subjects, this.typesSubject);
-          if(this.subjects.length == 0){
+          if (this.subjects.length === 0) {
             this.found = false;
           } else {
             this.found = true;
@@ -125,5 +128,32 @@ export class SubjectsComponent implements OnInit {
   getSyllabus(subject) {
     this.filesService.getFile(`/Files?syllabus_url=${subject.syllabus_url}&syllabus_name=${subject.syllabus_name}`);
   }
-  
+
+  search(input) {
+    console.log(input);
+    this.searchResult = [];
+    const value = input !== '';
+
+    if (value) {
+      this.subjects.filter((subject: Subject) => {
+        if (subject.subject_name.toLowerCase().indexOf(input.toLowerCase()) > -1) {
+          this.searchResult.push(subject);
+          this.found = true;
+        } else if (subject.subject_code.toLowerCase().indexOf(input.toLowerCase()) > -1) {
+          this.searchResult.push(subject);
+        }
+      });
+    } else {
+      this.searchResult = this.subjects;
+    }
+
+    if (value === true && this.searchResult.length === 0) {
+      console.log('not found');
+      this.found = false;
+    } else {
+      this.found = true;
+    }
+    console.log(this.searchResult);
+
+  }
 }

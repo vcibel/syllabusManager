@@ -148,8 +148,10 @@ export class SubjectComponent implements OnInit {
                               .subscribe((response: any) => {
       if (response.status === 200) {
         this.alertService.open('Materia creada!');
-        this.onClose(this.subject);
+        this.subject.syllabus_name = response.files_name[0];
+        this.subject.syllabus_url = response.files_url[0];
         console.log(response);
+        this.onClose(this.subject);
       } else {
         //alert(response.response);
         this.alertService.confirm('Error!', response.response);

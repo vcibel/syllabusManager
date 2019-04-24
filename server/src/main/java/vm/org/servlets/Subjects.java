@@ -74,8 +74,13 @@ public class Subjects extends HttpServlet {
 
 			if (subject_code.length() < 6) {
 				// arreglar para cuando no hay ninguno
-			    subject_code = subject_code + String.format("%02d", db.executeQuery(prop.getValue("query_getSubjectByDepartment"), department_id).getJSONObject(0).getInt("code_consecutive")+1);
-            }
+				JSONArray departmentSubjects = db.executeQuery(prop.getValue("query_getSubjectByDepartment"), department_id);
+				JSONObject last = departmentSubjects.getJSONObject(departmentSubjects.length()-1);
+				code_consecutive = last.getInt("code_consecutive")+1;
+			    subject_code = subject_code + String.format("%02d", code_consecutive);
+				System.out.println(String.format("%02d", last.getInt("code_consecutive")) + "consecutivo" + last.getInt("code_consecutive")+1);
+			}
+			System.out.println(subject_code + "consecutivo" + code_consecutive);
 
 			if (db.executeQuery(prop.getValue("query_checkSubject"), subject_code, subject_name).length()==0) {
 				Integer subject_id = db.executeUpdate(prop.getValue("query_addSubject"), subject_code, subject_name, subject_hc, type_subject_id);

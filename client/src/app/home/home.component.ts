@@ -123,26 +123,24 @@ export class HomeComponent implements OnInit {
   search(input) {
     console.log(input);
     this.searchResult = [];
-    var value = input !== '';
+    const value = input !== '';
     console.log(value);
 
     if (input !== '') {
       this.subjects.filter((subject: Subject) => {
         if (subject.subject_name.toLowerCase().indexOf(input.toLowerCase()) > -1) {
           this.searchResult.push(subject);
-          console.log('aqui1')
           this.found = true;
         } else if (subject.subject_code.toLowerCase().indexOf(input.toLowerCase()) > -1) {
           this.searchResult.push(subject);
-          console.log('aqui2')
         }
       });
-    } 
+    }
 
-    if (value == true && this.searchResult.length == 0){
+    if (value === true && this.searchResult.length === 0) {
       console.log('not found');
       this.found = false;
-    } else{
+    } else {
       this.found = true;
     }
     console.log(this.searchResult);
