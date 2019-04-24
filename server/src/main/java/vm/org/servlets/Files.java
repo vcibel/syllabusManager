@@ -60,7 +60,8 @@ public class Files extends HttpServlet {
 		DB db = user.getDB();
 		PropertiesReader prop = PropertiesReader.getInstance();
 		ArrayList<String> files_name= new ArrayList<String>();
-		
+		ArrayList<String> files_url= new ArrayList<String>();
+
 		try {
 
 			Integer subject_id = Integer.parseInt(request.getParameter("subject_id"));
@@ -88,7 +89,8 @@ public class Files extends HttpServlet {
 					os.write(bytes, 0, read);
 				}
 				files_name.add(file_name);
-				json.put("status", 200).put("response", prop.getValue("mssg_fileUploaded")).put("files_name", files_name);
+				files_url.add(file_url);
+				json.put("status", 200).put("response", prop.getValue("mssg_fileUploaded")).put("files_name", files_name).put("files_url", files_url);
 				System.out.println(prop.getValue("mssg_fileUploaded"));
 			}
 			out.print(json.toString());
