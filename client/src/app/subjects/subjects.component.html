@@ -17,9 +17,13 @@
       <button mat-icon-button (click)="openSubject()" matTooltip="Crear materia"
       matTooltipClass="example-tooltip-blue"
       aria-label="Button that shows a red tooltip" *ngIf="admin">
-        <mat-icon class="example-icon">add_box</mat-icon>
+        <span class="material-icons">add_box</span>
       </button>
-        <input matInput type="text" [(ngModel)]="input" (keyup)="search(input)">
+        <mat-form-field class="example-full-width" style="left: 37%; width: 25%;">
+          <input class="search-subject" matInput type="text" [(ngModel)]="input" (keyup)="search(input)">
+          <mat-placeholder class="placeholder"> Buscar Materia...</mat-placeholder>
+        </mat-form-field>
+        <!-- <input class="search-subject" matInput type="text" [(ngModel)]="input" (keyup)="search(input)" placeholder=" Buscar Materia..."> -->
     </mat-toolbar>
     <div class="subjects-created">
       <mat-list>
@@ -39,24 +43,24 @@
               </mat-grid-tile>
               <mat-grid-tile [colspan]="3" [rowspan]="1">
                 <button mat-button [matMenuTriggerFor]="menu2" *ngIf="!admin" class="btn-menu">
-                  <mat-icon>more_vert</mat-icon>
+                  <span class="material-icons">more_vert</span>
                 </button>
                 <button mat-button [matMenuTriggerFor]="menu" *ngIf="admin" class="btn-menu">
-                  <mat-icon>more_vert</mat-icon>
+                  <span class="material-icons">more_vert</span>
                 </button>
                 <mat-menu #menu="matMenu">
                   <button mat-menu-item (click)="deleteSubject(subject)">
-                    <mat-icon>delete</mat-icon>
+                    <span id="menu-vert" class="material-icons">delete</span>
                     <span>Eliminar</span>
                   </button>
                   <button mat-menu-item (click)="getSyllabus(subject)">
-                    <mat-icon>save_alt</mat-icon>
+                    <span id="menu-vert" class="material-icons">save_alt</span>
                     <span>Ver Programa</span>
                   </button>
                 </mat-menu>
                 <mat-menu #menu2="matMenu">
                   <button mat-menu-item (click)="getSyllabus(subject)">
-                    <mat-icon>save_alt</mat-icon>
+                    <span id="menu-vert" class="material-icons">save_alt</span>
                     <span>Ver Programa</span>
                   </button>
                 </mat-menu>

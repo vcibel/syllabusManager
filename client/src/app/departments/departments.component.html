@@ -17,7 +17,7 @@
       <button mat-icon-button (click)="openDepartment()" matTooltip="Crear departamento"
       matTooltipClass="example-tooltip-blue"
       aria-label="Button that shows a red tooltip" *ngIf="admin">
-        <mat-icon class="example-icon">add_box</mat-icon>
+        <span class="material-icons">add_box</span>
       </button>
     </mat-toolbar>
     <div class="departments-created">
@@ -47,15 +47,15 @@
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="1">
                 <button mat-button [matMenuTriggerFor]="menu" *ngIf="admin" class="btn-menu">
-                  <mat-icon>more_vert</mat-icon>
+                  <span id="menu-vert" class="material-icons">more_vert</span>
                 </button>
                 <mat-menu #menu="matMenu">
                   <button mat-menu-item (click)="deleteDepartment(department)">
-                    <mat-icon>delete</mat-icon>
+                    <span id="menu-vert" class="material-icons">delete</span>
                     <span>Eliminar</span>
                   </button>
                   <button mat-menu-item (click)="openDepartment(department)" >
-                    <mat-icon>create</mat-icon>
+                    <span id="menu-vert" class="material-icons">create</span>
                     <span>Editar</span>
                   </button>
                 </mat-menu>

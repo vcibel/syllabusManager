@@ -33,14 +33,26 @@ mat-card-content.pensum-content.mat-card-content {
 }
 
 mat-card.name-subject.mat-card {
-    margin: -92px !important;
-    font-size: 9px !important;
-    width: 110px;
-    text-align: center;
+    // margin: -92px !important;
+    // font-size: 9px !important;
+    // width: 110px;
+    // text-align: center;
+    // text-transform: uppercase;
+    // padding: 10px;
+    // cursor: pointer;
+    // word-break: break-word;
+
+    // text-transform: uppercase;
+    // cursor: pointer;
+    // word-break: break-word;
+    // white-space: pre-wrap;
+
     text-transform: uppercase;
-    padding: 10px;
     cursor: pointer;
     word-break: break-word;
+    white-space: pre-wrap;
+    padding: 30px;
+    position: relative;
 }
 
 .pensum-footer#card-pensum {
@@ -51,9 +63,9 @@ mat-card.name-subject.mat-card {
 mat-card.subject-card.mat-card {
     border: 1px solid;
     padding: 5px;
-    margin: 2px;
+    margin: 0px;
     width: 90px;
-    height: 50px;
+    height: 60px;
     border-radius: 0px;
 }
 
@@ -67,7 +79,7 @@ mat-card.subject-card.mat-card {
 }
 
 .subjects-column {
-    padding: 5px;
+    padding: 3px;
 }
 
 
@@ -127,5 +139,9 @@ mat-card.hc-subject.mat-card {
 
 .example-list{
     background-color: rgba(250, 246, 246, 0.5);
+}
+
+mat-grid-tile.grid-subject.mat-grid-tile {
+    height: calc(35px) !important;
 }
 

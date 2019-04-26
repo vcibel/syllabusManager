@@ -14,11 +14,11 @@
                   donde podra arrastrar hacia el cuadro que se encuentra en la parte izquiera. Finalmente, seleccionar 
                   el boton de guardar."
       matTooltipClass="tooltip-help">
-      <mat-icon class="example-icon">help</mat-icon>
+      <span class="material-icons">help</span>
     </button>
     <span class="example-spacer"></span>
     <button mat-button [matMenuTriggerFor]="menu">
-        <mat-icon>list</mat-icon>
+        <span class="material-icons">list</span>
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="goToHome()">Inicio</button>
@@ -31,15 +31,10 @@
 
 <div cdkDropListGroup >
   <mat-drawer-container class="example-container" style="height: 593px !important">
-    <!-- <mat-drawer mode="side" opened position="end" *ngIf="!edit" style="width: 156px;">
-      <div class="side-content"></div>
-    </mat-drawer>
-    [ngStyle]="{'visibility': edit ? 'visible' : (!edit ? 'hidden' : null) }"
-  -->
     <mat-drawer mode="side" opened position="end">
       <div class="side-content" *ngIf="edit" style="width: 140px;">
         <span class="title-pem">Universidad Rafael Urdaneta</span>
-        <img class="img-sidenav" src="https://talloiresnetwork.tufts.edu/wp-content/uploads/talnet__1396.jpg" alt="">
+        <img class="img-sidenav" src="http://localhost:4200/assets/imgs/img-pensum.jpg" alt="">
       </div>
       <div class="side-content2" *ngIf="!edit" style="width: 140px;">
       <mat-grid-list cols="2" rowHeight="30px" class="search">
@@ -63,7 +58,7 @@
           (cdkDropListDropped)="drop($event)">
           <div>
             <div *ngIf="!found">
-              <mat-icon class="example-icon focus">search</mat-icon>
+              <span class="material-icons focus">search</span>
               <h6>No se pudo encontrar </h6>
               <div class="notfound">
                 <span><strong>'{{input}}'</strong></span>
@@ -195,9 +190,8 @@
       </div>
     </div>
     </mat-drawer>
-    <mat-drawer-content style="overflow-y: -webkit-paged-y !important;">
+    <mat-drawer-content style="overflow-y: -webkit-paged-y !important; height: 211% !important">
       <mat-spinner style="margin: 0 auto; top: 150px;" color="accent" *ngIf="showLoadder" ></mat-spinner>
-      <!-- <h3 style="margin: 0 auto; top: 150px;" *ngIf="showLoadder">Cargando...</h3> -->
       <mat-card class="pensum pensum-back" *ngIf="Show || isBack && !showLoadder">
         <mat-grid-list cols="10" rowHeight="100px">
           <mat-grid-tile [colspan]="10" [rowspan]="1">
@@ -236,7 +230,7 @@
           </mat-grid-tile>
         </mat-grid-list>
       </mat-card>
-      <mat-card class="pensum" *ngIf="Show || isFront && !showLoadder">
+      <mat-card class="pensum" *ngIf="Show || !showLoadder">
         <mat-card-content class="pensum-content">
           <mat-card class="pensum-header" id="card-pensum">
             <mat-grid-list cols="4" rowHeight="20px">
@@ -250,7 +244,6 @@
                 <span class="space"></span>
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="1" class="save-pensum">
-                <!--<button mat-button color="primary" (click)="save()">Guardar</button>-->
               </mat-grid-tile>
               <mat-grid-tile [colspan]="1" [rowspan]="1">
                 <span class="pensum-name-header">Universidad Rafael Urdaneta</span> 
@@ -316,7 +309,6 @@
               <div *ngFor="let item of done.slice(1); let i=index" class="term"> 
                 <app-term [done]="item" [edit]="edit" [term]="i+1" (droped)="drop($event)" (clicked)="onClick($event, item)"></app-term>
               </div>
-              <!-- [ngStyle]="{'left': edit ? '79.5%' : (!edit ? '89.5%' : null) }" -->
               <div cdkDrag cdkDragLockAxis="y" class="term10" style="left: 80%;">
                   <div class="example-box" >
                       <mat-card class="subject-card">
@@ -334,7 +326,10 @@
                           </mat-grid-list>
                           <mat-grid-list cols="2" rowHeight="20px">
                             <mat-grid-tile [colspan]="2" [rowspan]="1">
-                              <mat-card class="name-subject" (click)="togglePensumB()">
+                              <mat-card class="name-subject" (click)="togglePensumB()" style="cursor: pointer"
+                              matTooltip="Ver electivas"
+                              matTooltipClass="example-tooltip-blue"
+                              aria-label="Button that shows a blue tooltip">
                                 <span class="subject-text">ELECTIVAS</span>
                               </mat-card>
                             </mat-grid-tile>

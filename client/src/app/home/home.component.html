@@ -2,7 +2,7 @@
   <mat-drawer mode="side" opened>
       <app-menu></app-menu>
   </mat-drawer>
-  <mat-drawer-content>
+  <mat-drawer-content style="overflow-x: hidden !important;">
     <br>
     <mat-grid-list cols="1" rowHeight="60px">
       <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -20,7 +20,7 @@
               </mat-toolbar>
             </div>
             <div class="content">
-              <mat-card>
+              <mat-card style="height: 505px !important;">
                 <mat-card-content>
                   <div class="container" >
                     <div class="search">
@@ -47,7 +47,7 @@
                                 <mat-grid-tile class="grid-2" [colspan]="1" [rowspan]="4">
                                   <mat-card class="list-card">
                                     <div *ngIf="!found" class="not-found">
-                                      <mat-icon class="example-icon focus">search</mat-icon>
+                                        <span class="material-icons focus">search</span>
                                         <h4>No se pudo encontrar</h4>
                                         <div class="notfound">
                                           <h5><span><strong>'{{input}}'</strong></span></h5> 

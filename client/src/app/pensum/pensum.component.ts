@@ -84,7 +84,8 @@ export class PensumComponent implements OnInit, AfterViewInit {
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 
   constructor(private router: Router, private activeRouter: ActivatedRoute, private httpService: HttpService,
-              private userService: UserService, private dialog: MatDialog, private alertService: AlertService) {}
+              private userService: UserService, private dialog: MatDialog, private alertService: AlertService) {
+              }
 
    ngAfterViewInit() {
     this.jsPlumbInstance = jsPlumb.getInstance();
@@ -374,7 +375,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
       this.edit = true;
       // this.open = true;
     }
-
+    
     if (this.userService.user.type_user_id === 1) {
       this.admin = true;
     }

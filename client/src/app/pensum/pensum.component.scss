@@ -46,12 +46,20 @@ mat-card-content.pensum-content.mat-card-content {
 }
 
 mat-card.subject-card.mat-card {
+    // border: 1px solid;
+    // padding: 5px;
+    // margin: 2px;
+    // width: 90px;
+    // height: 50px;
+    // border-radius: 0px;
     border: 1px solid;
     padding: 5px;
-    margin: 2px;
+    margin: 9px;
     width: 90px;
-    height: 50px;
+    height: 60px;
     border-radius: 0px;
+    position: relative;
+    left: -9px;
 }
 
 // .example-list {
@@ -124,7 +132,7 @@ mat-card.subject-card.mat-card {
   }
 
   .pensum-back{
-    height: 630px;
+    height: 585px;
   }
 
   mat-card.electivas.mat-card {
