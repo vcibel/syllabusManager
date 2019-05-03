@@ -17,11 +17,26 @@
     text-align: center;
 }
 
-mat-card.name-subject.mat-card {
-    margin: -92px !important;
-    font-size: 10px !important;
-}
+// mat-card.name-subject.mat-card {
+//     margin: -92px !important;
+//     font-size: 10px !important;
+// }
 
 span.subject-text {
     text-transform: uppercase;
 }
+
+.search-subject{
+    background-color: steelblue;
+    color: white;
+    /* width: 25%; */
+    /* position: relative; */
+    /* left: 37%; */
+    /* box-shadow: 0px 2px 0px 0px #d8dee4; */
+    height: 32px;
+    text-transform: none !important;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+  }
