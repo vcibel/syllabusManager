@@ -6,9 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3596c7e-1748-45ca-b3c8-c8e1e3745f09" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Files.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vm/org/servlets/Files.java" afterDir="false" />
-    </list>
+    <list default="true" id="b3596c7e-1748-45ca-b3c8-c8e1e3745f09" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,7 +37,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Subjects.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
+            <state relative-caret-position="1224">
               <caret line="84" column="68" selection-start-line="84" selection-start-column="68" selection-end-line="84" selection-end-column="68" />
             </state>
           </provider>
@@ -431,11 +429,12 @@
       <workItem from="1553433649742" duration="1125000" />
       <workItem from="1554665429068" duration="2891000" />
       <workItem from="1556027842109" duration="2224000" />
+      <workItem from="1556218951738" duration="910000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="271330000" />
+    <option name="totallyTimeSpent" value="272240000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -448,8 +447,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.21104388" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.21406959" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -657,7 +657,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vm/org/servlets/Subjects.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
+        <state relative-caret-position="1224">
           <caret line="84" column="68" selection-start-line="84" selection-start-column="68" selection-end-line="84" selection-end-column="68" />
         </state>
       </provider>

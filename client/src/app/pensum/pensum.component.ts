@@ -56,11 +56,11 @@ export class PensumComponent implements OnInit, AfterViewInit {
   jsPlumbInstance;
   add = false;
   buttonNameAdd = 'Dibujar Prelación';
-  isFront: boolean  = true;
-  isBack: boolean  = false;
-  Show: boolean = false;
-  showLoadder: boolean = true;
-  found: boolean = true;
+  isFront  = true;
+  isBack = false;
+  Show = false;
+  showLoadder = true;
+  found = true;
 
   subjects: Subject[];
   typesSubjectPensum;
@@ -95,8 +95,14 @@ export class PensumComponent implements OnInit, AfterViewInit {
     if (!this.isFront) {
       this.isFront = true;
     }
-    const $this = this;
+    /*const conn = this.jsPlumbInstance.getAllConnections();
+    for (let i = 0; i < conn.length; i++) {
+      this.jsPlumbInstance.deleteConnection(conn[0]);
+    }
+    console.log(this.jsPlumbInstance.getAllConnections());*/
+    /*const $this = this;
     setTimeout(function() {$this.drawRestrictions($this.done); }, 2000);
+    this.jsPlumbInstance.repaintEverything();*/
   }
 
   togglePensumB() {
@@ -104,6 +110,8 @@ export class PensumComponent implements OnInit, AfterViewInit {
     if (!this.isBack) {
       this.isBack = true;
     }
+    // this.jsPlumbInstance.deleteEveryEndpoint();
+    // console.log(this.jsPlumbInstance.getAllConnections());
   }
 
    addRestriction() {
@@ -354,6 +362,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
       console.log(this.source, this.target, document.getElementById(this.source));
       this.connectSourceToTargetUsingJSPlumb(this.source, this.target);
     }
+    console.log(this.jsPlumbInstance.getAllConnections());
     return '';
   }
 
@@ -370,7 +379,7 @@ export class PensumComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
 
-    if(this.edit == false){
+    if (this.edit === false) {
       this.edit = true;
       // this.open = true;
     }
