@@ -89,7 +89,7 @@ h5.example-tooltip, h6{
 
 mat-card.name-subject.mat-card {
     margin: -28px !important;
-    font-size: 9px !important;
+    font-size: 8px !important;
     width: 140px;
     text-align: center;
 }
@@ -140,6 +140,10 @@ h4.header-title, .mat-select-value, span.mat-option-text, span.pensum-name, .not
 #menu-vert {
     top: 20%; 
     position: sticky;
+}
+
+select {
+    text-transform: uppercase;
 }
 
 

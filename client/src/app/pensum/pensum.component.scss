@@ -202,7 +202,7 @@ mat-grid-list.electivas-table.mat-grid-list {
 
 mat-card.name-subject.mat-card {
     margin: -28px !important;
-    font-size: 9px !important;
+    font-size: 8px !important;
     width: 140px;
     text-align: center;
 }
@@ -333,4 +333,13 @@ span.title-pem {
     left: 35%;
     top: 13px;
     text-shadow: 1px 2px 2px #cccccc;
+}
+
+mat-card.name-subject.mat-card {
+    text-transform: uppercase;
+    cursor: pointer;
+    word-break: break-word;
+    white-space: pre-wrap;
+    padding: 30px;
+    position: relative;
 }

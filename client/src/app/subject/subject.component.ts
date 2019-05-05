@@ -85,7 +85,11 @@ export class SubjectComponent implements OnInit {
       this.getDepartmentSubjects();
       this.subject.department_id = this.department_selected.department_id;
       this.subject.type_subject_id = this.type_subject_selected.type_subject_id;
+      if (this.departmentSubjects[this.departmentSubjects.length - 1] === undefined) {
+        this.subject.code_consecutive = 1;
+      } else {
       this.subject.code_consecutive = this.departmentSubjects[this.departmentSubjects.length - 1].code_consecutive + 1;
+      }
       this.subject.subject_code = this.college_selected.faculty_code.toString() + this.college_selected.college_code.toString() +
                                   this.department_selected.department_code.toString() + this.type_subject_selected.type_subject_code;
                                   // + this.subject.code_consecutive;
@@ -104,11 +108,11 @@ export class SubjectComponent implements OnInit {
       console.log(this.department_selected, this.college_selected);
       this.subject.department_id = this.department_selected.department_id;
       this.type_subject_selected = this.typesSubject.filter(function(type_subject: TypeSubject) {
-                                      return type_subject.type_subject_code === subject_code.slice(3, 4);
+                                      return type_subject.type_subject_code === subject_code.slice(3, 4).toUpperCase();
                                     })[0];
       console.log(this.department_selected, this.type_subject_selected);
       this.subject.type_subject_id = this.type_subject_selected.type_subject_id;
-      this.subject.code_consecutive = parseInt(this.subject.subject_code.split(this.type_subject_selected.type_subject_code)[1], 10);
+      this.subject.code_consecutive = parseInt(this.subject.subject_code.toUpperCase().split(this.type_subject_selected.type_subject_code)[1], 10);
     }
     console.log(this.subject);
     if (this.subject.subject_name === '' || this.subject.subject_code === ''){
@@ -119,6 +123,8 @@ export class SubjectComponent implements OnInit {
     this.httpService.post(this.subject, '/Subjects').subscribe((res: any) => {
         if (res.status === 200) {
           this.alertService.open('Materia creada!');
+          this.subject.subject_code = res.subject_code;
+          this.subject.subject_id = res.subject_id;
           this.onClose(this.subject);
           console.log(res);
           this.subject.subject_id = res.subject_id;
@@ -154,7 +160,7 @@ export class SubjectComponent implements OnInit {
         this.onClose(this.subject);
       } else {
         //alert(response.response);
-        this.alertService.confirm('Error!', response.response);
+        // this.alertService.confirm('Error!', response.response);
       }
   });
   }

@@ -9,29 +9,29 @@
             <div class="col col-sm-12">
               <mat-nav-list>
                 <mat-divider></mat-divider>
-                <mat-action-list>
+                <mat-action-list [ngStyle]="{'padding-top': !admin ? '15px': (admin ? '8px': null)}">
                   <button mat-list-item  (click)="goToHome()">Inicio</button>
                 </mat-action-list>
                 <mat-divider></mat-divider>
-                <mat-action-list>
+                <mat-action-list [ngStyle]="{'padding-top': !admin ? '15px': (admin ? '8px': null)}">
                   <button mat-list-item  (click)="goToFaculties()">Facultades</button>
                 </mat-action-list>
-                <mat-action-list>
+                <mat-action-list [ngStyle]="{'padding-top': !admin ? '15px': (admin ? '8px': null)}">
                   <button mat-list-item  (click)="goToColleges()">Escuelas</button>
                 </mat-action-list>
-                <mat-action-list>
+                <mat-action-list [ngStyle]="{'padding-top': !admin ? '15px': (admin ? '8px': null)}">
                   <button mat-list-item (click)="goToDepartments()" >Departamentos</button>
                 </mat-action-list>
-                <mat-action-list>
+                <mat-action-list [ngStyle]="{'padding-top': !admin ? '15px': (admin ? '8px': null)}">
                   <button mat-list-item  (click)="goToSubjects()">Materias</button>
                 </mat-action-list>
-                <mat-action-list>
+                <mat-action-list [ngStyle]="{'padding-top': !admin ? '15px': (admin ? '8px': null)}">
                   <button mat-list-item (click)="goToPensum()">Pensum</button>
                 </mat-action-list>
-                <mat-action-list>
-                  <button mat-list-item  (click)="goToUsers()">Usuarios</button>
+                <mat-action-list [ngStyle]="{'padding-top': !admin ? '15px': (admin ? '8px': null)}">
+                  <button mat-list-item  *ngIf="admin" (click)="goToUsers()">Usuarios</button>
                 </mat-action-list>
-                <mat-action-list>
+                <mat-action-list [ngStyle]="{'padding-top': !admin ? '15px': (admin ? '8px': null)}">
                   <button mat-list-item class="btn-danger" (click)="logout();">Cerrar Sesion</button>
                 </mat-action-list>
               </mat-nav-list>  

@@ -39,24 +39,24 @@
     <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="!disabled && !read"> 
       <label for="collage-type">Escuela a la cual pertenece:</label>
       <mat-form-field class="select-career">
-        <select [disabled]="disabled || read" matNativeControl required [(ngModel)]="college_selected" [ngModelOptions]="{standalone: true}" (change)="getCollegeDepartments(college_selected)">
-          <option *ngFor="let college of colleges" [ngValue]=college>{{college.college_name}}</option>
+        <select [disabled]="disabled || read" matNativeControl required style="text-transform: uppercase;" [(ngModel)]="college_selected" [ngModelOptions]="{standalone: true}" (change)="getCollegeDepartments(college_selected)">
+          <option *ngFor="let college of colleges" style="text-transform: uppercase;" [ngValue]=college>{{college.college_name}}</option>
         </select>
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="!disabled && !read"> 
       <label for="collage-type">Departamento al cual pertenece:</label>
       <mat-form-field class="select-career">
-        <select [disabled]="disabled || read" matNativeControl required [(ngModel)]="department_selected" [ngModelOptions]="{standalone: true}">
-          <option *ngFor="let collegeDepartment of collegeDepartments" [ngValue]=collegeDepartment>{{collegeDepartment.department_name}}</option>
+        <select [disabled]="disabled || read" matNativeControl required style="text-transform: uppercase;" [(ngModel)]="department_selected" [ngModelOptions]="{standalone: true}">
+          <option *ngFor="let collegeDepartment of collegeDepartments" style="text-transform: uppercase;" [ngValue]=collegeDepartment>{{collegeDepartment.department_name}}</option>
         </select>
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="3" [rowspan]="1" *ngIf="!disabled && !read"> 
       <label for="college-name">Tipo de materia:</label>
       <mat-form-field>
-        <select [disabled]="disabled || read" matNativeControl required [(ngModel)]="type_subject_selected" [ngModelOptions]="{standalone: true}">
-          <option *ngFor="let type_subject of typesSubject" [ngValue]=type_subject>{{type_subject.type_subject_description}}</option>
+        <select [disabled]="disabled || read" matNativeControl required style="text-transform: uppercase;" [(ngModel)]="type_subject_selected" [ngModelOptions]="{standalone: true}">
+          <option *ngFor="let type_subject of typesSubject" style="text-transform: uppercase;" [ngValue]=type_subject>{{type_subject.type_subject_description}}</option>
         </select>
       </mat-form-field>
     </mat-grid-tile>
