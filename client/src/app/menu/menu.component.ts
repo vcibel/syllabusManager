@@ -2,6 +2,7 @@ import { HttpService } from './../service/http/http.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertService } from '../service/alert/alert.service';
+import { UserService } from '../service/user/user.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,8 +10,11 @@ import { AlertService } from '../service/alert/alert.service';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+
+  admin = false;
   
-  constructor(private router: Router, private httpService: HttpService, private alertService: AlertService) { }
+  constructor(private router: Router, private httpService: HttpService, private alertService: AlertService, 
+    private userService: UserService) { }
 
   goToHome() {
     this.router.navigateByUrl('/home');
@@ -47,6 +51,12 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    if (this.userService.user.type_user_id === 1) {
+      this.admin = true;
+    }
+
+  }
 
 }

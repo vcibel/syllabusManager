@@ -44,9 +44,9 @@
           <mat-grid-tile [colspan]="9" [rowspan]="1"> 
             <label for="collage-type">Seleccionar Facultad:</label>
               <mat-form-field class="select-career">
-                <mat-select [(ngModel)]="college.faculty_id" [ngModelOptions]="{standalone: true}">
-                  <mat-option *ngFor="let faculty of faculties" [value]=faculty.faculty_id>{{faculty.faculty_name}}</mat-option>
-                </mat-select>
+                <select [(ngModel)]="faculty_selected"  matNativeControl style="text-transform: uppercase;" [ngModelOptions]="{standalone: true}">
+                  <option *ngFor="let faculty of faculties" style="text-transform: uppercase;" [ngValue]=faculty>{{faculty.faculty_name}}</option>
+                </select>
               </mat-form-field>
             <!--  <label for="collage-type">Seleccionar Facultad:</label>
                <mat-form-field class="select-career">

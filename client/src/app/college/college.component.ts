@@ -23,7 +23,14 @@ export class CollegeComponent implements OnInit {
     college_updated_at: ''
   };
   new = true;
-  faculties: Faculty[];
+  faculties;
+  faculty_selected: Faculty = {
+    faculty_id: null,
+    faculty_code: null,
+    faculty_name: '',
+    faculty_created_at: '',
+    faculty_updated_at: ''
+  };
 
   constructor(public dialogRef: MatDialogRef<CollegeComponent>, private httpService: HttpService,
               private alertService: AlertService) {
@@ -36,8 +43,11 @@ export class CollegeComponent implements OnInit {
   }
 
   createCollege() {
+    this.college.faculty_id=this.faculty_selected.faculty_id;
+    this.college.faculty_name=this.faculty_selected.faculty_name;
+    this.college.faculty_code=this.faculty_selected.faculty_code;    
     console.log(this.college);
-    if (this.college.college_name === '' || this.college.college_code === null || this.college.faculty_id === null){
+    if (this.college.college_name === '' || this.college.college_code === null || this.college.faculty_id === undefined){
       this.alertService.confirm('Error', 'Por favor introduzca todos los campos');
     } else {
     this.httpService.post(this.college, '/Colleges').subscribe((res: any) => {
@@ -66,7 +76,7 @@ export class CollegeComponent implements OnInit {
   updateCollege() {
     this.httpService.put(this.college, '/Colleges').subscribe((res: any) => {
       if (res.status === 200) {
-        this.alertService.open('Escuela creada!');
+        this.alertService.open('Escuela editada!');
         console.log(res.response);
         this.onClose(undefined);
         this.college = {
@@ -96,6 +106,10 @@ export class CollegeComponent implements OnInit {
       if (res.status === 200) {
         this.faculties = res.faculties;
         console.log(this.faculties);
+        const $this=this;
+        this.faculty_selected = this.faculties.filter(function(faculty: Faculty) {
+          return faculty.faculty_id === $this.college.faculty_id;
+        });
       } else {
         this.alertService.confirm('Error', res.response);
       }

@@ -85,6 +85,7 @@ export class SubjectsComponent implements OnInit {
         this.showLoadder = false;
         if (res.status === 200) {
           this.subjects = res.subjects;
+          this.searchResult = res.subjects;
           this.typesSubject = res.types;
           console.log(this.subjects, this.typesSubject);
           if (this.subjects.length === 0) {

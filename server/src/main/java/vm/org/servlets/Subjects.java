@@ -75,17 +75,21 @@ public class Subjects extends HttpServlet {
 			if (subject_code.length() < 6) {
 				// arreglar para cuando no hay ninguno
 				JSONArray departmentSubjects = db.executeQuery(prop.getValue("query_getSubjectByDepartment"), department_id);
+				if (departmentSubjects.length() != 0) {
 				JSONObject last = departmentSubjects.getJSONObject(departmentSubjects.length()-1);
 				code_consecutive = last.getInt("code_consecutive")+1;
+					System.out.println(String.format("%02d", last.getInt("code_consecutive")) + "consecutivo" + last.getInt("code_consecutive")+1);
+				} else {
+					code_consecutive = 1;
+				}
 			    subject_code = subject_code + String.format("%02d", code_consecutive);
-				System.out.println(String.format("%02d", last.getInt("code_consecutive")) + "consecutivo" + last.getInt("code_consecutive")+1);
 			}
 			System.out.println(subject_code + "consecutivo" + code_consecutive);
 
 			if (db.executeQuery(prop.getValue("query_checkSubject"), subject_code, subject_name).length()==0) {
 				Integer subject_id = db.executeUpdate(prop.getValue("query_addSubject"), subject_code, subject_name, subject_hc, type_subject_id);
                 db.executeUpdate(prop.getValue("query_addSubjectDepartment"), subject_id, department_id, code_consecutive);
-				json.put("status", 200).put("response", prop.getValue("mssg_subjectCreated")).put("subject_id", subject_id);
+				json.put("status", 200).put("response", prop.getValue("mssg_subjectCreated")).put("subject_id", subject_id).put("subject_code", subject_code);
 				System.out.println(prop.getValue("mssg_subjectCreated"));
 			}else {
 				json.put("response", prop.getValue("mssg_subjectExist")).put("status", 400);
