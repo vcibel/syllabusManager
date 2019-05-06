@@ -38,7 +38,7 @@ college_selected: College;
 
   createDepartment() {
     console.log(this.department);
-    this.department.department_code = this.college_selected.college_code;
+    // this.department.college_code = this.college_selected.college_code;
     this.department.college_name = this.college_selected.college_name;
     this.department.college_id = this.college_selected.college_id;
     if (this.department.department_name === '' || this.department.department_code === null || this.department.college_id === null){

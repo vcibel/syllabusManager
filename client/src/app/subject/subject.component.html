@@ -17,8 +17,8 @@
     <mat-grid-tile [colspan]="5" [rowspan]="1"> 
       <label for="college-name">Nombre de la Materia:</label>
       <mat-form-field>
-        <input matInput #nameSub  maxlength="30" [disabled]= "read" type="text"  class="form-control college-name" [(ngModel)]="subject.subject_name" [ngModelOptions]="{standalone: true}">
-        <mat-hint align="end" *ngIf="!read">{{nameSub.value.length}} / 30</mat-hint>
+        <input matInput #nameSub  maxlength="40" [disabled]= "read" type="text"  class="form-control college-name" [(ngModel)]="subject.subject_name" [ngModelOptions]="{standalone: true}">
+        <mat-hint align="end" *ngIf="!read">{{nameSub.value.length}} / 40</mat-hint>
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="2" [rowspan]="1" *ngIf="!read">

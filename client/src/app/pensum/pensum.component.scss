@@ -145,10 +145,16 @@ mat-card.subject-card.mat-card {
 }
 
 mat-grid-tile.mat-grid-tile.electivas-table {
+    // position: fixed !important;
+    // height: calc(395px) !important;
+    // top: calc(180px) !important;
+    // width: calc(((10% - 13.9px) * 10) + 10px) !important;
+    // left: -39px !important;
+
     position: fixed !important;
-    height: calc(395px) !important;
-    top: calc(180px) !important;
-    width: calc(((10% - 13.9px) * 10) + 10px) !important;
+    height: calc(517px) !important;
+    top: calc(145px) !important;
+    width: calc(((10% - 13.9px) * 10) + 30px) !important;
     left: -39px !important;
 }
 
