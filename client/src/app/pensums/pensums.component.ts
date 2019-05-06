@@ -17,8 +17,8 @@ export class PensumsComponent implements OnInit {
 
   pensums: Pensum[];
   admin = false;
-  showLoadder: boolean = true;
-  found: boolean = true;
+  showLoadder = true;
+  found = true;
 
   constructor(private router: Router, private dialog: MatDialog, private httpService: HttpService,
               private userService: UserService, private alertService: AlertService) { }
@@ -45,13 +45,13 @@ export class PensumsComponent implements OnInit {
       if (res.status === 200) {
         this.pensums = res.pensum;
         console.log(this.pensums);
-        if(this.pensums.length == 0){
+        if (this.pensums.length === 0) {
           this.found = false;
         } else {
           this.found = true;
         }
       } else {
-        //alert(res.response);
+        // alert(res.response);
         this.alertService.confirm('Error!', res.response);
       }
     });
@@ -64,7 +64,7 @@ export class PensumsComponent implements OnInit {
         console.log(res.response);
         this.pensums.splice(this.pensums.indexOf(pensum), 1);
       } else {
-        //alert(res.response);
+        // alert(res.response);
         this.alertService.confirm('Error!', res.response);
       }
     });

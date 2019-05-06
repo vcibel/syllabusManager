@@ -12,7 +12,7 @@ import { AlertService } from '../service/alert/alert.service';
 })
 export class DepartmentComponent implements OnInit {
 
-department= {
+department = {
   department_id: null,
   department_code: null,
   department_name: '',
@@ -20,7 +20,7 @@ department= {
   college_name: '',
   department_created_at: null,
   department_updated_at: null
-} 
+};
 
 new = true;
 colleges: College[];
@@ -38,12 +38,11 @@ college_selected: College;
 
   createDepartment() {
     console.log(this.department);
-    // this.department.college_code = this.college_selected.college_code;
-    this.department.college_name = this.college_selected.college_name;
-    this.department.college_id = this.college_selected.college_id;
-    if (this.department.department_name === '' || this.department.department_code === null || this.department.college_id === null){
+    if (this.department.department_name === '' || this.department.department_code === null || this.college_selected === undefined) {
       this.alertService.confirm('Error', 'Por favor introduzca todos los campos');
     } else {
+    this.department.college_name = this.college_selected.college_name;
+    this.department.college_id = this.college_selected.college_id;
     this.httpService.post(this.department, '/Departments').subscribe((res: any) => {
       if (res.status === 200) {
         this.department.department_id = res.department_id;

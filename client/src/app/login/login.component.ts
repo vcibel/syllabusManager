@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
     user_created_at: '',
   };
 
-  showLoadder: boolean = false;
-  show: boolean = true;
+  showLoadder = false;
+  show = true;
 
   constructor(private router: Router, private httpService: HttpService, private userService: UserService,
               private alertService: AlertService) {
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
           console.log(res);
           this.userService.user = res.user;
           console.log(this.userService.user);
-          console.log('logged in')
+          console.log('logged in');
           this.router.navigateByUrl('/home');
           this.alertService.open('Bienvenido!');
       } else {
