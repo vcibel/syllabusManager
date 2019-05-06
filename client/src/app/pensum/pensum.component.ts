@@ -40,9 +40,6 @@ export interface Section {
   templateUrl: './pensum.component.html',
   styleUrls: ['./pensum.component.scss'],
   providers: [
-    // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
-    // application's root module. We provide it at the component level here, due to limitations of
-    // our example generation script.
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
     {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
@@ -96,14 +93,6 @@ export class PensumComponent implements OnInit, AfterViewInit {
     if (!this.isFront) {
       this.isFront = true;
     }
-    /*const conn = this.jsPlumbInstance.getAllConnections();
-    for (let i = 0; i < conn.length; i++) {
-      this.jsPlumbInstance.deleteConnection(conn[0]);
-    }
-    console.log(this.jsPlumbInstance.getAllConnections());*/
-    /*const $this = this;
-    setTimeout(function() {$this.drawRestrictions($this.done); }, 2000);
-    this.jsPlumbInstance.repaintEverything();*/
   }
 
   togglePensumB() {
@@ -119,6 +108,8 @@ export class PensumComponent implements OnInit, AfterViewInit {
     this.add = ! this.add;
     if ( this.add) {
       this.buttonNameAdd = 'Prelación Lista';
+      this.source = '';
+      this.target = '';
     } else {
       this.buttonNameAdd = 'Dibujar Prelación';
       this.source = '';
@@ -132,11 +123,11 @@ export class PensumComponent implements OnInit, AfterViewInit {
     if (this.add) {
       if (this.source === '') {
         this.source = event.subject_id.toString();
-        this.restriction.subject_id_source_restriction = this.source;
+        this.restriction.subject_id_source_restriction = Number(this.source);
       } else {
         this.target = event.subject_id.toString();
         this.connectSourceToTargetUsingJSPlumb(this.source, this.target);
-        this.restriction.subject_id_target_restriction = this.target;
+        this.restriction.subject_id_target_restriction = Number(this.target);
         this.done[0].push(this.restriction);
         this.source = '';
         this.target = '';
@@ -367,31 +358,20 @@ export class PensumComponent implements OnInit, AfterViewInit {
     return '';
   }
 
-  /*hideList() {
-    this.edit=!this.edit;
-    this.jsPlumbInstance.deleteEveryConnection();
-    this.jsPlumbInstance.repaintEverything();
-    // this.jsPlumbInstance.deleteEveryConnection();
-    //this.jsPlumbInstance.deleteEveryConnection();
-    const $this = this;
-    setTimeout(function() {$this.jsPlumbInstance.repaintEverything(); }, 10000)
-    // setTimeout(function() {$this.drawRestrictions($this.done); }, 20000);
-  }*/
-
   ngOnInit() {
 
     if (this.edit === false) {
       this.edit = true;
       // this.open = true;
     }
-    
+
     if (this.userService.user.type_user_id === 1) {
       this.admin = true;
     }
     console.log(this.activeRouter.queryParams);
     this.activeRouter.queryParams.subscribe(params => {
       console.log(params);
-      //this.showLoadder = false;
+      // this.showLoadder = false;
       this.pensum = JSON.parse(params['pensum']);
     });
     if (this.pensum.pensum_date === undefined) {

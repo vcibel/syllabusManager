@@ -15,8 +15,8 @@ export class UsersComponent implements OnInit {
 
   users: User[];
   admin = false;
-  showLoadder: boolean = true;
-  found: boolean = true;
+  showLoadder = true;
+  found = true;
 
   constructor(private dialog: MatDialog, private httpService: HttpService, private userService: UserService,
               private alertService: AlertService) { }
@@ -52,7 +52,7 @@ export class UsersComponent implements OnInit {
         });
         console.log(remove);
         this.users.splice(remove, 1);
-        if(this.users.length == 0){
+        if (this.users.length === 0) {
           this.found = false;
         } else {
           this.found = true;
@@ -70,7 +70,7 @@ export class UsersComponent implements OnInit {
         console.log(res.response);
         this.users.splice(this.users.indexOf(user), 1);
       } else {
-        //alert(res.response);
+        // alert(res.response);
         this.alertService.confirm('Error!', res.response);
       }
     });

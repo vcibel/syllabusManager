@@ -39,7 +39,7 @@ export class CreatePensumComponent implements OnInit {
         this.colleges = res.colleges;
         console.log(this.colleges);
       } else {
-        //alert(res.response);
+        // alert(res.response);
         this.alertService.confirm('Error', res.response)
       }
     });
@@ -68,7 +68,7 @@ export class CreatePensumComponent implements OnInit {
         this.onClose();
         console.log(this.pensum);
         this.router.navigate(['pensum'], {queryParams: {pensum: JSON.stringify(this.pensum)}});
-        this.alertService.open('Pensum creado!')
+        this.alertService.open('Pensum creado!');
       } else {
         // console.log(res.message);
         this.alertService.confirm('Error', 'Seleccione un escuela');

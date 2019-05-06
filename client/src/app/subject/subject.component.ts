@@ -1,6 +1,6 @@
 import { FilesService } from './../service/files/files.service';
 import { Component, OnInit, ViewChildren } from '@angular/core';
-import { MatDialogRef, MatSnackBarConfig, MatSnackBar, MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 import { HttpService } from '../service/http/http.service';
 import { Subject } from '../models/subject';
 import { TypeSubject } from '../models/type_subjet';
@@ -118,7 +118,7 @@ export class SubjectComponent implements OnInit {
     if (this.subject.subject_name === '' || this.subject.subject_code === ''){
       this.alertService.confirm('Error', 'Por favor introduzca todos los campos');
     } else {
-    //alert (this.subject.subject_code);
+    // alert (this.subject.subject_code);
     // this.alertService.confirm('', this.subject.subject_code);
     this.httpService.post(this.subject, '/Subjects').subscribe((res: any) => {
         if (res.status === 200) {
@@ -131,7 +131,7 @@ export class SubjectComponent implements OnInit {
           console.log(this.files);
           this.uploadFile();
         } else {
-          //alert(res.response);
+          // alert(res.response);
           this.alertService.confirm('Error!', res.response);
         }
     });
@@ -159,7 +159,7 @@ export class SubjectComponent implements OnInit {
         console.log(response);
         this.onClose(this.subject);
       } else {
-        //alert(response.response);
+        // alert(response.response);
         // this.alertService.confirm('Error!', response.response);
       }
   });
@@ -176,7 +176,7 @@ export class SubjectComponent implements OnInit {
         this.colleges = res.colleges;
         console.log(this.colleges);
       } else {
-        //alert(res.response);
+        // alert(res.response);
         this.alertService.confirm('Error!', res.response);
       }
     });
@@ -186,7 +186,7 @@ export class SubjectComponent implements OnInit {
         this.departments = res.departments;
         console.log(this.departments);
       } else {
-        //alert(res.response);
+        // alert(res.response);
         this.alertService.confirm('Error!', res.response);
       }
     });
@@ -218,14 +218,6 @@ export class SubjectComponent implements OnInit {
 
   getSyllabus(subject) {
     this.filesService.getFile(`/Files?syllabus_url=${subject.syllabus_url}&syllabus_name=${subject.syllabus_name}`);
-    // .subscribe((res: any) => {
-    //  console.log(res);
-    //  if (res.status === 200) {
-        // console.log(res.response);
-    //  } else {
-    //    alert(res.response);
-    //  }
-    // });
   }
 
 }

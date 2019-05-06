@@ -43,16 +43,17 @@ export class CollegeComponent implements OnInit {
   }
 
   createCollege() {
-    this.college.faculty_id=this.faculty_selected.faculty_id;
-    this.college.faculty_name=this.faculty_selected.faculty_name;
-    this.college.faculty_code=this.faculty_selected.faculty_code;    
     console.log(this.college);
-    if (this.college.college_name === '' || this.college.college_code === null || this.college.faculty_id === undefined){
+    if (this.college.college_name === '' || this.college.college_code === null || this.faculty_selected === undefined) {
       this.alertService.confirm('Error', 'Por favor introduzca todos los campos');
     } else {
+    this.college.faculty_id = this.faculty_selected.faculty_id;
+    this.college.faculty_name = this.faculty_selected.faculty_name;
+    this.college.faculty_code = this.faculty_selected.faculty_code;
     this.httpService.post(this.college, '/Colleges').subscribe((res: any) => {
         if (res.status === 200) {
-          //this.alertService.confirm('', 'Escuela creada');
+          // this.alertService.confirm('', 'Escuela creada');
+          this.college.college_id = res.college_id;
           this.alertService.open('Escuela creada!');
           this.onClose(this.college);
           console.log(res);
@@ -90,7 +91,7 @@ export class CollegeComponent implements OnInit {
           college_updated_at: ''
         };
       } else {
-        //alert(res.response);
+        // alert(res.response);
         this.alertService.confirm('Error', res.response);
       }
     });
@@ -106,7 +107,7 @@ export class CollegeComponent implements OnInit {
       if (res.status === 200) {
         this.faculties = res.faculties;
         console.log(this.faculties);
-        const $this=this;
+        const $this = this;
         this.faculty_selected = this.faculties.filter(function(faculty: Faculty) {
           return faculty.faculty_id === $this.college.faculty_id;
         });

@@ -24,9 +24,9 @@ export interface Section {
 export class HomeComponent implements OnInit {
 
   panelOpenState = false;
-  found: boolean = true;
-  show: boolean = false;
-  showCollege: boolean = true;
+  found = true;
+  show = false;
+  showCollege = true;
   closeResult: string;
 
   subjects: Subject[];
@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private router: Router, private httpService: HttpService, private dialog: MatDialog,
                private alertService: AlertService) { }
-  
+
   ngOnInit() {
     // LISTAR FACULTADES
     this.httpService.get('/Faculties').subscribe((res: any) => {
@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
         this.faculties = res.faculties;
         console.log(this.faculties);
       } else {
-        //alert(res.response);
+        // alert(res.response);
         this.alertService.confirm('Error', res.response);
       }
     });
@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
         this.colleges = res.colleges;
         console.log(this.colleges);
       } else {
-        //alert(res.response);
+        // alert(res.response);
         this.alertService.confirm('Error', res.response);
       }
     });
@@ -73,7 +73,7 @@ export class HomeComponent implements OnInit {
         this.departments = res.departments;
         console.log(this.departments);
       } else {
-        //alert(res.response);
+        // alert(res.response);
         this.alertService.confirm('Error', res.response);
       }
     });
@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
         this.pensums = res.pensum;
         console.log(this.pensums);
       } else {
-        //alert(res.response);
+        // alert(res.response);
         this.alertService.confirm('Error', res.response);
       }
     });
@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit {
         this.typesSubject = res.types;
         console.log(this.subjects, this.typesSubject);
       } else {
-        //alert(res.response);
+        // alert(res.response);
         this.alertService.confirm('Error', res.response);
       }
     });
@@ -104,7 +104,7 @@ export class HomeComponent implements OnInit {
         this.pensums = res.pensum;
         console.log(this.pensums);
       } else {
-        //alert(res.response);
+        // alert(res.response);
         this.alertService.confirm('Error', res.response);
       }
     });
@@ -158,34 +158,34 @@ export class HomeComponent implements OnInit {
     });
     console.log(this.searchResult);
 
-    if (this.searchResult.length == 0){
+    if (this.searchResult.length === 0) {
       console.log('not found');
       this.found = false;
-    } else{
+    } else {
       this.found = true;
     }
   }
 
   getCollegeDepartments(college_selected) {
-    console.log('college',college_selected);
+    console.log('college', college_selected);
     this.collegeDepartments = this.departments.filter(function(department: Department) {
       return department.college_id === college_selected.college_id;
     });
-    console.log('college depart',this.collegeDepartments);
+    console.log('college depart', this.collegeDepartments);
     this.collegePensum = this.pensums.filter(function(pensum: Pensum) {
       return pensum.college_id === college_selected.college_id;
     });
-    console.log('college pensum',this.collegePensum);
+    console.log('college pensum', this.collegePensum);
     this.searchResult = this.subjects.filter(function(subject: Subject) {
       return subject.college_id === college_selected.college_id;
     });
     this.pensumSearch = false;
 
-    console.log('searchresult',this.searchResult)
-    if (this.searchResult.length == 0){
+    console.log('searchresult', this.searchResult);
+    if (this.searchResult.length === 0) {
       console.log('not found');
       this.found = false;
-    } else{
+    } else {
       this.found = true;
     }
   }
@@ -195,11 +195,11 @@ export class HomeComponent implements OnInit {
       return subject.department_id === department_selected.department_id;
     });
     this.pensumSearch = false;
-    console.log('searchresult',this.searchResult)
-    if (this.searchResult.length == 0){
+    console.log('searchresult', this.searchResult);
+    if (this.searchResult.length === 0) {
       console.log('not found');
       this.found = false;
-    } else{
+    } else {
       this.found = true;
     }
   }
@@ -212,10 +212,10 @@ export class HomeComponent implements OnInit {
         this.pensumSubjects = res.pensumSubjects;
         this.pensumSearch = true;
         console.log('searchresult', this.searchResult);
-        if (this.searchResult.length == 0){
+        if (this.searchResult.length === 0) {
           console.log('not found');
           this.found = false;
-        } else{
+        } else {
           this.found = true;
         }
       } else {

@@ -108,6 +108,7 @@ export class SubjectsComponent implements OnInit {
         console.log(res);
         console.log(res.response);
         this.subjects.splice(this.subjects.indexOf(subject), 1);
+        this.searchResult.splice(this.searchResult.indexOf(subject), 1);
         this.deleteFile(subject);
       } else {
         this.alertService.confirm('Error!', res.response);

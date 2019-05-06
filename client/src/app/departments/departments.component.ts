@@ -3,7 +3,7 @@ import { College } from './../models/college';
 import { Department } from './../models/department';
 import { HttpService } from '../service/http/http.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { MatDialogConfig, MatDialog, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatSnackBarConfig, MatSnackBar } from '@angular/material';
+import { MatDialogConfig, MatDialog } from '@angular/material';
 import { DepartmentComponent } from '../department/department.component';
 import { UserService } from '../service/user/user.service';
 import { AlertService } from '../service/alert/alert.service';
@@ -20,8 +20,8 @@ export class DepartmentsComponent implements OnInit {
   title = '';
   college: College;
   admin = false;
-  showLoadder: boolean = true;
-  found: boolean = true;
+  showLoadder = true;
+  found = true;
 
   constructor(private dialog: MatDialog, private httpService: HttpService, private router: Router,
               private activeRouter: ActivatedRoute, private userService: UserService, private alertService: AlertService) { }
@@ -66,7 +66,7 @@ export class DepartmentsComponent implements OnInit {
         this.showLoadder = false;
         this.departments = res.departments;
         console.log(this.departments);
-        if(this.departments.length == 0){
+        if (this.departments.length === 0) {
           this.found = false;
         } else {
           this.found = true;
@@ -83,7 +83,7 @@ export class DepartmentsComponent implements OnInit {
         if (res.status === 200) {
           this.departments = res.departments;
           console.log(this.departments);
-          if(this.departments.length == 0){
+          if (this.departments.length === 0) {
             this.found = false;
           } else {
             this.found = true;
@@ -99,11 +99,11 @@ export class DepartmentsComponent implements OnInit {
     deleteDepartment(department) {
       this.httpService.delete(department.department_id, '/Departments').subscribe((res: any) => {
         if (res.status === 200) {
-          this.alertService.open('Departamento eliminado!')
+          this.alertService.open('Departamento eliminado!');
           console.log(res.response);
           this.departments.splice(this.departments.indexOf(department), 1);
         } else {
-          //alert(res.response);
+          // alert(res.response);
           this.alertService.confirm('Error', res.response);
         }
       });

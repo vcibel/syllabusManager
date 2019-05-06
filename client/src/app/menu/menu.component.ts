@@ -12,8 +12,8 @@ import { UserService } from '../service/user/user.service';
 export class MenuComponent implements OnInit {
 
   admin = false;
-  
-  constructor(private router: Router, private httpService: HttpService, private alertService: AlertService, 
+
+  constructor(private router: Router, private httpService: HttpService, private alertService: AlertService,
     private userService: UserService) { }
 
   goToHome() {

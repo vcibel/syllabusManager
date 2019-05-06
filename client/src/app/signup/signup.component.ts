@@ -39,12 +39,13 @@ new = true;
 
   signUp() {
     console.log(this.user);
-    if (this.user.user_name === '' || this.user.user_lastname === '' || this.user.user_username === '' || this.user.user_password === ''){
+    if (this.user.user_name === '' || this.user.user_lastname === '' || this.user.user_username === '' || this.user.user_password === '') {
       this.alertService.confirm('Error', 'Por favor introduzca todos los campos');
     } else {
       this.httpService.post(this.user, '/Users').subscribe((res: any) => {
         if (res.status === 200) {
             this.alertService.open('Usuario creado!');
+            this.user.user_id = res.user_id;
             console.log(res);
             this.onClose(this.user);
             this.user = {
@@ -81,7 +82,7 @@ new = true;
             user_created_at: '',
         };
         } else {
-          //alert(res.response);
+          // alert(res.response);
           this.alertService.confirm('Error!', res.response);
         }
       });

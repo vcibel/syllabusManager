@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../service/http/http.service';
 import { College } from './../models/college';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { MatDialogConfig, MatDialog, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatDialogConfig, MatDialog } from '@angular/material';
 import { CollegeComponent } from '../college/college.component';
 import { UserService } from '../service/user/user.service';
 import { AlertService } from '../service/alert/alert.service';
@@ -20,8 +20,8 @@ export class CollegesComponent implements OnInit {
   faculty: Faculty;
   title = '';
   admin = false;
-  showLoadder: boolean = true;
-  found: boolean = true;
+  showLoadder = true;
+  found = true;
 
   constructor(private dialog: MatDialog, private httpService: HttpService, private router: Router,
               private activeRouter: ActivatedRoute, private userService: UserService, private alertService: AlertService) { }
@@ -69,13 +69,13 @@ export class CollegesComponent implements OnInit {
               if (res.status === 200) {
                 this.colleges = res.colleges;
                 console.log(this.colleges);
-                if(this.colleges.length == 0){
+                if (this.colleges.length === 0) {
                   this.found = false;
                 } else {
                   this.found = true;
                 }
               } else {
-                //alert(res.response);
+                // alert(res.response);
                 this.alertService.confirm('Error!', res.response);
               }
             });
@@ -87,14 +87,14 @@ export class CollegesComponent implements OnInit {
               if (res.status === 200) {
                 this.colleges = res.colleges;
                 console.log(this.colleges);
-                if(this.colleges.length == 0){
+                if (this.colleges.length === 0) {
                   this.found = false;
                 } else {
                   this.found = true;
                 }
               } else {
-                //alert(res.response);
-                this.alertService.confirm('Error!', res.response)
+                // alert(res.response);
+                this.alertService.confirm('Error!', res.response);
               }
             });
         }
@@ -106,10 +106,10 @@ export class CollegesComponent implements OnInit {
       if (res.status === 200) {
         console.log(res.response);
         this.colleges.splice(this.colleges.indexOf(college), 1);
-        this.alertService.open('Escuela Eliminada!')
+        this.alertService.open('Escuela Eliminada!');
       } else {
-        //alert(res.response);
-        this.alertService.confirm('Error', res.response)
+        // alert(res.response);
+        this.alertService.confirm('Error', res.response);
       }
     });
   }
